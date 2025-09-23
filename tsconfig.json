@@ -11,6 +11,6 @@
     "types": ["sanity"],
     "baseUrl": "."
   },
-  "include": ["sanity/**/*.ts"],
+  "include": ["sanity/**/*.ts", "sanity.config.ts", "sanity.cli.ts"],
   "exclude": ["node_modules"]
 }
