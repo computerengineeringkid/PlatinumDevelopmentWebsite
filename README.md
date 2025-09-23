@@ -15,6 +15,8 @@ SANITY_STUDIO_PROJECT_ID=yourProjectId
 SANITY_STUDIO_DATASET=yourDataset
 ```
 
+Copy `client-config.example.js` to `client-config.js` and update the Sanity project ID and dataset so the marketing site can fetch published content.
+
 ## Installation
 
 Install dependencies (the Sanity CLI is included as a dev dependency):
@@ -57,10 +59,27 @@ npm run sanity login   # Authenticate with Sanity
 npm run sanity manage  # Open the Sanity project settings in the browser
 ```
 
+## Marketing site
+
+- `index.html` loads Sanity content for the hero, about, portfolio, and contact sections using the configuration defined in `client-config.js`.
+- Update `client-config.js` with your project details to let the page render live Sanity data.
+- Serve the site locally with any static file server so that ES module imports work as expected, for example:
+
+```bash
+npx serve .
+# or
+python -m http.server 3000
+```
+
+Open the reported local URL in your browser to preview the marketing site once the Sanity dataset contains published documents.
+
 ## Project structure
 
 ```
 .
+├── .env.example
+├── .gitignore
+├── client-config.example.js
 ├── index.html
 ├── sanity/
 │   ├── env.d.ts
