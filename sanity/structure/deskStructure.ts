@@ -1,6 +1,6 @@
 import type {StructureBuilder} from 'sanity/desk'
 
-const singletonTypes = ['hero', 'about', 'contact']
+const singletonTypes = ['siteSettings']
 
 export const deskStructure = (S: StructureBuilder) =>
   S.list()
@@ -8,7 +8,7 @@ export const deskStructure = (S: StructureBuilder) =>
     .items([
       ...singletonTypes.map((typeName) =>
         S.listItem()
-          .title(typeName.charAt(0).toUpperCase() + typeName.slice(1))
+          .title('Site Settings')
           .child(
             S.document()
               .schemaType(typeName)
@@ -16,9 +16,9 @@ export const deskStructure = (S: StructureBuilder) =>
           )
       ),
       S.divider(),
-      S.documentTypeListItem('portfolio').title('Portfolio Projects'),
+      S.documentTypeListItem('project').title('Projects'),
       ...S.documentTypeListItems().filter(
-        (listItem) => ![...singletonTypes, 'portfolio'].includes(listItem.getId() || '')
+        (listItem) => ![...singletonTypes, 'project'].includes(listItem.getId() || '')
       ),
     ])
 

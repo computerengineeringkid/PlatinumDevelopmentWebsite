@@ -10,11 +10,11 @@
   },
   "scripts": {
     "sanity": "sanity",
-    "sanity dev": "sanity dev",
-    "sanity build": "sanity build",
-    "sanity deploy": "sanity deploy",
+    "sanity dev": "sanity dev --cwd sanity",
+    "sanity build": "sanity build --cwd sanity",
+    "sanity deploy": "sanity deploy --cwd sanity",
     "sanity login": "sanity login",
-    "sanity manage": "sanity manage"
+    "sanity manage": "sanity manage --cwd sanity"
   },
   "keywords": [
     "sanity",
@@ -28,5 +28,10 @@
     "sanity": "^3.58.0",
     "ts-node": "^10.9.2",
     "typescript": "^5.4.0"
+  },
+  "dependencies": {
+    "react": "^19.1.1",
+    "react-dom": "^19.1.1",
+    "styled-components": "^6.1.19"
   }
 }

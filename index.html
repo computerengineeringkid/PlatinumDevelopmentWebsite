@@ -12,7 +12,6 @@
         body {
             font-family: 'Inter', sans-serif;
         }
-        /* Style for the mobile menu button */
         .hamburger-line {
             transition: all 0.3s ease-in-out;
         }
@@ -25,7 +24,6 @@
         .hamburger-active > span:nth-child(3) {
             transform: rotate(-45deg) translate(7px, -7px);
         }
-        /* A subtle fade-in animation for elements as they are scrolled into view */
         .fade-in-section {
             opacity: 0;
             transform: translateY(20px);
@@ -36,38 +34,60 @@
             transform: translateY(0);
         }
     </style>
+    <script>
+        window.SANITY_PROJECT_ID = window.SANITY_PROJECT_ID || 'your-project-id';
+        window.SANITY_DATASET = window.SANITY_DATASET || 'production';
+        window.SANITY_API_VERSION = window.SANITY_API_VERSION || '2023-10-03';
+        window.__sanityConfigPromise = window.__sanityConfigPromise || Promise.resolve();
+    </script>
+    <script type="module">
+        window.__sanityConfigPromise = (async () => {
+            try {
+                const module = await import('./client-config.js');
+                const config = module.sanityConfig || module.default || module;
+                if (config?.projectId) {
+                    window.SANITY_PROJECT_ID = config.projectId;
+                }
+                if (config?.dataset) {
+                    window.SANITY_DATASET = config.dataset;
+                }
+                if (config?.apiVersion) {
+                    window.SANITY_API_VERSION = config.apiVersion;
+                }
+            } catch (error) {
+                console.warn('Optional client-config.js not found; using inline Sanity defaults.');
+            }
+        })();
+    </script>
 </head>
 <body class="bg-gray-50 text-gray-800">
 
-    <!-- Header Section -->
     <header id="header" class="bg-white shadow-md sticky top-0 z-50 transition-all duration-300">
         <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
             <div class="flex items-center space-x-2">
-                <!-- Placeholder for Logo -->
                 <svg class="h-8 w-8 text-gray-700" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
                     <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 21h19.5m-18-18v18m10.5-18v18m6-13.5V21M6.75 6.75h.75m-.75 3h.75m-.75 3h.75m3-6h.75m-.75 3h.75m-.75 3h.75M9 21v-3.375c0-.621.504-1.125 1.125-1.125h3.75c.621 0 1.125.504 1.125 1.125V21" />
                 </svg>
-                <span class="text-xl font-bold text-gray-700">Platinum Development</span>
+                <span class="text-xl font-bold text-gray-700" data-sanity-text="companyName">Platinum Development</span>
             </div>
-            <!-- Desktop Navigation -->
-            <div class="hidden md:flex items-center space-x-8">
+            <div class="hidden md:flex items-center space-x-8" data-sanity-nav="desktop">
                 <a href="#home" class="text-gray-600 hover:text-gray-900 transition-colors">Home</a>
+                <a href="#about" class="text-gray-600 hover:text-gray-900 transition-colors">About</a>
                 <a href="#portfolio" class="text-gray-600 hover:text-gray-900 transition-colors">Portfolio</a>
                 <a href="#investors" class="text-gray-600 hover:text-gray-900 transition-colors">Investors</a>
                 <a href="#contact" class="bg-gray-800 text-white py-2 px-4 rounded-lg hover:bg-gray-700 transition-colors">Contact Us</a>
             </div>
-            <!-- Mobile Menu Button -->
             <div class="md:hidden">
-                <button id="menu-btn" class="hamburger block focus:outline-none">
+                <button id="menu-btn" class="hamburger block focus:outline-none" aria-label="Toggle navigation">
                     <span class="hamburger-line block w-6 h-0.5 bg-gray-700 my-1"></span>
                     <span class="hamburger-line block w-6 h-0.5 bg-gray-700 my-1"></span>
                     <span class="hamburger-line block w-6 h-0.5 bg-gray-700 my-1"></span>
                 </button>
             </div>
         </nav>
-        <!-- Mobile Menu -->
-        <div id="mobile-menu" class="hidden md:hidden">
+        <div id="mobile-menu" class="hidden md:hidden" data-sanity-nav="mobile">
             <a href="#home" class="block py-2 px-6 text-sm hover:bg-gray-100">Home</a>
+            <a href="#about" class="block py-2 px-6 text-sm hover:bg-gray-100">About</a>
             <a href="#portfolio" class="block py-2 px-6 text-sm hover:bg-gray-100">Portfolio</a>
             <a href="#investors" class="block py-2 px-6 text-sm hover:bg-gray-100">Investors</a>
             <a href="#contact" class="block py-2 px-6 text-sm hover:bg-gray-100">Contact</a>
@@ -75,87 +95,95 @@
     </header>
 
     <main>
-        <!-- Hero Section -->
-        <section id="home" class="h-screen bg-cover bg-center flex items-center justify-center text-white" style="background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('vegas2.jpg');">
+        <section id="home" class="h-screen bg-cover bg-center flex items-center justify-center text-white" data-sanity-bg-image="hero.backgroundImage" style="background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('vegas2.jpg');">
             <div class="text-center px-4 fade-in-section">
-                <h1 id="hero-headline" class="text-4xl md:text-6xl font-bold leading-tight mb-4">Redefining the Las Vegas Landscape.</h1>
-                <p id="hero-subheadline" class="text-lg md:text-xl text-gray-200 mb-8 max-w-3xl mx-auto">Developing premier retail, multifamily, and single-family properties with excellence and integrity.</p>
-                <a id="hero-cta" href="#portfolio" class="bg-white text-gray-800 font-bold py-3 px-8 rounded-lg text-lg hover:bg-gray-200 transition-transform transform hover:scale-105">Explore Projects</a>
+                <h1 class="text-4xl md:text-6xl font-bold leading-tight mb-4" data-sanity-text="hero.headline">Redefining the Las Vegas Landscape.</h1>
+                <p class="text-lg md:text-xl text-gray-200 mb-8 max-w-3xl mx-auto" data-sanity-text="hero.subheadline">Developing premier retail, multifamily, and single-family properties with excellence and integrity.</p>
+                <a href="#portfolio" class="bg-white text-gray-800 font-bold py-3 px-8 rounded-lg text-lg hover:bg-gray-200 transition-transform transform hover:scale-105" data-sanity-text="hero.ctaLabel" data-sanity-attr-href="hero.ctaHref">Explore Projects</a>
             </div>
         </section>
 
-        <!-- About Us Section -->
         <section id="about" class="py-20 bg-white">
             <div class="container mx-auto px-6">
                 <div class="grid md:grid-cols-2 gap-12 items-center fade-in-section">
                     <div>
-                        <img id="about-highlight-image" src="https://placehold.co/600x400/EFEFEF/333?text=Modern+Construction" alt="Construction Site" class="rounded-lg shadow-xl w-full">
+                        <img src="https://placehold.co/600x400/EFEFEF/333?text=Modern+Construction" alt="Construction Site" class="rounded-lg shadow-xl w-full" data-sanity-image="about.image">
                     </div>
                     <div>
-                        <h2 id="about-title" class="text-3xl font-bold mb-4">Building Communities, Creating Value.</h2>
-                        <p id="about-intro" class="text-gray-600 mb-4">We are Platinum Development, a premier developer and operator of high-quality retail, multifamily, and single-family projects. Through our robust services and commitment to excellence, we ensure the creation of the best properties for our local communities.</p>
-                        <ul id="about-services" class="space-y-3 text-gray-600">
-                            <li>Our expertise in the Las Vegas market allows us to identify unique opportunities and deliver exceptional returns for our partners and investors.</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Portfolio Section -->
-        <section id="portfolio" class="py-20 bg-gray-50">
-            <div class="container mx-auto px-6">
-                <div class="text-center mb-12 fade-in-section">
-                    <h2 class="text-3xl font-bold">Our Portfolio</h2>
-                    <p class="text-gray-600 mt-2">A selection of our completed and upcoming projects.</p>
-                </div>
-                <div id="portfolio-grid" class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-                    <div class="bg-white rounded-lg shadow-lg overflow-hidden transform hover:-translate-y-2 transition-transform duration-300 fade-in-section">
-                        <img src="https://placehold.co/600x400/DDD/333?text=Featured+Project" alt="Featured project" class="w-full h-56 object-cover">
-                        <div class="p-6">
-                            <h3 class="text-xl font-semibold mb-2">Featured Development</h3>
-                            <p class="text-gray-600">Add projects in Sanity to replace this placeholder card.</p>
+                        <h2 class="text-3xl font-bold mb-4" data-sanity-text="about.heading">Building Communities, Creating Value.</h2>
+                        <div class="space-y-4" data-sanity-paragraphs="about.body" data-sanity-paragraph-class="text-gray-600">
+                            <p class="text-gray-600">We are Platinum Development, a premier developer and operator of high-quality retail, multifamily, and single-family projects. Through our robust services and commitment to excellence, we ensure the creation of the best properties for our local communities.</p>
+                            <p class="text-gray-600">Our expertise in the Las Vegas market allows us to identify unique opportunities and deliver exceptional returns for our partners and investors.</p>
                         </div>
                     </div>
                 </div>
             </div>
         </section>
-        
-        <!-- Tenants/Partners section -->
-        <section id="tenants" class="py-20 bg-white">
-            <div class="container mx-auto px-6 text-center fade-in-section">
-                <h2 class="text-3xl font-bold mb-2">Trusted By Leading Brands</h2>
-                <p class="text-gray-600 mb-10">We are proud to partner with nationally recognized tenants.</p>
-                <div class="flex flex-wrap justify-center items-center gap-x-12 gap-y-8">
-                    <!-- Replace with actual SVG logos for best quality -->
-                    <div class="h-12 text-gray-500 font-semibold text-2xl flex items-center">MECOX</div>
-                    <div class="h-12 text-gray-500 font-semibold text-2xl flex items-center">Massage Envy</div>
-                    <div class="h-12 text-gray-500 font-semibold text-2xl flex items-center">BJ's</div>
-                    <div class="h-12 text-gray-500 font-semibold text-2xl flex items-center">ZIPPY'S</div>
-                    <div class="h-12 text-gray-500 font-semibold text-2xl flex items-center">Einstein Bros.</div>
-                    <div class="h-12 text-gray-500 font-semibold text-2xl flex items-center">MONEYTREE</div>
+
+        <section id="portfolio" class="py-20 bg-gray-50">
+            <div class="container mx-auto px-6">
+                <div class="text-center mb-12 fade-in-section">
+                    <h2 class="text-3xl font-bold" data-sanity-text="portfolio.heading">Our Portfolio</h2>
+                    <p class="text-gray-600 mt-2" data-sanity-text="portfolio.subheading">A selection of our completed and upcoming projects.</p>
+                </div>
+                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8" data-sanity-collection="projects">
+                    <div class="bg-white rounded-lg shadow-lg overflow-hidden transform hover:-translate-y-2 transition-transform duration-300 fade-in-section">
+                        <img src="https://placehold.co/600x400/DDD/333?text=Retail+Property" alt="6830 S. Rainbow Blvd" class="w-full h-56 object-cover">
+                        <div class="p-6">
+                            <h3 class="text-xl font-semibold mb-2">6830 S. Rainbow Blvd</h3>
+                            <p class="text-gray-600">Vibrant retail center in a prime location.</p>
+                        </div>
+                    </div>
+                    <div class="bg-white rounded-lg shadow-lg overflow-hidden transform hover:-translate-y-2 transition-transform duration-300 fade-in-section">
+                        <img src="https://placehold.co/600x400/DDD/333?text=Multifamily+Property" alt="8021 Vegas Dr" class="w-full h-56 object-cover">
+                        <div class="p-6">
+                            <h3 class="text-xl font-semibold mb-2">8021 Vegas Dr</h3>
+                            <p class="text-gray-600">22 modern townhome units.</p>
+                        </div>
+                    </div>
+                    <div class="bg-white rounded-lg shadow-lg overflow-hidden transform hover:-translate-y-2 transition-transform duration-300 fade-in-section">
+                        <img src="https://placehold.co/600x400/DDD/333?text=Single-Family" alt="Lucky Pagoda Ct" class="w-full h-56 object-cover">
+                        <div class="p-6">
+                            <h3 class="text-xl font-semibold mb-2">Lucky Pagoda Ct</h3>
+                            <p class="text-gray-600">14 exclusive single-family units.</p>
+                        </div>
+                    </div>
                 </div>
             </div>
         </section>
 
-        <!-- Investors Section -->
-        <section id="investors" class="py-20 bg-gray-800 text-white">
+        <section id="tenants" class="py-20 bg-white">
             <div class="container mx-auto px-6 text-center fade-in-section">
-                <h2 class="text-3xl font-bold">Invest with Confidence</h2>
-                <p class="text-gray-300 mt-4 max-w-2xl mx-auto">Join us in developing and managing premier real estate deals in Las Vegas that offer excellent returns. We provide stable and lucrative investment opportunities.</p>
-                <a href="#contact" class="mt-8 inline-block bg-white text-gray-800 font-bold py-3 px-8 rounded-lg text-lg hover:bg-gray-200 transition-transform transform hover:scale-105">Become an Investor</a>
+                <h2 class="text-3xl font-bold mb-2" data-sanity-text="partners.heading">Trusted By Leading Brands</h2>
+                <p class="text-gray-600 mb-10" data-sanity-text="partners.subheading">We are proud to partner with nationally recognized tenants.</p>
+                <div class="flex flex-wrap justify-center items-center gap-x-12 gap-y-8" data-sanity-collection="partners.items">
+                    <div class="h-12 text-gray-500 font-semibold text-2xl flex items-center justify-center">MECOX</div>
+                    <div class="h-12 text-gray-500 font-semibold text-2xl flex items-center justify-center">Massage Envy</div>
+                    <div class="h-12 text-gray-500 font-semibold text-2xl flex items-center justify-center">BJ's</div>
+                    <div class="h-12 text-gray-500 font-semibold text-2xl flex items-center justify-center">ZIPPY'S</div>
+                    <div class="h-12 text-gray-500 font-semibold text-2xl flex items-center justify-center">Einstein Bros.</div>
+                    <div class="h-12 text-gray-500 font-semibold text-2xl flex items-center justify-center">MONEYTREE</div>
+                </div>
             </div>
         </section>
 
-        <!-- Contact Section -->
+        <section id="investors" class="py-20 bg-gray-800 text-white">
+            <div class="container mx-auto px-6 text-center fade-in-section">
+                <h2 class="text-3xl font-bold" data-sanity-text="investor.heading">Invest with Confidence</h2>
+                <div class="text-gray-300 mt-4 max-w-2xl mx-auto space-y-4" data-sanity-paragraphs="investor.body" data-sanity-paragraph-class="text-gray-300">
+                    <p>Join us in developing and managing premier real estate deals in Las Vegas that offer excellent returns. We provide stable and lucrative investment opportunities.</p>
+                </div>
+                <a href="#contact" class="mt-8 inline-block bg-white text-gray-800 font-bold py-3 px-8 rounded-lg text-lg hover:bg-gray-200 transition-transform transform hover:scale-105" data-sanity-text="investor.ctaLabel" data-sanity-attr-href="investor.ctaHref">Become an Investor</a>
+            </div>
+        </section>
+
         <section id="contact" class="py-20 bg-white">
             <div class="container mx-auto px-6">
                 <div class="text-center mb-12 fade-in-section">
-                    <h2 id="contact-title" class="text-3xl font-bold">Contact Us</h2>
-                    <p id="contact-description" class="text-gray-600 mt-2">Let's build something great together. Reach out to discuss your next project.</p>
+                    <h2 class="text-3xl font-bold" data-sanity-text="contact.heading">Contact Us</h2>
+                    <p class="text-gray-600 mt-2" data-sanity-text="contact.subheading">Let's build something great together. Reach out to discuss your next project.</p>
                 </div>
                 <div class="grid md:grid-cols-2 gap-12 items-start fade-in-section">
-                    <!-- Contact Form -->
                     <form class="space-y-6">
                         <div class="grid sm:grid-cols-2 gap-6">
                             <div>
@@ -179,36 +207,31 @@
                             <button type="submit" class="w-full bg-gray-800 text-white py-3 px-6 rounded-lg font-semibold hover:bg-gray-700 transition-colors">Send Message</button>
                         </div>
                     </form>
-                    <!-- Contact Info & Map -->
                     <div class="space-y-6">
-                        <div class="bg-gray-50 p-6 rounded-lg">
-                            <h3 class="text-xl font-semibold mb-4">Our Information</h3>
-                            <p class="text-gray-600 mb-2"><strong>Email:</strong><br><a id="contact-email" href="mailto:info@prdevelopmentgroup.com" class="text-gray-600 hover:text-gray-900">info@prdevelopmentgroup.com</a></p>
-                            <p class="text-gray-600 mb-2"><strong>Phone:</strong><br><a id="contact-phone" href="tel:17025550123" class="text-gray-600 hover:text-gray-900">(702) 555-0123</a></p>
-                            <p class="text-gray-600 mb-4"><strong>Address:</strong><br><span id="contact-address">6870 S. Rainbow, Las Vegas, NV, 89118</span></p>
-                            <div id="contact-social-links" class="flex flex-wrap gap-3 text-sm text-gray-600"></div>
+                        <div class="bg-gray-50 p-6 rounded-lg space-y-3">
+                            <h3 class="text-xl font-semibold" data-sanity-text="contact.infoHeading">Our Information</h3>
+                            <p class="text-gray-600" data-sanity-text="contact.email"><strong>Email:</strong><br> info@prdevelopmentgroup.com</p>
+                            <p class="text-gray-600" data-sanity-text="contact.address"><strong>Address:</strong><br> 6870 S. Rainbow, Las Vegas, NV, 89118</p>
+                            <p class="text-gray-600" data-sanity-text="contact.hours"><strong>Hours:</strong><br> Monday – Friday: 9:00 am – 5:00 pm</p>
                         </div>
-                        <div class="bg-gray-200 h-64 rounded-lg flex items-center justify-center text-gray-500">
-                           <!-- In a real project, you would embed a Google Map here -->
-                           <p>Map Placeholder</p>
+                        <div class="bg-gray-200 h-64 rounded-lg flex items-center justify-center text-gray-500" data-sanity-map="contact.mapEmbed">
+                            <p>Map Placeholder</p>
                         </div>
                     </div>
                 </div>
             </div>
         </section>
-
     </main>
 
-    <!-- Footer -->
     <footer class="bg-gray-800 text-white">
         <div class="container mx-auto px-6 py-8">
             <div class="sm:flex sm:justify-between text-center sm:text-left">
                 <div>
-                    <h3 class="text-lg font-bold">Platinum Development</h3>
-                    <p class="text-gray-400 mt-2">© 2025 Platinum Development. All Rights Reserved.</p>
-                    <p class="text-gray-400 mt-1">Website by Saguaro Interactive</p>
+                    <h3 class="text-lg font-bold" data-sanity-text="footer.companyName">Platinum Development</h3>
+                    <p class="text-gray-400 mt-2" data-sanity-text="footer.copyright">© 2025 Platinum Development. All Rights Reserved.</p>
+                    <p class="text-gray-400 mt-1" data-sanity-text="footer.credits">Website by Saguaro Interactive</p>
                 </div>
-                <div class="mt-6 sm:mt-0">
+                <div class="mt-6 sm:mt-0" data-sanity-footer-nav>
                     <h4 class="font-semibold">Quick Links</h4>
                     <ul class="mt-2 space-y-1">
                         <li><a href="#home" class="text-gray-400 hover:text-white">Home</a></li>
@@ -220,329 +243,410 @@
         </div>
     </footer>
 
-    <script type="module">
-      import {createClient} from 'https://esm.sh/@sanity/client@5.4.2?bundle'
-      import imageUrlBuilder from 'https://esm.sh/@sanity/image-url@1.0.2?bundle'
+    <template id="portfolio-card-template">
+        <div class="bg-white rounded-lg shadow-lg overflow-hidden transform hover:-translate-y-2 transition-transform duration-300 fade-in-section">
+            <img data-role="image" src="" alt="" class="w-full h-56 object-cover" loading="lazy">
+            <div class="p-6 space-y-3">
+                <div class="flex items-center gap-2 text-sm text-gray-500" data-role="meta"></div>
+                <h3 class="text-xl font-semibold" data-role="title"></h3>
+                <p class="text-gray-600" data-role="summary"></p>
+            </div>
+        </div>
+    </template>
 
-      // Mobile menu toggle
-      const menuBtn = document.getElementById('menu-btn')
-      const mobileMenu = document.getElementById('mobile-menu')
-      menuBtn.addEventListener('click', () => {
-        menuBtn.classList.toggle('hamburger-active')
-        mobileMenu.classList.toggle('hidden')
-      })
+    <template id="partner-badge-template">
+        <div class="h-12 text-gray-500 font-semibold text-2xl flex items-center justify-center"></div>
+    </template>
 
-      // Close mobile menu when a link is clicked
-      const mobileLinks = document.querySelectorAll('#mobile-menu a')
-      mobileLinks.forEach((link) => {
-        link.addEventListener('click', () => {
-          menuBtn.classList.remove('hamburger-active')
-          mobileMenu.classList.add('hidden')
-        })
-      })
+    <script src="https://cdn.sanity.io/libs/client/v2023-10-03/client.min.js"></script>
+    <script>
+        const menuBtn = document.getElementById('menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        menuBtn.addEventListener('click', () => {
+            menuBtn.classList.toggle('hamburger-active');
+            mobileMenu.classList.toggle('hidden');
+        });
 
-      // Fade-in sections on scroll
-      const sections = document.querySelectorAll('.fade-in-section')
-      const observer = new IntersectionObserver(
-        (entries) => {
-          entries.forEach((entry) => {
-            if (entry.isIntersecting) {
-              entry.target.classList.add('is-visible')
+        const mobileLinks = document.querySelectorAll('#mobile-menu a');
+        mobileLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                menuBtn.classList.remove('hamburger-active');
+                mobileMenu.classList.add('hidden');
+            });
+        });
+
+        const sections = document.querySelectorAll('.fade-in-section');
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('is-visible');
+                }
+            });
+        }, {
+            threshold: 0.1
+        });
+
+        sections.forEach(section => {
+            observer.observe(section);
+        });
+    </script>
+
+    <script>
+        const SANITY_PROJECT_ID = window.SANITY_PROJECT_ID;
+        const SANITY_DATASET = window.SANITY_DATASET;
+        const SANITY_API_VERSION = window.SANITY_API_VERSION;
+
+        const siteSettingsQuery = `*[_type == "siteSettings"][0]{
+            title,
+            companyName,
+            navigationLinks,
+            hero {
+                headline,
+                subheadline,
+                ctaLabel,
+                ctaHref,
+                backgroundAlt,
+                "backgroundImage": backgroundImage.asset->url
+            },
+            about {
+                heading,
+                body,
+                "image": image.asset->url
+            },
+            portfolioIntro {
+                heading,
+                subheading
+            },
+            partners {
+                heading,
+                subheading,
+                items[]{
+                    name,
+                    "logo": logo.asset->url
+                }
+            },
+            investor {
+                heading,
+                body,
+                ctaLabel,
+                ctaHref
+            },
+            contact {
+                heading,
+                subheading,
+                infoHeading,
+                email,
+                address,
+                hours,
+                mapEmbed
+            },
+            footer {
+                companyName,
+                copyright,
+                credits
             }
-          })
-        },
-        {
-          threshold: 0.1,
-        }
-      )
+        }`;
 
-      sections.forEach((section) => {
-        observer.observe(section)
-      })
+        const projectsQuery = `*[_type == "project" && (defined(heroImage) && heroImage.asset != null)] | order(coalesce(displayOrder, 9999), title asc){
+            title,
+            summary,
+            propertyType,
+            status,
+            "image": heroImage.asset->url,
+            imageAlt
+        }`;
 
-      initSanityContent()
-
-      async function initSanityContent() {
-        const defaults = {
-          projectId: '',
-          dataset: '',
-          apiVersion: '2024-03-01',
-          useCdn: true,
-        }
-
-        let sanityConfig = {...defaults}
-
-        try {
-          const configModule = await import('./client-config.js')
-          const resolvedConfig = configModule.default ?? configModule.sanityConfig ?? {}
-          sanityConfig = {...defaults, ...resolvedConfig}
-        } catch (error) {
-          console.warn(
-            'Sanity client-config.js not found. Copy client-config.example.js to client-config.js and provide your project ID and dataset before loading CMS content.'
-          )
+        function setText(key, value) {
+            if (typeof value !== 'string' || !value.trim()) {
+                return;
+            }
+            document.querySelectorAll(`[data-sanity-text="${key}"]`).forEach((el) => {
+                el.textContent = value;
+            });
         }
 
-        const {projectId, dataset, apiVersion, useCdn} = sanityConfig
-
-        if (!projectId || !dataset || projectId === 'yourProjectId') {
-          console.warn('Sanity project ID or dataset is missing/placeholder. Skipping CMS content fetch.')
-          return
+        function setAttr(key, attr, value) {
+            if (!value) {
+                return;
+            }
+            document.querySelectorAll(`[data-sanity-attr-${attr}="${key}"]`).forEach((el) => {
+                el.setAttribute(attr, value);
+            });
         }
 
-        const client = createClient({projectId, dataset, apiVersion, useCdn})
-        const builder = imageUrlBuilder(client)
-        const urlFor = (source, width = 1600) => {
-          if (!source) return ''
-          try {
-            return builder.image(source).width(width).fit('max').auto('format').url()
-          } catch (error) {
-            console.warn('Failed to build Sanity image URL', error)
-            return ''
-          }
+        function setBackgroundImage(key, url, alt) {
+            if (!url) {
+                return;
+            }
+            document.querySelectorAll(`[data-sanity-bg-image="${key}"]`).forEach((el) => {
+                const gradient = 'linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5))';
+                el.style.backgroundImage = `${gradient}, url('${url}?auto=format&fit=crop&w=1600&q=80')`;
+                if (alt) {
+                    el.setAttribute('aria-label', alt);
+                }
+            });
         }
 
-        const heroQuery = `*[_type == "hero"][0]{headline, subheadline, ctaLabel, ctaUrl, backgroundImage}`
-        const aboutQuery = `*[_type == "about"][0]{title, intro, services[]{name, description}, highlightImage}`
-        const portfolioQuery = `*[_type == "portfolio"] | order(_createdAt desc){_id, title, summary, heroImage, projectUrl}`
-        const contactQuery = `*[_type == "contact"][0]{title, description, email, phone, address, socialLinks[]{platform, url}}`
-
-        try {
-          const [hero, about, portfolioItems, contact] = await Promise.all([
-            client.fetch(heroQuery),
-            client.fetch(aboutQuery),
-            client.fetch(portfolioQuery),
-            client.fetch(contactQuery),
-          ])
-
-          updateHero(hero, urlFor)
-          updateAbout(about, urlFor)
-          updatePortfolio(portfolioItems, urlFor)
-          updateContact(contact)
-        } catch (error) {
-          console.error('Failed to load content from Sanity', error)
-        }
-      }
-
-      function updateHero(hero, urlFor) {
-        if (!hero) return
-
-        const heroSection = document.getElementById('home')
-        const headlineEl = document.getElementById('hero-headline')
-        const subheadlineEl = document.getElementById('hero-subheadline')
-        const ctaEl = document.getElementById('hero-cta')
-
-        if (hero.headline && headlineEl) {
-          headlineEl.textContent = hero.headline
+        function setImage(key, url, altText) {
+            if (!url) {
+                return;
+            }
+            document.querySelectorAll(`[data-sanity-image="${key}"]`).forEach((el) => {
+                el.src = `${url}?auto=format&fit=crop&w=1200&q=80`;
+                if (altText) {
+                    el.alt = altText;
+                }
+            });
         }
 
-        if (hero.subheadline && subheadlineEl) {
-          subheadlineEl.textContent = hero.subheadline
+        function setParagraphs(key, paragraphs, defaultClass) {
+            if (!Array.isArray(paragraphs) || !paragraphs.length) {
+                return;
+            }
+            document.querySelectorAll(`[data-sanity-paragraphs="${key}"]`).forEach((container) => {
+                const paragraphClass = container.getAttribute('data-sanity-paragraph-class') || defaultClass || '';
+                container.innerHTML = '';
+                paragraphs.forEach((text) => {
+                    if (!text) return;
+                    const p = document.createElement('p');
+                    p.className = paragraphClass;
+                    p.textContent = text;
+                    container.appendChild(p);
+                });
+            });
         }
 
-        if (ctaEl) {
-          if (hero.ctaLabel) {
-            ctaEl.textContent = hero.ctaLabel
-          }
+        function renderNavLinks(links) {
+            if (!Array.isArray(links) || !links.length) {
+                return;
+            }
+            const desktop = document.querySelector('[data-sanity-nav="desktop"]');
+            const mobile = document.querySelector('[data-sanity-nav="mobile"]');
+            const footer = document.querySelector('[data-sanity-footer-nav] ul');
+            const primaryIndex = links.findIndex((link) => link?.isPrimary);
+            const fallbackPrimaryIndex = primaryIndex >= 0 ? primaryIndex : links.length - 1;
 
-          if (hero.ctaUrl) {
-            ctaEl.href = hero.ctaUrl
-          }
+            const render = (container, isDesktop) => {
+                if (!container) return;
+                container.innerHTML = '';
+                links.forEach(({label, href, isPrimary}, index) => {
+                    if (!label) return;
+                    const linkHref = href || '#';
+                    const a = document.createElement('a');
+                    a.textContent = label;
+                    a.href = linkHref;
+                    if (isDesktop) {
+                        a.className = 'text-gray-600 hover:text-gray-900 transition-colors';
+                        if (isPrimary || index === fallbackPrimaryIndex) {
+                            a.className = 'bg-gray-800 text-white py-2 px-4 rounded-lg hover:bg-gray-700 transition-colors';
+                        }
+                    } else {
+                        a.className = 'block py-2 px-6 text-sm hover:bg-gray-100';
+                        if (isPrimary || index === fallbackPrimaryIndex) {
+                            a.classList.add('font-semibold');
+                        }
+                    }
+                    container.appendChild(a);
+                });
+            };
+
+            render(desktop, true);
+            render(mobile, false);
+
+            if (footer) {
+                footer.innerHTML = '';
+                links.forEach(({label, href}) => {
+                    if (!label) return;
+                    const li = document.createElement('li');
+                    const a = document.createElement('a');
+                    a.textContent = label;
+                    a.href = href || '#';
+                    a.className = 'text-gray-400 hover:text-white';
+                    li.appendChild(a);
+                    footer.appendChild(li);
+                });
+            }
         }
 
-        const backgroundUrl = urlFor(hero.backgroundImage)
-        if (backgroundUrl && heroSection) {
-          heroSection.style.backgroundImage = `linear-gradient(rgba(0,0,0,0.55), rgba(0,0,0,0.55)), url('${backgroundUrl}')`
-        }
-      }
-
-      function updateAbout(about, urlFor) {
-        if (!about) return
-
-        const titleEl = document.getElementById('about-title')
-        const introEl = document.getElementById('about-intro')
-        const servicesList = document.getElementById('about-services')
-        const imageEl = document.getElementById('about-highlight-image')
-
-        if (about.title && titleEl) {
-          titleEl.textContent = about.title
+        function formatLabel(value) {
+            if (!value) return '';
+            const spaced = value.replace(/([A-Z])/g, ' $1').replace(/_/g, ' ');
+            return spaced.charAt(0).toUpperCase() + spaced.slice(1);
         }
 
-        if (about.intro && introEl) {
-          introEl.textContent = about.intro
+        function renderProjects(projects) {
+            const grid = document.querySelector('[data-sanity-collection="projects"]');
+            if (!grid || !Array.isArray(projects) || !projects.length) {
+                return;
+            }
+            const template = document.getElementById('portfolio-card-template');
+            if (!template) {
+                return;
+            }
+            grid.innerHTML = '';
+            projects.forEach((project, index) => {
+                const clone = template.content.firstElementChild.cloneNode(true);
+                const image = clone.querySelector('[data-role="image"]');
+                if (image && project.image) {
+                    image.src = `${project.image}?auto=format&fit=crop&w=900&h=600`;
+                    image.alt = project.imageAlt || project.title || 'Project';
+                }
+                const meta = clone.querySelector('[data-role="meta"]');
+                if (meta) {
+                    meta.innerHTML = '';
+                    if (project.propertyType) {
+                        const span = document.createElement('span');
+                        span.textContent = formatLabel(project.propertyType);
+                        meta.appendChild(span);
+                    }
+                    if (project.status) {
+                        const status = document.createElement('span');
+                        status.textContent = formatLabel(project.status);
+                        status.className = 'px-2 py-0.5 rounded-full bg-gray-100 text-gray-700 text-xs font-semibold';
+                        meta.appendChild(status);
+                    }
+                    if (!meta.childElementCount) {
+                        meta.remove();
+                    }
+                }
+                const title = clone.querySelector('[data-role="title"]');
+                if (title) {
+                    title.textContent = project.title || '';
+                }
+                const summary = clone.querySelector('[data-role="summary"]');
+                if (summary) {
+                    summary.textContent = project.summary || '';
+                }
+                clone.style.transitionDelay = `${index * 100}ms`;
+                grid.appendChild(clone);
+            });
         }
 
-        if (servicesList) {
-          servicesList.innerHTML = ''
-          if (Array.isArray(about.services) && about.services.length > 0) {
-            about.services.forEach((service) => {
-              if (!service?.name && !service?.description) return
-              const item = document.createElement('li')
-              item.className = 'space-y-1'
-
-              if (service.name) {
-                const name = document.createElement('p')
-                name.className = 'font-semibold text-gray-800'
-                name.textContent = service.name
-                item.appendChild(name)
-              }
-
-              if (service.description) {
-                const description = document.createElement('p')
-                description.className = 'text-gray-600'
-                description.textContent = service.description
-                item.appendChild(description)
-              }
-
-              servicesList.appendChild(item)
-            })
-          }
-
-          if (!servicesList.children.length) {
-            const placeholder = document.createElement('li')
-            placeholder.textContent = 'Add services in the Sanity Studio to replace this placeholder.'
-            servicesList.appendChild(placeholder)
-          }
+        function renderPartners(partners) {
+            if (!Array.isArray(partners) || !partners.length) {
+                return;
+            }
+            const container = document.querySelector('[data-sanity-collection="partners.items"]');
+            if (!container) {
+                return;
+            }
+            const template = document.getElementById('partner-badge-template');
+            container.innerHTML = '';
+            partners.forEach((partner) => {
+                if (!partner || !partner.name) return;
+                const clone = template.content.firstElementChild.cloneNode(true);
+                if (partner.logo) {
+                    clone.innerHTML = `<img src="${partner.logo}?auto=format&fit=max&w=200" alt="${partner.name}" class="max-h-12">`;
+                } else {
+                    clone.textContent = partner.name;
+                }
+                container.appendChild(clone);
+            });
         }
 
-        const highlightUrl = urlFor(about.highlightImage)
-        if (highlightUrl && imageEl) {
-          imageEl.src = highlightUrl
-          imageEl.alt = about.title || 'About section highlight'
-        }
-      }
-
-      function updatePortfolio(portfolioItems, urlFor) {
-        const grid = document.getElementById('portfolio-grid')
-        if (!grid) return
-
-        grid.innerHTML = ''
-
-        if (!Array.isArray(portfolioItems) || portfolioItems.length === 0) {
-          grid.appendChild(createPlaceholderProjectCard())
-          return
-        }
-
-        portfolioItems.forEach((project, index) => {
-          const card = document.createElement('article')
-          card.className = 'bg-white rounded-lg shadow-lg overflow-hidden transform hover:-translate-y-2 transition-transform duration-300 fade-in-section'
-          card.style.transitionDelay = `${index * 100}ms`
-
-          const imageWrapper = document.createElement('div')
-          const image = document.createElement('img')
-          image.className = 'w-full h-56 object-cover'
-          image.alt = project.title || 'Portfolio project'
-          image.src = urlFor(project.heroImage, 900) || 'https://placehold.co/600x400/DDD/333?text=Project'
-          imageWrapper.appendChild(image)
-
-          const content = document.createElement('div')
-          content.className = 'p-6'
-
-          const title = document.createElement('h3')
-          title.className = 'text-xl font-semibold mb-2'
-
-          if (project.projectUrl) {
-            const link = document.createElement('a')
-            link.href = project.projectUrl
-            link.target = '_blank'
-            link.rel = 'noopener noreferrer'
-            link.className = 'text-gray-900 hover:text-gray-600 transition-colors'
-            link.textContent = project.title || 'View project'
-            title.appendChild(link)
-          } else {
-            title.textContent = project.title || 'Untitled project'
-          }
-
-          const summary = document.createElement('p')
-          summary.className = 'text-gray-600'
-          summary.textContent = project.summary || 'Add a project summary in Sanity to describe this development.'
-
-          content.appendChild(title)
-          content.appendChild(summary)
-
-          card.appendChild(imageWrapper)
-          card.appendChild(content)
-          grid.appendChild(card)
-        })
-      }
-
-      function createPlaceholderProjectCard() {
-        const card = document.createElement('article')
-        card.className = 'bg-white rounded-lg shadow-lg overflow-hidden transform hover:-translate-y-2 transition-transform duration-300 fade-in-section'
-
-        const image = document.createElement('img')
-        image.className = 'w-full h-56 object-cover'
-        image.alt = 'Placeholder project'
-        image.src = 'https://placehold.co/600x400/DDD/333?text=Featured+Project'
-
-        const content = document.createElement('div')
-        content.className = 'p-6'
-
-        const title = document.createElement('h3')
-        title.className = 'text-xl font-semibold mb-2'
-        title.textContent = 'Featured Development'
-
-        const description = document.createElement('p')
-        description.className = 'text-gray-600'
-        description.textContent = 'Add projects in the Sanity Studio to replace this placeholder card.'
-
-        content.appendChild(title)
-        content.appendChild(description)
-
-        card.appendChild(image)
-        card.appendChild(content)
-
-        return card
-      }
-
-      function updateContact(contact) {
-        if (!contact) return
-
-        const titleEl = document.getElementById('contact-title')
-        const descriptionEl = document.getElementById('contact-description')
-        const emailEl = document.getElementById('contact-email')
-        const phoneEl = document.getElementById('contact-phone')
-        const addressEl = document.getElementById('contact-address')
-        const socialLinksEl = document.getElementById('contact-social-links')
-
-        if (contact.title && titleEl) {
-          titleEl.textContent = contact.title
+        function renderContactInfo(contact) {
+            if (!contact) {
+                return;
+            }
+            setText('contact.infoHeading', contact.infoHeading || 'Our Information');
+            if (contact.email) {
+                const emailEl = document.querySelector('[data-sanity-text="contact.email"]');
+                if (emailEl) {
+                    emailEl.innerHTML = `<strong>Email:</strong><br>${contact.email}`;
+                }
+            }
+            if (contact.address) {
+                const addressEl = document.querySelector('[data-sanity-text="contact.address"]');
+                if (addressEl) {
+                    addressEl.innerHTML = `<strong>Address:</strong><br>${contact.address}`;
+                }
+            }
+            if (contact.hours) {
+                const hoursEl = document.querySelector('[data-sanity-text="contact.hours"]');
+                if (hoursEl) {
+                    hoursEl.innerHTML = `<strong>Hours:</strong><br>${contact.hours}`;
+                }
+            }
+            if (contact.mapEmbed) {
+                document.querySelectorAll('[data-sanity-map="contact.mapEmbed"]').forEach((container) => {
+                    container.innerHTML = contact.mapEmbed;
+                });
+            }
         }
 
-        if (contact.description && descriptionEl) {
-          descriptionEl.textContent = contact.description
+        async function loadSanityContent() {
+            if (!window.sanityClient) {
+                console.warn('Sanity client library not available.');
+                return;
+            }
+            if (!SANITY_PROJECT_ID || SANITY_PROJECT_ID === 'your-project-id') {
+                console.warn('Sanity project ID is not configured.');
+                return;
+            }
+
+            const client = window.sanityClient({
+                projectId: SANITY_PROJECT_ID,
+                dataset: SANITY_DATASET,
+                apiVersion: SANITY_API_VERSION,
+                useCdn: true,
+            });
+
+            try {
+                const [site, projects] = await Promise.all([
+                    client.fetch(siteSettingsQuery),
+                    client.fetch(projectsQuery),
+                ]);
+
+                if (site) {
+                    if (site.title) {
+                        document.title = site.title;
+                    }
+                    setText('companyName', site.companyName);
+                    setBackgroundImage('hero.backgroundImage', site.hero?.backgroundImage, site.hero?.backgroundAlt);
+                    setText('hero.headline', site.hero?.headline);
+                    setText('hero.subheadline', site.hero?.subheadline);
+                    setText('hero.ctaLabel', site.hero?.ctaLabel);
+                    setAttr('hero.ctaHref', 'href', site.hero?.ctaHref);
+
+                    setImage('about.image', site.about?.image, site.about?.heading);
+                    setText('about.heading', site.about?.heading);
+                    setParagraphs('about.body', site.about?.body, 'text-gray-600');
+
+                    setText('portfolio.heading', site.portfolioIntro?.heading);
+                    setText('portfolio.subheading', site.portfolioIntro?.subheading);
+
+                    setText('partners.heading', site.partners?.heading);
+                    setText('partners.subheading', site.partners?.subheading);
+                    renderPartners(site.partners?.items);
+
+                    setText('investor.heading', site.investor?.heading);
+                    setParagraphs('investor.body', site.investor?.body, 'text-gray-300');
+                    setText('investor.ctaLabel', site.investor?.ctaLabel);
+                    setAttr('investor.ctaHref', 'href', site.investor?.ctaHref);
+
+                    setText('contact.heading', site.contact?.heading);
+                    setText('contact.subheading', site.contact?.subheading);
+                    renderContactInfo(site.contact);
+
+                    setText('footer.companyName', site.footer?.companyName);
+                    setText('footer.copyright', site.footer?.copyright);
+                    setText('footer.credits', site.footer?.credits);
+
+                    renderNavLinks(site.navigationLinks);
+                }
+
+                renderProjects(projects);
+            } catch (error) {
+                console.error('Failed to load Sanity content', error);
+            }
         }
 
-        if (contact.email && emailEl) {
-          emailEl.textContent = contact.email
-          emailEl.href = `mailto:${contact.email}`
-        }
-
-        if (contact.phone && phoneEl) {
-          const phoneHref = contact.phone.replace(/[^\d+]/g, '')
-          phoneEl.textContent = contact.phone
-          phoneEl.href = `tel:${phoneHref}`
-        }
-
-        if (contact.address && addressEl) {
-          addressEl.textContent = contact.address
-        }
-
-        if (socialLinksEl) {
-          socialLinksEl.innerHTML = ''
-          if (Array.isArray(contact.socialLinks) && contact.socialLinks.length > 0) {
-            contact.socialLinks.forEach((link) => {
-              if (!link?.url || !link?.platform) return
-              const anchor = document.createElement('a')
-              anchor.href = link.url
-              anchor.target = '_blank'
-              anchor.rel = 'noopener noreferrer'
-              anchor.className = 'hover:text-gray-900 transition-colors'
-              anchor.textContent = link.platform
-              socialLinksEl.appendChild(anchor)
-            })
-          }
-        }
-      }
+        document.addEventListener('DOMContentLoaded', () => {
+            const ready = window.__sanityConfigPromise || Promise.resolve();
+            ready.finally(() => {
+                loadSanityContent();
+            });
+        });
     </script>
 </body>
 </html>

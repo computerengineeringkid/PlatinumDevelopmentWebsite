@@ -1,8 +1,4 @@
-import about from './about'
-import contact from './contact'
-import hero from './hero'
-import portfolio from './portfolio'
+import project from './project'
+import siteSettings from './siteSettings'
 
-const schemaTypes = [hero, about, portfolio, contact]
-
-export default schemaTypes
+export default [siteSettings, project]
