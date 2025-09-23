@@ -1,0 +1,32 @@
+{
+  "name": "platinumdevelopmentwebsite",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Marketing site and Sanity Studio for Platinum Development.",
+  "type": "module",
+  "engines": {
+    "node": ">=18.0.0",
+    "npm": ">=9.0.0"
+  },
+  "scripts": {
+    "sanity": "sanity",
+    "sanity dev": "sanity dev",
+    "sanity build": "sanity build",
+    "sanity deploy": "sanity deploy",
+    "sanity login": "sanity login",
+    "sanity manage": "sanity manage"
+  },
+  "keywords": [
+    "sanity",
+    "cms",
+    "platinum-development"
+  ],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@sanity/vision": "^3.58.0",
+    "sanity": "^3.58.0",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.4.0"
+  }
+}
