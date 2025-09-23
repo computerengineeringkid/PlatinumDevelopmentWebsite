@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Platinum Development - Redefining the Las Vegas Landscape</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        /* Style for the mobile menu button */
+        .hamburger-line {
+            transition: all 0.3s ease-in-out;
+        }
+        .hamburger-active > span:nth-child(1) {
+            transform: rotate(45deg) translate(5px, 5px);
+        }
+        .hamburger-active > span:nth-child(2) {
+            opacity: 0;
+        }
+        .hamburger-active > span:nth-child(3) {
+            transform: rotate(-45deg) translate(7px, -7px);
+        }
+        /* A subtle fade-in animation for elements as they are scrolled into view */
+        .fade-in-section {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        }
+        .fade-in-section.is-visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body class="bg-gray-50 text-gray-800">
+
+    <!-- Header Section -->
+    <header id="header" class="bg-white shadow-md sticky top-0 z-50 transition-all duration-300">
+        <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <div class="flex items-center space-x-2">
+                <!-- Placeholder for Logo -->
+                <svg class="h-8 w-8 text-gray-700" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 21h19.5m-18-18v18m10.5-18v18m6-13.5V21M6.75 6.75h.75m-.75 3h.75m-.75 3h.75m3-6h.75m-.75 3h.75m-.75 3h.75M9 21v-3.375c0-.621.504-1.125 1.125-1.125h3.75c.621 0 1.125.504 1.125 1.125V21" />
+                </svg>
+                <span class="text-xl font-bold text-gray-700">Platinum Development</span>
+            </div>
+            <!-- Desktop Navigation -->
+            <div class="hidden md:flex items-center space-x-8">
+                <a href="#home" class="text-gray-600 hover:text-gray-900 transition-colors">Home</a>
+                <a href="#portfolio" class="text-gray-600 hover:text-gray-900 transition-colors">Portfolio</a>
+                <a href="#investors" class="text-gray-600 hover:text-gray-900 transition-colors">Investors</a>
+                <a href="#contact" class="bg-gray-800 text-white py-2 px-4 rounded-lg hover:bg-gray-700 transition-colors">Contact Us</a>
+            </div>
+            <!-- Mobile Menu Button -->
+            <div class="md:hidden">
+                <button id="menu-btn" class="hamburger block focus:outline-none">
+                    <span class="hamburger-line block w-6 h-0.5 bg-gray-700 my-1"></span>
+                    <span class="hamburger-line block w-6 h-0.5 bg-gray-700 my-1"></span>
+                    <span class="hamburger-line block w-6 h-0.5 bg-gray-700 my-1"></span>
+                </button>
+            </div>
+        </nav>
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden">
+            <a href="#home" class="block py-2 px-6 text-sm hover:bg-gray-100">Home</a>
+            <a href="#portfolio" class="block py-2 px-6 text-sm hover:bg-gray-100">Portfolio</a>
+            <a href="#investors" class="block py-2 px-6 text-sm hover:bg-gray-100">Investors</a>
+            <a href="#contact" class="block py-2 px-6 text-sm hover:bg-gray-100">Contact</a>
+        </div>
+    </header>
+
+    <main>
+        <!-- Hero Section -->
+        <section id="home" class="h-screen bg-cover bg-center flex items-center justify-center text-white" style="background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('vegas2.jpg');">            <div class="text-center px-4 fade-in-section">
+                <h1 class="text-4xl md:text-6xl font-bold leading-tight mb-4">Redefining the Las Vegas Landscape.</h1>
+                <p class="text-lg md:text-xl text-gray-200 mb-8 max-w-3xl mx-auto">Developing premier retail, multifamily, and single-family properties with excellence and integrity.</p>
+                <a href="#portfolio" class="bg-white text-gray-800 font-bold py-3 px-8 rounded-lg text-lg hover:bg-gray-200 transition-transform transform hover:scale-105">Explore Projects</a>
+            </div>
+        </section>
+
+        <!-- About Us Section -->
+        <section id="about" class="py-20 bg-white">
+            <div class="container mx-auto px-6">
+                <div class="grid md:grid-cols-2 gap-12 items-center fade-in-section">
+                    <div>
+                        <img src="https://placehold.co/600x400/EFEFEF/333?text=Modern+Construction" alt="Construction Site" class="rounded-lg shadow-xl w-full">
+                    </div>
+                    <div>
+                        <h2 class="text-3xl font-bold mb-4">Building Communities, Creating Value.</h2>
+                        <p class="text-gray-600 mb-4">We are Platinum Development, a premier developer and operator of high-quality retail, multifamily, and single-family projects. Through our robust services and commitment to excellence, we ensure the creation of the best properties for our local communities.</p>
+                        <p class="text-gray-600">Our expertise in the Las Vegas market allows us to identify unique opportunities and deliver exceptional returns for our partners and investors.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Portfolio Section -->
+        <section id="portfolio" class="py-20 bg-gray-50">
+            <div class="container mx-auto px-6">
+                <div class="text-center mb-12 fade-in-section">
+                    <h2 class="text-3xl font-bold">Our Portfolio</h2>
+                    <p class="text-gray-600 mt-2">A selection of our completed and upcoming projects.</p>
+                </div>
+                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <!-- Project Card 1 -->
+                    <div class="bg-white rounded-lg shadow-lg overflow-hidden transform hover:-translate-y-2 transition-transform duration-300 fade-in-section">
+                        <img src="https://placehold.co/600x400/DDD/333?text=Retail+Property" alt="6830 S. Rainbow Blvd" class="w-full h-56 object-cover">
+                        <div class="p-6">
+                            <h3 class="text-xl font-semibold mb-2">6830 S. Rainbow Blvd</h3>
+                            <p class="text-gray-600">Vibrant retail center in a prime location.</p>
+                        </div>
+                    </div>
+                    <!-- Project Card 2 -->
+                    <div class="bg-white rounded-lg shadow-lg overflow-hidden transform hover:-translate-y-2 transition-transform duration-300 fade-in-section" style="transition-delay: 100ms;">
+                        <img src="https://placehold.co/600x400/DDD/333?text=Multifamily+Property" alt="8021 Vegas Dr" class="w-full h-56 object-cover">
+                        <div class="p-6">
+                            <h3 class="text-xl font-semibold mb-2">8021 Vegas Dr</h3>
+                            <p class="text-gray-600">22 modern townhome units.</p>
+                        </div>
+                    </div>
+                    <!-- Project Card 3 -->
+                    <div class="bg-white rounded-lg shadow-lg overflow-hidden transform hover:-translate-y-2 transition-transform duration-300 fade-in-section" style="transition-delay: 200ms;">
+                        <img src="https://placehold.co/600x400/DDD/333?text=Single-Family" alt="Lucky Pagoda Ct" class="w-full h-56 object-cover">
+                        <div class="p-6">
+                            <h3 class="text-xl font-semibold mb-2">Lucky Pagoda Ct</h3>
+                            <p class="text-gray-600">14 exclusive single-family units.</p>
+                        </div>
+                    </div>
+                     <!-- Project Card 4 -->
+                    <div class="bg-white rounded-lg shadow-lg overflow-hidden transform hover:-translate-y-2 transition-transform duration-300 fade-in-section" style="transition-delay: 300ms;">
+                        <img src="https://placehold.co/600x400/DDD/333?text=Retail+Property" alt="9550 S. Eastern Ave" class="w-full h-56 object-cover">
+                        <div class="p-6">
+                            <h3 class="text-xl font-semibold mb-2">9550 S. Eastern Ave</h3>
+                            <p class="text-gray-600">High-traffic commercial property.</p>
+                        </div>
+                    </div>
+                     <!-- Project Card 5 -->
+                    <div class="bg-white rounded-lg shadow-lg overflow-hidden transform hover:-translate-y-2 transition-transform duration-300 fade-in-section" style="transition-delay: 400ms;">
+                        <img src="https://placehold.co/600x400/BDB/333?text=Coming+Soon" alt="Jones Apartments" class="w-full h-56 object-cover">
+                        <div class="p-6">
+                            <h3 class="text-xl font-semibold mb-2">Jones Apartments</h3>
+                            <p class="text-gray-600">Under Construction: Future of urban living.</p>
+                        </div>
+                    </div>
+                     <!-- Project Card 6 -->
+                    <div class="bg-white rounded-lg shadow-lg overflow-hidden transform hover:-translate-y-2 transition-transform duration-300 fade-in-section" style="transition-delay: 500ms;">
+                         <img src="https://placehold.co/600x400/DDD/333?text=Retail+Development" alt="Rainbow & Oquendo" class="w-full h-56 object-cover">
+                        <div class="p-6">
+                            <h3 class="text-xl font-semibold mb-2">Rainbow & Oquendo</h3>
+                            <p class="text-gray-600">In Progress: Two new drive-thru pads.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Tenants/Partners section -->
+        <section id="tenants" class="py-20 bg-white">
+            <div class="container mx-auto px-6 text-center fade-in-section">
+                <h2 class="text-3xl font-bold mb-2">Trusted By Leading Brands</h2>
+                <p class="text-gray-600 mb-10">We are proud to partner with nationally recognized tenants.</p>
+                <div class="flex flex-wrap justify-center items-center gap-x-12 gap-y-8">
+                    <!-- Replace with actual SVG logos for best quality -->
+                    <div class="h-12 text-gray-500 font-semibold text-2xl flex items-center">MECOX</div>
+                    <div class="h-12 text-gray-500 font-semibold text-2xl flex items-center">Massage Envy</div>
+                    <div class="h-12 text-gray-500 font-semibold text-2xl flex items-center">BJ's</div>
+                    <div class="h-12 text-gray-500 font-semibold text-2xl flex items-center">ZIPPY'S</div>
+                    <div class="h-12 text-gray-500 font-semibold text-2xl flex items-center">Einstein Bros.</div>
+                    <div class="h-12 text-gray-500 font-semibold text-2xl flex items-center">MONEYTREE</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Investors Section -->
+        <section id="investors" class="py-20 bg-gray-800 text-white">
+            <div class="container mx-auto px-6 text-center fade-in-section">
+                <h2 class="text-3xl font-bold">Invest with Confidence</h2>
+                <p class="text-gray-300 mt-4 max-w-2xl mx-auto">Join us in developing and managing premier real estate deals in Las Vegas that offer excellent returns. We provide stable and lucrative investment opportunities.</p>
+                <a href="#contact" class="mt-8 inline-block bg-white text-gray-800 font-bold py-3 px-8 rounded-lg text-lg hover:bg-gray-200 transition-transform transform hover:scale-105">Become an Investor</a>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" class="py-20 bg-white">
+            <div class="container mx-auto px-6">
+                <div class="text-center mb-12 fade-in-section">
+                    <h2 class="text-3xl font-bold">Contact Us</h2>
+                    <p class="text-gray-600 mt-2">Let's build something great together. Reach out to discuss your next project.</p>
+                </div>
+                <div class="grid md:grid-cols-2 gap-12 items-start fade-in-section">
+                    <!-- Contact Form -->
+                    <form class="space-y-6">
+                        <div class="grid sm:grid-cols-2 gap-6">
+                            <div>
+                                <label for="first-name" class="block text-sm font-medium text-gray-700">First Name</label>
+                                <input type="text" id="first-name" class="mt-1 block w-full px-3 py-2 bg-white border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-gray-500 focus:border-gray-500" required>
+                            </div>
+                            <div>
+                                <label for="last-name" class="block text-sm font-medium text-gray-700">Last Name</label>
+                                <input type="text" id="last-name" class="mt-1 block w-full px-3 py-2 bg-white border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-gray-500 focus:border-gray-500" required>
+                            </div>
+                        </div>
+                        <div>
+                            <label for="email" class="block text-sm font-medium text-gray-700">Email</label>
+                            <input type="email" id="email" class="mt-1 block w-full px-3 py-2 bg-white border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-gray-500 focus:border-gray-500" required>
+                        </div>
+                        <div>
+                            <label for="message" class="block text-sm font-medium text-gray-700">Message</label>
+                            <textarea id="message" rows="4" class="mt-1 block w-full px-3 py-2 bg-white border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-gray-500 focus:border-gray-500" required></textarea>
+                        </div>
+                        <div>
+                            <button type="submit" class="w-full bg-gray-800 text-white py-3 px-6 rounded-lg font-semibold hover:bg-gray-700 transition-colors">Send Message</button>
+                        </div>
+                    </form>
+                    <!-- Contact Info & Map -->
+                    <div class="space-y-6">
+                        <div class="bg-gray-50 p-6 rounded-lg">
+                            <h3 class="text-xl font-semibold mb-4">Our Information</h3>
+                            <p class="text-gray-600 mb-2"><strong>Email:</strong><br> info@prdevelopmentgroup.com</p>
+                            <p class="text-gray-600 mb-2"><strong>Address:</strong><br> 6870 S. Rainbow, Las Vegas, NV, 89118</p>
+                            <p class="text-gray-600"><strong>Hours:</strong><br> Monday – Friday: 9:00 am – 5:00 pm</p>
+                        </div>
+                        <div class="bg-gray-200 h-64 rounded-lg flex items-center justify-center text-gray-500">
+                           <!-- In a real project, you would embed a Google Map here -->
+                           <p>Map Placeholder</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white">
+        <div class="container mx-auto px-6 py-8">
+            <div class="sm:flex sm:justify-between text-center sm:text-left">
+                <div>
+                    <h3 class="text-lg font-bold">Platinum Development</h3>
+                    <p class="text-gray-400 mt-2">© 2025 Platinum Development. All Rights Reserved.</p>
+                    <p class="text-gray-400 mt-1">Website by Saguaro Interactive</p>
+                </div>
+                <div class="mt-6 sm:mt-0">
+                    <h4 class="font-semibold">Quick Links</h4>
+                    <ul class="mt-2 space-y-1">
+                        <li><a href="#home" class="text-gray-400 hover:text-white">Home</a></li>
+                        <li><a href="#portfolio" class="text-gray-400 hover:text-white">Portfolio</a></li>
+                        <li><a href="#investors" class="text-gray-400 hover:text-white">Investors</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        const menuBtn = document.getElementById('menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        menuBtn.addEventListener('click', () => {
+            menuBtn.classList.toggle('hamburger-active');
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // Close mobile menu when a link is clicked
+        const mobileLinks = document.querySelectorAll('#mobile-menu a');
+        mobileLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                menuBtn.classList.remove('hamburger-active');
+                mobileMenu.classList.add('hidden');
+            });
+        });
+
+        // Fade-in sections on scroll
+        const sections = document.querySelectorAll('.fade-in-section');
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('is-visible');
+                }
+            });
+        }, {
+            threshold: 0.1
+        });
+
+        sections.forEach(section => {
+            observer.observe(section);
+        });
+    </script>
+</body>
+</html>
