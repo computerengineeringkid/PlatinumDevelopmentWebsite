@@ -76,10 +76,11 @@
 
     <main>
         <!-- Hero Section -->
-        <section id="home" class="h-screen bg-cover bg-center flex items-center justify-center text-white" style="background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('vegas2.jpg');">            <div class="text-center px-4 fade-in-section">
-                <h1 class="text-4xl md:text-6xl font-bold leading-tight mb-4">Redefining the Las Vegas Landscape.</h1>
-                <p class="text-lg md:text-xl text-gray-200 mb-8 max-w-3xl mx-auto">Developing premier retail, multifamily, and single-family properties with excellence and integrity.</p>
-                <a href="#portfolio" class="bg-white text-gray-800 font-bold py-3 px-8 rounded-lg text-lg hover:bg-gray-200 transition-transform transform hover:scale-105">Explore Projects</a>
+        <section id="home" class="h-screen bg-cover bg-center flex items-center justify-center text-white" style="background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('vegas2.jpg');">
+            <div class="text-center px-4 fade-in-section">
+                <h1 id="hero-headline" class="text-4xl md:text-6xl font-bold leading-tight mb-4">Redefining the Las Vegas Landscape.</h1>
+                <p id="hero-subheadline" class="text-lg md:text-xl text-gray-200 mb-8 max-w-3xl mx-auto">Developing premier retail, multifamily, and single-family properties with excellence and integrity.</p>
+                <a id="hero-cta" href="#portfolio" class="bg-white text-gray-800 font-bold py-3 px-8 rounded-lg text-lg hover:bg-gray-200 transition-transform transform hover:scale-105">Explore Projects</a>
             </div>
         </section>
 
@@ -88,12 +89,14 @@
             <div class="container mx-auto px-6">
                 <div class="grid md:grid-cols-2 gap-12 items-center fade-in-section">
                     <div>
-                        <img src="https://placehold.co/600x400/EFEFEF/333?text=Modern+Construction" alt="Construction Site" class="rounded-lg shadow-xl w-full">
+                        <img id="about-highlight-image" src="https://placehold.co/600x400/EFEFEF/333?text=Modern+Construction" alt="Construction Site" class="rounded-lg shadow-xl w-full">
                     </div>
                     <div>
-                        <h2 class="text-3xl font-bold mb-4">Building Communities, Creating Value.</h2>
-                        <p class="text-gray-600 mb-4">We are Platinum Development, a premier developer and operator of high-quality retail, multifamily, and single-family projects. Through our robust services and commitment to excellence, we ensure the creation of the best properties for our local communities.</p>
-                        <p class="text-gray-600">Our expertise in the Las Vegas market allows us to identify unique opportunities and deliver exceptional returns for our partners and investors.</p>
+                        <h2 id="about-title" class="text-3xl font-bold mb-4">Building Communities, Creating Value.</h2>
+                        <p id="about-intro" class="text-gray-600 mb-4">We are Platinum Development, a premier developer and operator of high-quality retail, multifamily, and single-family projects. Through our robust services and commitment to excellence, we ensure the creation of the best properties for our local communities.</p>
+                        <ul id="about-services" class="space-y-3 text-gray-600">
+                            <li>Our expertise in the Las Vegas market allows us to identify unique opportunities and deliver exceptional returns for our partners and investors.</li>
+                        </ul>
                     </div>
                 </div>
             </div>
@@ -106,53 +109,12 @@
                     <h2 class="text-3xl font-bold">Our Portfolio</h2>
                     <p class="text-gray-600 mt-2">A selection of our completed and upcoming projects.</p>
                 </div>
-                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-                    <!-- Project Card 1 -->
+                <div id="portfolio-grid" class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
                     <div class="bg-white rounded-lg shadow-lg overflow-hidden transform hover:-translate-y-2 transition-transform duration-300 fade-in-section">
-                        <img src="https://placehold.co/600x400/DDD/333?text=Retail+Property" alt="6830 S. Rainbow Blvd" class="w-full h-56 object-cover">
+                        <img src="https://placehold.co/600x400/DDD/333?text=Featured+Project" alt="Featured project" class="w-full h-56 object-cover">
                         <div class="p-6">
-                            <h3 class="text-xl font-semibold mb-2">6830 S. Rainbow Blvd</h3>
-                            <p class="text-gray-600">Vibrant retail center in a prime location.</p>
-                        </div>
-                    </div>
-                    <!-- Project Card 2 -->
-                    <div class="bg-white rounded-lg shadow-lg overflow-hidden transform hover:-translate-y-2 transition-transform duration-300 fade-in-section" style="transition-delay: 100ms;">
-                        <img src="https://placehold.co/600x400/DDD/333?text=Multifamily+Property" alt="8021 Vegas Dr" class="w-full h-56 object-cover">
-                        <div class="p-6">
-                            <h3 class="text-xl font-semibold mb-2">8021 Vegas Dr</h3>
-                            <p class="text-gray-600">22 modern townhome units.</p>
-                        </div>
-                    </div>
-                    <!-- Project Card 3 -->
-                    <div class="bg-white rounded-lg shadow-lg overflow-hidden transform hover:-translate-y-2 transition-transform duration-300 fade-in-section" style="transition-delay: 200ms;">
-                        <img src="https://placehold.co/600x400/DDD/333?text=Single-Family" alt="Lucky Pagoda Ct" class="w-full h-56 object-cover">
-                        <div class="p-6">
-                            <h3 class="text-xl font-semibold mb-2">Lucky Pagoda Ct</h3>
-                            <p class="text-gray-600">14 exclusive single-family units.</p>
-                        </div>
-                    </div>
-                     <!-- Project Card 4 -->
-                    <div class="bg-white rounded-lg shadow-lg overflow-hidden transform hover:-translate-y-2 transition-transform duration-300 fade-in-section" style="transition-delay: 300ms;">
-                        <img src="https://placehold.co/600x400/DDD/333?text=Retail+Property" alt="9550 S. Eastern Ave" class="w-full h-56 object-cover">
-                        <div class="p-6">
-                            <h3 class="text-xl font-semibold mb-2">9550 S. Eastern Ave</h3>
-                            <p class="text-gray-600">High-traffic commercial property.</p>
-                        </div>
-                    </div>
-                     <!-- Project Card 5 -->
-                    <div class="bg-white rounded-lg shadow-lg overflow-hidden transform hover:-translate-y-2 transition-transform duration-300 fade-in-section" style="transition-delay: 400ms;">
-                        <img src="https://placehold.co/600x400/BDB/333?text=Coming+Soon" alt="Jones Apartments" class="w-full h-56 object-cover">
-                        <div class="p-6">
-                            <h3 class="text-xl font-semibold mb-2">Jones Apartments</h3>
-                            <p class="text-gray-600">Under Construction: Future of urban living.</p>
-                        </div>
-                    </div>
-                     <!-- Project Card 6 -->
-                    <div class="bg-white rounded-lg shadow-lg overflow-hidden transform hover:-translate-y-2 transition-transform duration-300 fade-in-section" style="transition-delay: 500ms;">
-                         <img src="https://placehold.co/600x400/DDD/333?text=Retail+Development" alt="Rainbow & Oquendo" class="w-full h-56 object-cover">
-                        <div class="p-6">
-                            <h3 class="text-xl font-semibold mb-2">Rainbow & Oquendo</h3>
-                            <p class="text-gray-600">In Progress: Two new drive-thru pads.</p>
+                            <h3 class="text-xl font-semibold mb-2">Featured Development</h3>
+                            <p class="text-gray-600">Add projects in Sanity to replace this placeholder card.</p>
                         </div>
                     </div>
                 </div>
@@ -189,8 +151,8 @@
         <section id="contact" class="py-20 bg-white">
             <div class="container mx-auto px-6">
                 <div class="text-center mb-12 fade-in-section">
-                    <h2 class="text-3xl font-bold">Contact Us</h2>
-                    <p class="text-gray-600 mt-2">Let's build something great together. Reach out to discuss your next project.</p>
+                    <h2 id="contact-title" class="text-3xl font-bold">Contact Us</h2>
+                    <p id="contact-description" class="text-gray-600 mt-2">Let's build something great together. Reach out to discuss your next project.</p>
                 </div>
                 <div class="grid md:grid-cols-2 gap-12 items-start fade-in-section">
                     <!-- Contact Form -->
@@ -221,9 +183,10 @@
                     <div class="space-y-6">
                         <div class="bg-gray-50 p-6 rounded-lg">
                             <h3 class="text-xl font-semibold mb-4">Our Information</h3>
-                            <p class="text-gray-600 mb-2"><strong>Email:</strong><br> info@prdevelopmentgroup.com</p>
-                            <p class="text-gray-600 mb-2"><strong>Address:</strong><br> 6870 S. Rainbow, Las Vegas, NV, 89118</p>
-                            <p class="text-gray-600"><strong>Hours:</strong><br> Monday – Friday: 9:00 am – 5:00 pm</p>
+                            <p class="text-gray-600 mb-2"><strong>Email:</strong><br><a id="contact-email" href="mailto:info@prdevelopmentgroup.com" class="text-gray-600 hover:text-gray-900">info@prdevelopmentgroup.com</a></p>
+                            <p class="text-gray-600 mb-2"><strong>Phone:</strong><br><a id="contact-phone" href="tel:17025550123" class="text-gray-600 hover:text-gray-900">(702) 555-0123</a></p>
+                            <p class="text-gray-600 mb-4"><strong>Address:</strong><br><span id="contact-address">6870 S. Rainbow, Las Vegas, NV, 89118</span></p>
+                            <div id="contact-social-links" class="flex flex-wrap gap-3 text-sm text-gray-600"></div>
                         </div>
                         <div class="bg-gray-200 h-64 rounded-lg flex items-center justify-center text-gray-500">
                            <!-- In a real project, you would embed a Google Map here -->
@@ -257,39 +220,329 @@
         </div>
     </footer>
 
-    <script>
-        // Mobile menu toggle
-        const menuBtn = document.getElementById('menu-btn');
-        const mobileMenu = document.getElementById('mobile-menu');
-        menuBtn.addEventListener('click', () => {
-            menuBtn.classList.toggle('hamburger-active');
-            mobileMenu.classList.toggle('hidden');
-        });
+    <script type="module">
+      import {createClient} from 'https://esm.sh/@sanity/client@5.4.2?bundle'
+      import imageUrlBuilder from 'https://esm.sh/@sanity/image-url@1.0.2?bundle'
 
-        // Close mobile menu when a link is clicked
-        const mobileLinks = document.querySelectorAll('#mobile-menu a');
-        mobileLinks.forEach(link => {
-            link.addEventListener('click', () => {
-                menuBtn.classList.remove('hamburger-active');
-                mobileMenu.classList.add('hidden');
-            });
-        });
+      // Mobile menu toggle
+      const menuBtn = document.getElementById('menu-btn')
+      const mobileMenu = document.getElementById('mobile-menu')
+      menuBtn.addEventListener('click', () => {
+        menuBtn.classList.toggle('hamburger-active')
+        mobileMenu.classList.toggle('hidden')
+      })
 
-        // Fade-in sections on scroll
-        const sections = document.querySelectorAll('.fade-in-section');
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('is-visible');
-                }
-            });
-        }, {
-            threshold: 0.1
-        });
+      // Close mobile menu when a link is clicked
+      const mobileLinks = document.querySelectorAll('#mobile-menu a')
+      mobileLinks.forEach((link) => {
+        link.addEventListener('click', () => {
+          menuBtn.classList.remove('hamburger-active')
+          mobileMenu.classList.add('hidden')
+        })
+      })
 
-        sections.forEach(section => {
-            observer.observe(section);
-        });
+      // Fade-in sections on scroll
+      const sections = document.querySelectorAll('.fade-in-section')
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add('is-visible')
+            }
+          })
+        },
+        {
+          threshold: 0.1,
+        }
+      )
+
+      sections.forEach((section) => {
+        observer.observe(section)
+      })
+
+      initSanityContent()
+
+      async function initSanityContent() {
+        const defaults = {
+          projectId: '',
+          dataset: '',
+          apiVersion: '2024-03-01',
+          useCdn: true,
+        }
+
+        let sanityConfig = {...defaults}
+
+        try {
+          const configModule = await import('./client-config.js')
+          const resolvedConfig = configModule.default ?? configModule.sanityConfig ?? {}
+          sanityConfig = {...defaults, ...resolvedConfig}
+        } catch (error) {
+          console.warn(
+            'Sanity client-config.js not found. Copy client-config.example.js to client-config.js and provide your project ID and dataset before loading CMS content.'
+          )
+        }
+
+        const {projectId, dataset, apiVersion, useCdn} = sanityConfig
+
+        if (!projectId || !dataset || projectId === 'yourProjectId') {
+          console.warn('Sanity project ID or dataset is missing/placeholder. Skipping CMS content fetch.')
+          return
+        }
+
+        const client = createClient({projectId, dataset, apiVersion, useCdn})
+        const builder = imageUrlBuilder(client)
+        const urlFor = (source, width = 1600) => {
+          if (!source) return ''
+          try {
+            return builder.image(source).width(width).fit('max').auto('format').url()
+          } catch (error) {
+            console.warn('Failed to build Sanity image URL', error)
+            return ''
+          }
+        }
+
+        const heroQuery = `*[_type == "hero"][0]{headline, subheadline, ctaLabel, ctaUrl, backgroundImage}`
+        const aboutQuery = `*[_type == "about"][0]{title, intro, services[]{name, description}, highlightImage}`
+        const portfolioQuery = `*[_type == "portfolio"] | order(_createdAt desc){_id, title, summary, heroImage, projectUrl}`
+        const contactQuery = `*[_type == "contact"][0]{title, description, email, phone, address, socialLinks[]{platform, url}}`
+
+        try {
+          const [hero, about, portfolioItems, contact] = await Promise.all([
+            client.fetch(heroQuery),
+            client.fetch(aboutQuery),
+            client.fetch(portfolioQuery),
+            client.fetch(contactQuery),
+          ])
+
+          updateHero(hero, urlFor)
+          updateAbout(about, urlFor)
+          updatePortfolio(portfolioItems, urlFor)
+          updateContact(contact)
+        } catch (error) {
+          console.error('Failed to load content from Sanity', error)
+        }
+      }
+
+      function updateHero(hero, urlFor) {
+        if (!hero) return
+
+        const heroSection = document.getElementById('home')
+        const headlineEl = document.getElementById('hero-headline')
+        const subheadlineEl = document.getElementById('hero-subheadline')
+        const ctaEl = document.getElementById('hero-cta')
+
+        if (hero.headline && headlineEl) {
+          headlineEl.textContent = hero.headline
+        }
+
+        if (hero.subheadline && subheadlineEl) {
+          subheadlineEl.textContent = hero.subheadline
+        }
+
+        if (ctaEl) {
+          if (hero.ctaLabel) {
+            ctaEl.textContent = hero.ctaLabel
+          }
+
+          if (hero.ctaUrl) {
+            ctaEl.href = hero.ctaUrl
+          }
+        }
+
+        const backgroundUrl = urlFor(hero.backgroundImage)
+        if (backgroundUrl && heroSection) {
+          heroSection.style.backgroundImage = `linear-gradient(rgba(0,0,0,0.55), rgba(0,0,0,0.55)), url('${backgroundUrl}')`
+        }
+      }
+
+      function updateAbout(about, urlFor) {
+        if (!about) return
+
+        const titleEl = document.getElementById('about-title')
+        const introEl = document.getElementById('about-intro')
+        const servicesList = document.getElementById('about-services')
+        const imageEl = document.getElementById('about-highlight-image')
+
+        if (about.title && titleEl) {
+          titleEl.textContent = about.title
+        }
+
+        if (about.intro && introEl) {
+          introEl.textContent = about.intro
+        }
+
+        if (servicesList) {
+          servicesList.innerHTML = ''
+          if (Array.isArray(about.services) && about.services.length > 0) {
+            about.services.forEach((service) => {
+              if (!service?.name && !service?.description) return
+              const item = document.createElement('li')
+              item.className = 'space-y-1'
+
+              if (service.name) {
+                const name = document.createElement('p')
+                name.className = 'font-semibold text-gray-800'
+                name.textContent = service.name
+                item.appendChild(name)
+              }
+
+              if (service.description) {
+                const description = document.createElement('p')
+                description.className = 'text-gray-600'
+                description.textContent = service.description
+                item.appendChild(description)
+              }
+
+              servicesList.appendChild(item)
+            })
+          }
+
+          if (!servicesList.children.length) {
+            const placeholder = document.createElement('li')
+            placeholder.textContent = 'Add services in the Sanity Studio to replace this placeholder.'
+            servicesList.appendChild(placeholder)
+          }
+        }
+
+        const highlightUrl = urlFor(about.highlightImage)
+        if (highlightUrl && imageEl) {
+          imageEl.src = highlightUrl
+          imageEl.alt = about.title || 'About section highlight'
+        }
+      }
+
+      function updatePortfolio(portfolioItems, urlFor) {
+        const grid = document.getElementById('portfolio-grid')
+        if (!grid) return
+
+        grid.innerHTML = ''
+
+        if (!Array.isArray(portfolioItems) || portfolioItems.length === 0) {
+          grid.appendChild(createPlaceholderProjectCard())
+          return
+        }
+
+        portfolioItems.forEach((project, index) => {
+          const card = document.createElement('article')
+          card.className = 'bg-white rounded-lg shadow-lg overflow-hidden transform hover:-translate-y-2 transition-transform duration-300 fade-in-section'
+          card.style.transitionDelay = `${index * 100}ms`
+
+          const imageWrapper = document.createElement('div')
+          const image = document.createElement('img')
+          image.className = 'w-full h-56 object-cover'
+          image.alt = project.title || 'Portfolio project'
+          image.src = urlFor(project.heroImage, 900) || 'https://placehold.co/600x400/DDD/333?text=Project'
+          imageWrapper.appendChild(image)
+
+          const content = document.createElement('div')
+          content.className = 'p-6'
+
+          const title = document.createElement('h3')
+          title.className = 'text-xl font-semibold mb-2'
+
+          if (project.projectUrl) {
+            const link = document.createElement('a')
+            link.href = project.projectUrl
+            link.target = '_blank'
+            link.rel = 'noopener noreferrer'
+            link.className = 'text-gray-900 hover:text-gray-600 transition-colors'
+            link.textContent = project.title || 'View project'
+            title.appendChild(link)
+          } else {
+            title.textContent = project.title || 'Untitled project'
+          }
+
+          const summary = document.createElement('p')
+          summary.className = 'text-gray-600'
+          summary.textContent = project.summary || 'Add a project summary in Sanity to describe this development.'
+
+          content.appendChild(title)
+          content.appendChild(summary)
+
+          card.appendChild(imageWrapper)
+          card.appendChild(content)
+          grid.appendChild(card)
+        })
+      }
+
+      function createPlaceholderProjectCard() {
+        const card = document.createElement('article')
+        card.className = 'bg-white rounded-lg shadow-lg overflow-hidden transform hover:-translate-y-2 transition-transform duration-300 fade-in-section'
+
+        const image = document.createElement('img')
+        image.className = 'w-full h-56 object-cover'
+        image.alt = 'Placeholder project'
+        image.src = 'https://placehold.co/600x400/DDD/333?text=Featured+Project'
+
+        const content = document.createElement('div')
+        content.className = 'p-6'
+
+        const title = document.createElement('h3')
+        title.className = 'text-xl font-semibold mb-2'
+        title.textContent = 'Featured Development'
+
+        const description = document.createElement('p')
+        description.className = 'text-gray-600'
+        description.textContent = 'Add projects in the Sanity Studio to replace this placeholder card.'
+
+        content.appendChild(title)
+        content.appendChild(description)
+
+        card.appendChild(image)
+        card.appendChild(content)
+
+        return card
+      }
+
+      function updateContact(contact) {
+        if (!contact) return
+
+        const titleEl = document.getElementById('contact-title')
+        const descriptionEl = document.getElementById('contact-description')
+        const emailEl = document.getElementById('contact-email')
+        const phoneEl = document.getElementById('contact-phone')
+        const addressEl = document.getElementById('contact-address')
+        const socialLinksEl = document.getElementById('contact-social-links')
+
+        if (contact.title && titleEl) {
+          titleEl.textContent = contact.title
+        }
+
+        if (contact.description && descriptionEl) {
+          descriptionEl.textContent = contact.description
+        }
+
+        if (contact.email && emailEl) {
+          emailEl.textContent = contact.email
+          emailEl.href = `mailto:${contact.email}`
+        }
+
+        if (contact.phone && phoneEl) {
+          const phoneHref = contact.phone.replace(/[^\d+]/g, '')
+          phoneEl.textContent = contact.phone
+          phoneEl.href = `tel:${phoneHref}`
+        }
+
+        if (contact.address && addressEl) {
+          addressEl.textContent = contact.address
+        }
+
+        if (socialLinksEl) {
+          socialLinksEl.innerHTML = ''
+          if (Array.isArray(contact.socialLinks) && contact.socialLinks.length > 0) {
+            contact.socialLinks.forEach((link) => {
+              if (!link?.url || !link?.platform) return
+              const anchor = document.createElement('a')
+              anchor.href = link.url
+              anchor.target = '_blank'
+              anchor.rel = 'noopener noreferrer'
+              anchor.className = 'hover:text-gray-900 transition-colors'
+              anchor.textContent = link.platform
+              socialLinksEl.appendChild(anchor)
+            })
+          }
+        }
+      }
     </script>
 </body>
 </html>
