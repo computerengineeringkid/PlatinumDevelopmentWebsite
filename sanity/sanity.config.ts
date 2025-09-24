@@ -1,3 +1,4 @@
+import fs from 'node:fs'
 import {defineConfig} from 'sanity'
 import {deskTool} from 'sanity/desk'
 import {visionTool} from '@sanity/vision'
@@ -5,22 +6,25 @@ import {visionTool} from '@sanity/vision'
 import deskStructure, {defaultDocumentNode} from './structure/deskStructure'
 import schemaTypes from './schemaTypes'
 
-type ClientConfigModule = {
+type LocalClientConfig = {
   projectId?: string
   dataset?: string
-  default?: {projectId?: string; dataset?: string}
-  sanityConfig?: {projectId?: string; dataset?: string}
 }
 
-async function loadLocalClientConfig(): Promise<{
-  projectId?: string
-  dataset?: string
-} | undefined> {
+function loadLocalClientConfig(): LocalClientConfig | undefined {
   try {
-    const module = (await import('../client-config.js')) as ClientConfigModule
-    return module.sanityConfig || module.default || module
+    const configUrl = new URL('../sanity-client-config.json', import.meta.url)
+    if (!fs.existsSync(configUrl)) {
+      return undefined
+    }
+    const raw = fs.readFileSync(configUrl, 'utf8')
+    if (!raw.trim()) {
+      return undefined
+    }
+    const parsed = JSON.parse(raw) as LocalClientConfig
+    return parsed
   } catch (error) {
-    // Optional client-config.js not found; ignore
+    console.warn('Failed to load sanity-client-config.json:', error)
     return undefined
   }
 }
@@ -40,7 +44,7 @@ function readEnvVariable(key: 'SANITY_STUDIO_PROJECT_ID' | 'SANITY_STUDIO_DATASE
   return undefined
 }
 
-const localConfig = await loadLocalClientConfig()
+const localConfig = loadLocalClientConfig()
 
 const projectId = readEnvVariable('SANITY_STUDIO_PROJECT_ID') || localConfig?.projectId
 const dataset = readEnvVariable('SANITY_STUDIO_DATASET') || localConfig?.dataset
@@ -48,14 +52,14 @@ const dataset = readEnvVariable('SANITY_STUDIO_DATASET') || localConfig?.dataset
 if (!projectId) {
   throw new Error(
     'Missing SANITY_STUDIO_PROJECT_ID environment variable. ' +
-      'Set it or create a client-config.js with projectId/dataset values.'
+      'Set it or create a sanity-client-config.json with projectId/dataset values.'
   )
 }
 
 if (!dataset) {
   throw new Error(
     'Missing SANITY_STUDIO_DATASET environment variable. ' +
-      'Set it or create a client-config.js with projectId/dataset values.'
+      'Set it or create a sanity-client-config.json with projectId/dataset values.'
   )
 }
 

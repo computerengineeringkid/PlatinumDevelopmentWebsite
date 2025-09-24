@@ -128,6 +128,12 @@ export default defineType({
           options: {hotspot: true},
         }),
         defineField({
+          name: 'imageAlt',
+          type: 'string',
+          title: 'Image Alt Text',
+          description: 'Describe the about section image for accessibility.',
+        }),
+        defineField({
           name: 'highlights',
           title: 'Highlights',
           type: 'array',
