@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Platinum Development - Redefining the Las Vegas Landscape</title>
     <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -692,6 +693,22 @@
         document.addEventListener('DOMContentLoaded', () => {
             loadSiteContent();
         });
+    </script>
+
+    <script>
+        if (window.netlifyIdentity) {
+            window.netlifyIdentity.on('init', (user) => {
+                if (!user) {
+                    window.netlifyIdentity.on('login', () => {
+                        document.location.href = '/admin/';
+                    });
+                }
+            });
+
+            if (window.location.hash && window.location.hash.includes('confirmation_token')) {
+                window.netlifyIdentity.open('login');
+            }
+        }
     </script>
 </body>
 </html>
