@@ -1,0 +1,131 @@
+{
+  "title": "Platinum Development - Redefining the Las Vegas Landscape",
+  "companyName": "Platinum Development",
+  "navigationLinks": [
+    { "label": "Home", "href": "#home" },
+    { "label": "About", "href": "#about" },
+    { "label": "Portfolio", "href": "#portfolio" },
+    { "label": "Investors", "href": "#investors" },
+    { "label": "Contact", "href": "#contact", "isPrimary": true }
+  ],
+  "hero": {
+    "headline": "Redefining the Las Vegas Landscape.",
+    "subheadline": "Developing premier retail, multifamily, and single-family properties with excellence and integrity.",
+    "ctaLabel": "Explore Projects",
+    "ctaHref": "#portfolio",
+    "backgroundImage": "vegas2.jpg",
+    "backgroundAlt": "Las Vegas skyline at dusk"
+  },
+  "about": {
+    "heading": "Building Communities, Creating Value.",
+    "body": [
+      "We are Platinum Development, a premier developer and operator of high-quality retail, multifamily, and single-family projects. Through our robust services and commitment to excellence, we ensure the creation of the best properties for our local communities.",
+      "Our expertise in the Las Vegas market allows us to identify unique opportunities and deliver exceptional returns for our partners and investors."
+    ],
+    "image": "https://placehold.co/600x400/EFEFEF/333?text=Modern+Construction",
+    "imageAlt": "Modern construction site with cranes",
+    "highlights": [
+      {
+        "title": "Full-Service Development",
+        "description": "From site selection and entitlement to construction and property management."
+      },
+      {
+        "title": "Market Expertise",
+        "description": "Decades of combined experience focused on the Las Vegas metropolitan area."
+      },
+      {
+        "title": "Community Impact",
+        "description": "Projects designed to elevate neighborhoods and long-term value."
+      }
+    ],
+    "stats": [
+      { "label": "Square Feet Delivered", "value": "1.2M+" },
+      { "label": "Projects Completed", "value": "45" },
+      { "label": "Current Developments", "value": "6" },
+      { "label": "Years of Experience", "value": "20" }
+    ]
+  },
+  "portfolioIntro": {
+    "heading": "Our Portfolio",
+    "subheading": "A selection of our completed and upcoming projects."
+  },
+  "projects": [
+    {
+      "title": "6830 S. Rainbow Blvd",
+      "summary": "Vibrant retail center in a prime location.",
+      "propertyType": "retail",
+      "status": "Completed",
+      "image": "https://placehold.co/600x400/DDD/333?text=Retail+Property",
+      "imageAlt": "Retail center exterior at sunset",
+      "metrics": [
+        { "label": "Size", "value": "45,000 sq ft" },
+        { "label": "Key Tenants", "value": "National retailers" }
+      ]
+    },
+    {
+      "title": "8021 Vegas Dr",
+      "summary": "22 modern townhome units.",
+      "propertyType": "multifamily",
+      "status": "In Leasing",
+      "image": "https://placehold.co/600x400/DDD/333?text=Multifamily+Property",
+      "imageAlt": "Townhome community with landscaped entry",
+      "metrics": [
+        { "label": "Units", "value": "22" },
+        { "label": "Completion", "value": "Q4 2024" }
+      ]
+    },
+    {
+      "title": "Lucky Pagoda Ct",
+      "summary": "A curated collection of modern single-family homes.",
+      "propertyType": "singleFamily",
+      "status": "Planned",
+      "image": "https://placehold.co/600x400/DDD/333?text=Single-Family",
+      "imageAlt": "Single-family home exterior",
+      "metrics": [
+        { "label": "Lots", "value": "15" },
+        { "label": "Architect", "value": "TBD" }
+      ]
+    }
+  ],
+  "partners": {
+    "heading": "Trusted By Leading Brands",
+    "subheading": "We are proud to partner with nationally recognized tenants.",
+    "items": [
+      {
+        "name": "Desert Bank",
+        "logo": "https://placehold.co/200x80/0f172a/fff?text=Desert+Bank"
+      },
+      {
+        "name": "Silver State Markets",
+        "logo": "https://placehold.co/200x80/1f2937/fff?text=Silver+State"
+      },
+      {
+        "name": "Summit Fitness",
+        "logo": "https://placehold.co/200x80/111827/fff?text=Summit"
+      }
+    ]
+  },
+  "investor": {
+    "heading": "Invest with Confidence",
+    "body": [
+      "We deliver institutional-quality developments backed by rigorous market analysis, disciplined underwriting, and trusted operational partners.",
+      "Our team provides transparent reporting, proactive communication, and a proven track record of creating long-term value for our investors."
+    ],
+    "ctaLabel": "Become an Investor",
+    "ctaHref": "#contact"
+  },
+  "contact": {
+    "heading": "Contact Us",
+    "subheading": "Let's build something great together. Reach out to discuss your next project.",
+    "infoHeading": "Our Information",
+    "email": "info@prdevelopmentgroup.com",
+    "address": "6870 S. Rainbow, Las Vegas, NV, 89118",
+    "hours": "Monday – Friday: 9:00 am – 5:00 pm",
+    "mapEmbed": "<p>Map Placeholder</p>"
+  },
+  "footer": {
+    "companyName": "Platinum Development",
+    "copyright": "© 2025 Platinum Development. All Rights Reserved.",
+    "credits": "Website by Saguaro Interactive"
+  }
+}

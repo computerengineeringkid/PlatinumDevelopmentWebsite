@@ -1,0 +1,133 @@
+backend:
+  name: git-gateway
+  branch: main
+local_backend: true
+
+media_folder: "uploads"
+public_folder: "/uploads"
+
+collections:
+  - label: "Site Content"
+    name: "site"
+    files:
+      - label: "Website Content"
+        name: "website"
+        file: "content/site.json"
+        fields:
+          - label: "Page Title"
+            name: "title"
+            widget: "string"
+          - label: "Company Name"
+            name: "companyName"
+            widget: "string"
+          - label: "Navigation Links"
+            name: "navigationLinks"
+            widget: "list"
+            summary: "{{fields.label}} → {{fields.href}}"
+            fields:
+              - { label: "Label", name: "label", widget: "string" }
+              - { label: "URL", name: "href", widget: "string" }
+              - { label: "Primary Button", name: "isPrimary", widget: "boolean", required: false, default: false }
+          - label: "Hero"
+            name: "hero"
+            widget: "object"
+            fields:
+              - { label: "Headline", name: "headline", widget: "string" }
+              - { label: "Subheadline", name: "subheadline", widget: "text" }
+              - { label: "Button Label", name: "ctaLabel", widget: "string" }
+              - { label: "Button Link", name: "ctaHref", widget: "string" }
+              - { label: "Background Image", name: "backgroundImage", widget: "image", allow_multiple: false }
+              - { label: "Background Alt Text", name: "backgroundAlt", widget: "string", required: false }
+          - label: "About"
+            name: "about"
+            widget: "object"
+            fields:
+              - { label: "Heading", name: "heading", widget: "string" }
+              - label: "Body"
+                name: "body"
+                widget: "list"
+                field:
+                  label: "Paragraph"
+                  name: "paragraph"
+                  widget: "text"
+              - { label: "Image", name: "image", widget: "image", allow_multiple: false }
+              - { label: "Image Alt Text", name: "imageAlt", widget: "string", required: false }
+              - label: "Highlights"
+                name: "highlights"
+                widget: "list"
+                fields:
+                  - { label: "Title", name: "title", widget: "string" }
+                  - { label: "Description", name: "description", widget: "text" }
+              - label: "Stats"
+                name: "stats"
+                widget: "list"
+                fields:
+                  - { label: "Label", name: "label", widget: "string" }
+                  - { label: "Value", name: "value", widget: "string" }
+          - label: "Portfolio Intro"
+            name: "portfolioIntro"
+            widget: "object"
+            fields:
+              - { label: "Heading", name: "heading", widget: "string" }
+              - { label: "Subheading", name: "subheading", widget: "text", required: false }
+          - label: "Projects"
+            name: "projects"
+            widget: "list"
+            summary: "{{fields.title}} ({{fields.propertyType}})"
+            fields:
+              - { label: "Title", name: "title", widget: "string" }
+              - { label: "Summary", name: "summary", widget: "text" }
+              - { label: "Property Type", name: "propertyType", widget: "string" }
+              - { label: "Status", name: "status", widget: "string", required: false }
+              - { label: "Image", name: "image", widget: "image", allow_multiple: false }
+              - { label: "Image Alt Text", name: "imageAlt", widget: "string", required: false }
+              - label: "Metrics"
+                name: "metrics"
+                widget: "list"
+                fields:
+                  - { label: "Label", name: "label", widget: "string" }
+                  - { label: "Value", name: "value", widget: "string" }
+          - label: "Partners"
+            name: "partners"
+            widget: "object"
+            fields:
+              - { label: "Heading", name: "heading", widget: "string" }
+              - { label: "Subheading", name: "subheading", widget: "text", required: false }
+              - label: "Partners"
+                name: "items"
+                widget: "list"
+                fields:
+                  - { label: "Name", name: "name", widget: "string" }
+                  - { label: "Logo", name: "logo", widget: "image", required: false }
+          - label: "Investor Section"
+            name: "investor"
+            widget: "object"
+            fields:
+              - { label: "Heading", name: "heading", widget: "string" }
+              - label: "Body"
+                name: "body"
+                widget: "list"
+                field:
+                  label: "Paragraph"
+                  name: "paragraph"
+                  widget: "text"
+              - { label: "Button Label", name: "ctaLabel", widget: "string", required: false }
+              - { label: "Button Link", name: "ctaHref", widget: "string", required: false }
+          - label: "Contact"
+            name: "contact"
+            widget: "object"
+            fields:
+              - { label: "Heading", name: "heading", widget: "string" }
+              - { label: "Subheading", name: "subheading", widget: "text", required: false }
+              - { label: "Info Heading", name: "infoHeading", widget: "string", required: false }
+              - { label: "Email", name: "email", widget: "string", required: false }
+              - { label: "Address", name: "address", widget: "text", required: false }
+              - { label: "Hours", name: "hours", widget: "string", required: false }
+              - { label: "Map Embed", name: "mapEmbed", widget: "text", required: false }
+          - label: "Footer"
+            name: "footer"
+            widget: "object"
+            fields:
+              - { label: "Company Name", name: "companyName", widget: "string" }
+              - { label: "Copyright", name: "copyright", widget: "string" }
+              - { label: "Credits", name: "credits", widget: "string", required: false }
