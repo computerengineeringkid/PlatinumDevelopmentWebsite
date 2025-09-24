@@ -38,13 +38,20 @@
         window.SANITY_PROJECT_ID = window.SANITY_PROJECT_ID || 'your-project-id';
         window.SANITY_DATASET = window.SANITY_DATASET || 'production';
         window.SANITY_API_VERSION = window.SANITY_API_VERSION || '2023-10-03';
+        window.SANITY_USE_CDN = typeof window.SANITY_USE_CDN === 'boolean' ? window.SANITY_USE_CDN : true;
         window.__sanityConfigPromise = window.__sanityConfigPromise || Promise.resolve();
     </script>
     <script type="module">
         window.__sanityConfigPromise = (async () => {
             try {
-                const module = await import('./client-config.js');
-                const config = module.sanityConfig || module.default || module;
+                const response = await fetch('./sanity-client-config.json', {cache: 'no-store'});
+                if (!response.ok) {
+                    if (response.status !== 404) {
+                        console.warn('Failed to load sanity-client-config.json:', response.statusText);
+                    }
+                    return;
+                }
+                const config = await response.json();
                 if (config?.projectId) {
                     window.SANITY_PROJECT_ID = config.projectId;
                 }
@@ -54,8 +61,11 @@
                 if (config?.apiVersion) {
                     window.SANITY_API_VERSION = config.apiVersion;
                 }
+                if (typeof config?.useCdn === 'boolean') {
+                    window.SANITY_USE_CDN = config.useCdn;
+                }
             } catch (error) {
-                console.warn('Optional client-config.js not found; using inline Sanity defaults.');
+                console.warn('Optional sanity-client-config.json not found; using inline Sanity defaults.');
             }
         })();
     </script>
@@ -115,7 +125,11 @@
                             <p class="text-gray-600">We are Platinum Development, a premier developer and operator of high-quality retail, multifamily, and single-family projects. Through our robust services and commitment to excellence, we ensure the creation of the best properties for our local communities.</p>
                             <p class="text-gray-600">Our expertise in the Las Vegas market allows us to identify unique opportunities and deliver exceptional returns for our partners and investors.</p>
                         </div>
+                        <div class="mt-10 grid sm:grid-cols-2 gap-6 hidden fade-in-section" data-sanity-collection="about.highlights">
+                        </div>
                     </div>
+                </div>
+                <div class="mt-16 grid grid-cols-2 sm:grid-cols-4 gap-6 fade-in-section hidden" data-sanity-collection="about.stats">
                 </div>
             </div>
         </section>
@@ -157,12 +171,6 @@
                 <h2 class="text-3xl font-bold mb-2" data-sanity-text="partners.heading">Trusted By Leading Brands</h2>
                 <p class="text-gray-600 mb-10" data-sanity-text="partners.subheading">We are proud to partner with nationally recognized tenants.</p>
                 <div class="flex flex-wrap justify-center items-center gap-x-12 gap-y-8" data-sanity-collection="partners.items">
-                    <div class="h-12 text-gray-500 font-semibold text-2xl flex items-center justify-center">MECOX</div>
-                    <div class="h-12 text-gray-500 font-semibold text-2xl flex items-center justify-center">Massage Envy</div>
-                    <div class="h-12 text-gray-500 font-semibold text-2xl flex items-center justify-center">BJ's</div>
-                    <div class="h-12 text-gray-500 font-semibold text-2xl flex items-center justify-center">ZIPPY'S</div>
-                    <div class="h-12 text-gray-500 font-semibold text-2xl flex items-center justify-center">Einstein Bros.</div>
-                    <div class="h-12 text-gray-500 font-semibold text-2xl flex items-center justify-center">MONEYTREE</div>
                 </div>
             </div>
         </section>
@@ -246,16 +254,31 @@
     <template id="portfolio-card-template">
         <div class="bg-white rounded-lg shadow-lg overflow-hidden transform hover:-translate-y-2 transition-transform duration-300 fade-in-section">
             <img data-role="image" src="" alt="" class="w-full h-56 object-cover" loading="lazy">
-            <div class="p-6 space-y-3">
-                <div class="flex items-center gap-2 text-sm text-gray-500" data-role="meta"></div>
+            <div class="p-6 space-y-4">
+                <div class="flex flex-wrap items-center gap-2 text-sm text-gray-500" data-role="meta"></div>
                 <h3 class="text-xl font-semibold" data-role="title"></h3>
                 <p class="text-gray-600" data-role="summary"></p>
+                <dl class="grid grid-cols-1 gap-3" data-role="metrics"></dl>
             </div>
         </div>
     </template>
 
     <template id="partner-badge-template">
         <div class="h-12 text-gray-500 font-semibold text-2xl flex items-center justify-center"></div>
+    </template>
+
+    <template id="highlight-card-template">
+        <div class="bg-gray-50 border border-gray-100 rounded-xl p-6 shadow-sm space-y-3">
+            <h3 class="text-xl font-semibold text-gray-900" data-role="title"></h3>
+            <p class="text-gray-600" data-role="description"></p>
+        </div>
+    </template>
+
+    <template id="stat-card-template">
+        <div class="bg-white rounded-xl shadow-sm p-6 text-center">
+            <dt class="text-3xl font-bold text-gray-900" data-role="value"></dt>
+            <dd class="mt-2 text-sm uppercase tracking-wide text-gray-500" data-role="label"></dd>
+        </div>
     </template>
 
     <script src="https://cdn.sanity.io/libs/client/v2023-10-03/client.min.js"></script>
@@ -311,7 +334,16 @@
             about {
                 heading,
                 body,
-                "image": image.asset->url
+                imageAlt,
+                "image": image.asset->url,
+                highlights[]{
+                    title,
+                    description
+                },
+                stats[]{
+                    label,
+                    value
+                }
             },
             portfolioIntro {
                 heading,
@@ -353,7 +385,11 @@
             propertyType,
             status,
             "image": heroImage.asset->url,
-            imageAlt
+            imageAlt,
+            metrics[]{
+                label,
+                value
+            }
         }`;
 
         function setText(key, value) {
@@ -476,7 +512,7 @@
 
         function renderProjects(projects) {
             const grid = document.querySelector('[data-sanity-collection="projects"]');
-            if (!grid || !Array.isArray(projects) || !projects.length) {
+            if (!grid) {
                 return;
             }
             const template = document.getElementById('portfolio-card-template');
@@ -484,6 +520,13 @@
                 return;
             }
             grid.innerHTML = '';
+            if (!Array.isArray(projects) || !projects.length) {
+                const placeholder = document.createElement('div');
+                placeholder.className = 'col-span-full text-center text-gray-500 py-10';
+                placeholder.textContent = 'Projects are coming soon. Check back shortly.';
+                grid.appendChild(placeholder);
+                return;
+            }
             projects.forEach((project, index) => {
                 const clone = template.content.firstElementChild.cloneNode(true);
                 const image = clone.querySelector('[data-role="image"]');
@@ -517,21 +560,123 @@
                 if (summary) {
                     summary.textContent = project.summary || '';
                 }
+                const metrics = clone.querySelector('[data-role="metrics"]');
+                if (metrics) {
+                    metrics.innerHTML = '';
+                    if (Array.isArray(project.metrics) && project.metrics.length) {
+                        project.metrics.forEach((metric) => {
+                            if (!metric?.label || !metric?.value) {
+                                return;
+                            }
+                            const wrapper = document.createElement('div');
+                            wrapper.className = 'flex flex-col sm:flex-row sm:items-baseline sm:justify-between gap-1';
+                            const value = document.createElement('span');
+                            value.className = 'text-lg font-semibold text-gray-900';
+                            value.textContent = metric.value;
+                            const label = document.createElement('span');
+                            label.className = 'text-sm text-gray-500';
+                            label.textContent = metric.label;
+                            wrapper.appendChild(value);
+                            wrapper.appendChild(label);
+                            metrics.appendChild(wrapper);
+                        });
+                    }
+                    if (!metrics.childElementCount) {
+                        metrics.remove();
+                    }
+                }
                 clone.style.transitionDelay = `${index * 100}ms`;
                 grid.appendChild(clone);
             });
         }
 
-        function renderPartners(partners) {
-            if (!Array.isArray(partners) || !partners.length) {
+        function renderHighlights(highlights) {
+            const container = document.querySelector('[data-sanity-collection="about.highlights"]');
+            if (!container) {
                 return;
             }
+            const template = document.getElementById('highlight-card-template');
+            container.innerHTML = '';
+            if (!template || !Array.isArray(highlights) || !highlights.length) {
+                container.classList.add('hidden');
+                return;
+            }
+            highlights.forEach((item) => {
+                if (!item?.title && !item?.description) {
+                    return;
+                }
+                const clone = template.content.firstElementChild.cloneNode(true);
+                const title = clone.querySelector('[data-role="title"]');
+                if (title && item.title) {
+                    title.textContent = item.title;
+                } else if (title) {
+                    title.remove();
+                }
+                const description = clone.querySelector('[data-role="description"]');
+                if (description && item.description) {
+                    description.textContent = item.description;
+                } else if (description) {
+                    description.remove();
+                }
+                container.appendChild(clone);
+            });
+            if (!container.childElementCount) {
+                container.classList.add('hidden');
+            } else {
+                container.classList.remove('hidden');
+            }
+        }
+
+        function renderStats(stats) {
+            const container = document.querySelector('[data-sanity-collection="about.stats"]');
+            if (!container) {
+                return;
+            }
+            const template = document.getElementById('stat-card-template');
+            container.innerHTML = '';
+            if (!template || !Array.isArray(stats) || !stats.length) {
+                container.classList.add('hidden');
+                return;
+            }
+            stats.forEach((stat) => {
+                if (!stat?.label && !stat?.value) {
+                    return;
+                }
+                const clone = template.content.firstElementChild.cloneNode(true);
+                const value = clone.querySelector('[data-role="value"]');
+                if (value && stat.value) {
+                    value.textContent = stat.value;
+                }
+                const label = clone.querySelector('[data-role="label"]');
+                if (label && stat.label) {
+                    label.textContent = stat.label;
+                }
+                container.appendChild(clone);
+            });
+            if (!container.childElementCount) {
+                container.classList.add('hidden');
+            } else {
+                container.classList.remove('hidden');
+            }
+        }
+
+        function renderPartners(partners) {
             const container = document.querySelector('[data-sanity-collection="partners.items"]');
             if (!container) {
                 return;
             }
             const template = document.getElementById('partner-badge-template');
             container.innerHTML = '';
+            if (!template) {
+                return;
+            }
+            if (!Array.isArray(partners) || !partners.length) {
+                const placeholder = document.createElement('div');
+                placeholder.className = 'text-gray-400 text-base';
+                placeholder.textContent = 'Add partner logos in Sanity to showcase your tenants.';
+                container.appendChild(placeholder);
+                return;
+            }
             partners.forEach((partner) => {
                 if (!partner || !partner.name) return;
                 const clone = template.content.firstElementChild.cloneNode(true);
@@ -588,7 +733,7 @@
                 projectId: SANITY_PROJECT_ID,
                 dataset: SANITY_DATASET,
                 apiVersion: SANITY_API_VERSION,
-                useCdn: true,
+                useCdn: typeof window.SANITY_USE_CDN === 'boolean' ? window.SANITY_USE_CDN : true,
             });
 
             try {
@@ -608,9 +753,11 @@
                     setText('hero.ctaLabel', site.hero?.ctaLabel);
                     setAttr('hero.ctaHref', 'href', site.hero?.ctaHref);
 
-                    setImage('about.image', site.about?.image, site.about?.heading);
+                    setImage('about.image', site.about?.image, site.about?.imageAlt || site.about?.heading);
                     setText('about.heading', site.about?.heading);
                     setParagraphs('about.body', site.about?.body, 'text-gray-600');
+                    renderHighlights(site.about?.highlights);
+                    renderStats(site.about?.stats);
 
                     setText('portfolio.heading', site.portfolioIntro?.heading);
                     setText('portfolio.subheading', site.portfolioIntro?.subheading);

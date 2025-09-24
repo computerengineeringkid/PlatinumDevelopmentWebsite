@@ -1,0 +1,6 @@
+{
+  "projectId": "yourProjectId",
+  "dataset": "yourDataset",
+  "apiVersion": "2024-03-01",
+  "useCdn": true
+}
