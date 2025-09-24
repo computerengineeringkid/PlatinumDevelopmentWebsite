@@ -11,22 +11,45 @@ type LocalClientConfig = {
   dataset?: string
 }
 
-function loadLocalClientConfig(): LocalClientConfig | undefined {
-  try {
-    const configUrl = new URL('../sanity-client-config.json', import.meta.url)
-    if (!fs.existsSync(configUrl)) {
-      return undefined
-    }
-    const raw = fs.readFileSync(configUrl, 'utf8')
-    if (!raw.trim()) {
-      return undefined
-    }
-    const parsed = JSON.parse(raw) as LocalClientConfig
-    return parsed
-  } catch (error) {
-    console.warn('Failed to load sanity-client-config.json:', error)
-    return undefined
+function isPlaceholder(value: string | undefined) {
+  if (!value) {
+    return true
   }
+
+  const normalized = value.trim().toLowerCase()
+  return normalized === 'yourprojectid' || normalized === 'yourdataset'
+}
+
+function loadLocalClientConfig(): LocalClientConfig | undefined {
+  const configFiles = [
+    {path: '../sanity-client-config.json', label: 'sanity-client-config.json'},
+    {path: '../sanity-client-config.example.json', label: 'sanity-client-config.example.json'},
+  ] as const
+
+  for (const {path, label} of configFiles) {
+    try {
+      const configUrl = new URL(path, import.meta.url)
+      if (!fs.existsSync(configUrl)) {
+        continue
+      }
+
+      const raw = fs.readFileSync(configUrl, 'utf8')
+      if (!raw.trim()) {
+        continue
+      }
+
+      const parsed = JSON.parse(raw) as LocalClientConfig
+      if (isPlaceholder(parsed.projectId) || isPlaceholder(parsed.dataset)) {
+        continue
+      }
+
+      return parsed
+    } catch (error) {
+      console.warn(`Failed to load ${label}:`, error)
+    }
+  }
+
+  return undefined
 }
 
 function readEnvVariable(key: 'SANITY_STUDIO_PROJECT_ID' | 'SANITY_STUDIO_DATASET') {
