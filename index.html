@@ -43,9 +43,9 @@
                 <svg class="h-8 w-8 text-gray-700" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
                     <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 21h19.5m-18-18v18m10.5-18v18m6-13.5V21M6.75 6.75h.75m-.75 3h.75m-.75 3h.75m3-6h.75m-.75 3h.75m-.75 3h.75M9 21v-3.375c0-.621.504-1.125 1.125-1.125h3.75c.621 0 1.125.504 1.125 1.125V21" />
                 </svg>
-                <span class="text-xl font-bold text-gray-700" data-sanity-text="companyName">Platinum Development</span>
+                <span class="text-xl font-bold text-gray-700" data-cms-text="companyName">Platinum Development</span>
             </div>
-            <div class="hidden md:flex items-center space-x-8" data-sanity-nav="desktop">
+            <div class="hidden md:flex items-center space-x-8" data-cms-nav="desktop">
                 <a href="#home" class="text-gray-600 hover:text-gray-900 transition-colors">Home</a>
                 <a href="#about" class="text-gray-600 hover:text-gray-900 transition-colors">About</a>
                 <a href="#portfolio" class="text-gray-600 hover:text-gray-900 transition-colors">Portfolio</a>
@@ -60,7 +60,7 @@
                 </button>
             </div>
         </nav>
-        <div id="mobile-menu" class="hidden md:hidden" data-sanity-nav="mobile">
+        <div id="mobile-menu" class="hidden md:hidden" data-cms-nav="mobile">
             <a href="#home" class="block py-2 px-6 text-sm hover:bg-gray-100">Home</a>
             <a href="#about" class="block py-2 px-6 text-sm hover:bg-gray-100">About</a>
             <a href="#portfolio" class="block py-2 px-6 text-sm hover:bg-gray-100">Portfolio</a>
@@ -70,11 +70,11 @@
     </header>
 
     <main>
-        <section id="home" class="h-screen bg-cover bg-center flex items-center justify-center text-white" data-sanity-bg-image="hero.backgroundImage" style="background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('vegas2.jpg');">
+        <section id="home" class="h-screen bg-cover bg-center flex items-center justify-center text-white" data-cms-bg-image="hero.backgroundImage" style="background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('vegas2.jpg');">
             <div class="text-center px-4 fade-in-section">
-                <h1 class="text-4xl md:text-6xl font-bold leading-tight mb-4" data-sanity-text="hero.headline">Redefining the Las Vegas Landscape.</h1>
-                <p class="text-lg md:text-xl text-gray-200 mb-8 max-w-3xl mx-auto" data-sanity-text="hero.subheadline">Developing premier retail, multifamily, and single-family properties with excellence and integrity.</p>
-                <a href="#portfolio" class="bg-white text-gray-800 font-bold py-3 px-8 rounded-lg text-lg hover:bg-gray-200 transition-transform transform hover:scale-105" data-sanity-text="hero.ctaLabel" data-sanity-attr-href="hero.ctaHref">Explore Projects</a>
+                <h1 class="text-4xl md:text-6xl font-bold leading-tight mb-4" data-cms-text="hero.headline">Redefining the Las Vegas Landscape.</h1>
+                <p class="text-lg md:text-xl text-gray-200 mb-8 max-w-3xl mx-auto" data-cms-text="hero.subheadline">Developing premier retail, multifamily, and single-family properties with excellence and integrity.</p>
+                <a href="#portfolio" class="bg-white text-gray-800 font-bold py-3 px-8 rounded-lg text-lg hover:bg-gray-200 transition-transform transform hover:scale-105" data-cms-text="hero.ctaLabel" data-cms-attr-href="hero.ctaHref">Explore Projects</a>
             </div>
         </section>
 
@@ -82,19 +82,19 @@
             <div class="container mx-auto px-6">
                 <div class="grid md:grid-cols-2 gap-12 items-center fade-in-section">
                     <div>
-                        <img src="https://placehold.co/600x400/EFEFEF/333?text=Modern+Construction" alt="Construction Site" class="rounded-lg shadow-xl w-full" data-sanity-image="about.image">
+                        <img src="https://placehold.co/600x400/EFEFEF/333?text=Modern+Construction" alt="Construction Site" class="rounded-lg shadow-xl w-full" data-cms-image="about.image">
                     </div>
                     <div>
-                        <h2 class="text-3xl font-bold mb-4" data-sanity-text="about.heading">Building Communities, Creating Value.</h2>
-                        <div class="space-y-4" data-sanity-paragraphs="about.body" data-sanity-paragraph-class="text-gray-600">
+                        <h2 class="text-3xl font-bold mb-4" data-cms-text="about.heading">Building Communities, Creating Value.</h2>
+                        <div class="space-y-4" data-cms-paragraphs="about.body" data-cms-paragraph-class="text-gray-600">
                             <p class="text-gray-600">We are Platinum Development, a premier developer and operator of high-quality retail, multifamily, and single-family projects. Through our robust services and commitment to excellence, we ensure the creation of the best properties for our local communities.</p>
                             <p class="text-gray-600">Our expertise in the Las Vegas market allows us to identify unique opportunities and deliver exceptional returns for our partners and investors.</p>
                         </div>
-                        <div class="mt-10 grid sm:grid-cols-2 gap-6 hidden fade-in-section" data-sanity-collection="about.highlights">
+                        <div class="mt-10 grid sm:grid-cols-2 gap-6 hidden fade-in-section" data-cms-collection="about.highlights">
                         </div>
                     </div>
                 </div>
-                <div class="mt-16 grid grid-cols-2 sm:grid-cols-4 gap-6 fade-in-section hidden" data-sanity-collection="about.stats">
+                <div class="mt-16 grid grid-cols-2 sm:grid-cols-4 gap-6 fade-in-section hidden" data-cms-collection="about.stats">
                 </div>
             </div>
         </section>
@@ -102,10 +102,10 @@
         <section id="portfolio" class="py-20 bg-gray-50">
             <div class="container mx-auto px-6">
                 <div class="text-center mb-12 fade-in-section">
-                    <h2 class="text-3xl font-bold" data-sanity-text="portfolio.heading">Our Portfolio</h2>
-                    <p class="text-gray-600 mt-2" data-sanity-text="portfolio.subheading">A selection of our completed and upcoming projects.</p>
+                    <h2 class="text-3xl font-bold" data-cms-text="portfolio.heading">Our Portfolio</h2>
+                    <p class="text-gray-600 mt-2" data-cms-text="portfolio.subheading">A selection of our completed and upcoming projects.</p>
                 </div>
-                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8" data-sanity-collection="projects">
+                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8" data-cms-collection="projects">
                     <div class="bg-white rounded-lg shadow-lg overflow-hidden transform hover:-translate-y-2 transition-transform duration-300 fade-in-section">
                         <img src="https://placehold.co/600x400/DDD/333?text=Retail+Property" alt="6830 S. Rainbow Blvd" class="w-full h-56 object-cover">
                         <div class="p-6">
@@ -133,28 +133,28 @@
 
         <section id="tenants" class="py-20 bg-white">
             <div class="container mx-auto px-6 text-center fade-in-section">
-                <h2 class="text-3xl font-bold mb-2" data-sanity-text="partners.heading">Trusted By Leading Brands</h2>
-                <p class="text-gray-600 mb-10" data-sanity-text="partners.subheading">We are proud to partner with nationally recognized tenants.</p>
-                <div class="flex flex-wrap justify-center items-center gap-x-12 gap-y-8" data-sanity-collection="partners.items">
+                <h2 class="text-3xl font-bold mb-2" data-cms-text="partners.heading">Trusted By Leading Brands</h2>
+                <p class="text-gray-600 mb-10" data-cms-text="partners.subheading">We are proud to partner with nationally recognized tenants.</p>
+                <div class="flex flex-wrap justify-center items-center gap-x-12 gap-y-8" data-cms-collection="partners.items">
                 </div>
             </div>
         </section>
 
         <section id="investors" class="py-20 bg-gray-800 text-white">
             <div class="container mx-auto px-6 text-center fade-in-section">
-                <h2 class="text-3xl font-bold" data-sanity-text="investor.heading">Invest with Confidence</h2>
-                <div class="text-gray-300 mt-4 max-w-2xl mx-auto space-y-4" data-sanity-paragraphs="investor.body" data-sanity-paragraph-class="text-gray-300">
+                <h2 class="text-3xl font-bold" data-cms-text="investor.heading">Invest with Confidence</h2>
+                <div class="text-gray-300 mt-4 max-w-2xl mx-auto space-y-4" data-cms-paragraphs="investor.body" data-cms-paragraph-class="text-gray-300">
                     <p>Join us in developing and managing premier real estate deals in Las Vegas that offer excellent returns. We provide stable and lucrative investment opportunities.</p>
                 </div>
-                <a href="#contact" class="mt-8 inline-block bg-white text-gray-800 font-bold py-3 px-8 rounded-lg text-lg hover:bg-gray-200 transition-transform transform hover:scale-105" data-sanity-text="investor.ctaLabel" data-sanity-attr-href="investor.ctaHref">Become an Investor</a>
+                <a href="#contact" class="mt-8 inline-block bg-white text-gray-800 font-bold py-3 px-8 rounded-lg text-lg hover:bg-gray-200 transition-transform transform hover:scale-105" data-cms-text="investor.ctaLabel" data-cms-attr-href="investor.ctaHref">Become an Investor</a>
             </div>
         </section>
 
         <section id="contact" class="py-20 bg-white">
             <div class="container mx-auto px-6">
                 <div class="text-center mb-12 fade-in-section">
-                    <h2 class="text-3xl font-bold" data-sanity-text="contact.heading">Contact Us</h2>
-                    <p class="text-gray-600 mt-2" data-sanity-text="contact.subheading">Let's build something great together. Reach out to discuss your next project.</p>
+                    <h2 class="text-3xl font-bold" data-cms-text="contact.heading">Contact Us</h2>
+                    <p class="text-gray-600 mt-2" data-cms-text="contact.subheading">Let's build something great together. Reach out to discuss your next project.</p>
                 </div>
                 <div class="grid md:grid-cols-2 gap-12 items-start fade-in-section">
                     <form class="space-y-6">
@@ -182,12 +182,12 @@
                     </form>
                     <div class="space-y-6">
                         <div class="bg-gray-50 p-6 rounded-lg space-y-3">
-                            <h3 class="text-xl font-semibold" data-sanity-text="contact.infoHeading">Our Information</h3>
-                            <p class="text-gray-600" data-sanity-text="contact.email"><strong>Email:</strong><br> info@prdevelopmentgroup.com</p>
-                            <p class="text-gray-600" data-sanity-text="contact.address"><strong>Address:</strong><br> 6870 S. Rainbow, Las Vegas, NV, 89118</p>
-                            <p class="text-gray-600" data-sanity-text="contact.hours"><strong>Hours:</strong><br> Monday – Friday: 9:00 am – 5:00 pm</p>
+                            <h3 class="text-xl font-semibold" data-cms-text="contact.infoHeading">Our Information</h3>
+                            <p class="text-gray-600" data-cms-text="contact.email"><strong>Email:</strong><br> info@prdevelopmentgroup.com</p>
+                            <p class="text-gray-600" data-cms-text="contact.address"><strong>Address:</strong><br> 6870 S. Rainbow, Las Vegas, NV, 89118</p>
+                            <p class="text-gray-600" data-cms-text="contact.hours"><strong>Hours:</strong><br> Monday – Friday: 9:00 am – 5:00 pm</p>
                         </div>
-                        <div class="bg-gray-200 h-64 rounded-lg flex items-center justify-center text-gray-500" data-sanity-map="contact.mapEmbed">
+                        <div class="bg-gray-200 h-64 rounded-lg flex items-center justify-center text-gray-500" data-cms-map="contact.mapEmbed">
                             <p>Map Placeholder</p>
                         </div>
                     </div>
@@ -200,11 +200,11 @@
         <div class="container mx-auto px-6 py-8">
             <div class="sm:flex sm:justify-between text-center sm:text-left">
                 <div>
-                    <h3 class="text-lg font-bold" data-sanity-text="footer.companyName">Platinum Development</h3>
-                    <p class="text-gray-400 mt-2" data-sanity-text="footer.copyright">© 2025 Platinum Development. All Rights Reserved.</p>
-                    <p class="text-gray-400 mt-1" data-sanity-text="footer.credits">Website by Saguaro Interactive</p>
+                    <h3 class="text-lg font-bold" data-cms-text="footer.companyName">Platinum Development</h3>
+                    <p class="text-gray-400 mt-2" data-cms-text="footer.copyright">© 2025 Platinum Development. All Rights Reserved.</p>
+                    <p class="text-gray-400 mt-1" data-cms-text="footer.credits">Website by Saguaro Interactive</p>
                 </div>
-                <div class="mt-6 sm:mt-0" data-sanity-footer-nav>
+                <div class="mt-6 sm:mt-0" data-cms-footer-nav>
                     <h4 class="font-semibold">Quick Links</h4>
                     <ul class="mt-2 space-y-1">
                         <li><a href="#home" class="text-gray-400 hover:text-white">Home</a></li>
@@ -285,7 +285,7 @@
             if (typeof value !== 'string' || !value.trim()) {
                 return;
             }
-            document.querySelectorAll(`[data-sanity-text="${key}"]`).forEach((el) => {
+            document.querySelectorAll(`[data-cms-text="${key}"]`).forEach((el) => {
                 el.textContent = value;
             });
         }
@@ -294,7 +294,7 @@
             if (!value) {
                 return;
             }
-            document.querySelectorAll(`[data-sanity-attr-${attr}="${key}"]`).forEach((el) => {
+            document.querySelectorAll(`[data-cms-attr-${attr}="${key}"]`).forEach((el) => {
                 el.setAttribute(attr, value);
             });
         }
@@ -303,7 +303,7 @@
             if (!url) {
                 return;
             }
-            document.querySelectorAll(`[data-sanity-bg-image="${key}"]`).forEach((el) => {
+            document.querySelectorAll(`[data-cms-bg-image="${key}"]`).forEach((el) => {
                 const gradient = 'linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5))';
                 el.style.backgroundImage = `${gradient}, url('${url}')`;
                 if (alt) {
@@ -316,7 +316,7 @@
             if (!url) {
                 return;
             }
-            document.querySelectorAll(`[data-sanity-image="${key}"]`).forEach((el) => {
+            document.querySelectorAll(`[data-cms-image="${key}"]`).forEach((el) => {
                 el.src = url;
                 if (altText) {
                     el.alt = altText;
@@ -328,8 +328,8 @@
             if (!Array.isArray(paragraphs) || !paragraphs.length) {
                 return;
             }
-            document.querySelectorAll(`[data-sanity-paragraphs="${key}"]`).forEach((container) => {
-                const paragraphClass = container.getAttribute('data-sanity-paragraph-class') || defaultClass || '';
+            document.querySelectorAll(`[data-cms-paragraphs="${key}"]`).forEach((container) => {
+                const paragraphClass = container.getAttribute('data-cms-paragraph-class') || defaultClass || '';
                 container.innerHTML = '';
                 paragraphs.forEach((entry) => {
                     const text = typeof entry === 'string' ? entry : entry?.paragraph || entry?.text || '';
@@ -346,9 +346,9 @@
             if (!Array.isArray(links) || !links.length) {
                 return;
             }
-            const desktop = document.querySelector('[data-sanity-nav="desktop"]');
-            const mobile = document.querySelector('[data-sanity-nav="mobile"]');
-            const footer = document.querySelector('[data-sanity-footer-nav] ul');
+            const desktop = document.querySelector('[data-cms-nav="desktop"]');
+            const mobile = document.querySelector('[data-cms-nav="mobile"]');
+            const footer = document.querySelector('[data-cms-footer-nav] ul');
             const menuButton = document.getElementById('menu-btn');
             const mobileMenuElement = document.getElementById('mobile-menu');
             const primaryIndex = links.findIndex((link) => link?.isPrimary);
@@ -409,7 +409,7 @@
         }
 
         function renderProjects(projects) {
-            const grid = document.querySelector('[data-sanity-collection="projects"]');
+            const grid = document.querySelector('[data-cms-collection="projects"]');
             if (!grid) {
                 return;
             }
@@ -489,7 +489,7 @@
         }
 
         function renderHighlights(highlights) {
-            const container = document.querySelector('[data-sanity-collection="about.highlights"]');
+            const container = document.querySelector('[data-cms-collection="about.highlights"]');
             if (!container) {
                 return;
             }
@@ -526,7 +526,7 @@
         }
 
         function renderStats(stats) {
-            const container = document.querySelector('[data-sanity-collection="about.stats"]');
+            const container = document.querySelector('[data-cms-collection="about.stats"]');
             if (!container) {
                 return;
             }
@@ -559,7 +559,7 @@
         }
 
         function renderPartners(partners) {
-            const container = document.querySelector('[data-sanity-collection="partners.items"]');
+            const container = document.querySelector('[data-cms-collection="partners.items"]');
             if (!container) {
                 return;
             }
@@ -598,25 +598,25 @@
             }
             setText('contact.infoHeading', contact.infoHeading || 'Our Information');
             if (contact.email) {
-                const emailEl = document.querySelector('[data-sanity-text="contact.email"]');
+                const emailEl = document.querySelector('[data-cms-text="contact.email"]');
                 if (emailEl) {
                     emailEl.innerHTML = `<strong>Email:</strong><br>${contact.email}`;
                 }
             }
             if (contact.address) {
-                const addressEl = document.querySelector('[data-sanity-text="contact.address"]');
+                const addressEl = document.querySelector('[data-cms-text="contact.address"]');
                 if (addressEl) {
                     addressEl.innerHTML = `<strong>Address:</strong><br>${contact.address}`;
                 }
             }
             if (contact.hours) {
-                const hoursEl = document.querySelector('[data-sanity-text="contact.hours"]');
+                const hoursEl = document.querySelector('[data-cms-text="contact.hours"]');
                 if (hoursEl) {
                     hoursEl.innerHTML = `<strong>Hours:</strong><br>${contact.hours}`;
                 }
             }
             if (contact.mapEmbed) {
-                document.querySelectorAll('[data-sanity-map="contact.mapEmbed"]').forEach((container) => {
+                document.querySelectorAll('[data-cms-map="contact.mapEmbed"]').forEach((container) => {
                     container.innerHTML = contact.mapEmbed;
                 });
             }
