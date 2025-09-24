@@ -1,37 +1,9 @@
 {
   "name": "platinumdevelopmentwebsite",
-  "version": "1.0.0",
+  "version": "2.0.0",
   "private": true,
-  "description": "Marketing site and Sanity Studio for Platinum Development.",
-  "type": "module",
-  "engines": {
-    "node": ">=18.0.0",
-    "npm": ">=9.0.0"
-  },
+  "description": "Static marketing site for Platinum Development powered by Decap CMS.",
   "scripts": {
-    "sanity": "sanity",
-    "sanity dev": "sanity dev --cwd sanity",
-    "sanity build": "sanity build --cwd sanity",
-    "sanity deploy": "sanity deploy --cwd sanity",
-    "sanity login": "sanity login",
-    "sanity manage": "sanity manage --cwd sanity"
-  },
-  "keywords": [
-    "sanity",
-    "cms",
-    "platinum-development"
-  ],
-  "author": "",
-  "license": "ISC",
-  "devDependencies": {
-    "@sanity/vision": "^3.58.0",
-    "sanity": "^3.58.0",
-    "ts-node": "^10.9.2",
-    "typescript": "^5.4.0"
-  },
-  "dependencies": {
-    "react": "^19.1.1",
-    "react-dom": "^19.1.1",
-    "styled-components": "^6.1.19"
+    "serve": "npx serve ."
   }
 }

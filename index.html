@@ -34,41 +34,6 @@
             transform: translateY(0);
         }
     </style>
-    <script>
-        window.SANITY_PROJECT_ID = window.SANITY_PROJECT_ID || 'your-project-id';
-        window.SANITY_DATASET = window.SANITY_DATASET || 'production';
-        window.SANITY_API_VERSION = window.SANITY_API_VERSION || '2023-10-03';
-        window.SANITY_USE_CDN = typeof window.SANITY_USE_CDN === 'boolean' ? window.SANITY_USE_CDN : true;
-        window.__sanityConfigPromise = window.__sanityConfigPromise || Promise.resolve();
-    </script>
-    <script type="module">
-        window.__sanityConfigPromise = (async () => {
-            try {
-                const response = await fetch('./sanity-client-config.json', {cache: 'no-store'});
-                if (!response.ok) {
-                    if (response.status !== 404) {
-                        console.warn('Failed to load sanity-client-config.json:', response.statusText);
-                    }
-                    return;
-                }
-                const config = await response.json();
-                if (config?.projectId) {
-                    window.SANITY_PROJECT_ID = config.projectId;
-                }
-                if (config?.dataset) {
-                    window.SANITY_DATASET = config.dataset;
-                }
-                if (config?.apiVersion) {
-                    window.SANITY_API_VERSION = config.apiVersion;
-                }
-                if (typeof config?.useCdn === 'boolean') {
-                    window.SANITY_USE_CDN = config.useCdn;
-                }
-            } catch (error) {
-                console.warn('Optional sanity-client-config.json not found; using inline Sanity defaults.');
-            }
-        })();
-    </script>
 </head>
 <body class="bg-gray-50 text-gray-800">
 
@@ -281,7 +246,6 @@
         </div>
     </template>
 
-    <script src="https://cdn.sanity.io/libs/client/v2023-10-03/client.min.js"></script>
     <script>
         const menuBtn = document.getElementById('menu-btn');
         const mobileMenu = document.getElementById('mobile-menu');
@@ -315,82 +279,7 @@
     </script>
 
     <script>
-        const SANITY_PROJECT_ID = window.SANITY_PROJECT_ID;
-        const SANITY_DATASET = window.SANITY_DATASET;
-        const SANITY_API_VERSION = window.SANITY_API_VERSION;
-
-        const siteSettingsQuery = `*[_type == "siteSettings"][0]{
-            title,
-            companyName,
-            navigationLinks,
-            hero {
-                headline,
-                subheadline,
-                ctaLabel,
-                ctaHref,
-                backgroundAlt,
-                "backgroundImage": backgroundImage.asset->url
-            },
-            about {
-                heading,
-                body,
-                imageAlt,
-                "image": image.asset->url,
-                highlights[]{
-                    title,
-                    description
-                },
-                stats[]{
-                    label,
-                    value
-                }
-            },
-            portfolioIntro {
-                heading,
-                subheading
-            },
-            partners {
-                heading,
-                subheading,
-                items[]{
-                    name,
-                    "logo": logo.asset->url
-                }
-            },
-            investor {
-                heading,
-                body,
-                ctaLabel,
-                ctaHref
-            },
-            contact {
-                heading,
-                subheading,
-                infoHeading,
-                email,
-                address,
-                hours,
-                mapEmbed
-            },
-            footer {
-                companyName,
-                copyright,
-                credits
-            }
-        }`;
-
-        const projectsQuery = `*[_type == "project" && (defined(heroImage) && heroImage.asset != null)] | order(coalesce(displayOrder, 9999), title asc){
-            title,
-            summary,
-            propertyType,
-            status,
-            "image": heroImage.asset->url,
-            imageAlt,
-            metrics[]{
-                label,
-                value
-            }
-        }`;
+        const DATA_SOURCE_URL = './content/site.json';
 
         function setText(key, value) {
             if (typeof value !== 'string' || !value.trim()) {
@@ -416,7 +305,7 @@
             }
             document.querySelectorAll(`[data-sanity-bg-image="${key}"]`).forEach((el) => {
                 const gradient = 'linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5))';
-                el.style.backgroundImage = `${gradient}, url('${url}?auto=format&fit=crop&w=1600&q=80')`;
+                el.style.backgroundImage = `${gradient}, url('${url}')`;
                 if (alt) {
                     el.setAttribute('aria-label', alt);
                 }
@@ -428,7 +317,7 @@
                 return;
             }
             document.querySelectorAll(`[data-sanity-image="${key}"]`).forEach((el) => {
-                el.src = `${url}?auto=format&fit=crop&w=1200&q=80`;
+                el.src = url;
                 if (altText) {
                     el.alt = altText;
                 }
@@ -442,7 +331,8 @@
             document.querySelectorAll(`[data-sanity-paragraphs="${key}"]`).forEach((container) => {
                 const paragraphClass = container.getAttribute('data-sanity-paragraph-class') || defaultClass || '';
                 container.innerHTML = '';
-                paragraphs.forEach((text) => {
+                paragraphs.forEach((entry) => {
+                    const text = typeof entry === 'string' ? entry : entry?.paragraph || entry?.text || '';
                     if (!text) return;
                     const p = document.createElement('p');
                     p.className = paragraphClass;
@@ -459,6 +349,8 @@
             const desktop = document.querySelector('[data-sanity-nav="desktop"]');
             const mobile = document.querySelector('[data-sanity-nav="mobile"]');
             const footer = document.querySelector('[data-sanity-footer-nav] ul');
+            const menuButton = document.getElementById('menu-btn');
+            const mobileMenuElement = document.getElementById('mobile-menu');
             const primaryIndex = links.findIndex((link) => link?.isPrimary);
             const fallbackPrimaryIndex = primaryIndex >= 0 ? primaryIndex : links.length - 1;
 
@@ -481,6 +373,12 @@
                         if (isPrimary || index === fallbackPrimaryIndex) {
                             a.classList.add('font-semibold');
                         }
+                        a.addEventListener('click', () => {
+                            if (menuButton && mobileMenuElement) {
+                                menuButton.classList.remove('hamburger-active');
+                                mobileMenuElement.classList.add('hidden');
+                            }
+                        });
                     }
                     container.appendChild(a);
                 });
@@ -523,7 +421,7 @@
             if (!Array.isArray(projects) || !projects.length) {
                 const placeholder = document.createElement('div');
                 placeholder.className = 'col-span-full text-center text-gray-500 py-10';
-                placeholder.textContent = 'Projects are coming soon. Check back shortly.';
+                placeholder.textContent = 'Projects are coming soon. Add them in the CMS to feature your work.';
                 grid.appendChild(placeholder);
                 return;
             }
@@ -531,8 +429,8 @@
                 const clone = template.content.firstElementChild.cloneNode(true);
                 const image = clone.querySelector('[data-role="image"]');
                 if (image && project.image) {
-                    image.src = `${project.image}?auto=format&fit=crop&w=900&h=600`;
-                    image.alt = project.imageAlt || project.title || 'Project';
+                    image.src = project.image;
+                    image.alt = project.imageAlt || project.title || 'Project image';
                 }
                 const meta = clone.querySelector('[data-role="meta"]');
                 if (meta) {
@@ -673,7 +571,7 @@
             if (!Array.isArray(partners) || !partners.length) {
                 const placeholder = document.createElement('div');
                 placeholder.className = 'text-gray-400 text-base';
-                placeholder.textContent = 'Add partner logos in Sanity to showcase your tenants.';
+                placeholder.textContent = 'Add partner logos in the CMS to showcase your tenants.';
                 container.appendChild(placeholder);
                 return;
             }
@@ -681,7 +579,12 @@
                 if (!partner || !partner.name) return;
                 const clone = template.content.firstElementChild.cloneNode(true);
                 if (partner.logo) {
-                    clone.innerHTML = `<img src="${partner.logo}?auto=format&fit=max&w=200" alt="${partner.name}" class="max-h-12">`;
+                    clone.innerHTML = '';
+                    const img = document.createElement('img');
+                    img.src = partner.logo;
+                    img.alt = partner.name;
+                    img.className = 'max-h-12';
+                    clone.appendChild(img);
                 } else {
                     clone.textContent = partner.name;
                 }
@@ -719,80 +622,75 @@
             }
         }
 
-        async function loadSanityContent() {
-            if (!window.sanityClient) {
-                console.warn('Sanity client library not available.');
-                return;
-            }
-            if (!SANITY_PROJECT_ID || SANITY_PROJECT_ID === 'your-project-id') {
-                console.warn('Sanity project ID is not configured.');
+        function applySiteContent(site) {
+            if (!site) {
                 return;
             }
 
-            const client = window.sanityClient({
-                projectId: SANITY_PROJECT_ID,
-                dataset: SANITY_DATASET,
-                apiVersion: SANITY_API_VERSION,
-                useCdn: typeof window.SANITY_USE_CDN === 'boolean' ? window.SANITY_USE_CDN : true,
-            });
+            if (site.title) {
+                document.title = site.title;
+            }
 
+            setText('companyName', site.companyName);
+            renderNavLinks(site.navigationLinks);
+
+            const hero = site.hero || {};
+            setBackgroundImage('hero.backgroundImage', hero.backgroundImage, hero.backgroundAlt);
+            setText('hero.headline', hero.headline);
+            setText('hero.subheadline', hero.subheadline);
+            setText('hero.ctaLabel', hero.ctaLabel);
+            setAttr('hero.ctaHref', 'href', hero.ctaHref);
+
+            const about = site.about || {};
+            setImage('about.image', about.image, about.imageAlt || about.heading);
+            setText('about.heading', about.heading);
+            setParagraphs('about.body', about.body, 'text-gray-600');
+            renderHighlights(about.highlights);
+            renderStats(about.stats);
+
+            const portfolioIntro = site.portfolioIntro || {};
+            setText('portfolio.heading', portfolioIntro.heading);
+            setText('portfolio.subheading', portfolioIntro.subheading);
+
+            const partners = site.partners || {};
+            setText('partners.heading', partners.heading);
+            setText('partners.subheading', partners.subheading);
+            renderPartners(partners.items);
+
+            const investor = site.investor || {};
+            setText('investor.heading', investor.heading);
+            setParagraphs('investor.body', investor.body, 'text-gray-300');
+            setText('investor.ctaLabel', investor.ctaLabel);
+            setAttr('investor.ctaHref', 'href', investor.ctaHref);
+
+            const contact = site.contact || {};
+            setText('contact.heading', contact.heading);
+            setText('contact.subheading', contact.subheading);
+            renderContactInfo(contact);
+
+            const footer = site.footer || {};
+            setText('footer.companyName', footer.companyName);
+            setText('footer.copyright', footer.copyright);
+            setText('footer.credits', footer.credits);
+
+            renderProjects(site.projects);
+        }
+
+        async function loadSiteContent() {
             try {
-                const [site, projects] = await Promise.all([
-                    client.fetch(siteSettingsQuery),
-                    client.fetch(projectsQuery),
-                ]);
-
-                if (site) {
-                    if (site.title) {
-                        document.title = site.title;
-                    }
-                    setText('companyName', site.companyName);
-                    setBackgroundImage('hero.backgroundImage', site.hero?.backgroundImage, site.hero?.backgroundAlt);
-                    setText('hero.headline', site.hero?.headline);
-                    setText('hero.subheadline', site.hero?.subheadline);
-                    setText('hero.ctaLabel', site.hero?.ctaLabel);
-                    setAttr('hero.ctaHref', 'href', site.hero?.ctaHref);
-
-                    setImage('about.image', site.about?.image, site.about?.imageAlt || site.about?.heading);
-                    setText('about.heading', site.about?.heading);
-                    setParagraphs('about.body', site.about?.body, 'text-gray-600');
-                    renderHighlights(site.about?.highlights);
-                    renderStats(site.about?.stats);
-
-                    setText('portfolio.heading', site.portfolioIntro?.heading);
-                    setText('portfolio.subheading', site.portfolioIntro?.subheading);
-
-                    setText('partners.heading', site.partners?.heading);
-                    setText('partners.subheading', site.partners?.subheading);
-                    renderPartners(site.partners?.items);
-
-                    setText('investor.heading', site.investor?.heading);
-                    setParagraphs('investor.body', site.investor?.body, 'text-gray-300');
-                    setText('investor.ctaLabel', site.investor?.ctaLabel);
-                    setAttr('investor.ctaHref', 'href', site.investor?.ctaHref);
-
-                    setText('contact.heading', site.contact?.heading);
-                    setText('contact.subheading', site.contact?.subheading);
-                    renderContactInfo(site.contact);
-
-                    setText('footer.companyName', site.footer?.companyName);
-                    setText('footer.copyright', site.footer?.copyright);
-                    setText('footer.credits', site.footer?.credits);
-
-                    renderNavLinks(site.navigationLinks);
+                const response = await fetch(DATA_SOURCE_URL, { cache: 'no-store' });
+                if (!response.ok) {
+                    throw new Error(`Request failed with status ${response.status}`);
                 }
-
-                renderProjects(projects);
+                const site = await response.json();
+                applySiteContent(site);
             } catch (error) {
-                console.error('Failed to load Sanity content', error);
+                console.error('Failed to load site content from Decap CMS data file.', error);
             }
         }
 
         document.addEventListener('DOMContentLoaded', () => {
-            const ready = window.__sanityConfigPromise || Promise.resolve();
-            ready.finally(() => {
-                loadSanityContent();
-            });
+            loadSiteContent();
         });
     </script>
 </body>
