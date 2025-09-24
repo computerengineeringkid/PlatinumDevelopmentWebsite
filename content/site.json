@@ -121,7 +121,7 @@
     "email": "info@prdevelopmentgroup.com",
     "address": "6870 S. Rainbow, Las Vegas, NV, 89118",
     "hours": "Monday – Friday: 9:00 am – 5:00 pm",
-    "mapEmbed": "<p>Map Placeholder</p>"
+    "mapEmbed": "<iframe title=\"Platinum Development Location\" src=\"https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3356.2804815565876!2d-115.20880982373752!3d36.066100808790935!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x80c8c7ad99bd7455%3A0xf0ae9ed474468e84!2s6870%20S%20Rainbow%20Blvd%2C%20Las%20Vegas%2C%20NV%2089118!5e0!3m2!1sen!2sus!4v1712782820000!5m2!1sen!2sus\" width=\"100%\" height=\"100%\" style=\"border:0\" allowfullscreen=\"\" loading=\"lazy\" referrerpolicy=\"no-referrer-when-downgrade\"></iframe>"
   },
   "footer": {
     "companyName": "Platinum Development",

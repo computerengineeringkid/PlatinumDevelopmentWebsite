@@ -12,18 +12,7 @@
     <style>
         body {
             font-family: 'Inter', sans-serif;
-        }
-        .hamburger-line {
-            transition: all 0.3s ease-in-out;
-        }
-        .hamburger-active > span:nth-child(1) {
-            transform: rotate(45deg) translate(5px, 5px);
-        }
-        .hamburger-active > span:nth-child(2) {
-            opacity: 0;
-        }
-        .hamburger-active > span:nth-child(3) {
-            transform: rotate(-45deg) translate(7px, -7px);
+            overflow-x: hidden;
         }
         .fade-in-section {
             opacity: 0;
@@ -34,48 +23,307 @@
             opacity: 1;
             transform: translateY(0);
         }
+        #header {
+            transition: top 0.3s ease, border-radius 0.3s ease, box-shadow 0.3s ease, margin 0.3s ease, max-width 0.3s ease, background-color 0.3s ease, border-color 0.3s ease;
+        }
+        #header.header-floating {
+            top: 1rem;
+            border-radius: 1.5rem;
+            margin-left: auto;
+            margin-right: auto;
+            width: calc(100% - 2rem);
+            max-width: 72rem;
+            border-color: rgba(54, 69, 79, 0.25);
+            box-shadow: 0 20px 45px -20px rgba(54, 69, 79, 0.35);
+            background-color: rgba(236, 236, 236, 0.97);
+        }
+        #header nav {
+            transition: padding 0.3s ease, gap 0.3s ease;
+        }
+        #header.header-floating nav {
+            padding-top: 1rem;
+            padding-bottom: 1rem;
+            gap: 1rem;
+        }
+        .logo-marquee {
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            height: 120px;
+            mask-image: linear-gradient(to right, transparent, rgba(0,0,0,0.85) 10%, rgba(0,0,0,0.85) 90%, transparent);
+        }
+        .logo-track {
+            display: flex;
+            align-items: center;
+            gap: 4rem;
+            width: max-content;
+            animation: marquee 28s linear infinite;
+        }
+        .logo-marquee:hover .logo-track {
+            animation-play-state: paused;
+        }
+        .logo-track img {
+            height: 72px;
+            width: 180px;
+            object-fit: contain;
+            filter: saturate(0.75);
+            transition: filter 0.3s ease;
+        }
+        .logo-track img:hover {
+            filter: saturate(1);
+        }
+        @keyframes marquee {
+            0% {
+                transform: translateX(0);
+            }
+            100% {
+                transform: translateX(-50%);
+            }
+        }
+        .portfolio-card {
+            position: relative;
+            overflow: hidden;
+            border-radius: 1rem;
+            background: #fff;
+            box-shadow: 0 15px 40px -20px rgba(36, 44, 54, 0.45);
+            border: 1px solid rgba(54, 69, 79, 0.08);
+            transition: transform 0.3s ease;
+        }
+        .portfolio-card:hover {
+            transform: translateY(-6px);
+        }
+        .portfolio-card__media {
+            position: relative;
+            height: 220px;
+            overflow: hidden;
+        }
+        .portfolio-card__media img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.4s ease;
+        }
+        .portfolio-card:hover .portfolio-card__media img {
+            transform: scale(1.05);
+        }
+        .portfolio-card__badge {
+            position: absolute;
+            left: 1rem;
+            top: 1rem;
+            padding: 0.5rem 1rem;
+            border-radius: 9999px;
+            background: rgba(255, 255, 255, 0.92);
+            font-size: 0.7rem;
+            font-weight: 600;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            color: #36454F;
+        }
+        .portfolio-card__body {
+            padding: 1.75rem;
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+        .portfolio-card__meta {
+            display: flex;
+            justify-content: space-between;
+            gap: 0.75rem;
+            font-size: 0.95rem;
+            color: #49545B;
+        }
+        .portfolio-card__title {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: #36454F;
+        }
+        .portfolio-card__copy {
+            font-size: 0.98rem;
+            color: #49545B;
+            line-height: 1.55;
+        }
+        .portfolio-card__status {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.6rem;
+            font-size: 0.72rem;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            color: rgba(73, 84, 91, 0.8);
+        }
+        .portfolio-card__dot {
+            width: 0.45rem;
+            height: 0.45rem;
+            border-radius: 9999px;
+            background: rgba(73, 84, 91, 0.4);
+        }
+        .portfolio-card__metrics {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+        .portfolio-card__metrics span {
+            display: block;
+        }
+        .portfolio-card__media--placeholder {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, #E1E1E1, #F7F7F7);
+        }
+        .portfolio-card__media-text {
+            font-size: 0.8rem;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            color: #36454F;
+        }
+        .portfolio-carousel__track {
+            scrollbar-width: none;
+        }
+        .portfolio-carousel__track::-webkit-scrollbar {
+            display: none;
+        }
+        .carousel-button {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 2.5rem;
+            height: 2.5rem;
+            border-radius: 9999px;
+            border: 1px solid rgba(54, 69, 79, 0.2);
+            background: #ffffff;
+            color: #36454F;
+            transition: all 0.2s ease;
+        }
+        .carousel-button:hover {
+            background: #CC5500;
+            color: #ffffff;
+            border-color: #CC5500;
+        }
+        .carousel-button[disabled] {
+            opacity: 0.35;
+            cursor: not-allowed;
+            background: #ffffff;
+            color: #36454F;
+            border-color: rgba(54, 69, 79, 0.1);
+        }
+        @media (max-width: 1024px) {
+            .portfolio-card__media {
+                height: 200px;
+            }
+            .portfolio-card__body {
+                padding: 1.5rem;
+            }
+        }
+        @media (max-width: 768px) {
+            #header {
+                border-radius: 0;
+                border-left: none;
+                border-right: none;
+            }
+            #header.header-floating {
+                width: calc(100% - 1rem);
+                top: 0.75rem;
+                border-radius: 1rem;
+            }
+            .logo-marquee {
+                height: 96px;
+            }
+            .logo-track {
+                gap: 2.25rem;
+            }
+            .logo-track img {
+                height: 56px;
+                width: 140px;
+            }
+            .portfolio-card {
+                min-width: 82vw;
+            }
+            .portfolio-card__media {
+                height: 180px;
+            }
+            .portfolio-card__meta {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 0.4rem;
+            }
+            .portfolio-card__body {
+                padding: 1.35rem 1.25rem 1.5rem;
+            }
+            .portfolio-card__title {
+                font-size: 1.1rem;
+            }
+            .portfolio-card__copy {
+                font-size: 0.94rem;
+            }
+            .portfolio-card__status {
+                font-size: 0.65rem;
+            }
+            .portfolio-carousel__track {
+                gap: 1.25rem;
+                padding-right: 1rem;
+            }
+            .carousel-button {
+                display: none;
+            }
+            #tenants {
+                padding-top: 3rem;
+                padding-bottom: 3rem;
+            }
+            #contact .grid {
+                gap: 2.5rem;
+            }
+            footer .grid {
+                gap: 2.5rem;
+            }
+        }
     </style>
 </head>
-<body class="bg-gray-50 text-gray-800">
+<body class="bg-[#ECECEC] text-[#36454F]">
 
-    <header id="header" class="bg-white shadow-md sticky top-0 z-50 transition-all duration-300">
-        <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
-            <div class="flex items-center space-x-2">
-                <svg class="h-8 w-8 text-gray-700" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 21h19.5m-18-18v18m10.5-18v18m6-13.5V21M6.75 6.75h.75m-.75 3h.75m-.75 3h.75m3-6h.75m-.75 3h.75m-.75 3h.75M9 21v-3.375c0-.621.504-1.125 1.125-1.125h3.75c.621 0 1.125.504 1.125 1.125V21" />
-                </svg>
-                <span class="text-xl font-bold text-gray-700" data-cms-text="companyName">Platinum Development</span>
+    <header id="header" class="sticky top-0 z-50 border border-[#36454F]/10 bg-[#ECECEC]/95 shadow-lg backdrop-blur transition-all duration-300">
+        <nav class="mx-auto flex max-w-6xl flex-wrap items-center justify-between gap-4 px-5 py-6 md:px-8">
+            <a href="#home" class="flex items-center gap-3">
+                <img src="nick-removebg-preview.png" alt="Platinum Development logo" class="h-10 w-auto">
+                <span class="sr-only" data-cms-text="companyName">Platinum Development</span>
+            </a>
+            <div class="hidden flex-1 items-center justify-end gap-6 text-sm font-medium md:flex" data-cms-nav="desktop">
+                <a href="#home" class="text-[#36454F]/80 transition-colors hover:text-[#36454F]">Home</a>
+                <a href="#about" class="text-[#36454F]/80 transition-colors hover:text-[#36454F]">About</a>
+                <a href="#portfolio" class="text-[#36454F]/80 transition-colors hover:text-[#36454F]">Portfolio</a>
+                <a href="#investors" class="text-[#36454F]/80 transition-colors hover:text-[#36454F]">Investors</a>
+                <a href="#contact" class="inline-flex items-center rounded-full bg-[#CC5500] px-4 py-2 text-white shadow-sm transition-colors hover:bg-[#A64500]">Contact</a>
             </div>
-            <div class="hidden md:flex items-center space-x-8" data-cms-nav="desktop">
-                <a href="#home" class="text-gray-600 hover:text-gray-900 transition-colors">Home</a>
-                <a href="#about" class="text-gray-600 hover:text-gray-900 transition-colors">About</a>
-                <a href="#portfolio" class="text-gray-600 hover:text-gray-900 transition-colors">Portfolio</a>
-                <a href="#investors" class="text-gray-600 hover:text-gray-900 transition-colors">Investors</a>
-                <a href="#contact" class="bg-gray-800 text-white py-2 px-4 rounded-lg hover:bg-gray-700 transition-colors">Contact Us</a>
-            </div>
-            <div class="md:hidden">
-                <button id="menu-btn" class="hamburger block focus:outline-none" aria-label="Toggle navigation">
-                    <span class="hamburger-line block w-6 h-0.5 bg-gray-700 my-1"></span>
-                    <span class="hamburger-line block w-6 h-0.5 bg-gray-700 my-1"></span>
-                    <span class="hamburger-line block w-6 h-0.5 bg-gray-700 my-1"></span>
+            <div class="flex items-center md:hidden">
+                <button id="menu-btn" type="button" class="inline-flex items-center justify-center rounded-lg p-2 text-[#36454F] hover:bg-[#CC5500]/10 focus:outline-none focus:ring-2 focus:ring-[#CC5500] focus:ring-offset-2 focus:ring-offset-[#ECECEC]" aria-controls="mobile-menu" aria-expanded="false">
+                    <span class="sr-only">Toggle main menu</span>
+                    <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 5.25h16.5M3.75 12h16.5m-16.5 6.75h16.5" />
+                    </svg>
                 </button>
             </div>
+            <div id="mobile-menu" class="hidden w-full md:hidden">
+                <div class="mt-2 space-y-2 rounded-lg border border-[#CECECE] bg-white/95 p-3 shadow-lg backdrop-blur" data-cms-nav="mobile">
+                    <a href="#home" class="block rounded-md px-4 py-2 text-base font-medium text-[#36454F] transition-colors hover:bg-[#ECECEC]">Home</a>
+                    <a href="#about" class="block rounded-md px-4 py-2 text-base font-medium text-[#36454F] transition-colors hover:bg-[#ECECEC]">About</a>
+                    <a href="#portfolio" class="block rounded-md px-4 py-2 text-base font-medium text-[#36454F] transition-colors hover:bg-[#ECECEC]">Portfolio</a>
+                    <a href="#investors" class="block rounded-md px-4 py-2 text-base font-medium text-[#36454F] transition-colors hover:bg-[#ECECEC]">Investors</a>
+                    <a href="#contact" class="block rounded-md bg-[#CC5500] px-4 py-2 text-base font-semibold text-white transition-colors hover:bg-[#A64500]">Contact</a>
+                </div>
+            </div>
         </nav>
-        <div id="mobile-menu" class="hidden md:hidden" data-cms-nav="mobile">
-            <a href="#home" class="block py-2 px-6 text-sm hover:bg-gray-100">Home</a>
-            <a href="#about" class="block py-2 px-6 text-sm hover:bg-gray-100">About</a>
-            <a href="#portfolio" class="block py-2 px-6 text-sm hover:bg-gray-100">Portfolio</a>
-            <a href="#investors" class="block py-2 px-6 text-sm hover:bg-gray-100">Investors</a>
-            <a href="#contact" class="block py-2 px-6 text-sm hover:bg-gray-100">Contact</a>
-        </div>
     </header>
 
     <main>
         <section id="home" class="h-screen bg-cover bg-center flex items-center justify-center text-white" data-cms-bg-image="hero.backgroundImage" style="background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('vegas2.jpg');">
             <div class="text-center px-4 fade-in-section">
-                <h1 class="text-4xl md:text-6xl font-bold leading-tight mb-4" data-cms-text="hero.headline">Redefining the Las Vegas Landscape.</h1>
+                <h1 class="text-4xl md:text-6xl font-bold leading-tight mb-4 text-white" data-cms-text="hero.headline">Redefining the Las Vegas Landscape.</h1>
                 <p class="text-lg md:text-xl text-gray-200 mb-8 max-w-3xl mx-auto" data-cms-text="hero.subheadline">Developing premier retail, multifamily, and single-family properties with excellence and integrity.</p>
-                <a href="#portfolio" class="bg-white text-gray-800 font-bold py-3 px-8 rounded-lg text-lg hover:bg-gray-200 transition-transform transform hover:scale-105" data-cms-text="hero.ctaLabel" data-cms-attr-href="hero.ctaHref">Explore Projects</a>
+                <div class="flex flex-col items-center gap-4 sm:flex-row sm:justify-center">
+                    <a href="#portfolio" class="bg-[#CC5500] text-white font-semibold py-3 px-8 rounded-full text-lg shadow-lg transition-transform transform hover:scale-105 hover:bg-[#A64500]" data-cms-text="hero.ctaLabel" data-cms-attr-href="hero.ctaHref">Explore Projects</a>
+                    <a href="#contact" class="bg-[#CC5500] text-white font-semibold py-3 px-8 rounded-full text-lg shadow-lg transition-transform transform hover:scale-105 hover:bg-[#A64500]">Contact Us</a>
+                </div>
             </div>
         </section>
 
@@ -86,10 +334,10 @@
                         <img src="https://placehold.co/600x400/EFEFEF/333?text=Modern+Construction" alt="Construction Site" class="rounded-lg shadow-xl w-full" data-cms-image="about.image">
                     </div>
                     <div>
-                        <h2 class="text-3xl font-bold mb-4" data-cms-text="about.heading">Building Communities, Creating Value.</h2>
-                        <div class="space-y-4" data-cms-paragraphs="about.body" data-cms-paragraph-class="text-gray-600">
-                            <p class="text-gray-600">We are Platinum Development, a premier developer and operator of high-quality retail, multifamily, and single-family projects. Through our robust services and commitment to excellence, we ensure the creation of the best properties for our local communities.</p>
-                            <p class="text-gray-600">Our expertise in the Las Vegas market allows us to identify unique opportunities and deliver exceptional returns for our partners and investors.</p>
+                        <h2 class="text-3xl font-bold mb-4 text-[#36454F]" data-cms-text="about.heading">Building Communities, Creating Value.</h2>
+                        <div class="space-y-4" data-cms-paragraphs="about.body" data-cms-paragraph-class="text-[#4A5D68]">
+                            <p class="text-[#4A5D68]">We are Platinum Development, a premier developer and operator of high-quality retail, multifamily, and single-family projects. Through our robust services and commitment to excellence, we ensure the creation of the best properties for our local communities.</p>
+                            <p class="text-[#4A5D68]">Our expertise in the Las Vegas market allows us to identify unique opportunities and deliver exceptional returns for our partners and investors.</p>
                         </div>
                         <div class="mt-10 grid sm:grid-cols-2 gap-6 hidden fade-in-section" data-cms-collection="about.highlights">
                         </div>
@@ -100,96 +348,313 @@
             </div>
         </section>
 
-        <section id="portfolio" class="py-20 bg-gray-50">
+        <section id="portfolio" class="py-20 bg-[#ECECEC]">
             <div class="container mx-auto px-6">
                 <div class="text-center mb-12 fade-in-section">
-                    <h2 class="text-3xl font-bold" data-cms-text="portfolio.heading">Our Portfolio</h2>
-                    <p class="text-gray-600 mt-2" data-cms-text="portfolio.subheading">A selection of our completed and upcoming projects.</p>
+                    <h2 class="text-3xl font-bold text-[#36454F]" data-cms-text="portfolio.heading">Our Portfolio</h2>
+                    <p class="mt-2 text-[#49545B]" data-cms-text="portfolio.subheading">A selection of our completed and upcoming projects.</p>
                 </div>
-                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8" data-cms-collection="projects">
-                    <div class="bg-white rounded-lg shadow-lg overflow-hidden transform hover:-translate-y-2 transition-transform duration-300 fade-in-section">
-                        <img src="https://placehold.co/600x400/DDD/333?text=Retail+Property" alt="6830 S. Rainbow Blvd" class="w-full h-56 object-cover">
-                        <div class="p-6">
-                            <h3 class="text-xl font-semibold mb-2">6830 S. Rainbow Blvd</h3>
-                            <p class="text-gray-600">Vibrant retail center in a prime location.</p>
+
+                <div class="space-y-16">
+                    <div class="space-y-8" data-carousel="retail">
+                        <div class="flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
+                            <div class="text-left">
+                                <p class="text-xs font-semibold uppercase tracking-[0.3em] text-[#CC5500]">Retail Portfolio</p>
+                                <h3 class="text-2xl font-semibold text-[#36454F]">Retail Properties</h3>
+                                <p class="mt-2 max-w-2xl text-sm text-[#49545B]">High-performing centers anchored by national brands across the Las Vegas valley.</p>
+                            </div>
+                            <div class="flex justify-end gap-2">
+                                <button type="button" class="carousel-button" aria-label="Scroll retail properties left" data-carousel-prev>
+                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" class="h-5 w-5">
+                                        <path stroke-linecap="round" stroke-linejoin="round" d="M14.25 19.5L7.75 12l6.5-7.5" />
+                                    </svg>
+                                </button>
+                                <button type="button" class="carousel-button" aria-label="Scroll retail properties right" data-carousel-next>
+                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" class="h-5 w-5">
+                                        <path stroke-linecap="round" stroke-linejoin="round" d="M9.75 4.5l6.5 7.5-6.5 7.5" />
+                                    </svg>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="relative">
+                            <div class="portfolio-carousel__track flex snap-x snap-mandatory gap-6 overflow-x-auto pb-6 scroll-smooth" data-carousel-track>
+                                <article class="portfolio-card snap-start min-w-[280px] sm:min-w-[320px] lg:min-w-[360px]">
+                                    <div class="portfolio-card__media portfolio-card__media--placeholder">
+                                        <span class="portfolio-card__badge">Retail</span>
+                                        <span class="portfolio-card__media-text">Image coming soon</span>
+                                    </div>
+                                    <div class="portfolio-card__body">
+                                        <div class="portfolio-card__meta">
+                                            <span>Las Vegas, NV</span>
+                                            <span>68,000 sq ft</span>
+                                        </div>
+                                        <h4 class="portfolio-card__title">6830 S. Rainbow Blvd</h4>
+                                        <p class="portfolio-card__copy">High-visibility open-air retail center with national co-tenancy and excellent Rainbow Boulevard frontage.</p>
+                                        <div class="portfolio-card__status">
+                                            <span>Completed</span>
+                                            <span class="portfolio-card__dot"></span>
+                                            <span>Stabilized occupancy</span>
+                                        </div>
+                                    </div>
+                                </article>
+
+                                <article class="portfolio-card snap-start min-w-[280px] sm:min-w-[320px] lg:min-w-[360px]">
+                                    <div class="portfolio-card__media portfolio-card__media--placeholder">
+                                        <span class="portfolio-card__badge">Retail</span>
+                                        <span class="portfolio-card__media-text">Image coming soon</span>
+                                    </div>
+                                    <div class="portfolio-card__body">
+                                        <div class="portfolio-card__meta">
+                                            <span>Henderson, NV</span>
+                                            <span>82,500 sq ft</span>
+                                        </div>
+                                        <h4 class="portfolio-card__title">9550 S. Eastern Ave</h4>
+                                        <p class="portfolio-card__copy">Regional-serving retail with a balanced mix of soft goods, services, and daily-needs tenants along Eastern Avenue.</p>
+                                        <div class="portfolio-card__status">
+                                            <span>Completed</span>
+                                            <span class="portfolio-card__dot"></span>
+                                            <span>Anchor & inline leasing</span>
+                                        </div>
+                                    </div>
+                                </article>
+
+                                <article class="portfolio-card snap-start min-w-[280px] sm:min-w-[320px] lg:min-w-[360px]">
+                                    <div class="portfolio-card__media portfolio-card__media--placeholder">
+                                        <span class="portfolio-card__badge">Retail</span>
+                                        <span class="portfolio-card__media-text">Image coming soon</span>
+                                    </div>
+                                    <div class="portfolio-card__body">
+                                        <div class="portfolio-card__meta">
+                                            <span>Summerlin, NV</span>
+                                            <span>54,200 sq ft</span>
+                                        </div>
+                                        <h4 class="portfolio-card__title">7175 W. Lake Mead Blvd</h4>
+                                        <p class="portfolio-card__copy">Neighbor-serving retail with curated dining, wellness, and boutique offerings steps from the Summerlin trail network.</p>
+                                        <div class="portfolio-card__status">
+                                            <span>Completed</span>
+                                            <span class="portfolio-card__dot"></span>
+                                            <span>Community-focused tenant mix</span>
+                                        </div>
+                                    </div>
+                                </article>
+
+                                <article class="portfolio-card snap-start min-w-[280px] sm:min-w-[320px] lg:min-w-[360px]">
+                                    <div class="portfolio-card__media portfolio-card__media--placeholder">
+                                        <span class="portfolio-card__badge">Retail</span>
+                                        <span class="portfolio-card__media-text">Image coming soon</span>
+                                    </div>
+                                    <div class="portfolio-card__body">
+                                        <div class="portfolio-card__meta">
+                                            <span>Henderson, NV</span>
+                                            <span>72,000 sq ft</span>
+                                        </div>
+                                        <h4 class="portfolio-card__title">9400 S. Eastern Ave</h4>
+                                        <p class="portfolio-card__copy">Next-generation retail environment with chef-driven dining and lifestyle concepts serving the Eastern Avenue corridor.</p>
+                                        <div class="portfolio-card__status">
+                                            <span>In Leasing</span>
+                                            <span class="portfolio-card__dot"></span>
+                                            <span>2025 occupancy</span>
+                                        </div>
+                                    </div>
+                                </article>
+
+                                <article class="portfolio-card snap-start min-w-[280px] sm:min-w-[320px] lg:min-w-[360px]">
+                                    <div class="portfolio-card__media portfolio-card__media--placeholder">
+                                        <span class="portfolio-card__badge">Retail</span>
+                                        <span class="portfolio-card__media-text">Image coming soon</span>
+                                    </div>
+                                    <div class="portfolio-card__body">
+                                        <div class="portfolio-card__meta">
+                                            <span>Las Vegas, NV</span>
+                                            <span>51,300 sq ft</span>
+                                        </div>
+                                        <h4 class="portfolio-card__title">8140 S. Rainbow Blvd</h4>
+                                        <p class="portfolio-card__copy">Convenience-oriented shops, fitness, and fast casual dining with immediate access to the 215 Beltway.</p>
+                                        <div class="portfolio-card__status">
+                                            <span>In Design</span>
+                                            <span class="portfolio-card__dot"></span>
+                                            <span>Groundbreaking 2024</span>
+                                        </div>
+                                    </div>
+                                </article>
+
+                                <article class="portfolio-card snap-start min-w-[280px] sm:min-w-[320px] lg:min-w-[360px]">
+                                    <div class="portfolio-card__media portfolio-card__media--placeholder">
+                                        <span class="portfolio-card__badge">Retail</span>
+                                        <span class="portfolio-card__media-text">Image coming soon</span>
+                                    </div>
+                                    <div class="portfolio-card__body">
+                                        <div class="portfolio-card__meta">
+                                            <span>Las Vegas, NV</span>
+                                            <span>45,000 sq ft</span>
+                                        </div>
+                                        <h4 class="portfolio-card__title">4840 W. Spring Mountain Rd</h4>
+                                        <p class="portfolio-card__copy">Experiential retail and dining celebrating the vibrant Chinatown corridor along Spring Mountain Road.</p>
+                                        <div class="portfolio-card__status">
+                                            <span>Concept</span>
+                                            <span class="portfolio-card__dot"></span>
+                                            <span>Leasing opportunities available</span>
+                                        </div>
+                                    </div>
+                                </article>
+                            </div>
                         </div>
                     </div>
-                    <div class="bg-white rounded-lg shadow-lg overflow-hidden transform hover:-translate-y-2 transition-transform duration-300 fade-in-section">
-                        <img src="https://placehold.co/600x400/DDD/333?text=Multifamily+Property" alt="8021 Vegas Dr" class="w-full h-56 object-cover">
-                        <div class="p-6">
-                            <h3 class="text-xl font-semibold mb-2">8021 Vegas Dr</h3>
-                            <p class="text-gray-600">22 modern townhome units.</p>
+
+                    <div class="space-y-8" data-carousel="residential">
+                        <div class="flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
+                            <div class="text-left">
+                                <p class="text-xs font-semibold uppercase tracking-[0.3em] text-[#36454F]">Residential Portfolio</p>
+                                <h3 class="text-2xl font-semibold text-[#36454F]">Single-Family &amp; Multifamily</h3>
+                                <p class="mt-2 max-w-2xl text-sm text-[#49545B]">Purpose-built rental homes and for-sale communities that elevate neighborhood living.</p>
+                            </div>
+                            <div class="flex justify-end gap-2">
+                                <button type="button" class="carousel-button" aria-label="Scroll residential properties left" data-carousel-prev>
+                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" class="h-5 w-5">
+                                        <path stroke-linecap="round" stroke-linejoin="round" d="M14.25 19.5L7.75 12l6.5-7.5" />
+                                    </svg>
+                                </button>
+                                <button type="button" class="carousel-button" aria-label="Scroll residential properties right" data-carousel-next>
+                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" class="h-5 w-5">
+                                        <path stroke-linecap="round" stroke-linejoin="round" d="M9.75 4.5l6.5 7.5-6.5 7.5" />
+                                    </svg>
+                                </button>
+                            </div>
                         </div>
-                    </div>
-                    <div class="bg-white rounded-lg shadow-lg overflow-hidden transform hover:-translate-y-2 transition-transform duration-300 fade-in-section">
-                        <img src="https://placehold.co/600x400/DDD/333?text=Single-Family" alt="Lucky Pagoda Ct" class="w-full h-56 object-cover">
-                        <div class="p-6">
-                            <h3 class="text-xl font-semibold mb-2">Lucky Pagoda Ct</h3>
-                            <p class="text-gray-600">14 exclusive single-family units.</p>
+                        <div class="relative">
+                            <div class="portfolio-carousel__track flex snap-x snap-mandatory gap-6 overflow-x-auto pb-6 scroll-smooth" data-carousel-track>
+                                <article class="portfolio-card snap-start min-w-[280px] sm:min-w-[320px] lg:min-w-[360px]">
+                                    <div class="portfolio-card__media portfolio-card__media--placeholder">
+                                        <span class="portfolio-card__badge">Townhomes</span>
+                                        <span class="portfolio-card__media-text">Image coming soon</span>
+                                    </div>
+                                    <div class="portfolio-card__body">
+                                        <div class="portfolio-card__meta">
+                                            <span>Las Vegas, NV</span>
+                                            <span>22 units</span>
+                                        </div>
+                                        <h4 class="portfolio-card__title">8-21 Vegas Dr</h4>
+                                        <p class="portfolio-card__copy">Three-story modern townhomes with private garages, rooftop patios, and a clubhouse amenity program.</p>
+                                        <div class="portfolio-card__status">
+                                            <span>Now Leasing</span>
+                                            <span class="portfolio-card__dot"></span>
+                                            <span>Delivering Q3 2024</span>
+                                        </div>
+                                    </div>
+                                </article>
+
+                                <article class="portfolio-card snap-start min-w-[280px] sm:min-w-[320px] lg:min-w-[360px]">
+                                    <div class="portfolio-card__media portfolio-card__media--placeholder">
+                                        <span class="portfolio-card__badge">Single Family</span>
+                                        <span class="portfolio-card__media-text">Image coming soon</span>
+                                    </div>
+                                    <div class="portfolio-card__body">
+                                        <div class="portfolio-card__meta">
+                                            <span>Las Vegas, NV</span>
+                                            <span>14 homes</span>
+                                        </div>
+                                        <h4 class="portfolio-card__title">Lucky Pagoda Ct</h4>
+                                        <p class="portfolio-card__copy">A gated enclave of contemporary single-family residences designed for flexible indoor-outdoor living.</p>
+                                        <div class="portfolio-card__status">
+                                            <span>Pre-Sales</span>
+                                            <span class="portfolio-card__dot"></span>
+                                            <span>First closings 2025</span>
+                                        </div>
+                                    </div>
+                                </article>
+
+                                <article class="portfolio-card snap-start min-w-[280px] sm:min-w-[320px] lg:min-w-[360px]">
+                                    <div class="portfolio-card__media portfolio-card__media--placeholder">
+                                        <span class="portfolio-card__badge">Single Family</span>
+                                        <span class="portfolio-card__media-text">Image coming soon</span>
+                                    </div>
+                                    <div class="portfolio-card__body">
+                                        <div class="portfolio-card__meta">
+                                            <span>Enterprise, NV</span>
+                                            <span>7 homes</span>
+                                        </div>
+                                        <h4 class="portfolio-card__title">Duneville St</h4>
+                                        <p class="portfolio-card__copy">Limited collection of luxury desert homes with expansive lots, custom finish packages, and smart-home integration.</p>
+                                        <div class="portfolio-card__status">
+                                            <span>In Design</span>
+                                            <span class="portfolio-card__dot"></span>
+                                            <span>Breaking ground 2024</span>
+                                        </div>
+                                    </div>
+                                </article>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
         </section>
-
-        <section id="tenants" class="py-20 bg-white">
+        <section id="tenants" class="py-16 bg-white">
             <div class="container mx-auto px-6 text-center fade-in-section">
-                <h2 class="text-3xl font-bold mb-2" data-cms-text="partners.heading">Trusted By Leading Brands</h2>
-                <p class="text-gray-600 mb-10" data-cms-text="partners.subheading">We are proud to partner with nationally recognized tenants.</p>
-                <div class="flex flex-wrap justify-center items-center gap-x-12 gap-y-8" data-cms-collection="partners.items">
+                <h2 class="text-3xl font-bold mb-2 text-[#36454F]" data-cms-text="partners.heading">Trusted By Leading Brands</h2>
+                <p class="mb-10 text-[#49545B]" data-cms-text="partners.subheading">We are proud to partner with nationally recognized tenants.</p>
+                <div class="logo-marquee" aria-label="Trusted partner logos">
+                    <div class="logo-track" id="logo-track"></div>
                 </div>
             </div>
         </section>
 
-        <section id="investors" class="py-20 bg-gray-800 text-white">
+        <section id="investors" class="py-20 bg-[#ECECEC]">
             <div class="container mx-auto px-6 text-center fade-in-section">
-                <h2 class="text-3xl font-bold" data-cms-text="investor.heading">Invest with Confidence</h2>
-                <div class="text-gray-300 mt-4 max-w-2xl mx-auto space-y-4" data-cms-paragraphs="investor.body" data-cms-paragraph-class="text-gray-300">
+                <h2 class="text-3xl font-bold text-[#36454F]" data-cms-text="investor.heading">Invest with Confidence</h2>
+                <div class="mt-4 mx-auto max-w-2xl space-y-4 text-[#49545B]" data-cms-paragraphs="investor.body" data-cms-paragraph-class="text-[#49545B]">
                     <p>Join us in developing and managing premier real estate deals in Las Vegas that offer excellent returns. We provide stable and lucrative investment opportunities.</p>
                 </div>
-                <a href="#contact" class="mt-8 inline-block bg-white text-gray-800 font-bold py-3 px-8 rounded-lg text-lg hover:bg-gray-200 transition-transform transform hover:scale-105" data-cms-text="investor.ctaLabel" data-cms-attr-href="investor.ctaHref">Become an Investor</a>
+                <a href="#contact" class="mt-8 inline-block rounded-full bg-[#CC5500] px-8 py-3 text-lg font-semibold text-white transition-transform transform hover:scale-105 hover:bg-[#A64500]" data-cms-text="investor.ctaLabel" data-cms-attr-href="investor.ctaHref">Become an Investor</a>
             </div>
         </section>
 
         <section id="contact" class="py-20 bg-white">
             <div class="container mx-auto px-6">
                 <div class="text-center mb-12 fade-in-section">
-                    <h2 class="text-3xl font-bold" data-cms-text="contact.heading">Contact Us</h2>
-                    <p class="text-gray-600 mt-2" data-cms-text="contact.subheading">Let's build something great together. Reach out to discuss your next project.</p>
+                    <h2 class="text-3xl font-bold text-[#36454F]" data-cms-text="contact.heading">Contact Us</h2>
+                    <p class="mt-2 text-[#49545B]" data-cms-text="contact.subheading">Let's build something great together. Reach out to discuss your next project.</p>
                 </div>
                 <div class="grid md:grid-cols-2 gap-12 items-start fade-in-section">
                     <form class="space-y-6">
                         <div class="grid sm:grid-cols-2 gap-6">
                             <div>
-                                <label for="first-name" class="block text-sm font-medium text-gray-700">First Name</label>
-                                <input type="text" id="first-name" class="mt-1 block w-full px-3 py-2 bg-white border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-gray-500 focus:border-gray-500" required>
+                                <label for="first-name" class="block text-sm font-medium text-[#36454F]">First Name</label>
+                                <input type="text" id="first-name" class="mt-1 block w-full rounded-md border border-[#C7CDD3] bg-white px-3 py-2 shadow-sm focus:border-[#CC5500] focus:outline-none focus:ring-2 focus:ring-[#CC5500]/40" required>
                             </div>
                             <div>
-                                <label for="last-name" class="block text-sm font-medium text-gray-700">Last Name</label>
-                                <input type="text" id="last-name" class="mt-1 block w-full px-3 py-2 bg-white border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-gray-500 focus:border-gray-500" required>
+                                <label for="last-name" class="block text-sm font-medium text-[#36454F]">Last Name</label>
+                                <input type="text" id="last-name" class="mt-1 block w-full rounded-md border border-[#C7CDD3] bg-white px-3 py-2 shadow-sm focus:border-[#CC5500] focus:outline-none focus:ring-2 focus:ring-[#CC5500]/40" required>
                             </div>
                         </div>
                         <div>
-                            <label for="email" class="block text-sm font-medium text-gray-700">Email</label>
-                            <input type="email" id="email" class="mt-1 block w-full px-3 py-2 bg-white border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-gray-500 focus:border-gray-500" required>
+                            <label for="email" class="block text-sm font-medium text-[#36454F]">Email</label>
+                            <input type="email" id="email" class="mt-1 block w-full rounded-md border border-[#C7CDD3] bg-white px-3 py-2 shadow-sm focus:border-[#CC5500] focus:outline-none focus:ring-2 focus:ring-[#CC5500]/40" required>
                         </div>
                         <div>
-                            <label for="message" class="block text-sm font-medium text-gray-700">Message</label>
-                            <textarea id="message" rows="4" class="mt-1 block w-full px-3 py-2 bg-white border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-gray-500 focus:border-gray-500" required></textarea>
+                            <label for="message" class="block text-sm font-medium text-[#36454F]">Message</label>
+                            <textarea id="message" rows="4" class="mt-1 block w-full rounded-md border border-[#C7CDD3] bg-white px-3 py-2 shadow-sm focus:border-[#CC5500] focus:outline-none focus:ring-2 focus:ring-[#CC5500]/40" required></textarea>
                         </div>
                         <div>
-                            <button type="submit" class="w-full bg-gray-800 text-white py-3 px-6 rounded-lg font-semibold hover:bg-gray-700 transition-colors">Send Message</button>
+                            <button type="submit" class="w-full rounded-full bg-[#CC5500] px-6 py-3 font-semibold text-white transition-colors hover:bg-[#A64500]">Send Message</button>
                         </div>
                     </form>
                     <div class="space-y-6">
-                        <div class="bg-gray-50 p-6 rounded-lg space-y-3">
-                            <h3 class="text-xl font-semibold" data-cms-text="contact.infoHeading">Our Information</h3>
-                            <p class="text-gray-600" data-cms-text="contact.email"><strong>Email:</strong><br> info@prdevelopmentgroup.com</p>
-                            <p class="text-gray-600" data-cms-text="contact.address"><strong>Address:</strong><br> 6870 S. Rainbow, Las Vegas, NV, 89118</p>
-                            <p class="text-gray-600" data-cms-text="contact.hours"><strong>Hours:</strong><br> Monday – Friday: 9:00 am – 5:00 pm</p>
+                        <div class="space-y-3 rounded-lg bg-[#ECECEC] p-6">
+                            <h3 class="text-xl font-semibold text-[#36454F]" data-cms-text="contact.infoHeading">Our Information</h3>
+                            <p class="text-[#49545B]" data-cms-text="contact.email"><strong>Email:</strong><br> info@prdevelopmentgroup.com</p>
+                            <p class="text-[#49545B]" data-cms-text="contact.address"><strong>Address:</strong><br> 6870 S. Rainbow, Las Vegas, NV, 89118</p>
+                            <p class="text-[#49545B]" data-cms-text="contact.hours"><strong>Hours:</strong><br> Monday – Friday: 9:00 am – 5:00 pm</p>
                         </div>
-                        <div class="bg-gray-200 h-64 rounded-lg flex items-center justify-center text-gray-500" data-cms-map="contact.mapEmbed">
-                            <p>Map Placeholder</p>
+                        <div class="h-64 overflow-hidden rounded-lg shadow-lg" data-cms-map="contact.mapEmbed">
+                            <iframe
+                                title="Platinum Development Location"
+                                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3356.2804815565876!2d-115.20880982373752!3d36.066100808790935!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x80c8c7ad99bd7455%3A0xf0ae9ed474468e84!2s6870%20S%20Rainbow%20Blvd%2C%20Las%20Vegas%2C%20NV%2089118!5e0!3m2!1sen!2sus!4v1712782820000!5m2!1sen!2sus"
+                                width="100%"
+                                height="100%"
+                                style="border:0"
+                                allowfullscreen=""
+                                loading="lazy"
+                                referrerpolicy="no-referrer-when-downgrade"></iframe>
                         </div>
                     </div>
                 </div>
@@ -197,71 +662,68 @@
         </section>
     </main>
 
-    <footer class="bg-gray-800 text-white">
-        <div class="container mx-auto px-6 py-8">
-            <div class="sm:flex sm:justify-between text-center sm:text-left">
-                <div>
-                    <h3 class="text-lg font-bold" data-cms-text="footer.companyName">Platinum Development</h3>
-                    <p class="text-gray-400 mt-2" data-cms-text="footer.copyright">© 2025 Platinum Development. All Rights Reserved.</p>
-                    <p class="text-gray-400 mt-1" data-cms-text="footer.credits">Website by Saguaro Interactive</p>
+    <footer class="bg-[#ECECEC] text-[#36454F]">
+        <div class="mx-auto max-w-6xl px-6 py-16">
+            <div class="grid gap-12 md:grid-cols-[auto_1fr_1fr] items-start">
+                <div class="flex flex-col items-center md:items-start">
+                    <img src="nick-removebg-preview.png" alt="Platinum Development logo" class="h-12 w-auto">
                 </div>
-                <div class="mt-6 sm:mt-0" data-cms-footer-nav>
-                    <h4 class="font-semibold">Quick Links</h4>
-                    <ul class="mt-2 space-y-1">
-                        <li><a href="#home" class="text-gray-400 hover:text-white">Home</a></li>
-                        <li><a href="#portfolio" class="text-gray-400 hover:text-white">Portfolio</a></li>
-                        <li><a href="#investors" class="text-gray-400 hover:text-white">Investors</a></li>
-                    </ul>
+                <div class="space-y-2 text-center md:text-left">
+                    <h4 class="text-lg font-semibold tracking-wide uppercase">Hours</h4>
+                    <p class="text-base text-[#49545B]" data-footer-hours>Monday – Friday: 9:00 am – 5:00 pm</p>
                 </div>
+                <div class="space-y-2 text-center md:text-left">
+                    <h4 class="text-lg font-semibold tracking-wide uppercase">Contact</h4>
+                    <a href="mailto:info@prdevelopmentgroup.com" class="block text-base text-[#49545B] transition-colors hover:text-[#CC5500]" data-footer-email>info@prdevelopmentgroup.com</a>
+                    <p class="text-base text-[#49545B]" data-footer-address>6870 S. Rainbow, Las Vegas, NV, 89118</p>
+                </div>
+            </div>
+            <div class="mt-14 flex flex-col items-center space-y-2 text-sm text-[#49545B]">
+                <p data-cms-text="footer.copyright">© 2025 Platinum Development. All Rights Reserved.</p>
+                <a href="https://saguarointeractive.com" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1 font-medium transition-colors hover:text-[#CC5500]" data-cms-text="footer.credits">Website by Saguaro Interactive</a>
             </div>
         </div>
     </footer>
 
-    <template id="portfolio-card-template">
-        <div class="bg-white rounded-lg shadow-lg overflow-hidden transform hover:-translate-y-2 transition-transform duration-300 fade-in-section">
-            <img data-role="image" src="" alt="" class="w-full h-56 object-cover" loading="lazy">
-            <div class="p-6 space-y-4">
-                <div class="flex flex-wrap items-center gap-2 text-sm text-gray-500" data-role="meta"></div>
-                <h3 class="text-xl font-semibold" data-role="title"></h3>
-                <p class="text-gray-600" data-role="summary"></p>
-                <dl class="grid grid-cols-1 gap-3" data-role="metrics"></dl>
-            </div>
-        </div>
-    </template>
-
-    <template id="partner-badge-template">
-        <div class="h-12 text-gray-500 font-semibold text-2xl flex items-center justify-center"></div>
-    </template>
-
     <template id="highlight-card-template">
-        <div class="bg-gray-50 border border-gray-100 rounded-xl p-6 shadow-sm space-y-3">
-            <h3 class="text-xl font-semibold text-gray-900" data-role="title"></h3>
-            <p class="text-gray-600" data-role="description"></p>
+        <div class="rounded-xl border border-[#D3D3D3] bg-white p-6 shadow-sm space-y-3">
+            <h3 class="text-xl font-semibold text-[#36454F]" data-role="title"></h3>
+            <p class="text-[#49545B]" data-role="description"></p>
         </div>
     </template>
 
     <template id="stat-card-template">
         <div class="bg-white rounded-xl shadow-sm p-6 text-center">
-            <dt class="text-3xl font-bold text-gray-900" data-role="value"></dt>
-            <dd class="mt-2 text-sm uppercase tracking-wide text-gray-500" data-role="label"></dd>
+            <dt class="text-3xl font-bold text-[#36454F]" data-role="value"></dt>
+            <dd class="mt-2 text-sm uppercase tracking-wide text-[#49545B]/70" data-role="label"></dd>
         </div>
     </template>
 
     <script>
         const menuBtn = document.getElementById('menu-btn');
         const mobileMenu = document.getElementById('mobile-menu');
-        menuBtn.addEventListener('click', () => {
-            menuBtn.classList.toggle('hamburger-active');
-            mobileMenu.classList.toggle('hidden');
-        });
 
-        const mobileLinks = document.querySelectorAll('#mobile-menu a');
-        mobileLinks.forEach(link => {
-            link.addEventListener('click', () => {
-                menuBtn.classList.remove('hamburger-active');
-                mobileMenu.classList.add('hidden');
+        if (menuBtn && mobileMenu) {
+            menuBtn.addEventListener('click', () => {
+                const isExpanded = menuBtn.getAttribute('aria-expanded') === 'true';
+                menuBtn.setAttribute('aria-expanded', String(!isExpanded));
+                mobileMenu.classList.toggle('hidden');
             });
-        });
+        }
+
+        const header = document.getElementById('header');
+        const floatingThreshold = 20;
+        const updateHeaderState = () => {
+            if (!header) return;
+            if (window.scrollY > floatingThreshold) {
+                header.classList.add('header-floating');
+            } else {
+                header.classList.remove('header-floating');
+            }
+        };
+
+        updateHeaderState();
+        window.addEventListener('scroll', updateHeaderState, { passive: true });
 
         const sections = document.querySelectorAll('.fade-in-section');
         const observer = new IntersectionObserver((entries) => {
@@ -281,6 +743,14 @@
 
     <script>
         const DATA_SOURCE_URL = './content/site.json';
+        const LOGO_FILES = [
+            'logos/BJs.png',
+            'logos/Einstein.png',
+            'logos/big5.png',
+            'logos/cox.png',
+            'logos/massageenvy.png',
+            'logos/moneytree.png'
+        ];
 
         function setText(key, value) {
             if (typeof value !== 'string' || !value.trim()) {
@@ -355,29 +825,29 @@
             const primaryIndex = links.findIndex((link) => link?.isPrimary);
             const fallbackPrimaryIndex = primaryIndex >= 0 ? primaryIndex : links.length - 1;
 
-            const render = (container, isDesktop) => {
-                if (!container) return;
-                container.innerHTML = '';
-                links.forEach(({label, href, isPrimary}, index) => {
-                    if (!label) return;
-                    const linkHref = href || '#';
-                    const a = document.createElement('a');
-                    a.textContent = label;
-                    a.href = linkHref;
-                    if (isDesktop) {
-                        a.className = 'text-gray-600 hover:text-gray-900 transition-colors';
-                        if (isPrimary || index === fallbackPrimaryIndex) {
-                            a.className = 'bg-gray-800 text-white py-2 px-4 rounded-lg hover:bg-gray-700 transition-colors';
-                        }
-                    } else {
-                        a.className = 'block py-2 px-6 text-sm hover:bg-gray-100';
-                        if (isPrimary || index === fallbackPrimaryIndex) {
-                            a.classList.add('font-semibold');
-                        }
-                        a.addEventListener('click', () => {
-                            if (menuButton && mobileMenuElement) {
-                                menuButton.classList.remove('hamburger-active');
-                                mobileMenuElement.classList.add('hidden');
+        const render = (container, isDesktop) => {
+            if (!container) return;
+            container.innerHTML = '';
+            links.forEach(({label, href, isPrimary}, index) => {
+                if (!label) return;
+                const linkHref = href || '#';
+                const a = document.createElement('a');
+                a.textContent = label;
+                a.href = linkHref;
+                if (isDesktop) {
+                    a.className = 'text-sm font-medium text-[#36454F]/80 transition-colors hover:text-[#36454F]';
+                    if (isPrimary || index === fallbackPrimaryIndex) {
+                        a.className = 'inline-flex items-center rounded-full bg-[#CC5500] px-4 py-2 text-sm font-semibold text-white shadow-sm transition-colors hover:bg-[#A64500]';
+                    }
+                } else {
+                    a.className = 'block rounded-md px-4 py-2 text-base font-medium text-[#36454F] transition-colors hover:bg-[#ECECEC]';
+                    if (isPrimary || index === fallbackPrimaryIndex) {
+                        a.classList.add('bg-[#CC5500]', 'text-white');
+                    }
+                    a.addEventListener('click', () => {
+                        if (menuButton && mobileMenuElement) {
+                            menuButton.setAttribute('aria-expanded', 'false');
+                            mobileMenuElement.classList.add('hidden');
                             }
                         });
                     }
@@ -396,7 +866,7 @@
                     const a = document.createElement('a');
                     a.textContent = label;
                     a.href = href || '#';
-                    a.className = 'text-gray-400 hover:text-white';
+                    a.className = 'text-[#36454F]/80 hover:text-[#36454F]';
                     li.appendChild(a);
                     footer.appendChild(li);
                 });
@@ -409,84 +879,8 @@
             return spaced.charAt(0).toUpperCase() + spaced.slice(1);
         }
 
-        function renderProjects(projects) {
-            const grid = document.querySelector('[data-cms-collection="projects"]');
-            if (!grid) {
-                return;
-            }
-            const template = document.getElementById('portfolio-card-template');
-            if (!template) {
-                return;
-            }
-            grid.innerHTML = '';
-            if (!Array.isArray(projects) || !projects.length) {
-                const placeholder = document.createElement('div');
-                placeholder.className = 'col-span-full text-center text-gray-500 py-10';
-                placeholder.textContent = 'Projects are coming soon. Add them in the CMS to feature your work.';
-                grid.appendChild(placeholder);
-                return;
-            }
-            projects.forEach((project, index) => {
-                const clone = template.content.firstElementChild.cloneNode(true);
-                const image = clone.querySelector('[data-role="image"]');
-                if (image && project.image) {
-                    image.src = project.image;
-                    image.alt = project.imageAlt || project.title || 'Project image';
-                }
-                const meta = clone.querySelector('[data-role="meta"]');
-                if (meta) {
-                    meta.innerHTML = '';
-                    if (project.propertyType) {
-                        const span = document.createElement('span');
-                        span.textContent = formatLabel(project.propertyType);
-                        meta.appendChild(span);
-                    }
-                    if (project.status) {
-                        const status = document.createElement('span');
-                        status.textContent = formatLabel(project.status);
-                        status.className = 'px-2 py-0.5 rounded-full bg-gray-100 text-gray-700 text-xs font-semibold';
-                        meta.appendChild(status);
-                    }
-                    if (!meta.childElementCount) {
-                        meta.remove();
-                    }
-                }
-                const title = clone.querySelector('[data-role="title"]');
-                if (title) {
-                    title.textContent = project.title || '';
-                }
-                const summary = clone.querySelector('[data-role="summary"]');
-                if (summary) {
-                    summary.textContent = project.summary || '';
-                }
-                const metrics = clone.querySelector('[data-role="metrics"]');
-                if (metrics) {
-                    metrics.innerHTML = '';
-                    if (Array.isArray(project.metrics) && project.metrics.length) {
-                        project.metrics.forEach((metric) => {
-                            if (!metric?.label || !metric?.value) {
-                                return;
-                            }
-                            const wrapper = document.createElement('div');
-                            wrapper.className = 'flex flex-col sm:flex-row sm:items-baseline sm:justify-between gap-1';
-                            const value = document.createElement('span');
-                            value.className = 'text-lg font-semibold text-gray-900';
-                            value.textContent = metric.value;
-                            const label = document.createElement('span');
-                            label.className = 'text-sm text-gray-500';
-                            label.textContent = metric.label;
-                            wrapper.appendChild(value);
-                            wrapper.appendChild(label);
-                            metrics.appendChild(wrapper);
-                        });
-                    }
-                    if (!metrics.childElementCount) {
-                        metrics.remove();
-                    }
-                }
-                clone.style.transitionDelay = `${index * 100}ms`;
-                grid.appendChild(clone);
-            });
+        function renderProjects() {
+            // Portfolio showcase is curated directly in the markup above.
         }
 
         function renderHighlights(highlights) {
@@ -559,39 +953,77 @@
             }
         }
 
-        function renderPartners(partners) {
-            const container = document.querySelector('[data-cms-collection="partners.items"]');
-            if (!container) {
+        function formatLogoAlt(path) {
+            const fileName = path.split('/').pop().split('.')[0] || '';
+            return fileName
+                .replace(/[-_]/g, ' ')
+                .replace(/\b\w/g, (char) => char.toUpperCase());
+        }
+
+        function renderPartners() {
+            const track = document.getElementById('logo-track');
+            if (!track || !Array.isArray(LOGO_FILES) || !LOGO_FILES.length) {
                 return;
             }
-            const template = document.getElementById('partner-badge-template');
-            container.innerHTML = '';
-            if (!template) {
-                return;
-            }
-            if (!Array.isArray(partners) || !partners.length) {
-                const placeholder = document.createElement('div');
-                placeholder.className = 'text-gray-400 text-base';
-                placeholder.textContent = 'Add partner logos in the CMS to showcase your tenants.';
-                container.appendChild(placeholder);
-                return;
-            }
-            partners.forEach((partner) => {
-                if (!partner || !partner.name) return;
-                const clone = template.content.firstElementChild.cloneNode(true);
-                if (partner.logo) {
-                    clone.innerHTML = '';
-                    const img = document.createElement('img');
-                    img.src = partner.logo;
-                    img.alt = partner.name;
-                    img.className = 'max-h-12';
-                    clone.appendChild(img);
-                } else {
-                    clone.textContent = partner.name;
+
+            track.innerHTML = '';
+            const sources = [...LOGO_FILES, ...LOGO_FILES];
+            sources.forEach((src) => {
+                const img = document.createElement('img');
+                img.src = src;
+                img.alt = formatLogoAlt(src);
+                img.loading = 'lazy';
+                track.appendChild(img);
+            });
+
+            const duration = Math.max(LOGO_FILES.length * 4, 20);
+            track.style.animationDuration = `${duration}s`;
+        }
+
+        renderPartners();
+
+        function initCarousels() {
+            document.querySelectorAll('[data-carousel]').forEach((carousel) => {
+                const track = carousel.querySelector('[data-carousel-track]');
+                if (!track) {
+                    return;
                 }
-                container.appendChild(clone);
+                const prevBtn = carousel.querySelector('[data-carousel-prev]');
+                const nextBtn = carousel.querySelector('[data-carousel-next]');
+
+                const getScrollAmount = () => {
+                    const card = track.querySelector('.portfolio-card');
+                    return card ? card.offsetWidth + 24 : track.clientWidth;
+                };
+
+                const updateButtons = () => {
+                    const maxScroll = track.scrollWidth - track.clientWidth;
+                    if (prevBtn) {
+                        prevBtn.disabled = track.scrollLeft <= 12;
+                    }
+                    if (nextBtn) {
+                        nextBtn.disabled = track.scrollLeft >= maxScroll - 12;
+                    }
+                };
+
+                if (prevBtn) {
+                    prevBtn.addEventListener('click', () => {
+                        track.scrollBy({ left: -getScrollAmount(), behavior: 'smooth' });
+                    });
+                }
+
+                if (nextBtn) {
+                    nextBtn.addEventListener('click', () => {
+                        track.scrollBy({ left: getScrollAmount(), behavior: 'smooth' });
+                    });
+                }
+
+                track.addEventListener('scroll', () => requestAnimationFrame(updateButtons));
+                updateButtons();
             });
         }
+
+        initCarousels();
 
         function renderContactInfo(contact) {
             if (!contact) {
@@ -603,17 +1035,30 @@
                 if (emailEl) {
                     emailEl.innerHTML = `<strong>Email:</strong><br>${contact.email}`;
                 }
+                const footerEmailEl = document.querySelector('[data-footer-email]');
+                if (footerEmailEl) {
+                    footerEmailEl.textContent = contact.email;
+                    footerEmailEl.setAttribute('href', `mailto:${contact.email}`);
+                }
             }
             if (contact.address) {
                 const addressEl = document.querySelector('[data-cms-text="contact.address"]');
                 if (addressEl) {
                     addressEl.innerHTML = `<strong>Address:</strong><br>${contact.address}`;
                 }
+                const footerAddressEl = document.querySelector('[data-footer-address]');
+                if (footerAddressEl) {
+                    footerAddressEl.textContent = contact.address;
+                }
             }
             if (contact.hours) {
                 const hoursEl = document.querySelector('[data-cms-text="contact.hours"]');
                 if (hoursEl) {
                     hoursEl.innerHTML = `<strong>Hours:</strong><br>${contact.hours}`;
+                }
+                const footerHoursEl = document.querySelector('[data-footer-hours]');
+                if (footerHoursEl) {
+                    footerHoursEl.textContent = contact.hours;
                 }
             }
             if (contact.mapEmbed) {
@@ -645,7 +1090,7 @@
             const about = site.about || {};
             setImage('about.image', about.image, about.imageAlt || about.heading);
             setText('about.heading', about.heading);
-            setParagraphs('about.body', about.body, 'text-gray-600');
+            setParagraphs('about.body', about.body, 'text-[#4A5D68]');
             renderHighlights(about.highlights);
             renderStats(about.stats);
 
@@ -656,11 +1101,11 @@
             const partners = site.partners || {};
             setText('partners.heading', partners.heading);
             setText('partners.subheading', partners.subheading);
-            renderPartners(partners.items);
+            renderPartners();
 
             const investor = site.investor || {};
             setText('investor.heading', investor.heading);
-            setParagraphs('investor.body', investor.body, 'text-gray-300');
+            setParagraphs('investor.body', investor.body, 'text-[#49545B]');
             setText('investor.ctaLabel', investor.ctaLabel);
             setAttr('investor.ctaHref', 'href', investor.ctaHref);
 
