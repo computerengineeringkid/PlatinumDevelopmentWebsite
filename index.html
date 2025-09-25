@@ -198,6 +198,14 @@
                 scroll-padding-left: var(--carousel-side-padding);
                 scroll-padding-right: var(--carousel-side-padding);
             }
+            .portfolio-carousel__track::before,
+            .portfolio-carousel__track::after {
+                content: none;
+                flex: 0 0 auto;
+            }
+            .portfolio-card {
+                scroll-snap-align: center;
+            }
         }
         .carousel-button {
             display: inline-flex;
