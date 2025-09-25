@@ -184,6 +184,21 @@
         .portfolio-carousel__track::-webkit-scrollbar {
             display: none;
         }
+        .portfolio-carousel__track::before,
+        .portfolio-carousel__track::after {
+            content: '';
+            flex: 0 0 var(--carousel-side-padding, 0px);
+        }
+        @media (max-width: 640px) {
+            .portfolio-carousel__track {
+                --carousel-card-min-width: 280px;
+                --carousel-side-padding: max(1.5rem, calc((100vw - var(--carousel-card-min-width)) / 2));
+                padding-left: var(--carousel-side-padding);
+                padding-right: var(--carousel-side-padding);
+                scroll-padding-left: var(--carousel-side-padding);
+                scroll-padding-right: var(--carousel-side-padding);
+            }
+        }
         .carousel-button {
             display: inline-flex;
             align-items: center;
