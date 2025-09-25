@@ -33,9 +33,9 @@
             margin-right: auto;
             width: calc(100% - 2rem);
             max-width: 72rem;
-            border-color: rgba(54, 69, 79, 0.25);
-            box-shadow: 0 20px 45px -20px rgba(54, 69, 79, 0.35);
-            background-color: rgba(236, 236, 236, 0.97);
+            border-color: rgba(0, 31, 63, 0.18);
+            box-shadow: 0 24px 55px -28px rgba(0, 31, 63, 0.35);
+            background-color: rgba(255, 255, 255, 0.98);
         }
         #header nav {
             transition: padding 0.3s ease, gap 0.3s ease;
@@ -85,9 +85,9 @@
             position: relative;
             overflow: hidden;
             border-radius: 1rem;
-            background: #fff;
-            box-shadow: 0 15px 40px -20px rgba(36, 44, 54, 0.45);
-            border: 1px solid rgba(54, 69, 79, 0.08);
+            background: #FFFFFF;
+            box-shadow: 0 20px 45px -28px rgba(0, 31, 63, 0.16);
+            border: 1px solid rgba(0, 31, 63, 0.08);
             transition: transform 0.3s ease;
         }
         .portfolio-card:hover {
@@ -113,34 +113,36 @@
             top: 1rem;
             padding: 0.5rem 1rem;
             border-radius: 9999px;
-            background: rgba(255, 255, 255, 0.92);
+            background: rgba(255, 102, 0, 0.9);
             font-size: 0.7rem;
             font-weight: 600;
             letter-spacing: 0.08em;
             text-transform: uppercase;
-            color: #36454F;
+            color: #FFFFFF;
         }
         .portfolio-card__body {
             padding: 1.75rem;
             display: flex;
             flex-direction: column;
             gap: 1rem;
+            height: 100%;
         }
         .portfolio-card__meta {
             display: flex;
             justify-content: space-between;
             gap: 0.75rem;
             font-size: 0.95rem;
-            color: #49545B;
+            color: #333333;
+            flex-wrap: wrap;
         }
         .portfolio-card__title {
             font-size: 1.2rem;
             font-weight: 600;
-            color: #36454F;
+            color: #001F3F;
         }
         .portfolio-card__copy {
             font-size: 0.98rem;
-            color: #49545B;
+            color: #333333;
             line-height: 1.55;
         }
         .portfolio-card__status {
@@ -150,13 +152,18 @@
             font-size: 0.72rem;
             letter-spacing: 0.12em;
             text-transform: uppercase;
-            color: rgba(73, 84, 91, 0.8);
+            color: rgba(0, 31, 63, 0.75);
+            margin-top: auto;
+            padding-top: 1.25rem;
+            border-top: 1px solid rgba(0, 31, 63, 0.08);
+            width: 100%;
+            justify-content: center;
         }
         .portfolio-card__dot {
             width: 0.45rem;
             height: 0.45rem;
             border-radius: 9999px;
-            background: rgba(73, 84, 91, 0.4);
+            background: #FF6600;
         }
         .portfolio-card__metrics {
             display: flex;
@@ -170,13 +177,13 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            background: linear-gradient(135deg, #E1E1E1, #F7F7F7);
+            background: linear-gradient(135deg, #FFEDD5, #F5F5F5);
         }
         .portfolio-card__media-text {
             font-size: 0.8rem;
             letter-spacing: 0.12em;
             text-transform: uppercase;
-            color: #36454F;
+            color: #001F3F;
         }
         .portfolio-carousel__track {
             scrollbar-width: none;
@@ -214,22 +221,22 @@
             width: 2.5rem;
             height: 2.5rem;
             border-radius: 9999px;
-            border: 1px solid rgba(54, 69, 79, 0.2);
-            background: #ffffff;
-            color: #36454F;
+            border: 1px solid rgba(0, 31, 63, 0.15);
+            background: #FFFFFF;
+            color: #001F3F;
             transition: all 0.2s ease;
         }
         .carousel-button:hover {
-            background: #CC5500;
-            color: #ffffff;
-            border-color: #CC5500;
+            background: #D4AF37;
+            color: #001F3F;
+            border-color: #D4AF37;
         }
         .carousel-button[disabled] {
             opacity: 0.35;
             cursor: not-allowed;
-            background: #ffffff;
-            color: #36454F;
-            border-color: rgba(54, 69, 79, 0.1);
+            background: #FFFFFF;
+            color: rgba(0, 31, 63, 0.4);
+            border-color: rgba(0, 31, 63, 0.08);
         }
         @media (max-width: 1024px) {
             .portfolio-card__media {
@@ -304,23 +311,23 @@
         }
     </style>
 </head>
-<body class="bg-[#ECECEC] text-[#36454F]">
+<body class="bg-[#F5F5F5] text-[#333333]">
 
-    <header id="header" class="sticky top-0 z-50 border border-[#36454F]/10 bg-[#ECECEC]/95 shadow-lg backdrop-blur transition-all duration-300">
+    <header id="header" class="sticky top-0 z-50 border border-[#001F3F]/10 bg-white/95 shadow-lg backdrop-blur transition-all duration-300">
         <nav class="mx-auto flex max-w-6xl flex-wrap items-center justify-between gap-4 px-5 py-6 md:px-8">
             <a href="#home" class="flex items-center gap-3">
                 <img src="nick-removebg-preview.png" alt="Platinum Development logo" class="h-10 w-auto">
                 <span class="sr-only" data-cms-text="companyName">Platinum Development</span>
             </a>
             <div class="hidden flex-1 items-center justify-end gap-6 text-sm font-medium md:flex" data-cms-nav="desktop">
-                <a href="#home" class="text-[#36454F]/80 transition-colors hover:text-[#36454F]">Home</a>
-                <a href="#about" class="text-[#36454F]/80 transition-colors hover:text-[#36454F]">About</a>
-                <a href="#portfolio" class="text-[#36454F]/80 transition-colors hover:text-[#36454F]">Portfolio</a>
-                <a href="#investors" class="text-[#36454F]/80 transition-colors hover:text-[#36454F]">Investors</a>
-                <a href="#contact" class="inline-flex items-center rounded-full bg-[#CC5500] px-4 py-2 text-white shadow-sm transition-colors hover:bg-[#A64500]">Contact</a>
+                <a href="#home" class="text-[#001F3F] transition-colors hover:text-[#FF6600]">Home</a>
+                <a href="#about" class="text-[#001F3F] transition-colors hover:text-[#FF6600]">About</a>
+                <a href="#portfolio" class="text-[#001F3F] transition-colors hover:text-[#FF6600]">Portfolio</a>
+                <a href="#investors" class="text-[#001F3F] transition-colors hover:text-[#FF6600]">Investors</a>
+                <a href="#contact" class="inline-flex items-center rounded-full bg-[#D4AF37] px-4 py-2 text-[#001F3F] shadow-sm transition-colors hover:bg-[#b89027]">Contact</a>
             </div>
             <div class="flex items-center md:hidden">
-                <button id="menu-btn" type="button" class="inline-flex items-center justify-center rounded-lg p-2 text-[#36454F] hover:bg-[#CC5500]/10 focus:outline-none focus:ring-2 focus:ring-[#CC5500] focus:ring-offset-2 focus:ring-offset-[#ECECEC]" aria-controls="mobile-menu" aria-expanded="false">
+                <button id="menu-btn" type="button" class="inline-flex items-center justify-center rounded-lg p-2 text-[#001F3F] hover:bg-[#001F3F]/10 focus:outline-none focus:ring-2 focus:ring-[#D4AF37] focus:ring-offset-2 focus:ring-offset-white" aria-controls="mobile-menu" aria-expanded="false">
                     <span class="sr-only">Toggle main menu</span>
                     <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
                         <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 5.25h16.5M3.75 12h16.5m-16.5 6.75h16.5" />
@@ -328,12 +335,12 @@
                 </button>
             </div>
             <div id="mobile-menu" class="hidden w-full md:hidden">
-                <div class="mt-2 space-y-2 rounded-lg border border-[#CECECE] bg-white/95 p-3 shadow-lg backdrop-blur" data-cms-nav="mobile">
-                    <a href="#home" class="block rounded-md px-4 py-2 text-base font-medium text-[#36454F] transition-colors hover:bg-[#ECECEC]">Home</a>
-                    <a href="#about" class="block rounded-md px-4 py-2 text-base font-medium text-[#36454F] transition-colors hover:bg-[#ECECEC]">About</a>
-                    <a href="#portfolio" class="block rounded-md px-4 py-2 text-base font-medium text-[#36454F] transition-colors hover:bg-[#ECECEC]">Portfolio</a>
-                    <a href="#investors" class="block rounded-md px-4 py-2 text-base font-medium text-[#36454F] transition-colors hover:bg-[#ECECEC]">Investors</a>
-                    <a href="#contact" class="block rounded-md bg-[#CC5500] px-4 py-2 text-base font-semibold text-white transition-colors hover:bg-[#A64500]">Contact</a>
+                <div class="mt-2 space-y-2 rounded-lg border border-[#001F3F]/10 bg-white p-3 shadow-lg backdrop-blur" data-cms-nav="mobile">
+                    <a href="#home" class="block rounded-md px-4 py-2 text-base font-medium text-[#001F3F] transition-colors hover:bg-[#001F3F]/10">Home</a>
+                    <a href="#about" class="block rounded-md px-4 py-2 text-base font-medium text-[#001F3F] transition-colors hover:bg-[#001F3F]/10">About</a>
+                    <a href="#portfolio" class="block rounded-md px-4 py-2 text-base font-medium text-[#001F3F] transition-colors hover:bg-[#001F3F]/10">Portfolio</a>
+                    <a href="#investors" class="block rounded-md px-4 py-2 text-base font-medium text-[#001F3F] transition-colors hover:bg-[#001F3F]/10">Investors</a>
+                    <a href="#contact" class="block rounded-md bg-[#D4AF37] px-4 py-2 text-base font-semibold text-[#001F3F] transition-colors hover:bg-[#b89027]">Contact</a>
                 </div>
             </div>
         </nav>
@@ -345,8 +352,8 @@
                 <h1 class="text-4xl md:text-6xl font-bold leading-tight mb-4 text-white" data-cms-text="hero.headline">Redefining the Las Vegas Landscape.</h1>
                 <p class="text-lg md:text-xl text-gray-200 mb-8 max-w-3xl mx-auto" data-cms-text="hero.subheadline">Developing premier retail, multifamily, and single-family properties with excellence and integrity.</p>
                 <div class="flex flex-col items-center gap-4 sm:flex-row sm:justify-center">
-                    <a href="#portfolio" class="bg-[#CC5500] text-white font-semibold py-3 px-8 rounded-full text-lg shadow-lg transition-transform transform hover:scale-105 hover:bg-[#A64500]" data-cms-text="hero.ctaLabel" data-cms-attr-href="hero.ctaHref">Explore Projects</a>
-                    <a href="#contact" class="bg-[#CC5500] text-white font-semibold py-3 px-8 rounded-full text-lg shadow-lg transition-transform transform hover:scale-105 hover:bg-[#A64500]">Contact Us</a>
+                    <a href="#portfolio" class="bg-[#D4AF37] text-[#001F3F] font-semibold py-3 px-8 rounded-full text-lg shadow-lg transition-transform transform hover:scale-105 hover:bg-[#b89027]" data-cms-text="hero.ctaLabel" data-cms-attr-href="hero.ctaHref">Explore Projects</a>
+                    <a href="#contact" class="bg-[#D4AF37] text-[#001F3F] font-semibold py-3 px-8 rounded-full text-lg shadow-lg transition-transform transform hover:scale-105 hover:bg-[#b89027]">Contact Us</a>
                 </div>
             </div>
         </section>
@@ -358,34 +365,46 @@
                         <img src="https://placehold.co/600x400/EFEFEF/333?text=Modern+Construction" alt="Construction Site" class="rounded-lg shadow-xl w-full" data-cms-image="about.image">
                     </div>
                     <div>
-                        <h2 class="text-3xl font-bold mb-4 text-[#36454F]" data-cms-text="about.heading">Building Communities, Creating Value.</h2>
-                        <div class="space-y-4" data-cms-paragraphs="about.body" data-cms-paragraph-class="text-[#4A5D68]">
-                            <p class="text-[#4A5D68]">We are Platinum Development, a premier developer and operator of high-quality retail, multifamily, and single-family projects. Through our robust services and commitment to excellence, we ensure the creation of the best properties for our local communities.</p>
-                            <p class="text-[#4A5D68]">Our expertise in the Las Vegas market allows us to identify unique opportunities and deliver exceptional returns for our partners and investors.</p>
+                        <h2 class="text-3xl font-bold mb-4 text-[#001F3F]" data-cms-text="about.heading">Building Communities, Creating Value.</h2>
+                        <div class="space-y-4" data-cms-paragraphs="about.body" data-cms-paragraph-class="text-[#333333]">
+                            <p class="text-[#333333]">We are Platinum Development, a premier developer and operator of high-quality retail, multifamily, and single-family projects. Through our robust services and commitment to excellence, we ensure the creation of the best properties for our local communities.</p>
+                            <p class="text-[#333333]">Our expertise in the Las Vegas market allows us to identify unique opportunities and deliver exceptional returns for our partners and investors.</p>
                         </div>
                         <div class="mt-10 grid sm:grid-cols-2 gap-6 hidden fade-in-section" data-cms-collection="about.highlights">
                         </div>
                     </div>
                 </div>
-                <div class="mt-16 grid grid-cols-2 sm:grid-cols-4 gap-6 fade-in-section hidden" data-cms-collection="about.stats">
+                <div class="mt-16 grid gap-6 fade-in-section sm:grid-cols-3">
+                    <article class="rounded-xl border border-[#E0E0E0] bg-white p-6 shadow-sm">
+                        <h3 class="text-lg font-semibold text-[#001F3F]">Community-Centered Design</h3>
+                        <p class="mt-3 text-sm text-[#333333]">We collaborate with local partners to ensure every project strengthens the neighborhood it serves.</p>
+                    </article>
+                    <article class="rounded-xl border border-[#E0E0E0] bg-white p-6 shadow-sm">
+                        <h3 class="text-lg font-semibold text-[#001F3F]">Balanced Portfolio</h3>
+                        <p class="mt-3 text-sm text-[#333333]">Retail, multifamily, and single-family developments are curated to deliver lasting value for residents and tenants.</p>
+                    </article>
+                    <article class="rounded-xl border border-[#E0E0E0] bg-white p-6 shadow-sm">
+                        <h3 class="text-lg font-semibold text-[#001F3F]">Hands-On Stewardship</h3>
+                        <p class="mt-3 text-sm text-[#333333]">From acquisition through operations, our team stays engaged to maintain quality and performance.</p>
+                    </article>
                 </div>
             </div>
         </section>
 
-        <section id="portfolio" class="py-20 bg-[#ECECEC]">
+        <section id="portfolio" class="py-20 bg-[#F5F5F5]">
             <div class="container mx-auto px-6">
                 <div class="text-center mb-12 fade-in-section">
-                    <h2 class="text-3xl font-bold text-[#36454F]" data-cms-text="portfolio.heading">Our Portfolio</h2>
-                    <p class="mt-2 text-[#49545B]" data-cms-text="portfolio.subheading">A selection of our completed and upcoming projects.</p>
+                    <h2 class="text-3xl font-bold text-[#001F3F]" data-cms-text="portfolio.heading">Our Portfolio</h2>
+                    <p class="mt-2 text-[#333333]" data-cms-text="portfolio.subheading">A selection of our completed and upcoming projects.</p>
                 </div>
 
                 <div class="space-y-16">
                     <div class="space-y-8" data-carousel="retail">
                         <div class="flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
                             <div class="text-left">
-                                <p class="text-xs font-semibold uppercase tracking-[0.3em] text-[#CC5500]">Retail Portfolio</p>
-                                <h3 class="text-2xl font-semibold text-[#36454F]">Retail Properties</h3>
-                                <p class="mt-2 max-w-2xl text-sm text-[#49545B]">High-performing centers anchored by national brands across the Las Vegas valley.</p>
+                                <p class="text-xs font-semibold uppercase tracking-[0.3em] text-[#FF6600]">Retail Portfolio</p>
+                                <h3 class="text-2xl font-semibold text-[#001F3F]">Retail Properties</h3>
+                                <p class="mt-2 max-w-2xl text-sm text-[#333333]">High-performing centers anchored by national brands across the Las Vegas valley.</p>
                             </div>
                             <div class="flex justify-end gap-2">
                                 <button type="button" class="carousel-button" aria-label="Scroll retail properties left" data-carousel-prev>
@@ -410,14 +429,13 @@
                                     <div class="portfolio-card__body">
                                         <div class="portfolio-card__meta">
                                             <span>Las Vegas, NV</span>
-                                            <span>68,000 sq ft</span>
                                         </div>
                                         <h4 class="portfolio-card__title">6830 S. Rainbow Blvd</h4>
                                         <p class="portfolio-card__copy">High-visibility open-air retail center with national co-tenancy and excellent Rainbow Boulevard frontage.</p>
                                         <div class="portfolio-card__status">
-                                            <span>Completed</span>
+                                            <span>Status: Operating</span>
                                             <span class="portfolio-card__dot"></span>
-                                            <span>Stabilized occupancy</span>
+                                            <span>Focus: Experience Upgrades</span>
                                         </div>
                                     </div>
                                 </article>
@@ -430,14 +448,13 @@
                                     <div class="portfolio-card__body">
                                         <div class="portfolio-card__meta">
                                             <span>Henderson, NV</span>
-                                            <span>82,500 sq ft</span>
                                         </div>
                                         <h4 class="portfolio-card__title">9550 S. Eastern Ave</h4>
                                         <p class="portfolio-card__copy">Regional-serving retail with a balanced mix of soft goods, services, and daily-needs tenants along Eastern Avenue.</p>
                                         <div class="portfolio-card__status">
-                                            <span>Completed</span>
+                                            <span>Status: Operating</span>
                                             <span class="portfolio-card__dot"></span>
-                                            <span>Anchor & inline leasing</span>
+                                            <span>Focus: Tenant Collaboration</span>
                                         </div>
                                     </div>
                                 </article>
@@ -450,14 +467,13 @@
                                     <div class="portfolio-card__body">
                                         <div class="portfolio-card__meta">
                                             <span>Summerlin, NV</span>
-                                            <span>54,200 sq ft</span>
                                         </div>
                                         <h4 class="portfolio-card__title">7175 W. Lake Mead Blvd</h4>
                                         <p class="portfolio-card__copy">Neighbor-serving retail with curated dining, wellness, and boutique offerings steps from the Summerlin trail network.</p>
                                         <div class="portfolio-card__status">
-                                            <span>Completed</span>
+                                            <span>Status: Operating</span>
                                             <span class="portfolio-card__dot"></span>
-                                            <span>Community-focused tenant mix</span>
+                                            <span>Focus: Community Programming</span>
                                         </div>
                                     </div>
                                 </article>
@@ -470,14 +486,13 @@
                                     <div class="portfolio-card__body">
                                         <div class="portfolio-card__meta">
                                             <span>Henderson, NV</span>
-                                            <span>72,000 sq ft</span>
                                         </div>
                                         <h4 class="portfolio-card__title">9400 S. Eastern Ave</h4>
                                         <p class="portfolio-card__copy">Next-generation retail environment with chef-driven dining and lifestyle concepts serving the Eastern Avenue corridor.</p>
                                         <div class="portfolio-card__status">
-                                            <span>In Leasing</span>
+                                            <span>Status: In Planning</span>
                                             <span class="portfolio-card__dot"></span>
-                                            <span>2025 occupancy</span>
+                                            <span>Focus: Leasing Partnerships</span>
                                         </div>
                                     </div>
                                 </article>
@@ -490,14 +505,13 @@
                                     <div class="portfolio-card__body">
                                         <div class="portfolio-card__meta">
                                             <span>Las Vegas, NV</span>
-                                            <span>51,300 sq ft</span>
                                         </div>
                                         <h4 class="portfolio-card__title">8140 S. Rainbow Blvd</h4>
                                         <p class="portfolio-card__copy">Convenience-oriented shops, fitness, and fast casual dining with immediate access to the 215 Beltway.</p>
                                         <div class="portfolio-card__status">
-                                            <span>In Design</span>
+                                            <span>Status: In Planning</span>
                                             <span class="portfolio-card__dot"></span>
-                                            <span>Groundbreaking 2024</span>
+                                            <span>Focus: Community Feedback</span>
                                         </div>
                                     </div>
                                 </article>
@@ -510,14 +524,13 @@
                                     <div class="portfolio-card__body">
                                         <div class="portfolio-card__meta">
                                             <span>Las Vegas, NV</span>
-                                            <span>45,000 sq ft</span>
                                         </div>
                                         <h4 class="portfolio-card__title">4840 W. Spring Mountain Rd</h4>
                                         <p class="portfolio-card__copy">Experiential retail and dining celebrating the vibrant Chinatown corridor along Spring Mountain Road.</p>
                                         <div class="portfolio-card__status">
-                                            <span>Concept</span>
+                                            <span>Status: Concept</span>
                                             <span class="portfolio-card__dot"></span>
-                                            <span>Leasing opportunities available</span>
+                                            <span>Focus: Vision Development</span>
                                         </div>
                                     </div>
                                 </article>
@@ -528,9 +541,9 @@
                     <div class="space-y-8" data-carousel="residential">
                         <div class="flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
                             <div class="text-left">
-                                <p class="text-xs font-semibold uppercase tracking-[0.3em] text-[#36454F]">Residential Portfolio</p>
-                                <h3 class="text-2xl font-semibold text-[#36454F]">Single-Family &amp; Multifamily</h3>
-                                <p class="mt-2 max-w-2xl text-sm text-[#49545B]">Purpose-built rental homes and for-sale communities that elevate neighborhood living.</p>
+                                <p class="text-xs font-semibold uppercase tracking-[0.3em] text-[#FF6600]">Residential Portfolio</p>
+                                <h3 class="text-2xl font-semibold text-[#001F3F]">Single-Family &amp; Multifamily</h3>
+                                <p class="mt-2 max-w-2xl text-sm text-[#333333]">Purpose-built rental homes and for-sale communities that elevate neighborhood living.</p>
                             </div>
                             <div class="flex justify-end gap-2">
                                 <button type="button" class="carousel-button" aria-label="Scroll residential properties left" data-carousel-prev>
@@ -555,14 +568,14 @@
                                     <div class="portfolio-card__body">
                                         <div class="portfolio-card__meta">
                                             <span>Las Vegas, NV</span>
-                                            <span>22 units</span>
+                                            <span>Townhome Collection</span>
                                         </div>
-                                        <h4 class="portfolio-card__title">8-21 Vegas Dr</h4>
-                                        <p class="portfolio-card__copy">Three-story modern townhomes with private garages, rooftop patios, and a clubhouse amenity program.</p>
+                                        <h4 class="portfolio-card__title">8021 Vegas Dr</h4>
+                                        <p class="portfolio-card__copy">A contemporary townhome community featuring private entries, shared amenities, and open-concept living.</p>
                                         <div class="portfolio-card__status">
-                                            <span>Now Leasing</span>
+                                            <span>Status: Operating</span>
                                             <span class="portfolio-card__dot"></span>
-                                            <span>Delivering Q3 2024</span>
+                                            <span>Focus: Resident Experience</span>
                                         </div>
                                     </div>
                                 </article>
@@ -575,14 +588,14 @@
                                     <div class="portfolio-card__body">
                                         <div class="portfolio-card__meta">
                                             <span>Las Vegas, NV</span>
-                                            <span>14 homes</span>
+                                            <span>Residential Enclave</span>
                                         </div>
                                         <h4 class="portfolio-card__title">Lucky Pagoda Ct</h4>
-                                        <p class="portfolio-card__copy">A gated enclave of contemporary single-family residences designed for flexible indoor-outdoor living.</p>
+                                        <p class="portfolio-card__copy">A legacy neighborhood of contemporary homes where we continue to collaborate with current stakeholders on long-term stewardship.</p>
                                         <div class="portfolio-card__status">
-                                            <span>Pre-Sales</span>
+                                            <span>Status: Legacy Community</span>
                                             <span class="portfolio-card__dot"></span>
-                                            <span>First closings 2025</span>
+                                            <span>Focus: Collaborative Stewardship</span>
                                         </div>
                                     </div>
                                 </article>
@@ -595,14 +608,14 @@
                                     <div class="portfolio-card__body">
                                         <div class="portfolio-card__meta">
                                             <span>Enterprise, NV</span>
-                                            <span>7 homes</span>
+                                            <span>Custom Residences</span>
                                         </div>
                                         <h4 class="portfolio-card__title">Duneville St</h4>
-                                        <p class="portfolio-card__copy">Limited collection of luxury desert homes with expansive lots, custom finish packages, and smart-home integration.</p>
+                                        <p class="portfolio-card__copy">Site studies are evaluating future opportunities for desert-conscious residences with curated indoor-outdoor connections.</p>
                                         <div class="portfolio-card__status">
-                                            <span>In Design</span>
+                                            <span>Status: Under Evaluation</span>
                                             <span class="portfolio-card__dot"></span>
-                                            <span>Breaking ground 2024</span>
+                                            <span>Focus: Future Planning</span>
                                         </div>
                                     </div>
                                 </article>
@@ -614,60 +627,60 @@
         </section>
         <section id="tenants" class="py-16 bg-white">
             <div class="container mx-auto px-6 text-center fade-in-section">
-                <h2 class="text-3xl font-bold mb-2 text-[#36454F]" data-cms-text="partners.heading">Trusted By Leading Brands</h2>
-                <p class="mb-10 text-[#49545B]" data-cms-text="partners.subheading">We are proud to partner with nationally recognized tenants.</p>
+                <h2 class="text-3xl font-bold mb-2 text-[#001F3F]" data-cms-text="partners.heading">Trusted By Leading Brands</h2>
+                <p class="mb-10 text-[#333333]" data-cms-text="partners.subheading">We are proud to partner with nationally recognized tenants.</p>
                 <div class="logo-marquee" aria-label="Trusted partner logos">
                     <div class="logo-track" id="logo-track"></div>
                 </div>
             </div>
         </section>
 
-        <section id="investors" class="py-20 bg-[#ECECEC]">
+        <section id="investors" class="py-20 bg-[#F5F5F5]">
             <div class="container mx-auto px-6 text-center fade-in-section">
-                <h2 class="text-3xl font-bold text-[#36454F]" data-cms-text="investor.heading">Invest with Confidence</h2>
-                <div class="mt-4 mx-auto max-w-2xl space-y-4 text-[#49545B]" data-cms-paragraphs="investor.body" data-cms-paragraph-class="text-[#49545B]">
+                <h2 class="text-3xl font-bold text-[#001F3F]" data-cms-text="investor.heading">Invest with Confidence</h2>
+                <div class="mt-4 mx-auto max-w-2xl space-y-4 text-[#333333]" data-cms-paragraphs="investor.body" data-cms-paragraph-class="text-[#333333]">
                     <p>Join us in developing and managing premier real estate deals in Las Vegas that offer excellent returns. We provide stable and lucrative investment opportunities.</p>
                 </div>
-                <a href="#contact" class="mt-8 inline-block rounded-full bg-[#CC5500] px-8 py-3 text-lg font-semibold text-white transition-transform transform hover:scale-105 hover:bg-[#A64500]" data-cms-text="investor.ctaLabel" data-cms-attr-href="investor.ctaHref">Become an Investor</a>
+                <a href="#contact" class="mt-8 inline-block rounded-full bg-[#D4AF37] px-8 py-3 text-lg font-semibold text-[#001F3F] transition-transform transform hover:scale-105 hover:bg-[#b89027]" data-cms-text="investor.ctaLabel" data-cms-attr-href="investor.ctaHref">Become an Investor</a>
             </div>
         </section>
 
         <section id="contact" class="py-20 bg-white">
             <div class="container mx-auto px-6">
                 <div class="text-center mb-12 fade-in-section">
-                    <h2 class="text-3xl font-bold text-[#36454F]" data-cms-text="contact.heading">Contact Us</h2>
-                    <p class="mt-2 text-[#49545B]" data-cms-text="contact.subheading">Let's build something great together. Reach out to discuss your next project.</p>
+                    <h2 class="text-3xl font-bold text-[#001F3F]" data-cms-text="contact.heading">Contact Us</h2>
+                    <p class="mt-2 text-[#333333]" data-cms-text="contact.subheading">Let's build something great together. Reach out to discuss your next project.</p>
                 </div>
                 <div class="grid md:grid-cols-2 gap-12 items-start fade-in-section">
                     <form class="space-y-6">
                         <div class="grid sm:grid-cols-2 gap-6">
                             <div>
-                                <label for="first-name" class="block text-sm font-medium text-[#36454F]">First Name</label>
-                                <input type="text" id="first-name" class="mt-1 block w-full rounded-md border border-[#C7CDD3] bg-white px-3 py-2 shadow-sm focus:border-[#CC5500] focus:outline-none focus:ring-2 focus:ring-[#CC5500]/40" required>
+                                <label for="first-name" class="block text-sm font-medium text-[#001F3F]">First Name</label>
+                                <input type="text" id="first-name" class="mt-1 block w-full rounded-md border border-[#C7CDD3] bg-white px-3 py-2 shadow-sm focus:border-[#D4AF37] focus:outline-none focus:ring-2 focus:ring-[#D4AF37]/40" required>
                             </div>
                             <div>
-                                <label for="last-name" class="block text-sm font-medium text-[#36454F]">Last Name</label>
-                                <input type="text" id="last-name" class="mt-1 block w-full rounded-md border border-[#C7CDD3] bg-white px-3 py-2 shadow-sm focus:border-[#CC5500] focus:outline-none focus:ring-2 focus:ring-[#CC5500]/40" required>
+                                <label for="last-name" class="block text-sm font-medium text-[#001F3F]">Last Name</label>
+                                <input type="text" id="last-name" class="mt-1 block w-full rounded-md border border-[#C7CDD3] bg-white px-3 py-2 shadow-sm focus:border-[#D4AF37] focus:outline-none focus:ring-2 focus:ring-[#D4AF37]/40" required>
                             </div>
                         </div>
                         <div>
-                            <label for="email" class="block text-sm font-medium text-[#36454F]">Email</label>
-                            <input type="email" id="email" class="mt-1 block w-full rounded-md border border-[#C7CDD3] bg-white px-3 py-2 shadow-sm focus:border-[#CC5500] focus:outline-none focus:ring-2 focus:ring-[#CC5500]/40" required>
+                            <label for="email" class="block text-sm font-medium text-[#001F3F]">Email</label>
+                            <input type="email" id="email" class="mt-1 block w-full rounded-md border border-[#C7CDD3] bg-white px-3 py-2 shadow-sm focus:border-[#D4AF37] focus:outline-none focus:ring-2 focus:ring-[#D4AF37]/40" required>
                         </div>
                         <div>
-                            <label for="message" class="block text-sm font-medium text-[#36454F]">Message</label>
-                            <textarea id="message" rows="4" class="mt-1 block w-full rounded-md border border-[#C7CDD3] bg-white px-3 py-2 shadow-sm focus:border-[#CC5500] focus:outline-none focus:ring-2 focus:ring-[#CC5500]/40" required></textarea>
+                            <label for="message" class="block text-sm font-medium text-[#001F3F]">Message</label>
+                            <textarea id="message" rows="4" class="mt-1 block w-full rounded-md border border-[#C7CDD3] bg-white px-3 py-2 shadow-sm focus:border-[#D4AF37] focus:outline-none focus:ring-2 focus:ring-[#D4AF37]/40" required></textarea>
                         </div>
                         <div>
-                            <button type="submit" class="w-full rounded-full bg-[#CC5500] px-6 py-3 font-semibold text-white transition-colors hover:bg-[#A64500]">Send Message</button>
+                            <button type="submit" class="w-full rounded-full bg-[#D4AF37] px-6 py-3 font-semibold text-[#001F3F] transition-colors hover:bg-[#b89027]">Send Message</button>
                         </div>
                     </form>
                     <div class="space-y-6">
-                        <div class="space-y-3 rounded-lg bg-[#ECECEC] p-6">
-                            <h3 class="text-xl font-semibold text-[#36454F]" data-cms-text="contact.infoHeading">Our Information</h3>
-                            <p class="text-[#49545B]" data-cms-text="contact.email"><strong>Email:</strong><br> info@prdevelopmentgroup.com</p>
-                            <p class="text-[#49545B]" data-cms-text="contact.address"><strong>Address:</strong><br> 6870 S. Rainbow, Las Vegas, NV, 89118</p>
-                            <p class="text-[#49545B]" data-cms-text="contact.hours"><strong>Hours:</strong><br> Monday – Friday: 9:00 am – 5:00 pm</p>
+                        <div class="space-y-3 rounded-lg bg-[#F5F5F5] p-6">
+                            <h3 class="text-xl font-semibold text-[#001F3F]" data-cms-text="contact.infoHeading">Our Information</h3>
+                            <p class="text-[#333333]" data-cms-text="contact.email"><strong>Email:</strong><br> info@prdevelopmentgroup.com</p>
+                            <p class="text-[#333333]" data-cms-text="contact.address"><strong>Address:</strong><br> 6870 S. Rainbow, Las Vegas, NV, 89118</p>
+                            <p class="text-[#333333]" data-cms-text="contact.hours"><strong>Hours:</strong><br> Monday – Friday: 9:00 am – 5:00 pm</p>
                         </div>
                         <div class="h-64 overflow-hidden rounded-lg shadow-lg" data-cms-map="contact.mapEmbed">
                             <iframe
@@ -686,7 +699,7 @@
         </section>
     </main>
 
-    <footer class="bg-[#ECECEC] text-[#36454F]">
+    <footer class="bg-[#F5F5F5] text-[#001F3F]">
         <div class="mx-auto max-w-6xl px-6 py-16">
             <div class="grid gap-12 md:grid-cols-[auto_1fr_1fr] items-start">
                 <div class="flex flex-col items-center md:items-start">
@@ -694,32 +707,32 @@
                 </div>
                 <div class="space-y-2 text-center md:text-left">
                     <h4 class="text-lg font-semibold tracking-wide uppercase">Hours</h4>
-                    <p class="text-base text-[#49545B]" data-footer-hours>Monday – Friday: 9:00 am – 5:00 pm</p>
+                    <p class="text-base text-[#333333]" data-footer-hours>Monday – Friday: 9:00 am – 5:00 pm</p>
                 </div>
                 <div class="space-y-2 text-center md:text-left">
                     <h4 class="text-lg font-semibold tracking-wide uppercase">Contact</h4>
-                    <a href="mailto:info@prdevelopmentgroup.com" class="block text-base text-[#49545B] transition-colors hover:text-[#CC5500]" data-footer-email>info@prdevelopmentgroup.com</a>
-                    <p class="text-base text-[#49545B]" data-footer-address>6870 S. Rainbow, Las Vegas, NV, 89118</p>
+                    <a href="mailto:info@prdevelopmentgroup.com" class="block text-base text-[#333333] transition-colors hover:text-[#FF6600]" data-footer-email>info@prdevelopmentgroup.com</a>
+                    <p class="text-base text-[#333333]" data-footer-address>6870 S. Rainbow, Las Vegas, NV, 89118</p>
                 </div>
             </div>
-            <div class="mt-14 flex flex-col items-center space-y-2 text-sm text-[#49545B]">
+            <div class="mt-14 flex flex-col items-center space-y-2 text-sm text-[#333333]">
                 <p data-cms-text="footer.copyright">© 2025 Platinum Development. All Rights Reserved.</p>
-                <a href="https://saguarointeractive.com" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1 font-medium transition-colors hover:text-[#CC5500]" data-cms-text="footer.credits">Website by Saguaro Interactive</a>
+                <a href="https://saguarointeractive.com" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1 font-medium transition-colors hover:text-[#FF6600]" data-cms-text="footer.credits">Website by Saguaro Interactive</a>
             </div>
         </div>
     </footer>
 
     <template id="highlight-card-template">
-        <div class="rounded-xl border border-[#D3D3D3] bg-white p-6 shadow-sm space-y-3">
-            <h3 class="text-xl font-semibold text-[#36454F]" data-role="title"></h3>
-            <p class="text-[#49545B]" data-role="description"></p>
+        <div class="rounded-xl border border-[#E0E0E0] bg-white p-6 shadow-sm space-y-3">
+            <h3 class="text-xl font-semibold text-[#001F3F]" data-role="title"></h3>
+            <p class="text-[#333333]" data-role="description"></p>
         </div>
     </template>
 
     <template id="stat-card-template">
-        <div class="bg-white rounded-xl shadow-sm p-6 text-center">
-            <dt class="text-3xl font-bold text-[#36454F]" data-role="value"></dt>
-            <dd class="mt-2 text-sm uppercase tracking-wide text-[#49545B]/70" data-role="label"></dd>
+        <div class="bg-white rounded-xl shadow-sm p-6 text-center border border-[#E0E0E0]">
+            <dt class="text-3xl font-bold text-[#001F3F]" data-role="value"></dt>
+            <dd class="mt-2 text-sm uppercase tracking-wide text-[#333333]/70" data-role="label"></dd>
         </div>
     </template>
 
@@ -859,14 +872,14 @@
                 a.textContent = label;
                 a.href = linkHref;
                 if (isDesktop) {
-                    a.className = 'text-sm font-medium text-[#36454F]/80 transition-colors hover:text-[#36454F]';
+                    a.className = 'text-sm font-medium text-[#001F3F] transition-colors hover:text-[#FF6600]';
                     if (isPrimary || index === fallbackPrimaryIndex) {
-                        a.className = 'inline-flex items-center rounded-full bg-[#CC5500] px-4 py-2 text-sm font-semibold text-white shadow-sm transition-colors hover:bg-[#A64500]';
+                        a.className = 'inline-flex items-center rounded-full bg-[#D4AF37] px-4 py-2 text-sm font-semibold text-[#001F3F] shadow-sm transition-colors hover:bg-[#b89027]';
                     }
                 } else {
-                    a.className = 'block rounded-md px-4 py-2 text-base font-medium text-[#36454F] transition-colors hover:bg-[#ECECEC]';
+                    a.className = 'block rounded-md px-4 py-2 text-base font-medium text-[#001F3F] transition-colors hover:bg-[#001F3F]/10';
                     if (isPrimary || index === fallbackPrimaryIndex) {
-                        a.classList.add('bg-[#CC5500]', 'text-white');
+                        a.classList.add('bg-[#D4AF37]', 'text-[#001F3F]');
                     }
                     a.addEventListener('click', () => {
                         if (menuButton && mobileMenuElement) {
@@ -890,7 +903,7 @@
                     const a = document.createElement('a');
                     a.textContent = label;
                     a.href = href || '#';
-                    a.className = 'text-[#36454F]/80 hover:text-[#36454F]';
+                    a.className = 'text-[#001F3F]/80 hover:text-[#FF6600]';
                     li.appendChild(a);
                     footer.appendChild(li);
                 });
@@ -1114,7 +1127,7 @@
             const about = site.about || {};
             setImage('about.image', about.image, about.imageAlt || about.heading);
             setText('about.heading', about.heading);
-            setParagraphs('about.body', about.body, 'text-[#4A5D68]');
+            setParagraphs('about.body', about.body, 'text-[#333333]');
             renderHighlights(about.highlights);
             renderStats(about.stats);
 
@@ -1129,7 +1142,7 @@
 
             const investor = site.investor || {};
             setText('investor.heading', investor.heading);
-            setParagraphs('investor.body', investor.body, 'text-[#49545B]');
+            setParagraphs('investor.body', investor.body, 'text-[#333333]');
             setText('investor.ctaLabel', investor.ctaLabel);
             setAttr('investor.ctaHref', 'href', investor.ctaHref);
 
