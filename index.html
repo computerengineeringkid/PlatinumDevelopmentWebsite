@@ -4,8 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Platinum Development - Redefining the Las Vegas Landscape</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
+    <link rel="preload" as="image" href="vegas2.jpg" id="hero-preload">
+    <script src="https://cdn.tailwindcss.com" defer></script>
+    <script src="https://identity.netlify.com/v1/netlify-identity-widget.js" defer></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -81,6 +82,13 @@
                 transform: translateX(-50%);
             }
         }
+        @media (prefers-reduced-motion: reduce) {
+            .logo-track {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transform: none !important;
+            }
+        }
         .portfolio-card {
             position: relative;
             overflow: hidden;
@@ -97,12 +105,20 @@
             position: relative;
             height: 220px;
             overflow: hidden;
+            background: linear-gradient(135deg, #FFEDD5, #F5F5F5);
         }
         .portfolio-card__media img {
             width: 100%;
             height: 100%;
             object-fit: cover;
             transition: transform 0.4s ease;
+            display: none;
+        }
+        .portfolio-card__media[data-has-image] img {
+            display: block;
+        }
+        .portfolio-card__media[data-has-image] .portfolio-card__media--placeholder {
+            display: none;
         }
         .portfolio-card:hover .portfolio-card__media img {
             transform: scale(1.05);
@@ -174,9 +190,15 @@
             display: block;
         }
         .portfolio-card__media--placeholder {
+            position: absolute;
+            inset: 0;
             display: flex;
+            flex-direction: column;
             align-items: center;
             justify-content: center;
+            gap: 0.75rem;
+            padding: 1rem;
+            text-align: center;
             background: linear-gradient(135deg, #FFEDD5, #F5F5F5);
         }
         .portfolio-card__media-text {
@@ -316,7 +338,7 @@
     <header id="header" class="sticky top-0 z-50 border border-[#001F3F]/10 bg-white/95 shadow-lg backdrop-blur transition-all duration-300">
         <nav class="mx-auto flex max-w-6xl flex-wrap items-center justify-between gap-4 px-5 py-6 md:px-8">
             <a href="#home" class="flex items-center gap-3">
-                <img src="nick-removebg-preview.png" alt="Platinum Development logo" class="h-10 w-auto">
+                <img src="nick-removebg-preview.png" alt="Platinum Development logo" class="h-10 w-auto" loading="lazy" decoding="async">
                 <span class="sr-only" data-cms-text="companyName">Platinum Development</span>
             </a>
             <div class="hidden flex-1 items-center justify-end gap-6 text-sm font-medium md:flex" data-cms-nav="desktop">
@@ -362,7 +384,7 @@
             <div class="container mx-auto px-6">
                 <div class="grid md:grid-cols-2 gap-12 items-center fade-in-section">
                     <div>
-                        <img src="https://placehold.co/600x400/FFE9D4/001F3F?text=Image+Coming+Soon" alt="Image coming soon" class="rounded-lg shadow-xl w-full" data-cms-image="about.image">
+                        <img src="https://placehold.co/600x400/FFE9D4/001F3F?text=Image+Coming+Soon" alt="Image coming soon" class="rounded-lg shadow-xl w-full" data-cms-image="about.image" loading="lazy" decoding="async">
                     </div>
                     <div>
                         <h2 class="text-3xl font-bold mb-4 text-[#001F3F]" data-cms-text="about.heading">Building Communities, Creating Value.</h2>
@@ -398,230 +420,8 @@
                     <p class="mt-2 text-[#333333]" data-cms-text="portfolio.subheading">A selection of our completed and upcoming projects.</p>
                 </div>
 
-                <div class="space-y-16">
-                    <div class="space-y-8" data-carousel="retail">
-                        <div class="flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
-                            <div class="text-left">
-                                <p class="text-xs font-semibold uppercase tracking-[0.3em] text-[#FF6600]">Retail Portfolio</p>
-                                <h3 class="text-2xl font-semibold text-[#001F3F]">Retail Properties</h3>
-                                <p class="mt-2 max-w-2xl text-sm text-[#333333]">High-performing centers anchored by national brands across the Las Vegas valley.</p>
-                            </div>
-                            <div class="flex justify-end gap-2">
-                                <button type="button" class="carousel-button" aria-label="Scroll retail properties left" data-carousel-prev>
-                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" class="h-5 w-5">
-                                        <path stroke-linecap="round" stroke-linejoin="round" d="M14.25 19.5L7.75 12l6.5-7.5" />
-                                    </svg>
-                                </button>
-                                <button type="button" class="carousel-button" aria-label="Scroll retail properties right" data-carousel-next>
-                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" class="h-5 w-5">
-                                        <path stroke-linecap="round" stroke-linejoin="round" d="M9.75 4.5l6.5 7.5-6.5 7.5" />
-                                    </svg>
-                                </button>
-                            </div>
-                        </div>
-                        <div class="relative">
-                            <div class="portfolio-carousel__track flex snap-x snap-mandatory gap-6 overflow-x-auto pb-6 scroll-smooth" data-carousel-track>
-                                <article class="portfolio-card snap-start min-w-[280px] sm:min-w-[320px] lg:min-w-[360px]">
-                                    <div class="portfolio-card__media portfolio-card__media--placeholder">
-                                        <span class="portfolio-card__badge">Retail</span>
-                                        <span class="portfolio-card__media-text">Image coming soon</span>
-                                    </div>
-                                    <div class="portfolio-card__body">
-                                        <div class="portfolio-card__meta">
-                                            <span>Las Vegas, NV</span>
-                                        </div>
-                                        <h4 class="portfolio-card__title">6830 S. Rainbow Blvd</h4>
-                                        <p class="portfolio-card__copy">High-visibility open-air retail center with national co-tenancy and excellent Rainbow Boulevard frontage.</p>
-                                        <div class="portfolio-card__status">
-                                            <span>Status: Operating</span>
-                                            <span class="portfolio-card__dot"></span>
-                                            <span>Focus: Experience Upgrades</span>
-                                        </div>
-                                    </div>
-                                </article>
-
-                                <article class="portfolio-card snap-start min-w-[280px] sm:min-w-[320px] lg:min-w-[360px]">
-                                    <div class="portfolio-card__media portfolio-card__media--placeholder">
-                                        <span class="portfolio-card__badge">Retail</span>
-                                        <span class="portfolio-card__media-text">Image coming soon</span>
-                                    </div>
-                                    <div class="portfolio-card__body">
-                                        <div class="portfolio-card__meta">
-                                            <span>Henderson, NV</span>
-                                        </div>
-                                        <h4 class="portfolio-card__title">9550 S. Eastern Ave</h4>
-                                        <p class="portfolio-card__copy">Regional-serving retail with a balanced mix of soft goods, services, and daily-needs tenants along Eastern Avenue.</p>
-                                        <div class="portfolio-card__status">
-                                            <span>Status: Operating</span>
-                                            <span class="portfolio-card__dot"></span>
-                                            <span>Focus: Tenant Collaboration</span>
-                                        </div>
-                                    </div>
-                                </article>
-
-                                <article class="portfolio-card snap-start min-w-[280px] sm:min-w-[320px] lg:min-w-[360px]">
-                                    <div class="portfolio-card__media portfolio-card__media--placeholder">
-                                        <span class="portfolio-card__badge">Retail</span>
-                                        <span class="portfolio-card__media-text">Image coming soon</span>
-                                    </div>
-                                    <div class="portfolio-card__body">
-                                        <div class="portfolio-card__meta">
-                                            <span>Summerlin, NV</span>
-                                        </div>
-                                        <h4 class="portfolio-card__title">7175 W. Lake Mead Blvd</h4>
-                                        <p class="portfolio-card__copy">Neighbor-serving retail with curated dining, wellness, and boutique offerings steps from the Summerlin trail network.</p>
-                                        <div class="portfolio-card__status">
-                                            <span>Status: Operating</span>
-                                            <span class="portfolio-card__dot"></span>
-                                            <span>Focus: Community Programming</span>
-                                        </div>
-                                    </div>
-                                </article>
-
-                                <article class="portfolio-card snap-start min-w-[280px] sm:min-w-[320px] lg:min-w-[360px]">
-                                    <div class="portfolio-card__media portfolio-card__media--placeholder">
-                                        <span class="portfolio-card__badge">Retail</span>
-                                        <span class="portfolio-card__media-text">Image coming soon</span>
-                                    </div>
-                                    <div class="portfolio-card__body">
-                                        <div class="portfolio-card__meta">
-                                            <span>Henderson, NV</span>
-                                        </div>
-                                        <h4 class="portfolio-card__title">9400 S. Eastern Ave</h4>
-                                        <p class="portfolio-card__copy">Next-generation retail environment with chef-driven dining and lifestyle concepts serving the Eastern Avenue corridor.</p>
-                                        <div class="portfolio-card__status">
-                                            <span>Status: In Planning</span>
-                                            <span class="portfolio-card__dot"></span>
-                                            <span>Focus: Leasing Partnerships</span>
-                                        </div>
-                                    </div>
-                                </article>
-
-                                <article class="portfolio-card snap-start min-w-[280px] sm:min-w-[320px] lg:min-w-[360px]">
-                                    <div class="portfolio-card__media portfolio-card__media--placeholder">
-                                        <span class="portfolio-card__badge">Retail</span>
-                                        <span class="portfolio-card__media-text">Image coming soon</span>
-                                    </div>
-                                    <div class="portfolio-card__body">
-                                        <div class="portfolio-card__meta">
-                                            <span>Las Vegas, NV</span>
-                                        </div>
-                                        <h4 class="portfolio-card__title">8140 S. Rainbow Blvd</h4>
-                                        <p class="portfolio-card__copy">Convenience-oriented shops, fitness, and fast casual dining with immediate access to the 215 Beltway.</p>
-                                        <div class="portfolio-card__status">
-                                            <span>Status: In Planning</span>
-                                            <span class="portfolio-card__dot"></span>
-                                            <span>Focus: Community Feedback</span>
-                                        </div>
-                                    </div>
-                                </article>
-
-                                <article class="portfolio-card snap-start min-w-[280px] sm:min-w-[320px] lg:min-w-[360px]">
-                                    <div class="portfolio-card__media portfolio-card__media--placeholder">
-                                        <span class="portfolio-card__badge">Retail</span>
-                                        <span class="portfolio-card__media-text">Image coming soon</span>
-                                    </div>
-                                    <div class="portfolio-card__body">
-                                        <div class="portfolio-card__meta">
-                                            <span>Las Vegas, NV</span>
-                                        </div>
-                                        <h4 class="portfolio-card__title">4840 W. Spring Mountain Rd</h4>
-                                        <p class="portfolio-card__copy">Experiential retail and dining celebrating the vibrant Chinatown corridor along Spring Mountain Road.</p>
-                                        <div class="portfolio-card__status">
-                                            <span>Status: Concept</span>
-                                            <span class="portfolio-card__dot"></span>
-                                            <span>Focus: Vision Development</span>
-                                        </div>
-                                    </div>
-                                </article>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="space-y-8" data-carousel="residential">
-                        <div class="flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
-                            <div class="text-left">
-                                <p class="text-xs font-semibold uppercase tracking-[0.3em] text-[#FF6600]">Residential Portfolio</p>
-                                <h3 class="text-2xl font-semibold text-[#001F3F]">Single-Family &amp; Multifamily</h3>
-                                <p class="mt-2 max-w-2xl text-sm text-[#333333]">Purpose-built rental homes and for-sale communities that elevate neighborhood living.</p>
-                            </div>
-                            <div class="flex justify-end gap-2">
-                                <button type="button" class="carousel-button" aria-label="Scroll residential properties left" data-carousel-prev>
-                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" class="h-5 w-5">
-                                        <path stroke-linecap="round" stroke-linejoin="round" d="M14.25 19.5L7.75 12l6.5-7.5" />
-                                    </svg>
-                                </button>
-                                <button type="button" class="carousel-button" aria-label="Scroll residential properties right" data-carousel-next>
-                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" class="h-5 w-5">
-                                        <path stroke-linecap="round" stroke-linejoin="round" d="M9.75 4.5l6.5 7.5-6.5 7.5" />
-                                    </svg>
-                                </button>
-                            </div>
-                        </div>
-                        <div class="relative">
-                            <div class="portfolio-carousel__track flex snap-x snap-mandatory gap-6 overflow-x-auto pb-6 scroll-smooth" data-carousel-track>
-                                <article class="portfolio-card snap-start min-w-[280px] sm:min-w-[320px] lg:min-w-[360px]">
-                                    <div class="portfolio-card__media portfolio-card__media--placeholder">
-                                        <span class="portfolio-card__badge">Townhomes</span>
-                                        <span class="portfolio-card__media-text">Image coming soon</span>
-                                    </div>
-                                    <div class="portfolio-card__body">
-                                        <div class="portfolio-card__meta">
-                                            <span>Las Vegas, NV</span>
-                                            <span>Townhome Collection</span>
-                                        </div>
-                                        <h4 class="portfolio-card__title">8021 Vegas Dr</h4>
-                                        <p class="portfolio-card__copy">A contemporary townhome community featuring private entries, shared amenities, and open-concept living.</p>
-                                        <div class="portfolio-card__status">
-                                            <span>Status: Operating</span>
-                                            <span class="portfolio-card__dot"></span>
-                                            <span>Focus: Resident Experience</span>
-                                        </div>
-                                    </div>
-                                </article>
-
-                                <article class="portfolio-card snap-start min-w-[280px] sm:min-w-[320px] lg:min-w-[360px]">
-                                    <div class="portfolio-card__media portfolio-card__media--placeholder">
-                                        <span class="portfolio-card__badge">Single Family</span>
-                                        <span class="portfolio-card__media-text">Image coming soon</span>
-                                    </div>
-                                    <div class="portfolio-card__body">
-                                        <div class="portfolio-card__meta">
-                                            <span>Las Vegas, NV</span>
-                                            <span>Residential Enclave</span>
-                                        </div>
-                                        <h4 class="portfolio-card__title">Lucky Pagoda Ct</h4>
-                                        <p class="portfolio-card__copy">A legacy neighborhood of contemporary homes where we continue to collaborate with current stakeholders on long-term stewardship.</p>
-                                        <div class="portfolio-card__status">
-                                            <span>Status: Legacy Community</span>
-                                            <span class="portfolio-card__dot"></span>
-                                            <span>Focus: Collaborative Stewardship</span>
-                                        </div>
-                                    </div>
-                                </article>
-
-                                <article class="portfolio-card snap-start min-w-[280px] sm:min-w-[320px] lg:min-w-[360px]">
-                                    <div class="portfolio-card__media portfolio-card__media--placeholder">
-                                        <span class="portfolio-card__badge">Single Family</span>
-                                        <span class="portfolio-card__media-text">Image coming soon</span>
-                                    </div>
-                                    <div class="portfolio-card__body">
-                                        <div class="portfolio-card__meta">
-                                            <span>Enterprise, NV</span>
-                                            <span>Custom Residences</span>
-                                        </div>
-                                        <h4 class="portfolio-card__title">Duneville St</h4>
-                                        <p class="portfolio-card__copy">Site studies are evaluating future opportunities for desert-conscious residences with curated indoor-outdoor connections.</p>
-                                        <div class="portfolio-card__status">
-                                            <span>Status: Under Evaluation</span>
-                                            <span class="portfolio-card__dot"></span>
-                                            <span>Focus: Future Planning</span>
-                                        </div>
-                                    </div>
-                                </article>
-                            </div>
-                        </div>
-                    </div>
+                <div class="space-y-16" data-portfolio-groups>
+                    <p class="text-center text-sm text-[#333333]" data-portfolio-empty hidden>Portfolio data will appear here once projects are published.</p>
                 </div>
             </div>
         </section>
@@ -703,7 +503,7 @@
         <div class="mx-auto max-w-6xl px-6 py-16">
             <div class="grid gap-12 md:grid-cols-[auto_1fr_1fr] items-start">
                 <div class="flex flex-col items-center md:items-start">
-                    <img src="nick-removebg-preview.png" alt="Platinum Development logo" class="h-12 w-auto">
+                    <img src="nick-removebg-preview.png" alt="Platinum Development logo" class="h-12 w-auto" loading="lazy" decoding="async">
                 </div>
                 <div class="space-y-2 text-center md:text-left">
                     <h4 class="text-lg font-semibold tracking-wide uppercase">Hours</h4>
@@ -721,6 +521,54 @@
             </div>
         </div>
     </footer>
+
+    <template id="portfolio-group-template">
+        <div class="space-y-8" data-role="group">
+            <div class="flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
+                <div class="text-left">
+                    <p class="text-xs font-semibold uppercase tracking-[0.3em] text-[#FF6600]" data-role="tagline"></p>
+                    <h3 class="text-2xl font-semibold text-[#001F3F]" data-role="title"></h3>
+                    <p class="mt-2 max-w-2xl text-sm text-[#333333]" data-role="description"></p>
+                </div>
+                <div class="flex justify-end gap-2" data-role="controls">
+                    <button type="button" class="carousel-button" data-carousel-prev aria-label="Scroll group left">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" class="h-5 w-5">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M14.25 19.5 7.75 12l6.5-7.5" />
+                        </svg>
+                    </button>
+                    <button type="button" class="carousel-button" data-carousel-next aria-label="Scroll group right">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" class="h-5 w-5">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M9.75 4.5l6.5 7.5-6.5 7.5" />
+                        </svg>
+                    </button>
+                </div>
+            </div>
+            <div class="relative">
+                <div class="portfolio-carousel__track flex snap-x snap-mandatory gap-6 overflow-x-auto pb-6 scroll-smooth" data-carousel-track></div>
+            </div>
+        </div>
+    </template>
+
+    <template id="portfolio-card-template">
+        <article class="portfolio-card snap-start min-w-[280px] sm:min-w-[320px] lg:min-w-[360px]">
+            <div class="portfolio-card__media" data-role="media">
+                <span class="portfolio-card__badge" data-role="badge"></span>
+                <img data-role="image" alt="" class="h-full w-full object-cover" />
+                <div class="portfolio-card__media--placeholder">
+                    <span class="portfolio-card__media-text">Image coming soon</span>
+                </div>
+            </div>
+            <div class="portfolio-card__body">
+                <div class="portfolio-card__meta">
+                    <span data-role="location"></span>
+                    <div class="portfolio-card__metrics" data-role="metrics"></div>
+                </div>
+                <h4 class="portfolio-card__title" data-role="title"></h4>
+                <p class="portfolio-card__copy" data-role="summary"></p>
+                <div class="portfolio-card__status" data-role="status"></div>
+            </div>
+        </article>
+    </template>
 
     <template id="highlight-card-template">
         <div class="rounded-xl border border-[#E0E0E0] bg-white p-6 shadow-sm space-y-3">
@@ -780,21 +628,90 @@
 
     <script>
         const DATA_SOURCE_URL = './content/site.json';
-        const LOGO_FILES = [
-            'logos/BJs.png',
-            'logos/Einstein.png',
-            'logos/big5.png',
-            'logos/cox.png',
-            'logos/massageenvy.png',
-            'logos/moneytree.png'
+        const HERO_OVERLAY = 'linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5))';
+        const FALLBACK_PARTNER_LOGOS = [
+            { name: "BJ's", logo: 'logos/BJs.png' },
+            { name: 'Einstein Bros Bagels', logo: 'logos/Einstein.png' },
+            { name: 'Big 5 Sporting Goods', logo: 'logos/big5.png' },
+            { name: 'Cox Communications', logo: 'logos/cox.png' },
+            { name: 'Massage Envy', logo: 'logos/massageenvy.png' },
+            { name: 'Moneytree', logo: 'logos/moneytree.png' }
+        ];
+        const DEFAULT_PORTFOLIO_GROUPS = [
+            {
+                id: 'retail',
+                title: 'Retail Properties',
+                tagline: 'Retail Portfolio',
+                description: 'High-performing centers anchored by national brands across the Las Vegas valley.',
+                focusLabel: 'Focus'
+            },
+            {
+                id: 'multifamily',
+                title: 'Multifamily Communities',
+                tagline: 'Multifamily Portfolio',
+                description: 'Thoughtfully designed communities that balance modern comfort and neighborhood character.',
+                focusLabel: 'Focus'
+            },
+            {
+                id: 'singleFamily',
+                title: 'Single-Family Neighborhoods',
+                tagline: 'Single-Family Portfolio',
+                description: 'Private enclaves of homes tailored to modern living with enduring value.',
+                focusLabel: 'Focus'
+            }
         ];
 
+        function encodeToBase64(markup) {
+            try {
+                if (typeof TextEncoder === 'undefined') {
+                    return window.btoa(unescape(encodeURIComponent(markup)));
+                }
+                const encoder = new TextEncoder();
+                const bytes = encoder.encode(markup);
+                let binary = '';
+                bytes.forEach((byte) => {
+                    binary += String.fromCharCode(byte);
+                });
+                return window.btoa(binary);
+            } catch (error) {
+                console.error('Failed to encode markup.', error);
+                return '';
+            }
+        }
+
+        function decodeFromBase64(value) {
+            try {
+                const binary = window.atob(value);
+                if (typeof TextDecoder === 'undefined') {
+                    return decodeURIComponent(Array.from(binary, (char) => `%${char.charCodeAt(0).toString(16).padStart(2, '0')}`).join(''));
+                }
+                const bytes = Uint8Array.from(binary, (char) => char.charCodeAt(0));
+                return new TextDecoder().decode(bytes);
+            } catch (error) {
+                console.error('Failed to decode markup.', error);
+                return '';
+            }
+        }
+
+        function normalizeString(value) {
+            return typeof value === 'string' ? value.trim() : '';
+        }
+
+        function ensureLazyImage(image) {
+            if (!image) {
+                return;
+            }
+            image.loading = 'lazy';
+            image.decoding = 'async';
+        }
+
         function setText(key, value) {
-            if (typeof value !== 'string' || !value.trim()) {
+            const text = normalizeString(value);
+            if (!text) {
                 return;
             }
             document.querySelectorAll(`[data-cms-text="${key}"]`).forEach((el) => {
-                el.textContent = value;
+                el.textContent = text;
             });
         }
 
@@ -808,26 +725,41 @@
         }
 
         function setBackgroundImage(key, url, alt) {
-            if (!url) {
-                return;
-            }
+            const safeUrl = normalizeString(url);
+            const preload = document.getElementById('hero-preload');
             document.querySelectorAll(`[data-cms-bg-image="${key}"]`).forEach((el) => {
-                const gradient = 'linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5))';
-                el.style.backgroundImage = `${gradient}, url('${url}')`;
+                if (safeUrl) {
+                    el.style.backgroundImage = `${HERO_OVERLAY}, url('${safeUrl}')`;
+                } else {
+                    el.style.backgroundImage = HERO_OVERLAY;
+                }
                 if (alt) {
                     el.setAttribute('aria-label', alt);
                 }
             });
+            if (preload && safeUrl) {
+                preload.href = safeUrl;
+            }
         }
 
         function setImage(key, url, altText) {
-            if (!url) {
-                return;
-            }
+            const src = normalizeString(url);
+            const alt = normalizeString(altText);
             document.querySelectorAll(`[data-cms-image="${key}"]`).forEach((el) => {
-                el.src = url;
-                if (altText) {
-                    el.alt = altText;
+                ensureLazyImage(el);
+                if (src) {
+                    el.src = src;
+                }
+                if (alt) {
+                    el.alt = alt;
+                }
+                const media = el.closest('[data-role="media"]');
+                if (media) {
+                    if (src) {
+                        media.setAttribute('data-has-image', '');
+                    } else {
+                        media.removeAttribute('data-has-image');
+                    }
                 }
             });
         }
@@ -840,7 +772,7 @@
                 const paragraphClass = container.getAttribute('data-cms-paragraph-class') || defaultClass || '';
                 container.innerHTML = '';
                 paragraphs.forEach((entry) => {
-                    const text = typeof entry === 'string' ? entry : entry?.paragraph || entry?.text || '';
+                    const text = normalizeString(typeof entry === 'string' ? entry : entry?.paragraph || entry?.text);
                     if (!text) return;
                     const p = document.createElement('p');
                     p.className = paragraphClass;
@@ -862,29 +794,30 @@
             const primaryIndex = links.findIndex((link) => link?.isPrimary);
             const fallbackPrimaryIndex = primaryIndex >= 0 ? primaryIndex : links.length - 1;
 
-        const render = (container, isDesktop) => {
-            if (!container) return;
-            container.innerHTML = '';
-            links.forEach(({label, href, isPrimary}, index) => {
-                if (!label) return;
-                const linkHref = href || '#';
-                const a = document.createElement('a');
-                a.textContent = label;
-                a.href = linkHref;
-                if (isDesktop) {
-                    a.className = 'text-sm font-medium text-[#001F3F] transition-colors hover:text-[#FF6600]';
-                    if (isPrimary || index === fallbackPrimaryIndex) {
-                        a.className = 'inline-flex items-center rounded-full bg-[#D4AF37] px-4 py-2 text-sm font-semibold text-[#001F3F] shadow-sm transition-colors hover:bg-[#b89027]';
-                    }
-                } else {
-                    a.className = 'block rounded-md px-4 py-2 text-base font-medium text-[#001F3F] transition-colors hover:bg-[#001F3F]/10';
-                    if (isPrimary || index === fallbackPrimaryIndex) {
-                        a.classList.add('bg-[#D4AF37]', 'text-[#001F3F]');
-                    }
-                    a.addEventListener('click', () => {
-                        if (menuButton && mobileMenuElement) {
-                            menuButton.setAttribute('aria-expanded', 'false');
-                            mobileMenuElement.classList.add('hidden');
+            const renderList = (container, isDesktop) => {
+                if (!container) return;
+                container.innerHTML = '';
+                links.forEach(({ label, href, isPrimary }, index) => {
+                    const text = normalizeString(label);
+                    if (!text) return;
+                    const linkHref = normalizeString(href) || '#';
+                    const a = document.createElement('a');
+                    a.textContent = text;
+                    a.href = linkHref;
+                    if (isDesktop) {
+                        const isButton = isPrimary || index === fallbackPrimaryIndex;
+                        a.className = isButton
+                            ? 'inline-flex items-center rounded-full bg-[#D4AF37] px-4 py-2 text-sm font-semibold text-[#001F3F] shadow-sm transition-colors hover:bg-[#b89027]'
+                            : 'text-sm font-medium text-[#001F3F] transition-colors hover:text-[#FF6600]';
+                    } else {
+                        a.className = 'block rounded-md px-4 py-2 text-base font-medium text-[#001F3F] transition-colors hover:bg-[#001F3F]/10';
+                        if (isPrimary || index === fallbackPrimaryIndex) {
+                            a.classList.add('bg-[#D4AF37]', 'text-[#001F3F]');
+                        }
+                        a.addEventListener('click', () => {
+                            if (menuButton && mobileMenuElement) {
+                                menuButton.setAttribute('aria-expanded', 'false');
+                                mobileMenuElement.classList.add('hidden');
                             }
                         });
                     }
@@ -892,17 +825,18 @@
                 });
             };
 
-            render(desktop, true);
-            render(mobile, false);
+            renderList(desktop, true);
+            renderList(mobile, false);
 
             if (footer) {
                 footer.innerHTML = '';
-                links.forEach(({label, href}) => {
-                    if (!label) return;
+                links.forEach(({ label, href }) => {
+                    const text = normalizeString(label);
+                    if (!text) return;
                     const li = document.createElement('li');
                     const a = document.createElement('a');
-                    a.textContent = label;
-                    a.href = href || '#';
+                    a.textContent = text;
+                    a.href = normalizeString(href) || '#';
                     a.className = 'text-[#001F3F]/80 hover:text-[#FF6600]';
                     li.appendChild(a);
                     footer.appendChild(li);
@@ -916,8 +850,225 @@
             return spaced.charAt(0).toUpperCase() + spaced.slice(1);
         }
 
-        function renderProjects() {
-            // Portfolio showcase is curated directly in the markup above.
+        function resolvePortfolioGroups(portfolio, projects) {
+            const groupsFromContent = Array.isArray(portfolio?.groups) ? portfolio.groups : [];
+            const projectTypes = Array.isArray(projects)
+                ? [...new Set(projects.map((project) => normalizeString(project?.propertyType)).filter(Boolean))]
+                : [];
+            const definedIds = new Set(groupsFromContent.map((group) => group?.id).filter(Boolean));
+            const fallbackGroups = DEFAULT_PORTFOLIO_GROUPS.filter(
+                (group) => projectTypes.includes(group.id) && !definedIds.has(group.id)
+            );
+            const missingTypes = projectTypes.filter(
+                (type) => !definedIds.has(type) && !fallbackGroups.some((group) => group.id === type)
+            );
+            const generatedGroups = missingTypes.map((type) => ({
+                id: type,
+                title: formatLabel(type),
+                tagline: `${formatLabel(type)} Portfolio`,
+                focusLabel: 'Focus'
+            }));
+            return [...groupsFromContent, ...fallbackGroups, ...generatedGroups];
+        }
+
+        function buildMetrics(metrics, container) {
+            if (!container) {
+                return;
+            }
+            container.innerHTML = '';
+            if (!Array.isArray(metrics) || !metrics.length) {
+                container.remove();
+                return;
+            }
+            metrics.forEach((metric) => {
+                const label = normalizeString(metric?.label);
+                const value = normalizeString(metric?.value);
+                if (!label && !value) {
+                    return;
+                }
+                const span = document.createElement('span');
+                span.textContent = value && label ? `${label}: ${value}` : value || label;
+                container.appendChild(span);
+            });
+            if (!container.childElementCount) {
+                container.remove();
+            }
+        }
+
+        function buildStatus(project, focusLabel, statusEl) {
+            if (!statusEl) {
+                return;
+            }
+            statusEl.innerHTML = '';
+            const statusText = normalizeString(project?.status);
+            const focusText = normalizeString(project?.focus);
+            if (!statusText && !focusText) {
+                statusEl.remove();
+                return;
+            }
+            const fragment = document.createDocumentFragment();
+            if (statusText) {
+                const statusSpan = document.createElement('span');
+                statusSpan.textContent = `Status: ${statusText}`;
+                fragment.appendChild(statusSpan);
+            }
+            if (statusText && focusText) {
+                const dot = document.createElement('span');
+                dot.className = 'portfolio-card__dot';
+                fragment.appendChild(dot);
+            }
+            if (focusText) {
+                const focusSpan = document.createElement('span');
+                focusSpan.textContent = `${focusLabel || 'Focus'}: ${focusText}`;
+                fragment.appendChild(focusSpan);
+            }
+            statusEl.appendChild(fragment);
+        }
+
+        function renderProjects(projects, portfolio) {
+            const container = document.querySelector('[data-portfolio-groups]');
+            if (!container) {
+                return;
+            }
+            const groupTemplate = document.getElementById('portfolio-group-template');
+            const cardTemplate = document.getElementById('portfolio-card-template');
+            container.innerHTML = '';
+            if (!groupTemplate || !cardTemplate) {
+                return;
+            }
+            const safeProjects = Array.isArray(projects)
+                ? projects.filter((project) => normalizeString(project?.title))
+                : [];
+            const groups = resolvePortfolioGroups(portfolio, safeProjects);
+            let hasContent = false;
+
+            groups.forEach((group) => {
+                const groupId = normalizeString(group?.id);
+                const groupProjects = safeProjects.filter((project) => {
+                    return groupId
+                        ? normalizeString(project?.propertyType).toLowerCase() === groupId.toLowerCase()
+                        : true;
+                });
+                if (!groupProjects.length) {
+                    return;
+                }
+                hasContent = true;
+                const clone = groupTemplate.content.firstElementChild.cloneNode(true);
+                const carouselWrapper = clone;
+                const groupTitle = normalizeString(group?.title) || formatLabel(groupId) || 'Portfolio';
+                carouselWrapper.setAttribute('data-carousel', groupId || 'portfolio');
+
+                const taglineEl = clone.querySelector('[data-role="tagline"]');
+                const taglineText = normalizeString(group?.tagline);
+                if (taglineEl) {
+                    if (taglineText) {
+                        taglineEl.textContent = taglineText;
+                    } else {
+                        taglineEl.remove();
+                    }
+                }
+
+                const titleEl = clone.querySelector('[data-role="title"]');
+                if (titleEl) {
+                    titleEl.textContent = groupTitle;
+                }
+
+                const descriptionEl = clone.querySelector('[data-role="description"]');
+                const descriptionText = normalizeString(group?.description);
+                if (descriptionEl) {
+                    if (descriptionText) {
+                        descriptionEl.textContent = descriptionText;
+                    } else {
+                        descriptionEl.remove();
+                    }
+                }
+
+                const controls = clone.querySelector('[data-role="controls"]');
+                if (controls) {
+                    const prev = controls.querySelector('[data-carousel-prev]');
+                    const next = controls.querySelector('[data-carousel-next]');
+                    if (prev) {
+                        prev.setAttribute('aria-label', `Scroll ${groupTitle} left`);
+                    }
+                    if (next) {
+                        next.setAttribute('aria-label', `Scroll ${groupTitle} right`);
+                    }
+                }
+
+                const track = clone.querySelector('[data-carousel-track]');
+                if (track) {
+                    const fragment = document.createDocumentFragment();
+                    groupProjects.forEach((project) => {
+                        const card = cardTemplate.content.firstElementChild.cloneNode(true);
+                        const title = card.querySelector('[data-role="title"]');
+                        if (title) {
+                            title.textContent = normalizeString(project?.title);
+                        }
+                        const summary = card.querySelector('[data-role="summary"]');
+                        const summaryText = normalizeString(project?.summary);
+                        if (summary) {
+                            if (summaryText) {
+                                summary.textContent = summaryText;
+                            } else {
+                                summary.remove();
+                            }
+                        }
+                        const location = card.querySelector('[data-role="location"]');
+                        const locationText = normalizeString(project?.location);
+                        if (location) {
+                            if (locationText) {
+                                location.textContent = locationText;
+                            } else {
+                                location.remove();
+                            }
+                        }
+                        const badge = card.querySelector('[data-role="badge"]');
+                        if (badge) {
+                            badge.textContent = normalizeString(project?.badgeLabel) || formatLabel(project?.propertyType) || groupTitle;
+                        }
+                        const image = card.querySelector('[data-role="image"]');
+                        const media = card.querySelector('[data-role="media"]');
+                        const imageSrc = normalizeString(project?.image);
+                        const fallbackTitle = normalizeString(project?.title) || 'Project';
+                        const imageAlt = normalizeString(project?.imageAlt) || `${fallbackTitle} image`;
+                        if (image) {
+                            ensureLazyImage(image);
+                            if (imageSrc) {
+                                image.src = imageSrc;
+                                image.alt = imageAlt;
+                                if (media) {
+                                    media.setAttribute('data-has-image', '');
+                                }
+                            } else if (media) {
+                                media.removeAttribute('data-has-image');
+                            }
+                        }
+                        const metricsContainer = card.querySelector('[data-role="metrics"]');
+                        buildMetrics(project?.metrics, metricsContainer);
+                        const meta = card.querySelector('.portfolio-card__meta');
+                        if (meta && !meta.textContent.trim()) {
+                            meta.remove();
+                        }
+                        const statusEl = card.querySelector('[data-role="status"]');
+                        buildStatus(project, normalizeString(group?.focusLabel), statusEl);
+                        fragment.appendChild(card);
+                    });
+                    track.appendChild(fragment);
+                }
+
+                container.appendChild(clone);
+            });
+
+            if (!hasContent) {
+                const empty = document.createElement('p');
+                empty.className = 'text-center text-sm text-[#333333]';
+                empty.setAttribute('data-portfolio-empty', '');
+                empty.textContent = 'Portfolio data will appear here once projects are published.';
+                container.appendChild(empty);
+                return;
+            }
+
+            initCarousels();
         }
 
         function renderHighlights(highlights) {
@@ -932,19 +1083,19 @@
                 return;
             }
             highlights.forEach((item) => {
-                if (!item?.title && !item?.description) {
+                if (!normalizeString(item?.title) && !normalizeString(item?.description)) {
                     return;
                 }
                 const clone = template.content.firstElementChild.cloneNode(true);
                 const title = clone.querySelector('[data-role="title"]');
-                if (title && item.title) {
-                    title.textContent = item.title;
+                if (title && normalizeString(item?.title)) {
+                    title.textContent = normalizeString(item.title);
                 } else if (title) {
                     title.remove();
                 }
                 const description = clone.querySelector('[data-role="description"]');
-                if (description && item.description) {
-                    description.textContent = item.description;
+                if (description && normalizeString(item?.description)) {
+                    description.textContent = normalizeString(item.description);
                 } else if (description) {
                     description.remove();
                 }
@@ -969,17 +1120,17 @@
                 return;
             }
             stats.forEach((stat) => {
-                if (!stat?.label && !stat?.value) {
+                if (!normalizeString(stat?.label) && !normalizeString(stat?.value)) {
                     return;
                 }
                 const clone = template.content.firstElementChild.cloneNode(true);
                 const value = clone.querySelector('[data-role="value"]');
-                if (value && stat.value) {
-                    value.textContent = stat.value;
+                if (value && normalizeString(stat?.value)) {
+                    value.textContent = normalizeString(stat.value);
                 }
                 const label = clone.querySelector('[data-role="label"]');
-                if (label && stat.label) {
-                    label.textContent = stat.label;
+                if (label && normalizeString(stat?.label)) {
+                    label.textContent = normalizeString(stat.label);
                 }
                 container.appendChild(clone);
             });
@@ -990,34 +1141,43 @@
             }
         }
 
-        function formatLogoAlt(path) {
-            const fileName = path.split('/').pop().split('.')[0] || '';
-            return fileName
+        function formatLogoAlt(pathOrName) {
+            const base = normalizeString(pathOrName).split('/').pop()?.split('.')[0] || normalizeString(pathOrName);
+            return base
                 .replace(/[-_]/g, ' ')
-                .replace(/\b\w/g, (char) => char.toUpperCase());
+                .replace(/\b\w/g, (char) => char.toUpperCase())
+                .trim();
         }
 
-        function renderPartners() {
+        function renderPartners(partners) {
             const track = document.getElementById('logo-track');
-            if (!track || !Array.isArray(LOGO_FILES) || !LOGO_FILES.length) {
+            const marquee = document.querySelector('.logo-marquee');
+            if (!track || !marquee) {
                 return;
             }
-
+            const items = Array.isArray(partners?.items) && partners.items.length ? partners.items : FALLBACK_PARTNER_LOGOS;
             track.innerHTML = '';
-            const sources = [...LOGO_FILES, ...LOGO_FILES];
-            sources.forEach((src) => {
+            if (!items.length) {
+                marquee.classList.add('hidden');
+                return;
+            }
+            marquee.classList.remove('hidden');
+            const doubled = [...items, ...items];
+            doubled.forEach((item) => {
                 const img = document.createElement('img');
-                img.src = src;
-                img.alt = formatLogoAlt(src);
-                img.loading = 'lazy';
+                const src = normalizeString(item?.logo || item?.src);
+                const label = normalizeString(item?.name) || formatLogoAlt(src) || 'Partner logo';
+                ensureLazyImage(img);
+                if (src) {
+                    img.src = src;
+                }
+                img.alt = label;
                 track.appendChild(img);
             });
-
-            const duration = Math.max(LOGO_FILES.length * 4, 20);
+            const baseCount = items.length || 1;
+            const duration = Math.max(baseCount * 4, 20);
             track.style.animationDuration = `${duration}s`;
         }
-
-        renderPartners();
 
         function initCarousels() {
             document.querySelectorAll('[data-carousel]').forEach((carousel) => {
@@ -1060,7 +1220,30 @@
             });
         }
 
-        initCarousels();
+        let mapObserver;
+        function getMapObserver() {
+            if (mapObserver || !('IntersectionObserver' in window)) {
+                return mapObserver;
+            }
+            mapObserver = new IntersectionObserver((entries, observer) => {
+                entries.forEach((entry) => {
+                    if (!entry.isIntersecting) {
+                        return;
+                    }
+                    const target = entry.target;
+                    const encoded = target.getAttribute('data-map-embed');
+                    if (encoded) {
+                        const decoded = decodeFromBase64(encoded);
+                        if (decoded) {
+                            target.innerHTML = decoded;
+                        }
+                        target.removeAttribute('data-map-embed');
+                    }
+                    observer.unobserve(target);
+                });
+            }, { rootMargin: '0px 0px 200px 0px' });
+            return mapObserver;
+        }
 
         function renderContactInfo(contact) {
             if (!contact) {
@@ -1099,8 +1282,31 @@
                 }
             }
             if (contact.mapEmbed) {
+                const encoded = encodeToBase64(contact.mapEmbed);
                 document.querySelectorAll('[data-cms-map="contact.mapEmbed"]').forEach((container) => {
-                    container.innerHTML = contact.mapEmbed;
+                    if (!encoded) {
+                        container.innerHTML = contact.mapEmbed;
+                        return;
+                    }
+                    container.innerHTML = '';
+                    container.setAttribute('data-map-embed', encoded);
+                    const observer = getMapObserver();
+                    if (observer) {
+                        observer.observe(container);
+                    } else {
+                        try {
+                            container.innerHTML = contact.mapEmbed;
+                            container.removeAttribute('data-map-embed');
+                        } catch (error) {
+                            console.error('Failed to render map embed.', error);
+                        }
+                    }
+                });
+            }
+            if (!contact.mapEmbed) {
+                document.querySelectorAll('[data-cms-map="contact.mapEmbed"]').forEach((container) => {
+                    container.innerHTML = '';
+                    container.removeAttribute('data-map-embed');
                 });
             }
         }
@@ -1131,14 +1337,15 @@
             renderHighlights(about.highlights);
             renderStats(about.stats);
 
-            const portfolioIntro = site.portfolioIntro || {};
-            setText('portfolio.heading', portfolioIntro.heading);
-            setText('portfolio.subheading', portfolioIntro.subheading);
+            const portfolio = site.portfolio || site.portfolioIntro || {};
+            setText('portfolio.heading', portfolio.heading);
+            setText('portfolio.subheading', portfolio.subheading);
+            renderProjects(site.projects, portfolio);
 
             const partners = site.partners || {};
             setText('partners.heading', partners.heading);
             setText('partners.subheading', partners.subheading);
-            renderPartners();
+            renderPartners(partners);
 
             const investor = site.investor || {};
             setText('investor.heading', investor.heading);
@@ -1155,8 +1362,6 @@
             setText('footer.companyName', footer.companyName);
             setText('footer.copyright', footer.copyright);
             setText('footer.credits', footer.credits);
-
-            renderProjects(site.projects);
         }
 
         async function loadSiteContent() {

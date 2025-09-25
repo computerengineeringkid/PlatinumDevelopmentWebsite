@@ -2,11 +2,27 @@
   "title": "Platinum Development - Redefining the Las Vegas Landscape",
   "companyName": "Platinum Development",
   "navigationLinks": [
-    { "label": "Home", "href": "#home" },
-    { "label": "About", "href": "#about" },
-    { "label": "Portfolio", "href": "#portfolio" },
-    { "label": "Investors", "href": "#investors" },
-    { "label": "Contact", "href": "#contact", "isPrimary": true }
+    {
+      "label": "Home",
+      "href": "#home"
+    },
+    {
+      "label": "About",
+      "href": "#about"
+    },
+    {
+      "label": "Portfolio",
+      "href": "#portfolio"
+    },
+    {
+      "label": "Investors",
+      "href": "#investors"
+    },
+    {
+      "label": "Contact",
+      "href": "#contact",
+      "isPrimary": true
+    }
   ],
   "hero": {
     "headline": "Redefining the Las Vegas Landscape.",
@@ -39,51 +55,170 @@
       }
     ],
     "stats": [
-      { "label": "Square Feet Delivered", "value": "1.2M+" },
-      { "label": "Projects Completed", "value": "45" },
-      { "label": "Current Developments", "value": "6" },
-      { "label": "Years of Experience", "value": "20" }
+      {
+        "label": "Square Feet Delivered",
+        "value": "1.2M+"
+      },
+      {
+        "label": "Projects Completed",
+        "value": "45"
+      },
+      {
+        "label": "Current Developments",
+        "value": "6"
+      },
+      {
+        "label": "Years of Experience",
+        "value": "20"
+      }
     ]
   },
-  "portfolioIntro": {
+  "portfolio": {
     "heading": "Our Portfolio",
-    "subheading": "A selection of our completed and upcoming projects."
+    "subheading": "A selection of our completed and upcoming projects.",
+    "groups": [
+      {
+        "id": "retail",
+        "tagline": "Retail Portfolio",
+        "title": "Retail Properties",
+        "description": "High-performing centers anchored by national brands across the Las Vegas valley.",
+        "focusLabel": "Focus"
+      },
+      {
+        "id": "multifamily",
+        "tagline": "Multifamily Portfolio",
+        "title": "Multifamily Communities",
+        "description": "Thoughtfully designed communities that balance modern comfort and neighborhood character.",
+        "focusLabel": "Focus"
+      },
+      {
+        "id": "singleFamily",
+        "tagline": "Single-Family Portfolio",
+        "title": "Single-Family Neighborhoods",
+        "description": "Private enclaves of homes tailored to modern living with enduring value.",
+        "focusLabel": "Focus"
+      }
+    ]
   },
   "projects": [
     {
       "title": "6830 S. Rainbow Blvd",
-      "summary": "Vibrant retail center in a prime location.",
+      "summary": "Open-air retail destination anchored by national brands.",
       "propertyType": "retail",
-      "status": "Completed",
+      "status": "Operating",
+      "focus": "Experience Upgrades",
+      "location": "Las Vegas, NV",
       "image": "https://placehold.co/600x400/DDD/333?text=Retail+Property",
       "imageAlt": "Retail center exterior at sunset",
       "metrics": [
-        { "label": "Size", "value": "45,000 sq ft" },
-        { "label": "Key Tenants", "value": "National retailers" }
+        {
+          "label": "Size",
+          "value": "45,000 sq ft"
+        },
+        {
+          "label": "Key Tenants",
+          "value": "National retailers"
+        }
+      ]
+    },
+    {
+      "title": "9550 S. Eastern Ave",
+      "summary": "Regional-serving retail with chef-driven dining and wellness concepts.",
+      "propertyType": "retail",
+      "status": "Operating",
+      "focus": "Tenant Partnerships",
+      "location": "Henderson, NV",
+      "image": "https://placehold.co/600x400/DDD/333?text=Retail+Property",
+      "imageAlt": "Retail storefronts along landscaped walkways",
+      "metrics": [
+        {
+          "label": "Size",
+          "value": "62,000 sq ft"
+        },
+        {
+          "label": "Tenants",
+          "value": "Lifestyle & daily-needs"
+        }
       ]
     },
     {
       "title": "8021 Vegas Dr",
-      "summary": "22 modern townhome units.",
+      "summary": "22 contemporary townhome residences with private garages.",
       "propertyType": "multifamily",
-      "status": "In Leasing",
+      "status": "In Lease-Up",
+      "focus": "Resident Experience",
+      "location": "Las Vegas, NV",
       "image": "https://placehold.co/600x400/DDD/333?text=Multifamily+Property",
       "imageAlt": "Townhome community with landscaped entry",
       "metrics": [
-        { "label": "Units", "value": "22" },
-        { "label": "Completion", "value": "Q4 2024" }
+        {
+          "label": "Units",
+          "value": "22"
+        },
+        {
+          "label": "Completion",
+          "value": "Q4 2024"
+        }
+      ]
+    },
+    {
+      "title": "Cimarron Village",
+      "summary": "Garden-style community introducing 180 units with resort amenities.",
+      "propertyType": "multifamily",
+      "status": "Under Construction",
+      "focus": "Strategic Leasing",
+      "location": "North Las Vegas, NV",
+      "image": "https://placehold.co/600x400/DDD/333?text=Multifamily+Property",
+      "imageAlt": "Garden-style multifamily community rendering",
+      "metrics": [
+        {
+          "label": "Units",
+          "value": "180"
+        },
+        {
+          "label": "Amenities",
+          "value": "Resort pool & fitness"
+        }
       ]
     },
     {
       "title": "Lucky Pagoda Ct",
-      "summary": "A curated collection of modern single-family homes.",
+      "summary": "Curated collection of modern single-family homes with indoor/outdoor living.",
       "propertyType": "singleFamily",
       "status": "Planned",
+      "focus": "Design Finalization",
+      "location": "Las Vegas, NV",
       "image": "https://placehold.co/600x400/DDD/333?text=Single-Family",
       "imageAlt": "Single-family home exterior",
       "metrics": [
-        { "label": "Lots", "value": "15" },
-        { "label": "Architect", "value": "TBD" }
+        {
+          "label": "Lots",
+          "value": "15"
+        },
+        {
+          "label": "Architect",
+          "value": "TBD"
+        }
+      ]
+    },
+    {
+      "title": "Alta Ridge Estates",
+      "summary": "Gated hillside community pairing custom home lots with desert contemporary architecture.",
+      "propertyType": "singleFamily",
+      "status": "Under Review",
+      "focus": "Entitlements",
+      "location": "Las Vegas, NV",
+      "image": "https://placehold.co/600x400/DDD/333?text=Single-Family",
+      "imageAlt": "Neighborhood rendering with desert landscaping",
+      "metrics": [
+        {
+          "label": "Lots",
+          "value": "28"
+        },
+        {
+          "label": "Average Lot Size",
+          "value": "7,500 sq ft"
+        }
       ]
     }
   ],
@@ -120,12 +255,12 @@
     "infoHeading": "Our Information",
     "email": "info@prdevelopmentgroup.com",
     "address": "6870 S. Rainbow, Las Vegas, NV, 89118",
-    "hours": "Monday – Friday: 9:00 am – 5:00 pm",
+    "hours": "Monday \u2013 Friday: 9:00 am \u2013 5:00 pm",
     "mapEmbed": "<iframe title=\"Platinum Development Location\" src=\"https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3356.2804815565876!2d-115.20880982373752!3d36.066100808790935!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x80c8c7ad99bd7455%3A0xf0ae9ed474468e84!2s6870%20S%20Rainbow%20Blvd%2C%20Las%20Vegas%2C%20NV%2089118!5e0!3m2!1sen!2sus!4v1712782820000!5m2!1sen!2sus\" width=\"100%\" height=\"100%\" style=\"border:0\" allowfullscreen=\"\" loading=\"lazy\" referrerpolicy=\"no-referrer-when-downgrade\"></iframe>"
   },
   "footer": {
     "companyName": "Platinum Development",
-    "copyright": "© 2025 Platinum Development. All Rights Reserved.",
+    "copyright": "\u00a9 2025 Platinum Development. All Rights Reserved.",
     "credits": "Website by Saguaro Interactive"
   }
 }

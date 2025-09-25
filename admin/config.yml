@@ -64,12 +64,22 @@ collections:
                 fields:
                   - { label: "Label", name: "label", widget: "string" }
                   - { label: "Value", name: "value", widget: "string" }
-          - label: "Portfolio Intro"
-            name: "portfolioIntro"
+          - label: "Portfolio"
+            name: "portfolio"
             widget: "object"
             fields:
               - { label: "Heading", name: "heading", widget: "string" }
               - { label: "Subheading", name: "subheading", widget: "text", required: false }
+              - label: "Groups"
+                name: "groups"
+                widget: "list"
+                summary: "{{fields.title}} ({{fields.id}})"
+                fields:
+                  - { label: "Identifier", name: "id", widget: "string" }
+                  - { label: "Tagline", name: "tagline", widget: "string", required: false }
+                  - { label: "Title", name: "title", widget: "string" }
+                  - { label: "Description", name: "description", widget: "text", required: false }
+                  - { label: "Focus Label", name: "focusLabel", widget: "string", required: false }
           - label: "Projects"
             name: "projects"
             widget: "list"
@@ -78,7 +88,9 @@ collections:
               - { label: "Title", name: "title", widget: "string" }
               - { label: "Summary", name: "summary", widget: "text" }
               - { label: "Property Type", name: "propertyType", widget: "string" }
+              - { label: "Location", name: "location", widget: "string", required: false }
               - { label: "Status", name: "status", widget: "string", required: false }
+              - { label: "Focus", name: "focus", widget: "string", required: false }
               - { label: "Image", name: "image", widget: "image", allow_multiple: false }
               - { label: "Image Alt Text", name: "imageAlt", widget: "string", required: false }
               - label: "Metrics"
