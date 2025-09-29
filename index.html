@@ -808,7 +808,7 @@
             }
             try {
                 const resolvedUrl = new URL(url, window.location.href);
-                return resolvedUrl.pathname + resolvedUrl.search + resolvedUrl.hash;
+                return resolvedUrl.href;
             } catch (error) {
                 console.warn('Failed to resolve asset path, using original value.', error);
                 return url;
