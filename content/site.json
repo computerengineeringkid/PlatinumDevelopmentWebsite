@@ -92,16 +92,28 @@
     "subheading": "We are proud to partner with nationally recognized tenants.",
     "items": [
       {
-        "name": "Desert Bank",
-        "logo": "https://placehold.co/200x80/0f172a/fff?text=Desert+Bank"
+        "name": "BJs",
+        "logo": "logos/BJs.png"
       },
       {
-        "name": "Silver State Markets",
-        "logo": "https://placehold.co/200x80/1f2937/fff?text=Silver+State"
+        "name": "Einstein Bros. Bagels",
+        "logo": "logos/Einstein.png"
       },
       {
-        "name": "Summit Fitness",
-        "logo": "https://placehold.co/200x80/111827/fff?text=Summit"
+        "name": "Big 5 Sporting Goods",
+        "logo": "logos/big5.png"
+      },
+      {
+        "name": "Cox",
+        "logo": "logos/cox.png"
+      },
+      {
+        "name": "Massage Envy",
+        "logo": "logos/massageenvy.png"
+      },
+      {
+        "name": "Moneytree",
+        "logo": "logos/moneytree.png"
       }
     ]
   },
