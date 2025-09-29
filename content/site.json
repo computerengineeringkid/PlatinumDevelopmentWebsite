@@ -1,6 +1,15 @@
 {
   "title": "Platinum Development - Redefining the Las Vegas Landscape",
   "companyName": "Platinum Development",
+  "seo": {
+    "ogTitle": "Platinum Development - Redefining the Las Vegas Landscape",
+    "ogDescription": "Platinum Development delivers premier retail, multifamily, and single-family real estate projects throughout Las Vegas with a focus on community impact and lasting value.",
+    "ogImage": "https://placehold.co/1200x630/001F3F/FFFFFF?text=Platinum+Development",
+    "twitterCard": "summary_large_image",
+    "twitterTitle": "Platinum Development - Redefining the Las Vegas Skyline",
+    "twitterDescription": "Discover how Platinum Development is elevating Las Vegas with high-impact retail, multifamily, and single-family communities.",
+    "twitterImage": "https://placehold.co/1200x630/001F3F/FFFFFF?text=Platinum+Development"
+  },
   "navigationLinks": [
     { "label": "Home", "href": "#home" },
     { "label": "About", "href": "#about" },

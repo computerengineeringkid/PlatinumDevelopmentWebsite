@@ -3,11 +3,26 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Platinum Development delivers premier retail, multifamily, and single-family real estate projects throughout Las Vegas with a focus on community impact and lasting value.">
+    <meta name="theme-color" content="#001F3F">
+    <meta property="og:title" content="Platinum Development - Redefining the Las Vegas Landscape">
+    <meta property="og:description" content="Platinum Development delivers premier real estate projects throughout Las Vegas with a focus on community impact and lasting value.">
+    <meta property="og:image" content="vegas2.jpg">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Platinum Development - Redefining the Las Vegas Landscape">
+    <meta name="twitter:description" content="Platinum Development delivers premier real estate projects throughout Las Vegas with a focus on community impact and lasting value.">
+    <meta name="twitter:image" content="vegas2.jpg">
+    <link rel="preload" href="content/site.json" as="fetch" type="application/json" crossorigin="anonymous">
     <title>Platinum Development - Redefining the Las Vegas Landscape</title>
+    <script id="structured-data" type="application/ld+json"></script>
     <script src="https://cdn.tailwindcss.com"></script>
-    <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
+    <script src="https://identity.netlify.com/v1/netlify-identity-widget.js" defer></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="dns-prefetch" href="https://fonts.googleapis.com">
+    <link rel="dns-prefetch" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
         body {
@@ -316,7 +331,7 @@
     <header id="header" class="sticky top-0 z-50 border border-[#001F3F]/10 bg-white/95 shadow-lg backdrop-blur transition-all duration-300">
         <nav class="mx-auto flex max-w-6xl flex-wrap items-center justify-between gap-4 px-5 py-6 md:px-8">
             <a href="#home" class="flex items-center gap-3">
-                <img src="nick-removebg-preview.png" alt="Platinum Development logo" class="h-10 w-auto">
+                <img src="nick-removebg-preview.png" alt="Platinum Development logo" class="h-10 w-auto" loading="lazy" decoding="async">
                 <span class="sr-only" data-cms-text="companyName">Platinum Development</span>
             </a>
             <div class="hidden flex-1 items-center justify-end gap-6 text-sm font-medium md:flex" data-cms-nav="desktop">
@@ -362,7 +377,7 @@
             <div class="container mx-auto px-6">
                 <div class="grid md:grid-cols-2 gap-12 items-center fade-in-section">
                     <div>
-                        <img src="https://placehold.co/600x400/FFE9D4/001F3F?text=Image+Coming+Soon" alt="Image coming soon" class="rounded-lg shadow-xl w-full" data-cms-image="about.image">
+                        <img src="https://placehold.co/600x400/FFE9D4/001F3F?text=Image+Coming+Soon" alt="Image coming soon" class="rounded-lg shadow-xl w-full" data-cms-image="about.image" loading="lazy" decoding="async">
                     </div>
                     <div>
                         <h2 class="text-3xl font-bold mb-4 text-[#001F3F]" data-cms-text="about.heading">Building Communities, Creating Value.</h2>
@@ -703,7 +718,7 @@
         <div class="mx-auto max-w-6xl px-6 py-16">
             <div class="grid gap-12 md:grid-cols-[auto_1fr_1fr] items-start">
                 <div class="flex flex-col items-center md:items-start">
-                    <img src="nick-removebg-preview.png" alt="Platinum Development logo" class="h-12 w-auto">
+                    <img src="nick-removebg-preview.png" alt="Platinum Development logo" class="h-12 w-auto" loading="lazy" decoding="async">
                 </div>
                 <div class="space-y-2 text-center md:text-left">
                     <h4 class="text-lg font-semibold tracking-wide uppercase">Hours</h4>
@@ -763,24 +778,29 @@
         window.addEventListener('scroll', updateHeaderState, { passive: true });
 
         const sections = document.querySelectorAll('.fade-in-section');
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('is-visible');
-                }
+        if ('IntersectionObserver' in window) {
+            const observer = new IntersectionObserver((entries, currentObserver) => {
+                entries.forEach((entry) => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('is-visible');
+                        currentObserver.unobserve(entry.target);
+                    }
+                });
+            }, {
+                threshold: 0.1
             });
-        }, {
-            threshold: 0.1
-        });
 
-        sections.forEach(section => {
-            observer.observe(section);
-        });
+            sections.forEach((section) => {
+                observer.observe(section);
+            });
+        } else {
+            sections.forEach((section) => section.classList.add('is-visible'));
+        }
     </script>
 
     <script>
         const DATA_SOURCE_URL = './content/site.json';
-        const LOGO_FILES = [
+        const FALLBACK_LOGOS = [
             'logos/BJs.png',
             'logos/Einstein.png',
             'logos/big5.png',
@@ -788,6 +808,22 @@
             'logos/massageenvy.png',
             'logos/moneytree.png'
         ];
+
+        function resolveAssetPath(url) {
+            if (!url) {
+                return '';
+            }
+            if (/^(?:https?:)?\/\//.test(url) || url.startsWith('data:') || url.startsWith('blob:')) {
+                return url;
+            }
+            try {
+                const resolvedUrl = new URL(url, window.location.href);
+                return resolvedUrl.href;
+            } catch (error) {
+                console.warn('Failed to resolve asset path, using original value.', error);
+                return url;
+            }
+        }
 
         function setText(key, value) {
             if (typeof value !== 'string' || !value.trim()) {
@@ -813,7 +849,8 @@
             }
             document.querySelectorAll(`[data-cms-bg-image="${key}"]`).forEach((el) => {
                 const gradient = 'linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5))';
-                el.style.backgroundImage = `${gradient}, url('${url}')`;
+                const resolved = resolveAssetPath(url);
+                el.style.backgroundImage = `${gradient}, url("${resolved}")`;
                 if (alt) {
                     el.setAttribute('aria-label', alt);
                 }
@@ -825,11 +862,24 @@
                 return;
             }
             document.querySelectorAll(`[data-cms-image="${key}"]`).forEach((el) => {
-                el.src = url;
+                el.src = resolveAssetPath(url);
+                el.loading = 'lazy';
+                el.decoding = 'async';
                 if (altText) {
                     el.alt = altText;
                 }
             });
+        }
+
+        function setMetaContent(selector, ...values) {
+            const el = document.querySelector(selector);
+            if (!el) {
+                return;
+            }
+            const content = values.find((value) => typeof value === 'string' && value.trim());
+            if (content) {
+                el.setAttribute('content', content);
+            }
         }
 
         function setParagraphs(key, paragraphs, defaultClass) {
@@ -862,33 +912,33 @@
             const primaryIndex = links.findIndex((link) => link?.isPrimary);
             const fallbackPrimaryIndex = primaryIndex >= 0 ? primaryIndex : links.length - 1;
 
-        const render = (container, isDesktop) => {
-            if (!container) return;
-            container.innerHTML = '';
-            links.forEach(({label, href, isPrimary}, index) => {
-                if (!label) return;
-                const linkHref = href || '#';
-                const a = document.createElement('a');
-                a.textContent = label;
-                a.href = linkHref;
-                if (isDesktop) {
-                    a.className = 'text-sm font-medium text-[#001F3F] transition-colors hover:text-[#FF6600]';
-                    if (isPrimary || index === fallbackPrimaryIndex) {
-                        a.className = 'inline-flex items-center rounded-full bg-[#D4AF37] px-4 py-2 text-sm font-semibold text-[#001F3F] shadow-sm transition-colors hover:bg-[#b89027]';
-                    }
-                } else {
-                    a.className = 'block rounded-md px-4 py-2 text-base font-medium text-[#001F3F] transition-colors hover:bg-[#001F3F]/10';
-                    if (isPrimary || index === fallbackPrimaryIndex) {
-                        a.classList.add('bg-[#D4AF37]', 'text-[#001F3F]');
-                    }
-                    a.addEventListener('click', () => {
-                        if (menuButton && mobileMenuElement) {
-                            menuButton.setAttribute('aria-expanded', 'false');
-                            mobileMenuElement.classList.add('hidden');
+            const render = (container, isDesktop) => {
+                if (!container) return;
+                container.innerHTML = '';
+                links.forEach(({ label, href, isPrimary }, index) => {
+                    if (!label) return;
+                    const linkHref = href || '#';
+                    const anchor = document.createElement('a');
+                    anchor.textContent = label;
+                    anchor.href = linkHref;
+                    if (isDesktop) {
+                        anchor.className = 'text-sm font-medium text-[#001F3F] transition-colors hover:text-[#FF6600]';
+                        if (isPrimary || index === fallbackPrimaryIndex) {
+                            anchor.className = 'inline-flex items-center rounded-full bg-[#D4AF37] px-4 py-2 text-sm font-semibold text-[#001F3F] shadow-sm transition-colors hover:bg-[#b89027]';
+                        }
+                    } else {
+                        anchor.className = 'block rounded-md px-4 py-2 text-base font-medium text-[#001F3F] transition-colors hover:bg-[#001F3F]/10';
+                        if (isPrimary || index === fallbackPrimaryIndex) {
+                            anchor.classList.add('bg-[#D4AF37]', 'text-[#001F3F]');
+                        }
+                        anchor.addEventListener('click', () => {
+                            if (menuButton && mobileMenuElement) {
+                                menuButton.setAttribute('aria-expanded', 'false');
+                                mobileMenuElement.classList.add('hidden');
                             }
                         });
                     }
-                    container.appendChild(a);
+                    container.appendChild(anchor);
                 });
             };
 
@@ -997,23 +1047,41 @@
                 .replace(/\b\w/g, (char) => char.toUpperCase());
         }
 
-        function renderPartners() {
+        function renderPartners(partnerItems = []) {
             const track = document.getElementById('logo-track');
-            if (!track || !Array.isArray(LOGO_FILES) || !LOGO_FILES.length) {
+            if (!track) {
                 return;
             }
 
-            track.innerHTML = '';
-            const sources = [...LOGO_FILES, ...LOGO_FILES];
-            sources.forEach((src) => {
+            const configuredLogos = Array.isArray(partnerItems)
+                ? partnerItems.filter((item) => item?.logo).map((item) => ({
+                    src: resolveAssetPath(item.logo),
+                    alt: item.name || formatLogoAlt(item.logo)
+                }))
+                : [];
+
+            const fallbackLogos = FALLBACK_LOGOS.map((src) => ({
+                src,
+                alt: formatLogoAlt(src)
+            }));
+
+            const activeLogos = configuredLogos.length ? configuredLogos : fallbackLogos;
+            const sources = [...activeLogos, ...activeLogos];
+
+            const fragment = document.createDocumentFragment();
+            sources.forEach(({ src, alt }) => {
                 const img = document.createElement('img');
                 img.src = src;
-                img.alt = formatLogoAlt(src);
+                img.alt = alt;
                 img.loading = 'lazy';
-                track.appendChild(img);
+                img.decoding = 'async';
+                fragment.appendChild(img);
             });
 
-            const duration = Math.max(LOGO_FILES.length * 4, 20);
+            track.innerHTML = '';
+            track.appendChild(fragment);
+
+            const duration = Math.max(activeLogos.length * 4, 20);
             track.style.animationDuration = `${duration}s`;
         }
 
@@ -1105,6 +1173,110 @@
             }
         }
 
+        function parsePostalAddress(address) {
+            if (typeof address !== 'string') {
+                return null;
+            }
+            const parts = address.split(',').map((part) => part.trim()).filter(Boolean);
+            if (!parts.length) {
+                return null;
+            }
+            const postalAddress = { '@type': 'PostalAddress' };
+            if (parts[0]) {
+                postalAddress.streetAddress = parts[0];
+            }
+            if (parts[1]) {
+                postalAddress.addressLocality = parts[1];
+            }
+            if (parts[2]) {
+                const stateParts = parts[2].split(/\s+/).filter(Boolean);
+                if (stateParts.length) {
+                    postalAddress.addressRegion = stateParts[0];
+                    if (stateParts.length > 1 && !parts[3]) {
+                        postalAddress.postalCode = stateParts.slice(1).join(' ');
+                    }
+                } else {
+                    postalAddress.addressRegion = parts[2];
+                }
+            }
+            if (parts[3]) {
+                postalAddress.postalCode = parts[3];
+            }
+            return Object.keys(postalAddress).length > 1 ? postalAddress : null;
+        }
+
+        function extractGeoFromEmbed(mapEmbed) {
+            if (typeof mapEmbed !== 'string') {
+                return null;
+            }
+            const longitudeMatch = mapEmbed.match(/!2d(-?\d+(?:\.\d+)?)/);
+            const latitudeMatch = mapEmbed.match(/!3d(-?\d+(?:\.\d+)?)/);
+            if (!latitudeMatch || !longitudeMatch) {
+                return null;
+            }
+            return {
+                '@type': 'GeoCoordinates',
+                latitude: parseFloat(latitudeMatch[1]),
+                longitude: parseFloat(longitudeMatch[1])
+            };
+        }
+
+        function normalizeOpeningHours(hours) {
+            if (typeof hours !== 'string') {
+                return [];
+            }
+            return hours
+                .split(/\r?\n|;/)
+                .map((entry) => entry.trim())
+                .filter(Boolean);
+        }
+
+        function updateStructuredData(site) {
+            const scriptEl = document.getElementById('structured-data');
+            if (!scriptEl) {
+                return;
+            }
+            if (!site || typeof site !== 'object') {
+                scriptEl.textContent = '';
+                return;
+            }
+
+            const contact = site.contact || {};
+            const address = parsePostalAddress(contact.address);
+            const geo = extractGeoFromEmbed(contact.mapEmbed);
+            const openingHours = normalizeOpeningHours(contact.hours);
+
+            const schema = {
+                '@context': 'https://schema.org',
+                '@type': 'LocalBusiness',
+                name: site.companyName || (site.footer && site.footer.companyName) || undefined,
+                url: window.location.origin,
+                email: contact.email || undefined,
+                address: address || undefined,
+                openingHours: openingHours.length ? openingHours : undefined,
+                geo: geo || undefined
+            };
+
+            const filteredSchema = {};
+            Object.entries(schema).forEach(([key, value]) => {
+                if (value === undefined || value === null) {
+                    return;
+                }
+                if (Array.isArray(value) && value.length === 0) {
+                    return;
+                }
+                if (typeof value === 'object' && !Array.isArray(value)) {
+                    const objectKeys = Object.keys(value);
+                    if (objectKeys.length === 0 || (objectKeys.length === 1 && objectKeys[0] === '@type')) {
+                        return;
+                    }
+                }
+                filteredSchema[key] = value;
+            });
+
+            scriptEl.textContent = JSON.stringify(filteredSchema, null, 2);
+        }
+
         function applySiteContent(site) {
             if (!site) {
                 return;
@@ -1118,6 +1290,28 @@
             renderNavLinks(site.navigationLinks);
 
             const hero = site.hero || {};
+            const seo = site.seo || {};
+            const metaDescriptionEl = document.querySelector('meta[name="description"]');
+            const defaultTitle = site.title || document.title;
+            const defaultDescription = metaDescriptionEl?.getAttribute('content') || '';
+            const resolvedOgImage = seo.ogImage ? resolveAssetPath(seo.ogImage) : '';
+            const resolvedTwitterImage = seo.twitterImage ? resolveAssetPath(seo.twitterImage) : '';
+            const resolvedHeroImage = hero.backgroundImage ? resolveAssetPath(hero.backgroundImage) : '';
+
+            if (seo.metaDescription && metaDescriptionEl) {
+                metaDescriptionEl.setAttribute('content', seo.metaDescription);
+            }
+
+            setMetaContent('meta[property="og:title"]', seo.ogTitle, defaultTitle);
+            setMetaContent('meta[property="og:description"]', seo.ogDescription, defaultDescription);
+            setMetaContent('meta[property="og:image"]', resolvedOgImage, resolvedHeroImage);
+            setMetaContent('meta[property="og:type"]', seo.ogType, 'website');
+            setMetaContent('meta[property="og:url"]', seo.ogUrl, window.location.href);
+            setMetaContent('meta[name="twitter:card"]', seo.twitterCard, 'summary_large_image');
+            setMetaContent('meta[name="twitter:title"]', seo.twitterTitle, seo.ogTitle, defaultTitle);
+            setMetaContent('meta[name="twitter:description"]', seo.twitterDescription, seo.ogDescription, defaultDescription);
+            setMetaContent('meta[name="twitter:image"]', resolvedTwitterImage, resolvedOgImage, resolvedHeroImage);
+
             setBackgroundImage('hero.backgroundImage', hero.backgroundImage, hero.backgroundAlt);
             setText('hero.headline', hero.headline);
             setText('hero.subheadline', hero.subheadline);
@@ -1138,7 +1332,7 @@
             const partners = site.partners || {};
             setText('partners.heading', partners.heading);
             setText('partners.subheading', partners.subheading);
-            renderPartners();
+            renderPartners(partners.items);
 
             const investor = site.investor || {};
             setText('investor.heading', investor.heading);
@@ -1157,11 +1351,12 @@
             setText('footer.credits', footer.credits);
 
             renderProjects(site.projects);
+            updateStructuredData(site);
         }
 
         async function loadSiteContent() {
             try {
-                const response = await fetch(DATA_SOURCE_URL, { cache: 'no-store' });
+                const response = await fetch(DATA_SOURCE_URL, { cache: 'no-cache' });
                 if (!response.ok) {
                     throw new Error(`Request failed with status ${response.status}`);
                 }
@@ -1172,25 +1367,43 @@
             }
         }
 
-        document.addEventListener('DOMContentLoaded', () => {
+        const startContentLoad = () => {
             loadSiteContent();
-        });
+        };
+
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', startContentLoad, { once: true });
+        } else {
+            startContentLoad();
+        }
     </script>
 
     <script>
-        if (window.netlifyIdentity) {
-            window.netlifyIdentity.on('init', (user) => {
-                if (!user) {
-                    window.netlifyIdentity.on('login', () => {
-                        document.location.href = '/admin/';
-                    });
+        let identityListenersRegistered = false;
+        const setupNetlifyIdentity = () => {
+            const identity = window.netlifyIdentity;
+            if (!identity || identityListenersRegistered) {
+                if (!identity) {
+                    return;
                 }
-            });
-
-            if (window.location.hash && window.location.hash.includes('confirmation_token')) {
-                window.netlifyIdentity.open('login');
+            } else {
+                identity.on('init', (user) => {
+                    if (!user) {
+                        identity.on('login', () => {
+                            document.location.href = '/admin/';
+                        });
+                    }
+                });
+                identityListenersRegistered = true;
             }
-        }
+
+            if (identity && window.location.hash && window.location.hash.includes('confirmation_token')) {
+                identity.open('login');
+            }
+        };
+
+        setupNetlifyIdentity();
+        window.addEventListener('load', setupNetlifyIdentity, { once: true });
     </script>
 </body>
 </html>
