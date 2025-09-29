@@ -14,6 +14,7 @@
     <meta name="twitter:title" content="Platinum Development - Redefining the Las Vegas Landscape">
     <meta name="twitter:description" content="Platinum Development delivers premier real estate projects throughout Las Vegas with a focus on community impact and lasting value.">
     <meta name="twitter:image" content="vegas2.jpg">
+    <link rel="canonical" href="https://www.prdevelopmentgroup.com/">
     <link rel="preload" href="content/site.json" as="fetch" type="application/json" crossorigin="anonymous">
     <title>Platinum Development - Redefining the Las Vegas Landscape</title>
     <script id="structured-data" type="application/ld+json"></script>
@@ -800,6 +801,17 @@
 
     <script>
         const DATA_SOURCE_URL = './content/site.json';
+        const DOCUMENT_BASE_URL = (() => {
+            try {
+                return new URL('.', document.baseURI).href;
+            } catch (error) {
+                const { origin, pathname } = window.location;
+                const normalizedPath = pathname.endsWith('/')
+                    ? pathname
+                    : pathname.replace(/[^/]*$/, '/');
+                return `${origin}${normalizedPath}`;
+            }
+        })();
         const FALLBACK_LOGOS = [
             'logos/BJs.png',
             'logos/Einstein.png',
@@ -817,11 +829,51 @@
                 return url;
             }
             try {
-                const resolvedUrl = new URL(url, window.location.href);
+                const resolvedUrl = new URL(url, DOCUMENT_BASE_URL);
                 return resolvedUrl.href;
             } catch (error) {
                 console.warn('Failed to resolve asset path, using original value.', error);
                 return url;
+            }
+        }
+
+        function normalizeUrlCandidate(value) {
+            if (typeof value !== 'string') {
+                return '';
+            }
+            const trimmed = value.trim();
+            if (!trimmed) {
+                return '';
+            }
+            try {
+                return new URL(trimmed, DOCUMENT_BASE_URL).href;
+            } catch (error) {
+                console.warn('Failed to normalize URL candidate, ignoring value.', error);
+                return '';
+            }
+        }
+
+        function selectPreferredUrl(...values) {
+            for (const value of values) {
+                const normalized = normalizeUrlCandidate(value);
+                if (normalized) {
+                    return normalized;
+                }
+            }
+            return '';
+        }
+
+        function setCanonicalLink(...values) {
+            let link = document.querySelector('link[rel="canonical"]');
+            if (!link) {
+                link = document.createElement('link');
+                link.setAttribute('rel', 'canonical');
+                document.head.appendChild(link);
+            }
+            const fallbackCurrent = window.location.href.split('#')[0];
+            const href = selectPreferredUrl(...values, fallbackCurrent);
+            if (href) {
+                link.setAttribute('href', href);
             }
         }
 
@@ -1054,16 +1106,30 @@
             }
 
             const configuredLogos = Array.isArray(partnerItems)
-                ? partnerItems.filter((item) => item?.logo).map((item) => ({
-                    src: resolveAssetPath(item.logo),
-                    alt: item.name || formatLogoAlt(item.logo)
-                }))
+                ? partnerItems
+                    .map((item) => {
+                        if (!item || !item.logo) {
+                            return null;
+                        }
+                        const src = resolveAssetPath(item.logo);
+                        if (!src) {
+                            return null;
+                        }
+                        return {
+                            src,
+                            alt: item.name || formatLogoAlt(item.logo)
+                        };
+                    })
+                    .filter(Boolean)
                 : [];
 
-            const fallbackLogos = FALLBACK_LOGOS.map((src) => ({
-                src,
-                alt: formatLogoAlt(src)
-            }));
+            const fallbackLogos = FALLBACK_LOGOS.map((src) => {
+                const resolved = resolveAssetPath(src);
+                return {
+                    src: resolved || src,
+                    alt: formatLogoAlt(src)
+                };
+            });
 
             const activeLogos = configuredLogos.length ? configuredLogos : fallbackLogos;
             const sources = [...activeLogos, ...activeLogos];
@@ -1246,11 +1312,12 @@
             const geo = extractGeoFromEmbed(contact.mapEmbed);
             const openingHours = normalizeOpeningHours(contact.hours);
 
+            const canonicalForSchema = selectPreferredUrl(site && site.seo && site.seo.canonicalUrl, window.location.href);
             const schema = {
                 '@context': 'https://schema.org',
                 '@type': 'LocalBusiness',
                 name: site.companyName || (site.footer && site.footer.companyName) || undefined,
-                url: window.location.origin,
+                url: canonicalForSchema || window.location.origin,
                 email: contact.email || undefined,
                 address: address || undefined,
                 openingHours: openingHours.length ? openingHours : undefined,
@@ -1306,7 +1373,10 @@
             setMetaContent('meta[property="og:description"]', seo.ogDescription, defaultDescription);
             setMetaContent('meta[property="og:image"]', resolvedOgImage, resolvedHeroImage);
             setMetaContent('meta[property="og:type"]', seo.ogType, 'website');
-            setMetaContent('meta[property="og:url"]', seo.ogUrl, window.location.href);
+            const currentPageUrl = window.location.href.split('#')[0];
+            const canonicalHref = selectPreferredUrl(seo.canonicalUrl, seo.ogUrl, currentPageUrl);
+            setCanonicalLink(canonicalHref);
+            setMetaContent('meta[property="og:url"]', selectPreferredUrl(seo.ogUrl, canonicalHref));
             setMetaContent('meta[name="twitter:card"]', seo.twitterCard, 'summary_large_image');
             setMetaContent('meta[name="twitter:title"]', seo.twitterTitle, seo.ogTitle, defaultTitle);
             setMetaContent('meta[name="twitter:description"]', seo.twitterDescription, seo.ogDescription, defaultDescription);

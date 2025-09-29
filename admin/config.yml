@@ -20,6 +20,18 @@ collections:
           - label: "Company Name"
             name: "companyName"
             widget: "string"
+          - label: "SEO Settings"
+            name: "seo"
+            widget: "object"
+            fields:
+              - { label: "Canonical URL", name: "canonicalUrl", widget: "string", required: false }
+              - { label: "Open Graph Title", name: "ogTitle", widget: "string", required: false }
+              - { label: "Open Graph Description", name: "ogDescription", widget: "text", required: false }
+              - { label: "Open Graph Image", name: "ogImage", widget: "image", required: false, allow_multiple: false }
+              - { label: "Twitter Card Type", name: "twitterCard", widget: "string", required: false, default: "summary_large_image" }
+              - { label: "Twitter Title", name: "twitterTitle", widget: "string", required: false }
+              - { label: "Twitter Description", name: "twitterDescription", widget: "text", required: false }
+              - { label: "Twitter Image", name: "twitterImage", widget: "image", required: false, allow_multiple: false }
           - label: "Navigation Links"
             name: "navigationLinks"
             widget: "list"
