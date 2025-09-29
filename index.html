@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Platinum Development delivers premier retail, multifamily, and single-family real estate projects throughout Las Vegas with a focus on community impact and lasting value.">
     <meta name="theme-color" content="#001F3F">
+    <link rel="canonical" href="https://www.platinumdevelopment.com/" data-cms-attr-href="site.canonicalUrl">
     <link rel="preload" href="content/site.json" as="fetch" type="application/json" crossorigin="anonymous">
     <title>Platinum Development - Redefining the Las Vegas Landscape</title>
     <script src="https://cdn.tailwindcss.com"></script>
@@ -1159,6 +1160,10 @@
 
             if (site.title) {
                 document.title = site.title;
+            }
+
+            if (site.canonicalUrl) {
+                setAttr('site.canonicalUrl', 'href', site.canonicalUrl);
             }
 
             setText('companyName', site.companyName);
