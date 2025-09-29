@@ -5,6 +5,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Platinum Development delivers premier retail, multifamily, and single-family real estate projects throughout Las Vegas with a focus on community impact and lasting value.">
     <meta name="theme-color" content="#001F3F">
+    <meta property="og:title" content="Platinum Development - Redefining the Las Vegas Landscape">
+    <meta property="og:description" content="Platinum Development delivers premier real estate projects throughout Las Vegas with a focus on community impact and lasting value.">
+    <meta property="og:image" content="vegas2.jpg">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Platinum Development - Redefining the Las Vegas Landscape">
+    <meta name="twitter:description" content="Platinum Development delivers premier real estate projects throughout Las Vegas with a focus on community impact and lasting value.">
+    <meta name="twitter:image" content="vegas2.jpg">
     <link rel="preload" href="content/site.json" as="fetch" type="application/json" crossorigin="anonymous">
     <title>Platinum Development - Redefining the Las Vegas Landscape</title>
     <script id="structured-data" type="application/ld+json"></script>
@@ -862,6 +871,17 @@
             });
         }
 
+        function setMetaContent(selector, ...values) {
+            const el = document.querySelector(selector);
+            if (!el) {
+                return;
+            }
+            const content = values.find((value) => typeof value === 'string' && value.trim());
+            if (content) {
+                el.setAttribute('content', content);
+            }
+        }
+
         function setParagraphs(key, paragraphs, defaultClass) {
             if (!Array.isArray(paragraphs) || !paragraphs.length) {
                 return;
@@ -1270,6 +1290,28 @@
             renderNavLinks(site.navigationLinks);
 
             const hero = site.hero || {};
+            const seo = site.seo || {};
+            const metaDescriptionEl = document.querySelector('meta[name="description"]');
+            const defaultTitle = site.title || document.title;
+            const defaultDescription = metaDescriptionEl?.getAttribute('content') || '';
+            const resolvedOgImage = seo.ogImage ? resolveAssetPath(seo.ogImage) : '';
+            const resolvedTwitterImage = seo.twitterImage ? resolveAssetPath(seo.twitterImage) : '';
+            const resolvedHeroImage = hero.backgroundImage ? resolveAssetPath(hero.backgroundImage) : '';
+
+            if (seo.metaDescription && metaDescriptionEl) {
+                metaDescriptionEl.setAttribute('content', seo.metaDescription);
+            }
+
+            setMetaContent('meta[property="og:title"]', seo.ogTitle, defaultTitle);
+            setMetaContent('meta[property="og:description"]', seo.ogDescription, defaultDescription);
+            setMetaContent('meta[property="og:image"]', resolvedOgImage, resolvedHeroImage);
+            setMetaContent('meta[property="og:type"]', seo.ogType, 'website');
+            setMetaContent('meta[property="og:url"]', seo.ogUrl, window.location.href);
+            setMetaContent('meta[name="twitter:card"]', seo.twitterCard, 'summary_large_image');
+            setMetaContent('meta[name="twitter:title"]', seo.twitterTitle, seo.ogTitle, defaultTitle);
+            setMetaContent('meta[name="twitter:description"]', seo.twitterDescription, seo.ogDescription, defaultDescription);
+            setMetaContent('meta[name="twitter:image"]', resolvedTwitterImage, resolvedOgImage, resolvedHeroImage);
+
             setBackgroundImage('hero.backgroundImage', hero.backgroundImage, hero.backgroundAlt);
             setText('hero.headline', hero.headline);
             setText('hero.subheadline', hero.subheadline);
