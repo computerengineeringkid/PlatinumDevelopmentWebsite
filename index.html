@@ -14,6 +14,7 @@
     <meta name="twitter:title" content="Platinum Development - Redefining the Las Vegas Landscape">
     <meta name="twitter:description" content="Platinum Development delivers premier real estate projects throughout Las Vegas with a focus on community impact and lasting value.">
     <meta name="twitter:image" content="vegas2.jpg">
+    <link rel="canonical" href="https://www.platinumdevelopment.com/">
     <link rel="preload" href="content/site.json" as="fetch" type="application/json" crossorigin="anonymous">
     <title>Platinum Development - Redefining the Las Vegas Landscape</title>
     <script id="structured-data" type="application/ld+json"></script>
@@ -1311,6 +1312,16 @@
             setMetaContent('meta[name="twitter:title"]', seo.twitterTitle, seo.ogTitle, defaultTitle);
             setMetaContent('meta[name="twitter:description"]', seo.twitterDescription, seo.ogDescription, defaultDescription);
             setMetaContent('meta[name="twitter:image"]', resolvedTwitterImage, resolvedOgImage, resolvedHeroImage);
+
+            const canonicalLink = document.querySelector('link[rel="canonical"]');
+            if (canonicalLink) {
+                const productionUrl = 'https://www.platinumdevelopment.com/';
+                const fallbackUrl = (typeof window !== 'undefined' && window.location?.origin)
+                    ? window.location.origin
+                    : productionUrl;
+                const canonicalUrl = site.canonicalUrl || seo.canonicalUrl || fallbackUrl;
+                canonicalLink.setAttribute('href', canonicalUrl);
+            }
 
             setBackgroundImage('hero.backgroundImage', hero.backgroundImage, hero.backgroundAlt);
             setText('hero.headline', hero.headline);
