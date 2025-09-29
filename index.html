@@ -7,6 +7,7 @@
     <meta name="theme-color" content="#001F3F">
     <link rel="preload" href="content/site.json" as="fetch" type="application/json" crossorigin="anonymous">
     <title>Platinum Development - Redefining the Las Vegas Landscape</title>
+    <script id="structured-data" type="application/ld+json"></script>
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://identity.netlify.com/v1/netlify-identity-widget.js" defer></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -1152,6 +1153,110 @@
             }
         }
 
+        function parsePostalAddress(address) {
+            if (typeof address !== 'string') {
+                return null;
+            }
+            const parts = address.split(',').map((part) => part.trim()).filter(Boolean);
+            if (!parts.length) {
+                return null;
+            }
+            const postalAddress = { '@type': 'PostalAddress' };
+            if (parts[0]) {
+                postalAddress.streetAddress = parts[0];
+            }
+            if (parts[1]) {
+                postalAddress.addressLocality = parts[1];
+            }
+            if (parts[2]) {
+                const stateParts = parts[2].split(/\s+/).filter(Boolean);
+                if (stateParts.length) {
+                    postalAddress.addressRegion = stateParts[0];
+                    if (stateParts.length > 1 && !parts[3]) {
+                        postalAddress.postalCode = stateParts.slice(1).join(' ');
+                    }
+                } else {
+                    postalAddress.addressRegion = parts[2];
+                }
+            }
+            if (parts[3]) {
+                postalAddress.postalCode = parts[3];
+            }
+            return Object.keys(postalAddress).length > 1 ? postalAddress : null;
+        }
+
+        function extractGeoFromEmbed(mapEmbed) {
+            if (typeof mapEmbed !== 'string') {
+                return null;
+            }
+            const longitudeMatch = mapEmbed.match(/!2d(-?\d+(?:\.\d+)?)/);
+            const latitudeMatch = mapEmbed.match(/!3d(-?\d+(?:\.\d+)?)/);
+            if (!latitudeMatch || !longitudeMatch) {
+                return null;
+            }
+            return {
+                '@type': 'GeoCoordinates',
+                latitude: parseFloat(latitudeMatch[1]),
+                longitude: parseFloat(longitudeMatch[1])
+            };
+        }
+
+        function normalizeOpeningHours(hours) {
+            if (typeof hours !== 'string') {
+                return [];
+            }
+            return hours
+                .split(/\r?\n|;/)
+                .map((entry) => entry.trim())
+                .filter(Boolean);
+        }
+
+        function updateStructuredData(site) {
+            const scriptEl = document.getElementById('structured-data');
+            if (!scriptEl) {
+                return;
+            }
+            if (!site || typeof site !== 'object') {
+                scriptEl.textContent = '';
+                return;
+            }
+
+            const contact = site.contact || {};
+            const address = parsePostalAddress(contact.address);
+            const geo = extractGeoFromEmbed(contact.mapEmbed);
+            const openingHours = normalizeOpeningHours(contact.hours);
+
+            const schema = {
+                '@context': 'https://schema.org',
+                '@type': 'LocalBusiness',
+                name: site.companyName || (site.footer && site.footer.companyName) || undefined,
+                url: window.location.origin,
+                email: contact.email || undefined,
+                address: address || undefined,
+                openingHours: openingHours.length ? openingHours : undefined,
+                geo: geo || undefined
+            };
+
+            const filteredSchema = {};
+            Object.entries(schema).forEach(([key, value]) => {
+                if (value === undefined || value === null) {
+                    return;
+                }
+                if (Array.isArray(value) && value.length === 0) {
+                    return;
+                }
+                if (typeof value === 'object' && !Array.isArray(value)) {
+                    const objectKeys = Object.keys(value);
+                    if (objectKeys.length === 0 || (objectKeys.length === 1 && objectKeys[0] === '@type')) {
+                        return;
+                    }
+                }
+                filteredSchema[key] = value;
+            });
+
+            scriptEl.textContent = JSON.stringify(filteredSchema, null, 2);
+        }
+
         function applySiteContent(site) {
             if (!site) {
                 return;
@@ -1204,6 +1309,7 @@
             setText('footer.credits', footer.credits);
 
             renderProjects(site.projects);
+            updateStructuredData(site);
         }
 
         async function loadSiteContent() {
