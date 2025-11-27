@@ -31,8 +31,8 @@
       "We are Platinum Development, a premier developer and operator of high-quality retail, multifamily, and single-family projects. Through our robust services and commitment to excellence, we ensure the creation of the best properties for our local communities.",
       "Our expertise in the Las Vegas market allows us to identify unique opportunities and deliver exceptional returns for our partners and investors."
     ],
-    "image": "https://placehold.co/600x400/FFE9D4/001F3F?text=Image+Coming+Soon",
-    "imageAlt": "Image coming soon",
+    "image": "photos/construction.webp",
+    "imageAlt": "Platinum Development construction site",
     "highlights": [
       {
         "title": "Full-Service Development",
@@ -71,7 +71,9 @@
           "location": "Las Vegas, NV",
           "propertyType": "Retail",
           "status": "Operating",
-          "focus": "Experience Upgrades"
+          "focus": "Experience Upgrades",
+          "image": "photos/6830 S Rainbow Blvd.webp",
+          "imageAlt": "6830 S. Rainbow Blvd retail center"
         },
         {
           "title": "9550 S. Eastern Ave",
@@ -79,7 +81,9 @@
           "location": "Henderson, NV",
           "propertyType": "Retail",
           "status": "Operating",
-          "focus": "Tenant Collaboration"
+          "focus": "Tenant Collaboration",
+          "image": "photos/9550 S. Eastern Ave.webp",
+          "imageAlt": "9550 S. Eastern Ave retail center"
         },
         {
           "title": "7175 W. Lake Mead Blvd",
@@ -87,7 +91,9 @@
           "location": "Summerlin, NV",
           "propertyType": "Retail",
           "status": "Operating",
-          "focus": "Community Programming"
+          "focus": "Community Programming",
+          "image": "photos/7175 W Lake Mead Blvd.webp",
+          "imageAlt": "7175 W. Lake Mead Blvd retail center"
         },
         {
           "title": "9400 S. Eastern Ave",
@@ -95,7 +101,9 @@
           "location": "Henderson, NV",
           "propertyType": "Retail",
           "status": "In Planning",
-          "focus": "Leasing Partnerships"
+          "focus": "Leasing Partnerships",
+          "image": "photos/9400 S. Eastern Ave.webp",
+          "imageAlt": "9400 S. Eastern Ave retail center"
         },
         {
           "title": "8140 S. Rainbow Blvd",
@@ -103,7 +111,9 @@
           "location": "Las Vegas, NV",
           "propertyType": "Retail",
           "status": "In Planning",
-          "focus": "Community Feedback"
+          "focus": "Community Feedback",
+          "image": "photos/8140 S. Rainbow Blvd.webp",
+          "imageAlt": "8140 S. Rainbow Blvd retail center"
         },
         {
           "title": "4840 W. Spring Mountain Rd",
@@ -111,7 +121,9 @@
           "location": "Las Vegas, NV",
           "propertyType": "Retail",
           "status": "Concept",
-          "focus": "Vision Development"
+          "focus": "Vision Development",
+          "image": "photos/4840 W. Spring Mountain Rd.webp",
+          "imageAlt": "4840 W. Spring Mountain Rd retail center"
         }
       ]
     },
@@ -128,7 +140,9 @@
           "propertyType": "Townhomes",
           "propertySubtype": "Townhome Collection",
           "status": "Operating",
-          "focus": "Resident Experience"
+          "focus": "Resident Experience",
+          "image": "photos/8021 Vegas Dr.webp",
+          "imageAlt": "8021 Vegas Dr townhome community"
         },
         {
           "title": "Lucky Pagoda Ct",
@@ -137,7 +151,9 @@
           "propertyType": "Single Family",
           "propertySubtype": "Residential Enclave",
           "status": "Legacy Community",
-          "focus": "Collaborative Stewardship"
+          "focus": "Collaborative Stewardship",
+          "image": "photos/Lucky Pagoda Ct.webp",
+          "imageAlt": "Lucky Pagoda Ct residential community"
         },
         {
           "title": "Duneville St",
@@ -146,7 +162,9 @@
           "propertyType": "Single Family",
           "propertySubtype": "Custom Residences",
           "status": "Under Evaluation",
-          "focus": "Future Planning"
+          "focus": "Future Planning",
+          "image": "photos/Duneville St.webp",
+          "imageAlt": "Duneville St residential development"
         }
       ]
     }
