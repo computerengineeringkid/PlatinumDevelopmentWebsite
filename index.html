@@ -10,7 +10,7 @@
     <meta name="author" content="Platinum Development">
     <meta property="og:title" content="Platinum Development - Redefining the Las Vegas Landscape">
     <meta property="og:description" content="Platinum Development delivers premier real estate projects throughout Las Vegas with a focus on community impact and lasting value.">
-    <meta property="og:image" content="pictures/vegas2.webp">
+    <meta property="og:image" content="vegas2.jpg">
     <meta property="og:type" content="website">
     <meta property="og:url" content="">
     <meta property="og:site_name" content="Platinum Development">
@@ -18,36 +18,14 @@
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="Platinum Development - Redefining the Las Vegas Landscape">
     <meta name="twitter:description" content="Platinum Development delivers premier real estate projects throughout Las Vegas with a focus on community impact and lasting value.">
-    <meta name="twitter:image" content="pictures/vegas2.webp">
+    <meta name="twitter:image" content="vegas2.jpg">
     <link rel="canonical" href="">
     <link rel="icon" type="image/png" href="favicon.png">
     <link rel="apple-touch-icon" href="favicon.png">
-    <link rel="preload" href="pictures/vegas2.webp" as="image" fetchpriority="high">
-    <link rel="preload" href="nick-removebg-preview.png" as="image">
     <link rel="preload" href="content/site.json" as="fetch" type="application/json" crossorigin="anonymous">
     <title>Platinum Development - Redefining the Las Vegas Landscape</title>
     <script id="structured-data" type="application/ld+json"></script>
-    <!-- Critical CSS to prevent FOUC -->
-    <style>
-        /* Hide body until Tailwind loads */
-        .js-loading { opacity: 0; }
-        .js-loaded { opacity: 1; transition: opacity 0.15s ease-in; }
-        /* Critical layout styles */
-        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-        html { scroll-behavior: smooth; }
-        body { font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif; background: #F5F5F5; color: #333; overflow-x: hidden; }
-        .container { width: 100%; max-width: 72rem; margin: 0 auto; padding: 0 1.5rem; }
-        header { position: sticky; top: 0; z-index: 50; background: rgba(255,255,255,0.95); border-bottom: 1px solid rgba(0,31,63,0.1); }
-        nav { display: flex; align-items: center; justify-content: space-between; max-width: 72rem; margin: 0 auto; padding: 1.5rem 1.25rem; }
-        main { min-height: 100vh; }
-        section { padding: 5rem 0; }
-        #home { height: 100vh; display: flex; align-items: center; justify-content: center; background: #001F3F; color: white; }
-        h1, h2, h3 { color: #001F3F; font-weight: 700; }
-        a { color: inherit; text-decoration: none; }
-        img { max-width: 100%; height: auto; }
-        .sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0,0,0,0); border: 0; }
-    </style>
-    <script src="https://cdn.tailwindcss.com"></script>
+    <script async src="https://cdn.tailwindcss.com"></script>
     <script src="https://identity.netlify.com/v1/netlify-identity-widget.js" defer></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -370,25 +348,13 @@
         }
     </style>
 </head>
-<body class="bg-[#F5F5F5] text-[#333333] js-loading">
-    <script>
-        // Remove loading class once Tailwind is ready
-        if (window.tailwind) {
-            document.body.classList.remove('js-loading');
-            document.body.classList.add('js-loaded');
-        } else {
-            document.addEventListener('DOMContentLoaded', function() {
-                document.body.classList.remove('js-loading');
-                document.body.classList.add('js-loaded');
-            });
-        }
-    </script>
+<body class="bg-[#F5F5F5] text-[#333333]">
     <a href="#main-content" class="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-[100] focus:rounded-lg focus:bg-[#001F3F] focus:px-4 focus:py-2 focus:text-white focus:shadow-lg">Skip to main content</a>
 
     <header id="header" class="sticky top-0 z-50 border border-[#001F3F]/10 bg-white/95 shadow-lg backdrop-blur transition-all duration-300">
         <nav class="mx-auto flex max-w-6xl flex-wrap items-center justify-between gap-4 px-5 py-6 md:px-8">
             <a href="#home" class="flex items-center gap-3" aria-label="Platinum Development - Home">
-                <img src="nick-removebg-preview.png" alt="Platinum Development logo" class="h-10 w-auto" fetchpriority="high">
+                <img src="nick-removebg-preview.png" alt="Platinum Development logo" class="h-10 w-auto" loading="lazy" decoding="async">
                 <span class="sr-only" data-cms-text="companyName">Platinum Development</span>
             </a>
             <div class="hidden flex-1 items-center justify-end gap-6 text-sm font-medium md:flex" data-cms-nav="desktop">
@@ -419,7 +385,7 @@
     </header>
 
     <main id="main-content">
-        <section id="home" class="h-screen bg-cover bg-center flex items-center justify-center text-white" data-cms-bg-image="hero.backgroundImage" style="background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('pictures/vegas2.webp');">
+        <section id="home" class="h-screen bg-cover bg-center flex items-center justify-center text-white" data-cms-bg-image="hero.backgroundImage" style="background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('vegas2.jpg');">
             <div class="text-center px-4 fade-in-section">
                 <h1 class="text-4xl md:text-6xl font-bold leading-tight mb-4 text-white" data-cms-text="hero.headline">Redefining the Las Vegas Landscape.</h1>
                 <p class="text-lg md:text-xl text-gray-200 mb-8 max-w-3xl mx-auto" data-cms-text="hero.subheadline">Developing premier retail, multifamily, and single-family properties with excellence and integrity.</p>
@@ -504,15 +470,9 @@
                                 <input type="text" id="last-name" name="last-name" class="mt-1 block w-full rounded-md border border-[#C7CDD3] bg-white px-3 py-2 shadow-sm focus:border-[#D4AF37] focus:outline-none focus:ring-2 focus:ring-[#D4AF37]/40" required>
                             </div>
                         </div>
-                        <div class="grid sm:grid-cols-2 gap-6">
-                            <div>
-                                <label for="email" class="block text-sm font-medium text-[#001F3F]">Email</label>
-                                <input type="email" id="email" name="email" class="mt-1 block w-full rounded-md border border-[#C7CDD3] bg-white px-3 py-2 shadow-sm focus:border-[#D4AF37] focus:outline-none focus:ring-2 focus:ring-[#D4AF37]/40" required>
-                            </div>
-                            <div>
-                                <label for="phone" class="block text-sm font-medium text-[#001F3F]">Phone Number</label>
-                                <input type="tel" id="phone" name="phone" class="mt-1 block w-full rounded-md border border-[#C7CDD3] bg-white px-3 py-2 shadow-sm focus:border-[#D4AF37] focus:outline-none focus:ring-2 focus:ring-[#D4AF37]/40" placeholder="(555) 555-5555">
-                            </div>
+                        <div>
+                            <label for="email" class="block text-sm font-medium text-[#001F3F]">Email</label>
+                            <input type="email" id="email" name="email" class="mt-1 block w-full rounded-md border border-[#C7CDD3] bg-white px-3 py-2 shadow-sm focus:border-[#D4AF37] focus:outline-none focus:ring-2 focus:ring-[#D4AF37]/40" required>
                         </div>
                         <div>
                             <label for="message" class="block text-sm font-medium text-[#001F3F]">Message</label>
