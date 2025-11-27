@@ -70,23 +70,29 @@ collections:
             fields:
               - { label: "Heading", name: "heading", widget: "string" }
               - { label: "Subheading", name: "subheading", widget: "text", required: false }
-          - label: "Projects"
-            name: "projects"
+          - label: "Portfolio Sections"
+            name: "portfolioSections"
             widget: "list"
-            summary: "{{fields.title}} ({{fields.propertyType}})"
+            summary: "{{fields.sectionTitle}}"
             fields:
-              - { label: "Title", name: "title", widget: "string" }
-              - { label: "Summary", name: "summary", widget: "text" }
-              - { label: "Property Type", name: "propertyType", widget: "string" }
-              - { label: "Status", name: "status", widget: "string", required: false }
-              - { label: "Image", name: "image", widget: "image", allow_multiple: false }
-              - { label: "Image Alt Text", name: "imageAlt", widget: "string", required: false }
-              - label: "Metrics"
-                name: "metrics"
+              - { label: "Section ID", name: "sectionId", widget: "string", hint: "e.g. retail, residential" }
+              - { label: "Section Label", name: "sectionLabel", widget: "string", hint: "e.g. Retail Portfolio" }
+              - { label: "Section Title", name: "sectionTitle", widget: "string", hint: "e.g. Retail Properties" }
+              - { label: "Section Description", name: "sectionDescription", widget: "text" }
+              - label: "Properties"
+                name: "properties"
                 widget: "list"
+                summary: "{{fields.title}}"
                 fields:
-                  - { label: "Label", name: "label", widget: "string" }
-                  - { label: "Value", name: "value", widget: "string" }
+                  - { label: "Title", name: "title", widget: "string" }
+                  - { label: "Description", name: "description", widget: "text" }
+                  - { label: "Location", name: "location", widget: "string", hint: "e.g. Las Vegas, NV" }
+                  - { label: "Property Type", name: "propertyType", widget: "select", options: ["Retail", "Townhomes", "Single Family", "Multifamily"], hint: "Badge displayed on card" }
+                  - { label: "Property Subtype", name: "propertySubtype", widget: "string", required: false, hint: "e.g. Townhome Collection, Custom Residences" }
+                  - { label: "Status", name: "status", widget: "string", hint: "e.g. Operating, In Planning, Concept" }
+                  - { label: "Focus", name: "focus", widget: "string", hint: "e.g. Experience Upgrades, Community Programming" }
+                  - { label: "Image", name: "image", widget: "image", required: false }
+                  - { label: "Image Alt Text", name: "imageAlt", widget: "string", required: false }
           - label: "Partners"
             name: "partners"
             widget: "object"

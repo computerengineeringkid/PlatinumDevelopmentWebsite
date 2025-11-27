@@ -4,20 +4,28 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Platinum Development delivers premier retail, multifamily, and single-family real estate projects throughout Las Vegas with a focus on community impact and lasting value.">
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
     <meta name="theme-color" content="#001F3F">
+    <meta name="color-scheme" content="light">
+    <meta name="author" content="Platinum Development">
     <meta property="og:title" content="Platinum Development - Redefining the Las Vegas Landscape">
     <meta property="og:description" content="Platinum Development delivers premier real estate projects throughout Las Vegas with a focus on community impact and lasting value.">
     <meta property="og:image" content="vegas2.jpg">
     <meta property="og:type" content="website">
     <meta property="og:url" content="">
+    <meta property="og:site_name" content="Platinum Development">
+    <meta property="og:locale" content="en_US">
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="Platinum Development - Redefining the Las Vegas Landscape">
     <meta name="twitter:description" content="Platinum Development delivers premier real estate projects throughout Las Vegas with a focus on community impact and lasting value.">
     <meta name="twitter:image" content="vegas2.jpg">
+    <link rel="canonical" href="">
+    <link rel="icon" type="image/png" href="favicon.png">
+    <link rel="apple-touch-icon" href="favicon.png">
     <link rel="preload" href="content/site.json" as="fetch" type="application/json" crossorigin="anonymous">
     <title>Platinum Development - Redefining the Las Vegas Landscape</title>
     <script id="structured-data" type="application/ld+json"></script>
-    <script src="https://cdn.tailwindcss.com"></script>
+    <script async src="https://cdn.tailwindcss.com"></script>
     <script src="https://identity.netlify.com/v1/netlify-identity-widget.js" defer></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -28,6 +36,20 @@
         body {
             font-family: 'Inter', sans-serif;
             overflow-x: hidden;
+        }
+        /* Focus states for accessibility */
+        a:focus-visible,
+        button:focus-visible {
+            outline: 2px solid #D4AF37;
+            outline-offset: 2px;
+        }
+        /* Improved mobile form inputs */
+        @media (max-width: 640px) {
+            input[type="text"],
+            input[type="email"],
+            textarea {
+                font-size: 16px; /* Prevents iOS zoom on focus */
+            }
         }
         .fade-in-section {
             opacity: 0;
@@ -327,10 +349,11 @@
     </style>
 </head>
 <body class="bg-[#F5F5F5] text-[#333333]">
+    <a href="#main-content" class="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-[100] focus:rounded-lg focus:bg-[#001F3F] focus:px-4 focus:py-2 focus:text-white focus:shadow-lg">Skip to main content</a>
 
     <header id="header" class="sticky top-0 z-50 border border-[#001F3F]/10 bg-white/95 shadow-lg backdrop-blur transition-all duration-300">
         <nav class="mx-auto flex max-w-6xl flex-wrap items-center justify-between gap-4 px-5 py-6 md:px-8">
-            <a href="#home" class="flex items-center gap-3">
+            <a href="#home" class="flex items-center gap-3" aria-label="Platinum Development - Home">
                 <img src="nick-removebg-preview.png" alt="Platinum Development logo" class="h-10 w-auto" loading="lazy" decoding="async">
                 <span class="sr-only" data-cms-text="companyName">Platinum Development</span>
             </a>
@@ -342,7 +365,7 @@
                 <a href="#contact" class="inline-flex items-center rounded-full bg-[#D4AF37] px-4 py-2 text-[#001F3F] shadow-sm transition-colors hover:bg-[#b89027]">Contact</a>
             </div>
             <div class="flex items-center md:hidden">
-                <button id="menu-btn" type="button" class="inline-flex items-center justify-center rounded-lg p-2 text-[#001F3F] hover:bg-[#001F3F]/10 focus:outline-none focus:ring-2 focus:ring-[#D4AF37] focus:ring-offset-2 focus:ring-offset-white" aria-controls="mobile-menu" aria-expanded="false">
+                <button id="menu-btn" type="button" class="inline-flex items-center justify-center rounded-lg p-3 min-h-[44px] min-w-[44px] text-[#001F3F] hover:bg-[#001F3F]/10 focus:outline-none focus:ring-2 focus:ring-[#D4AF37] focus:ring-offset-2 focus:ring-offset-white" aria-controls="mobile-menu" aria-expanded="false">
                     <span class="sr-only">Toggle main menu</span>
                     <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
                         <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 5.25h16.5M3.75 12h16.5m-16.5 6.75h16.5" />
@@ -361,7 +384,7 @@
         </nav>
     </header>
 
-    <main>
+    <main id="main-content">
         <section id="home" class="h-screen bg-cover bg-center flex items-center justify-center text-white" data-cms-bg-image="hero.backgroundImage" style="background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('vegas2.jpg');">
             <div class="text-center px-4 fade-in-section">
                 <h1 class="text-4xl md:text-6xl font-bold leading-tight mb-4 text-white" data-cms-text="hero.headline">Redefining the Las Vegas Landscape.</h1>
@@ -377,7 +400,7 @@
             <div class="container mx-auto px-6">
                 <div class="grid md:grid-cols-2 gap-12 items-center fade-in-section">
                     <div>
-                        <img src="https://placehold.co/600x400/FFE9D4/001F3F?text=Image+Coming+Soon" alt="Image coming soon" class="rounded-lg shadow-xl w-full" data-cms-image="about.image" loading="lazy" decoding="async">
+                        <img src="https://placehold.co/600x400/FFE9D4/001F3F?text=Image+Coming+Soon" alt="Platinum Development team or property showcase" class="rounded-lg shadow-xl w-full" data-cms-image="about.image" loading="lazy" decoding="async">
                     </div>
                     <div>
                         <h2 class="text-3xl font-bold mb-4 text-[#001F3F]" data-cms-text="about.heading">Building Communities, Creating Value.</h2>
@@ -389,20 +412,8 @@
                         </div>
                     </div>
                 </div>
-                <div class="mt-16 grid gap-6 fade-in-section sm:grid-cols-3">
-                    <article class="rounded-xl border border-[#E0E0E0] bg-white p-6 shadow-sm">
-                        <h3 class="text-lg font-semibold text-[#001F3F]">Community-Centered Design</h3>
-                        <p class="mt-3 text-sm text-[#333333]">We collaborate with local partners to ensure every project strengthens the neighborhood it serves.</p>
-                    </article>
-                    <article class="rounded-xl border border-[#E0E0E0] bg-white p-6 shadow-sm">
-                        <h3 class="text-lg font-semibold text-[#001F3F]">Balanced Portfolio</h3>
-                        <p class="mt-3 text-sm text-[#333333]">Retail, multifamily, and single-family developments are curated to deliver lasting value for residents and tenants.</p>
-                    </article>
-                    <article class="rounded-xl border border-[#E0E0E0] bg-white p-6 shadow-sm">
-                        <h3 class="text-lg font-semibold text-[#001F3F]">Hands-On Stewardship</h3>
-                        <p class="mt-3 text-sm text-[#333333]">From acquisition through operations, our team stays engaged to maintain quality and performance.</p>
-                    </article>
-                </div>
+                <dl class="mt-16 grid gap-6 fade-in-section sm:grid-cols-4 hidden" data-cms-collection="about.stats">
+                </dl>
             </div>
         </section>
 
@@ -413,230 +424,7 @@
                     <p class="mt-2 text-[#333333]" data-cms-text="portfolio.subheading">A selection of our completed and upcoming projects.</p>
                 </div>
 
-                <div class="space-y-16">
-                    <div class="space-y-8" data-carousel="retail">
-                        <div class="flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
-                            <div class="text-left">
-                                <p class="text-xs font-semibold uppercase tracking-[0.3em] text-[#FF6600]">Retail Portfolio</p>
-                                <h3 class="text-2xl font-semibold text-[#001F3F]">Retail Properties</h3>
-                                <p class="mt-2 max-w-2xl text-sm text-[#333333]">High-performing centers anchored by national brands across the Las Vegas valley.</p>
-                            </div>
-                            <div class="flex justify-end gap-2">
-                                <button type="button" class="carousel-button" aria-label="Scroll retail properties left" data-carousel-prev>
-                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" class="h-5 w-5">
-                                        <path stroke-linecap="round" stroke-linejoin="round" d="M14.25 19.5L7.75 12l6.5-7.5" />
-                                    </svg>
-                                </button>
-                                <button type="button" class="carousel-button" aria-label="Scroll retail properties right" data-carousel-next>
-                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" class="h-5 w-5">
-                                        <path stroke-linecap="round" stroke-linejoin="round" d="M9.75 4.5l6.5 7.5-6.5 7.5" />
-                                    </svg>
-                                </button>
-                            </div>
-                        </div>
-                        <div class="relative">
-                            <div class="portfolio-carousel__track flex snap-x snap-mandatory gap-6 overflow-x-auto pb-6 scroll-smooth" data-carousel-track>
-                                <article class="portfolio-card snap-start min-w-[280px] sm:min-w-[320px] lg:min-w-[360px]">
-                                    <div class="portfolio-card__media portfolio-card__media--placeholder">
-                                        <span class="portfolio-card__badge">Retail</span>
-                                        <span class="portfolio-card__media-text">Image coming soon</span>
-                                    </div>
-                                    <div class="portfolio-card__body">
-                                        <div class="portfolio-card__meta">
-                                            <span>Las Vegas, NV</span>
-                                        </div>
-                                        <h4 class="portfolio-card__title">6830 S. Rainbow Blvd</h4>
-                                        <p class="portfolio-card__copy">High-visibility open-air retail center with national co-tenancy and excellent Rainbow Boulevard frontage.</p>
-                                        <div class="portfolio-card__status">
-                                            <span>Status: Operating</span>
-                                            <span class="portfolio-card__dot"></span>
-                                            <span>Focus: Experience Upgrades</span>
-                                        </div>
-                                    </div>
-                                </article>
-
-                                <article class="portfolio-card snap-start min-w-[280px] sm:min-w-[320px] lg:min-w-[360px]">
-                                    <div class="portfolio-card__media portfolio-card__media--placeholder">
-                                        <span class="portfolio-card__badge">Retail</span>
-                                        <span class="portfolio-card__media-text">Image coming soon</span>
-                                    </div>
-                                    <div class="portfolio-card__body">
-                                        <div class="portfolio-card__meta">
-                                            <span>Henderson, NV</span>
-                                        </div>
-                                        <h4 class="portfolio-card__title">9550 S. Eastern Ave</h4>
-                                        <p class="portfolio-card__copy">Regional-serving retail with a balanced mix of soft goods, services, and daily-needs tenants along Eastern Avenue.</p>
-                                        <div class="portfolio-card__status">
-                                            <span>Status: Operating</span>
-                                            <span class="portfolio-card__dot"></span>
-                                            <span>Focus: Tenant Collaboration</span>
-                                        </div>
-                                    </div>
-                                </article>
-
-                                <article class="portfolio-card snap-start min-w-[280px] sm:min-w-[320px] lg:min-w-[360px]">
-                                    <div class="portfolio-card__media portfolio-card__media--placeholder">
-                                        <span class="portfolio-card__badge">Retail</span>
-                                        <span class="portfolio-card__media-text">Image coming soon</span>
-                                    </div>
-                                    <div class="portfolio-card__body">
-                                        <div class="portfolio-card__meta">
-                                            <span>Summerlin, NV</span>
-                                        </div>
-                                        <h4 class="portfolio-card__title">7175 W. Lake Mead Blvd</h4>
-                                        <p class="portfolio-card__copy">Neighbor-serving retail with curated dining, wellness, and boutique offerings steps from the Summerlin trail network.</p>
-                                        <div class="portfolio-card__status">
-                                            <span>Status: Operating</span>
-                                            <span class="portfolio-card__dot"></span>
-                                            <span>Focus: Community Programming</span>
-                                        </div>
-                                    </div>
-                                </article>
-
-                                <article class="portfolio-card snap-start min-w-[280px] sm:min-w-[320px] lg:min-w-[360px]">
-                                    <div class="portfolio-card__media portfolio-card__media--placeholder">
-                                        <span class="portfolio-card__badge">Retail</span>
-                                        <span class="portfolio-card__media-text">Image coming soon</span>
-                                    </div>
-                                    <div class="portfolio-card__body">
-                                        <div class="portfolio-card__meta">
-                                            <span>Henderson, NV</span>
-                                        </div>
-                                        <h4 class="portfolio-card__title">9400 S. Eastern Ave</h4>
-                                        <p class="portfolio-card__copy">Next-generation retail environment with chef-driven dining and lifestyle concepts serving the Eastern Avenue corridor.</p>
-                                        <div class="portfolio-card__status">
-                                            <span>Status: In Planning</span>
-                                            <span class="portfolio-card__dot"></span>
-                                            <span>Focus: Leasing Partnerships</span>
-                                        </div>
-                                    </div>
-                                </article>
-
-                                <article class="portfolio-card snap-start min-w-[280px] sm:min-w-[320px] lg:min-w-[360px]">
-                                    <div class="portfolio-card__media portfolio-card__media--placeholder">
-                                        <span class="portfolio-card__badge">Retail</span>
-                                        <span class="portfolio-card__media-text">Image coming soon</span>
-                                    </div>
-                                    <div class="portfolio-card__body">
-                                        <div class="portfolio-card__meta">
-                                            <span>Las Vegas, NV</span>
-                                        </div>
-                                        <h4 class="portfolio-card__title">8140 S. Rainbow Blvd</h4>
-                                        <p class="portfolio-card__copy">Convenience-oriented shops, fitness, and fast casual dining with immediate access to the 215 Beltway.</p>
-                                        <div class="portfolio-card__status">
-                                            <span>Status: In Planning</span>
-                                            <span class="portfolio-card__dot"></span>
-                                            <span>Focus: Community Feedback</span>
-                                        </div>
-                                    </div>
-                                </article>
-
-                                <article class="portfolio-card snap-start min-w-[280px] sm:min-w-[320px] lg:min-w-[360px]">
-                                    <div class="portfolio-card__media portfolio-card__media--placeholder">
-                                        <span class="portfolio-card__badge">Retail</span>
-                                        <span class="portfolio-card__media-text">Image coming soon</span>
-                                    </div>
-                                    <div class="portfolio-card__body">
-                                        <div class="portfolio-card__meta">
-                                            <span>Las Vegas, NV</span>
-                                        </div>
-                                        <h4 class="portfolio-card__title">4840 W. Spring Mountain Rd</h4>
-                                        <p class="portfolio-card__copy">Experiential retail and dining celebrating the vibrant Chinatown corridor along Spring Mountain Road.</p>
-                                        <div class="portfolio-card__status">
-                                            <span>Status: Concept</span>
-                                            <span class="portfolio-card__dot"></span>
-                                            <span>Focus: Vision Development</span>
-                                        </div>
-                                    </div>
-                                </article>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="space-y-8" data-carousel="residential">
-                        <div class="flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
-                            <div class="text-left">
-                                <p class="text-xs font-semibold uppercase tracking-[0.3em] text-[#FF6600]">Residential Portfolio</p>
-                                <h3 class="text-2xl font-semibold text-[#001F3F]">Single-Family &amp; Multifamily</h3>
-                                <p class="mt-2 max-w-2xl text-sm text-[#333333]">Purpose-built rental homes and for-sale communities that elevate neighborhood living.</p>
-                            </div>
-                            <div class="flex justify-end gap-2">
-                                <button type="button" class="carousel-button" aria-label="Scroll residential properties left" data-carousel-prev>
-                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" class="h-5 w-5">
-                                        <path stroke-linecap="round" stroke-linejoin="round" d="M14.25 19.5L7.75 12l6.5-7.5" />
-                                    </svg>
-                                </button>
-                                <button type="button" class="carousel-button" aria-label="Scroll residential properties right" data-carousel-next>
-                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" class="h-5 w-5">
-                                        <path stroke-linecap="round" stroke-linejoin="round" d="M9.75 4.5l6.5 7.5-6.5 7.5" />
-                                    </svg>
-                                </button>
-                            </div>
-                        </div>
-                        <div class="relative">
-                            <div class="portfolio-carousel__track flex snap-x snap-mandatory gap-6 overflow-x-auto pb-6 scroll-smooth" data-carousel-track>
-                                <article class="portfolio-card snap-start min-w-[280px] sm:min-w-[320px] lg:min-w-[360px]">
-                                    <div class="portfolio-card__media portfolio-card__media--placeholder">
-                                        <span class="portfolio-card__badge">Townhomes</span>
-                                        <span class="portfolio-card__media-text">Image coming soon</span>
-                                    </div>
-                                    <div class="portfolio-card__body">
-                                        <div class="portfolio-card__meta">
-                                            <span>Las Vegas, NV</span>
-                                            <span>Townhome Collection</span>
-                                        </div>
-                                        <h4 class="portfolio-card__title">8021 Vegas Dr</h4>
-                                        <p class="portfolio-card__copy">A contemporary townhome community featuring private entries, shared amenities, and open-concept living.</p>
-                                        <div class="portfolio-card__status">
-                                            <span>Status: Operating</span>
-                                            <span class="portfolio-card__dot"></span>
-                                            <span>Focus: Resident Experience</span>
-                                        </div>
-                                    </div>
-                                </article>
-
-                                <article class="portfolio-card snap-start min-w-[280px] sm:min-w-[320px] lg:min-w-[360px]">
-                                    <div class="portfolio-card__media portfolio-card__media--placeholder">
-                                        <span class="portfolio-card__badge">Single Family</span>
-                                        <span class="portfolio-card__media-text">Image coming soon</span>
-                                    </div>
-                                    <div class="portfolio-card__body">
-                                        <div class="portfolio-card__meta">
-                                            <span>Las Vegas, NV</span>
-                                            <span>Residential Enclave</span>
-                                        </div>
-                                        <h4 class="portfolio-card__title">Lucky Pagoda Ct</h4>
-                                        <p class="portfolio-card__copy">A legacy neighborhood of contemporary homes where we continue to collaborate with current stakeholders on long-term stewardship.</p>
-                                        <div class="portfolio-card__status">
-                                            <span>Status: Legacy Community</span>
-                                            <span class="portfolio-card__dot"></span>
-                                            <span>Focus: Collaborative Stewardship</span>
-                                        </div>
-                                    </div>
-                                </article>
-
-                                <article class="portfolio-card snap-start min-w-[280px] sm:min-w-[320px] lg:min-w-[360px]">
-                                    <div class="portfolio-card__media portfolio-card__media--placeholder">
-                                        <span class="portfolio-card__badge">Single Family</span>
-                                        <span class="portfolio-card__media-text">Image coming soon</span>
-                                    </div>
-                                    <div class="portfolio-card__body">
-                                        <div class="portfolio-card__meta">
-                                            <span>Enterprise, NV</span>
-                                            <span>Custom Residences</span>
-                                        </div>
-                                        <h4 class="portfolio-card__title">Duneville St</h4>
-                                        <p class="portfolio-card__copy">Site studies are evaluating future opportunities for desert-conscious residences with curated indoor-outdoor connections.</p>
-                                        <div class="portfolio-card__status">
-                                            <span>Status: Under Evaluation</span>
-                                            <span class="portfolio-card__dot"></span>
-                                            <span>Focus: Future Planning</span>
-                                        </div>
-                                    </div>
-                                </article>
-                            </div>
-                        </div>
-                    </div>
+                <div class="space-y-16" data-cms-portfolio-sections>
                 </div>
             </div>
         </section>
@@ -667,25 +455,30 @@
                     <p class="mt-2 text-[#333333]" data-cms-text="contact.subheading">Let's build something great together. Reach out to discuss your next project.</p>
                 </div>
                 <div class="grid md:grid-cols-2 gap-12 items-start fade-in-section">
-                    <form class="space-y-6">
+                    <form name="contact" method="POST" data-netlify="true" data-netlify-recaptcha="true" netlify-honeypot="bot-field" action="/thank-you.html" class="space-y-6">
+                        <input type="hidden" name="form-name" value="contact">
+                        <p class="hidden">
+                            <label>Don't fill this out if you're human: <input name="bot-field"></label>
+                        </p>
                         <div class="grid sm:grid-cols-2 gap-6">
                             <div>
                                 <label for="first-name" class="block text-sm font-medium text-[#001F3F]">First Name</label>
-                                <input type="text" id="first-name" class="mt-1 block w-full rounded-md border border-[#C7CDD3] bg-white px-3 py-2 shadow-sm focus:border-[#D4AF37] focus:outline-none focus:ring-2 focus:ring-[#D4AF37]/40" required>
+                                <input type="text" id="first-name" name="first-name" class="mt-1 block w-full rounded-md border border-[#C7CDD3] bg-white px-3 py-2 shadow-sm focus:border-[#D4AF37] focus:outline-none focus:ring-2 focus:ring-[#D4AF37]/40" required>
                             </div>
                             <div>
                                 <label for="last-name" class="block text-sm font-medium text-[#001F3F]">Last Name</label>
-                                <input type="text" id="last-name" class="mt-1 block w-full rounded-md border border-[#C7CDD3] bg-white px-3 py-2 shadow-sm focus:border-[#D4AF37] focus:outline-none focus:ring-2 focus:ring-[#D4AF37]/40" required>
+                                <input type="text" id="last-name" name="last-name" class="mt-1 block w-full rounded-md border border-[#C7CDD3] bg-white px-3 py-2 shadow-sm focus:border-[#D4AF37] focus:outline-none focus:ring-2 focus:ring-[#D4AF37]/40" required>
                             </div>
                         </div>
                         <div>
                             <label for="email" class="block text-sm font-medium text-[#001F3F]">Email</label>
-                            <input type="email" id="email" class="mt-1 block w-full rounded-md border border-[#C7CDD3] bg-white px-3 py-2 shadow-sm focus:border-[#D4AF37] focus:outline-none focus:ring-2 focus:ring-[#D4AF37]/40" required>
+                            <input type="email" id="email" name="email" class="mt-1 block w-full rounded-md border border-[#C7CDD3] bg-white px-3 py-2 shadow-sm focus:border-[#D4AF37] focus:outline-none focus:ring-2 focus:ring-[#D4AF37]/40" required>
                         </div>
                         <div>
                             <label for="message" class="block text-sm font-medium text-[#001F3F]">Message</label>
-                            <textarea id="message" rows="4" class="mt-1 block w-full rounded-md border border-[#C7CDD3] bg-white px-3 py-2 shadow-sm focus:border-[#D4AF37] focus:outline-none focus:ring-2 focus:ring-[#D4AF37]/40" required></textarea>
+                            <textarea id="message" name="message" rows="4" class="mt-1 block w-full rounded-md border border-[#C7CDD3] bg-white px-3 py-2 shadow-sm focus:border-[#D4AF37] focus:outline-none focus:ring-2 focus:ring-[#D4AF37]/40" required></textarea>
                         </div>
+                        <div data-netlify-recaptcha="true" class="mb-2" aria-label="reCAPTCHA verification"></div>
                         <div>
                             <button type="submit" class="w-full rounded-full bg-[#D4AF37] px-6 py-3 font-semibold text-[#001F3F] transition-colors hover:bg-[#b89027]">Send Message</button>
                         </div>
@@ -719,6 +512,7 @@
             <div class="grid gap-12 md:grid-cols-[auto_1fr_1fr] items-start">
                 <div class="flex flex-col items-center md:items-start">
                     <img src="nick-removebg-preview.png" alt="Platinum Development logo" class="h-12 w-auto" loading="lazy" decoding="async">
+                    <span class="mt-2 text-lg font-semibold" data-cms-text="footer.companyName">Platinum Development</span>
                 </div>
                 <div class="space-y-2 text-center md:text-left">
                     <h4 class="text-lg font-semibold tracking-wide uppercase">Hours</h4>
@@ -966,8 +760,103 @@
             return spaced.charAt(0).toUpperCase() + spaced.slice(1);
         }
 
-        function renderProjects() {
-            // Portfolio showcase is curated directly in the markup above.
+        function renderPortfolioSections(sections) {
+            const container = document.querySelector('[data-cms-portfolio-sections]');
+            if (!container) {
+                return;
+            }
+            container.innerHTML = '';
+            if (!Array.isArray(sections) || !sections.length) {
+                return;
+            }
+            sections.forEach((section) => {
+                if (!section?.sectionId || !Array.isArray(section.properties)) {
+                    return;
+                }
+                const sectionEl = document.createElement('div');
+                sectionEl.className = 'space-y-8';
+                sectionEl.setAttribute('data-carousel', section.sectionId);
+
+                const headerHtml = `
+                    <div class="flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
+                        <div class="text-left">
+                            <p class="text-xs font-semibold uppercase tracking-[0.3em] text-[#FF6600]">${escapeHtml(section.sectionLabel || '')}</p>
+                            <h3 class="text-2xl font-semibold text-[#001F3F]">${escapeHtml(section.sectionTitle || '')}</h3>
+                            <p class="mt-2 max-w-2xl text-sm text-[#333333]">${escapeHtml(section.sectionDescription || '')}</p>
+                        </div>
+                        <div class="flex justify-end gap-2">
+                            <button type="button" class="carousel-button" aria-label="Scroll ${escapeHtml(section.sectionId)} properties left" data-carousel-prev>
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" class="h-5 w-5">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M14.25 19.5L7.75 12l6.5-7.5" />
+                                </svg>
+                            </button>
+                            <button type="button" class="carousel-button" aria-label="Scroll ${escapeHtml(section.sectionId)} properties right" data-carousel-next>
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" class="h-5 w-5">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M9.75 4.5l6.5 7.5-6.5 7.5" />
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+                `;
+                sectionEl.innerHTML = headerHtml;
+
+                const trackWrapper = document.createElement('div');
+                trackWrapper.className = 'relative';
+                const track = document.createElement('div');
+                track.className = 'portfolio-carousel__track flex snap-x snap-mandatory gap-6 overflow-x-auto pb-6 scroll-smooth';
+                track.setAttribute('data-carousel-track', '');
+
+                section.properties.forEach((prop) => {
+                    if (!prop?.title) {
+                        return;
+                    }
+                    const hasImage = prop.image && prop.image.trim();
+                    const mediaClass = hasImage ? 'portfolio-card__media' : 'portfolio-card__media portfolio-card__media--placeholder';
+                    const mediaContent = hasImage
+                        ? `<img src="${escapeHtml(resolveAssetPath(prop.image))}" alt="${escapeHtml(prop.imageAlt || prop.title)}" loading="lazy" decoding="async" class="w-full h-full object-cover">`
+                        : `<span class="portfolio-card__media-text">Image coming soon</span>`;
+
+                    const metaItems = [prop.location];
+                    if (prop.propertySubtype) {
+                        metaItems.push(prop.propertySubtype);
+                    }
+                    const metaHtml = metaItems.filter(Boolean).map(item => `<span>${escapeHtml(item)}</span>`).join('');
+
+                    const card = document.createElement('article');
+                    card.className = 'portfolio-card snap-start min-w-[280px] sm:min-w-[320px] lg:min-w-[360px]';
+                    card.innerHTML = `
+                        <div class="${mediaClass}">
+                            <span class="portfolio-card__badge">${escapeHtml(prop.propertyType || '')}</span>
+                            ${mediaContent}
+                        </div>
+                        <div class="portfolio-card__body">
+                            <div class="portfolio-card__meta">
+                                ${metaHtml}
+                            </div>
+                            <h4 class="portfolio-card__title">${escapeHtml(prop.title)}</h4>
+                            <p class="portfolio-card__copy">${escapeHtml(prop.description || '')}</p>
+                            <div class="portfolio-card__status">
+                                <span>Status: ${escapeHtml(prop.status || '')}</span>
+                                <span class="portfolio-card__dot"></span>
+                                <span>Focus: ${escapeHtml(prop.focus || '')}</span>
+                            </div>
+                        </div>
+                    `;
+                    track.appendChild(card);
+                });
+
+                trackWrapper.appendChild(track);
+                sectionEl.appendChild(trackWrapper);
+                container.appendChild(sectionEl);
+            });
+            initCarousels();
+        }
+
+        function escapeHtml(str) {
+            if (typeof str !== 'string') return '';
+            const div = document.createElement('div');
+            div.textContent = str;
+            return div.innerHTML;
         }
 
         function renderHighlights(highlights) {
@@ -1302,15 +1191,21 @@
                 metaDescriptionEl.setAttribute('content', seo.metaDescription);
             }
 
+            const pageUrl = window.location.href.split('?')[0].split('#')[0];
             setMetaContent('meta[property="og:title"]', seo.ogTitle, defaultTitle);
             setMetaContent('meta[property="og:description"]', seo.ogDescription, defaultDescription);
             setMetaContent('meta[property="og:image"]', resolvedOgImage, resolvedHeroImage);
             setMetaContent('meta[property="og:type"]', seo.ogType, 'website');
-            setMetaContent('meta[property="og:url"]', seo.ogUrl, window.location.href);
+            setMetaContent('meta[property="og:url"]', seo.ogUrl, pageUrl);
             setMetaContent('meta[name="twitter:card"]', seo.twitterCard, 'summary_large_image');
             setMetaContent('meta[name="twitter:title"]', seo.twitterTitle, seo.ogTitle, defaultTitle);
             setMetaContent('meta[name="twitter:description"]', seo.twitterDescription, seo.ogDescription, defaultDescription);
             setMetaContent('meta[name="twitter:image"]', resolvedTwitterImage, resolvedOgImage, resolvedHeroImage);
+
+            const canonicalEl = document.querySelector('link[rel="canonical"]');
+            if (canonicalEl) {
+                canonicalEl.setAttribute('href', seo.canonicalUrl || pageUrl);
+            }
 
             setBackgroundImage('hero.backgroundImage', hero.backgroundImage, hero.backgroundAlt);
             setText('hero.headline', hero.headline);
@@ -1350,7 +1245,7 @@
             setText('footer.copyright', footer.copyright);
             setText('footer.credits', footer.credits);
 
-            renderProjects(site.projects);
+            renderPortfolioSections(site.portfolioSections);
             updateStructuredData(site);
         }
 

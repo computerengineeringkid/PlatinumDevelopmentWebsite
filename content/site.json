@@ -58,41 +58,96 @@
     "heading": "Our Portfolio",
     "subheading": "A selection of our completed and upcoming projects."
   },
-  "projects": [
+  "portfolioSections": [
     {
-      "title": "6830 S. Rainbow Blvd",
-      "summary": "Vibrant retail center in a prime location.",
-      "propertyType": "retail",
-      "status": "Completed",
-      "image": "https://placehold.co/600x400/DDD/333?text=Retail+Property",
-      "imageAlt": "Retail center exterior at sunset",
-      "metrics": [
-        { "label": "Size", "value": "45,000 sq ft" },
-        { "label": "Key Tenants", "value": "National retailers" }
+      "sectionId": "retail",
+      "sectionLabel": "Retail Portfolio",
+      "sectionTitle": "Retail Properties",
+      "sectionDescription": "High-performing centers anchored by national brands across the Las Vegas valley.",
+      "properties": [
+        {
+          "title": "6830 S. Rainbow Blvd",
+          "description": "High-visibility open-air retail center with national co-tenancy and excellent Rainbow Boulevard frontage.",
+          "location": "Las Vegas, NV",
+          "propertyType": "Retail",
+          "status": "Operating",
+          "focus": "Experience Upgrades"
+        },
+        {
+          "title": "9550 S. Eastern Ave",
+          "description": "Regional-serving retail with a balanced mix of soft goods, services, and daily-needs tenants along Eastern Avenue.",
+          "location": "Henderson, NV",
+          "propertyType": "Retail",
+          "status": "Operating",
+          "focus": "Tenant Collaboration"
+        },
+        {
+          "title": "7175 W. Lake Mead Blvd",
+          "description": "Neighbor-serving retail with curated dining, wellness, and boutique offerings steps from the Summerlin trail network.",
+          "location": "Summerlin, NV",
+          "propertyType": "Retail",
+          "status": "Operating",
+          "focus": "Community Programming"
+        },
+        {
+          "title": "9400 S. Eastern Ave",
+          "description": "Next-generation retail environment with chef-driven dining and lifestyle concepts serving the Eastern Avenue corridor.",
+          "location": "Henderson, NV",
+          "propertyType": "Retail",
+          "status": "In Planning",
+          "focus": "Leasing Partnerships"
+        },
+        {
+          "title": "8140 S. Rainbow Blvd",
+          "description": "Convenience-oriented shops, fitness, and fast casual dining with immediate access to the 215 Beltway.",
+          "location": "Las Vegas, NV",
+          "propertyType": "Retail",
+          "status": "In Planning",
+          "focus": "Community Feedback"
+        },
+        {
+          "title": "4840 W. Spring Mountain Rd",
+          "description": "Experiential retail and dining celebrating the vibrant Chinatown corridor along Spring Mountain Road.",
+          "location": "Las Vegas, NV",
+          "propertyType": "Retail",
+          "status": "Concept",
+          "focus": "Vision Development"
+        }
       ]
     },
     {
-      "title": "8021 Vegas Dr",
-      "summary": "22 modern townhome units.",
-      "propertyType": "multifamily",
-      "status": "In Leasing",
-      "image": "https://placehold.co/600x400/DDD/333?text=Multifamily+Property",
-      "imageAlt": "Townhome community with landscaped entry",
-      "metrics": [
-        { "label": "Units", "value": "22" },
-        { "label": "Completion", "value": "Q4 2024" }
-      ]
-    },
-    {
-      "title": "Lucky Pagoda Ct",
-      "summary": "A curated collection of modern single-family homes.",
-      "propertyType": "singleFamily",
-      "status": "Planned",
-      "image": "https://placehold.co/600x400/DDD/333?text=Single-Family",
-      "imageAlt": "Single-family home exterior",
-      "metrics": [
-        { "label": "Lots", "value": "15" },
-        { "label": "Architect", "value": "TBD" }
+      "sectionId": "residential",
+      "sectionLabel": "Residential Portfolio",
+      "sectionTitle": "Single-Family & Multifamily",
+      "sectionDescription": "Purpose-built rental homes and for-sale communities that elevate neighborhood living.",
+      "properties": [
+        {
+          "title": "8021 Vegas Dr",
+          "description": "A contemporary townhome community featuring private entries, shared amenities, and open-concept living.",
+          "location": "Las Vegas, NV",
+          "propertyType": "Townhomes",
+          "propertySubtype": "Townhome Collection",
+          "status": "Operating",
+          "focus": "Resident Experience"
+        },
+        {
+          "title": "Lucky Pagoda Ct",
+          "description": "A legacy neighborhood of contemporary homes where we continue to collaborate with current stakeholders on long-term stewardship.",
+          "location": "Las Vegas, NV",
+          "propertyType": "Single Family",
+          "propertySubtype": "Residential Enclave",
+          "status": "Legacy Community",
+          "focus": "Collaborative Stewardship"
+        },
+        {
+          "title": "Duneville St",
+          "description": "Site studies are evaluating future opportunities for desert-conscious residences with curated indoor-outdoor connections.",
+          "location": "Enterprise, NV",
+          "propertyType": "Single Family",
+          "propertySubtype": "Custom Residences",
+          "status": "Under Evaluation",
+          "focus": "Future Planning"
+        }
       ]
     }
   ],
