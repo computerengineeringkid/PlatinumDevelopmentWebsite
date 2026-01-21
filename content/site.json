@@ -1,29 +1,70 @@
 {
-  "title": "Platinum Development - Redefining the Las Vegas Landscape",
-  "companyName": "Platinum Development",
-  "seo": {
-    "ogTitle": "Platinum Development - Redefining the Las Vegas Landscape",
-    "ogDescription": "Platinum Development delivers premier retail, multifamily, and single-family real estate projects throughout Las Vegas with a focus on community impact and lasting value.",
-    "ogImage": "https://placehold.co/1200x630/001F3F/FFFFFF?text=Platinum+Development",
-    "twitterCard": "summary_large_image",
-    "twitterTitle": "Platinum Development - Redefining the Las Vegas Skyline",
-    "twitterDescription": "Discover how Platinum Development is elevating Las Vegas with high-impact retail, multifamily, and single-family communities.",
-    "twitterImage": "https://placehold.co/1200x630/001F3F/FFFFFF?text=Platinum+Development"
+  "contact": {
+    "heading": "Contact Us",
+    "subheading": "Let's build something great together. Reach out to discuss your next project.",
+    "infoHeading": "Our Information",
+    "email": "info@prdevelopmentgroup.com",
+    "address": "6870 S. Rainbow, Las Vegas, NV, 89118",
+    "hours": "Monday – Friday: 9:00 am – 5:00 pm",
+    "mapEmbed": "<iframe title=\"Platinum Development Location\" src=\"https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3356.2804815565876!2d-115.20880982373752!3d36.066100808790935!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x80c8c7ad99bd7455%3A0xf0ae9ed474468e84!2s6870%20S%20Rainbow%20Blvd%2C%20Las%20Vegas%2C%20NV%2089118!5e0!3m2!1sen!2sus!4v1712782820000!5m2!1sen!2sus\" width=\"100%\" height=\"100%\" style=\"border:0\" allowfullscreen=\"\" loading=\"lazy\" referrerpolicy=\"no-referrer-when-downgrade\"></iframe>"
+  },
+  "portfolioIntro": {
+    "heading": "Our Portfolio",
+    "subheading": "A selection of our completed and upcoming projects."
   },
   "navigationLinks": [
-    { "label": "Home", "href": "#home" },
-    { "label": "About", "href": "#about" },
-    { "label": "Portfolio", "href": "#portfolio" },
-    { "label": "Investors", "href": "#investors" },
-    { "label": "Contact", "href": "#contact", "isPrimary": true }
+    {
+      "label": "Home",
+      "href": "#home"
+    },
+    {
+      "label": "About",
+      "href": "#about"
+    },
+    {
+      "label": "Portfolio",
+      "href": "#portfolio"
+    },
+    {
+      "label": "Investors",
+      "href": "#investors"
+    },
+    {
+      "label": "Contact",
+      "href": "#contact",
+      "isPrimary": true
+    }
   ],
-  "hero": {
-    "headline": "Redefining the Las Vegas Landscape.",
-    "subheadline": "Developing premier retail, multifamily, and single-family properties with excellence and integrity.",
-    "ctaLabel": "Explore Projects",
-    "ctaHref": "#portfolio",
-    "backgroundImage": "vegas2.jpg",
-    "backgroundAlt": "Las Vegas skyline at dusk"
+  "companyName": "Platinum Development",
+  "partners": {
+    "heading": "Trusted By Leading Brands",
+    "subheading": "We are proud to partner with nationally recognized tenants.",
+    "items": [
+      {
+        "name": "BJs",
+        "logo": "logos/BJs.png"
+      },
+      {
+        "name": "Einstein Bros. Bagels",
+        "logo": "logos/Einstein.png"
+      },
+      {
+        "name": "Big 5 Sporting Goods",
+        "logo": "logos/big5.png"
+      },
+      {
+        "name": "Cox",
+        "logo": "logos/cox.png"
+      },
+      {
+        "name": "Massage Envy",
+        "logo": "logos/massageenvy.png"
+      },
+      {
+        "name": "Moneytree",
+        "logo": "logos/moneytree.png"
+      }
+    ]
   },
   "about": {
     "heading": "Building Communities, Creating Value.",
@@ -48,15 +89,23 @@
       }
     ],
     "stats": [
-      { "label": "Square Feet Delivered", "value": "1.2M+" },
-      { "label": "Projects Completed", "value": "45" },
-      { "label": "Current Developments", "value": "6" },
-      { "label": "Years of Experience", "value": "20" }
+      {
+        "label": "Square Feet Delivered",
+        "value": "1.2M+"
+      },
+      {
+        "label": "Projects Completed",
+        "value": "45"
+      },
+      {
+        "label": "Current Developments",
+        "value": "6"
+      },
+      {
+        "label": "Years of Experience",
+        "value": "20"
+      }
     ]
-  },
-  "portfolioIntro": {
-    "heading": "Our Portfolio",
-    "subheading": "A selection of our completed and upcoming projects."
   },
   "portfolioSections": [
     {
@@ -124,6 +173,15 @@
           "focus": "Vision Development",
           "image": "photos/4840 W. Spring Mountain Rd.webp",
           "imageAlt": "4840 W. Spring Mountain Rd retail center"
+        },
+        {
+          "title": "TEST PROPERTY",
+          "description": "TEST",
+          "location": "TEST ",
+          "propertyType": "Retail",
+          "status": "TEST",
+          "focus": "TEST",
+          "imageAlt": "TEST"
         }
       ]
     },
@@ -134,71 +192,41 @@
       "sectionDescription": "Purpose-built rental homes and for-sale communities that elevate neighborhood living.",
       "properties": [
         {
-          "title": "8021 Vegas Dr",
-          "description": "A contemporary townhome community featuring private entries, shared amenities, and open-concept living.",
-          "location": "Las Vegas, NV",
-          "propertyType": "Townhomes",
           "propertySubtype": "Townhome Collection",
+          "imageAlt": "8021 Vegas Dr townhome community",
+          "propertyType": "Townhomes",
           "status": "Operating",
-          "focus": "Resident Experience",
-          "image": "photos/8021 Vegas Dr.webp",
-          "imageAlt": "8021 Vegas Dr townhome community"
-        },
-        {
-          "title": "Lucky Pagoda Ct",
-          "description": "A legacy neighborhood of contemporary homes where we continue to collaborate with current stakeholders on long-term stewardship.",
           "location": "Las Vegas, NV",
-          "propertyType": "Single Family",
-          "propertySubtype": "Residential Enclave",
-          "status": "Legacy Community",
-          "focus": "Collaborative Stewardship",
-          "image": "photos/Lucky Pagoda Ct.webp",
-          "imageAlt": "Lucky Pagoda Ct residential community"
+          "focus": "Resident Experience",
+          "title": "8021 Vegas Dr",
+          "image": "photos/8021 Vegas Dr.webp",
+          "description": "A contemporary townhome community featuring private entries, shared amenities, and open-concept living."
         },
         {
-          "title": "Duneville St",
-          "description": "Site studies are evaluating future opportunities for desert-conscious residences with curated indoor-outdoor connections.",
-          "location": "Enterprise, NV",
+          "propertySubtype": "Residential Enclave",
+          "imageAlt": "Lucky Pagoda Ct residential community",
           "propertyType": "Single Family",
+          "status": "Legacy Community",
+          "location": "Las Vegas, NV",
+          "focus": "Collaborative Stewardship",
+          "title": "Lucky Pagoda Ct",
+          "image": "photos/Lucky Pagoda Ct.webp",
+          "description": "A legacy neighborhood of contemporary homes where we continue to collaborate with current stakeholders on long-term stewardship."
+        },
+        {
           "propertySubtype": "Custom Residences",
+          "imageAlt": "Duneville St residential development",
+          "propertyType": "Single Family",
           "status": "Under Evaluation",
+          "location": "Enterprise, NV",
           "focus": "Future Planning",
+          "title": "Duneville St",
           "image": "photos/Duneville St.webp",
-          "imageAlt": "Duneville St residential development"
+          "description": "Site studies are evaluating future opportunities for desert-conscious residences with curated indoor-outdoor connections."
         }
       ]
     }
   ],
-  "partners": {
-    "heading": "Trusted By Leading Brands",
-    "subheading": "We are proud to partner with nationally recognized tenants.",
-    "items": [
-      {
-        "name": "BJs",
-        "logo": "logos/BJs.png"
-      },
-      {
-        "name": "Einstein Bros. Bagels",
-        "logo": "logos/Einstein.png"
-      },
-      {
-        "name": "Big 5 Sporting Goods",
-        "logo": "logos/big5.png"
-      },
-      {
-        "name": "Cox",
-        "logo": "logos/cox.png"
-      },
-      {
-        "name": "Massage Envy",
-        "logo": "logos/massageenvy.png"
-      },
-      {
-        "name": "Moneytree",
-        "logo": "logos/moneytree.png"
-      }
-    ]
-  },
   "investor": {
     "heading": "Invest with Confidence",
     "body": [
@@ -208,18 +236,27 @@
     "ctaLabel": "Become an Investor",
     "ctaHref": "#contact"
   },
-  "contact": {
-    "heading": "Contact Us",
-    "subheading": "Let's build something great together. Reach out to discuss your next project.",
-    "infoHeading": "Our Information",
-    "email": "info@prdevelopmentgroup.com",
-    "address": "6870 S. Rainbow, Las Vegas, NV, 89118",
-    "hours": "Monday – Friday: 9:00 am – 5:00 pm",
-    "mapEmbed": "<iframe title=\"Platinum Development Location\" src=\"https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3356.2804815565876!2d-115.20880982373752!3d36.066100808790935!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x80c8c7ad99bd7455%3A0xf0ae9ed474468e84!2s6870%20S%20Rainbow%20Blvd%2C%20Las%20Vegas%2C%20NV%2089118!5e0!3m2!1sen!2sus!4v1712782820000!5m2!1sen!2sus\" width=\"100%\" height=\"100%\" style=\"border:0\" allowfullscreen=\"\" loading=\"lazy\" referrerpolicy=\"no-referrer-when-downgrade\"></iframe>"
+  "title": "Platinum Development - Redefining the Las Vegas Landscape",
+  "hero": {
+    "headline": "Redefining the Las Vegas Landscape.",
+    "subheadline": "Developing premier retail, multifamily, and single-family properties with excellence and integrity.",
+    "ctaLabel": "Explore Projects",
+    "ctaHref": "#portfolio",
+    "backgroundImage": "vegas2.jpg",
+    "backgroundAlt": "Las Vegas skyline at dusk"
   },
   "footer": {
     "companyName": "Platinum Development",
     "copyright": "© 2025 Platinum Development. All Rights Reserved.",
     "credits": "Website by Saguaro Interactive"
+  },
+  "seo": {
+    "ogTitle": "Platinum Development - Redefining the Las Vegas Landscape",
+    "ogDescription": "Platinum Development delivers premier retail, multifamily, and single-family real estate projects throughout Las Vegas with a focus on community impact and lasting value.",
+    "ogImage": "https://placehold.co/1200x630/001F3F/FFFFFF?text=Platinum+Development",
+    "twitterCard": "summary_large_image",
+    "twitterTitle": "Platinum Development - Redefining the Las Vegas Skyline",
+    "twitterDescription": "Discover how Platinum Development is elevating Las Vegas with high-impact retail, multifamily, and single-family communities.",
+    "twitterImage": "https://placehold.co/1200x630/001F3F/FFFFFF?text=Platinum+Development"
   }
 }
