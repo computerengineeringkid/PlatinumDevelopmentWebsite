@@ -173,15 +173,6 @@
           "focus": "Vision Development",
           "image": "photos/4840 W. Spring Mountain Rd.webp",
           "imageAlt": "4840 W. Spring Mountain Rd retail center"
-        },
-        {
-          "title": "TEST PROPERTY",
-          "description": "TEST",
-          "location": "TEST ",
-          "propertyType": "Retail",
-          "status": "TEST",
-          "focus": "TEST",
-          "imageAlt": "TEST"
         }
       ]
     },
