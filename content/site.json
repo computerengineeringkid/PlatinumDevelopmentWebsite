@@ -66,7 +66,7 @@
     "heading": "Building Communities, Creating Value.",
     "body": [
       "We are Platinum Development, a premier developer and operator of high-quality retail, multifamily, and single-family projects. Through our robust services and commitment to excellence, we ensure the creation of the best properties for our local communities.",
-      "Our expertise in the Las Vegas market allows us to identify unique opportunities and deliver exceptional returns for our partners and investors."
+      "Our expertise in the Las Vegas market allows us to identify unique opportunities and deliver exceptional developments."
     ],
     "image": "photos/construction.webp",
     "imageAlt": "Platinum Development construction site",
@@ -181,11 +181,12 @@
         {
           "title": "4846 S Jones",
           "description": "44 market rate apartment units in an urban infill location at the North East Corner of Tropicana and Jones.",
-          "location": "Las Vegas",
+          "location": "Las Vegas, NV",
           "propertyType": "Multifamily",
           "status": "Under Construction",
           "image": "/uploads/screenshot-2026-01-25-at-12.45.16 pm.png",
-          "focus": "Brand New Multifamily "
+          "focus": "Brand New Multifamily ",
+          "propertySubtype": "Multifamily"
         },
         {
           "propertySubtype": "Townhome Collection",
