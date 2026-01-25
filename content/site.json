@@ -34,7 +34,7 @@
   "companyName": "Platinum Development",
   "partners": {
     "heading": "Trusted By Leading Brands",
-    "subheading": "We are proud to partner with nationally recognized tenants.",
+    "subheading": "We are proud to have nationally recognized tenants in our properties.",
     "items": [
       {
         "name": "BJs",
@@ -230,8 +230,8 @@
     "backgroundAlt": "Las Vegas skyline at dusk"
   },
   "footer": {
-    "companyName": "Platinum Development",
-    "copyright": "© 2026 Platinum Development. All Rights Reserved.",
+    "companyName": "Platinum Development Group",
+    "copyright": "© 2026 Platinum Development Group. All Rights Reserved.",
     "credits": "Website by Saguaro Interactive"
   },
   "seo": {
