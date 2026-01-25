@@ -179,6 +179,15 @@
       "sectionDescription": "Purpose-built rental homes and for-sale communities that elevate neighborhood living.",
       "properties": [
         {
+          "title": "4846 S Jones",
+          "description": "44 market rate apartment units in an urban infill location at the North East Corner of Tropicana and Jones.",
+          "location": "Las Vegas",
+          "propertyType": "Multifamily",
+          "status": "Under Construction",
+          "image": "/uploads/screenshot-2026-01-25-at-12.45.16 pm.png",
+          "focus": "Brand New Multifamily "
+        },
+        {
           "propertySubtype": "Townhome Collection",
           "imageAlt": "8021 Vegas Dr townhome community",
           "propertyType": "Townhomes",
