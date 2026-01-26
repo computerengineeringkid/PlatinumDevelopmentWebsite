@@ -4,6 +4,11 @@
   "private": true,
   "description": "Static marketing site for Platinum Development powered by Decap CMS.",
   "scripts": {
+    "build:css": "tailwindcss -c tailwind.config.js -i ./styles/tailwind.css -o ./assets/tailwind.css --minify",
+    "build": "npm run build:css",
     "serve": "npx serve ."
+  },
+  "devDependencies": {
+    "tailwindcss": "^3.4.19"
   }
 }

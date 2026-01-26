@@ -22,11 +22,12 @@
     <link rel="canonical" href="">
     <link rel="icon" type="image/png" href="favicon.png">
     <link rel="apple-touch-icon" href="favicon.png">
+    <link rel="preload" as="image" href="vegas2.webp" fetchpriority="high" imagesizes="100vw">
     <link rel="preload" href="content/site.json" as="fetch" type="application/json" crossorigin="anonymous">
     <title>Platinum Development - Redefining the Las Vegas Landscape</title>
     <script id="structured-data" type="application/ld+json"></script>
-    <script async src="https://cdn.tailwindcss.com" onload="document.documentElement.classList.add('tw-ready')"></script>
-    <script src="https://identity.netlify.com/v1/netlify-identity-widget.js" defer></script>
+    <link rel="preload" href="assets/tailwind.css" as="style">
+    <link rel="stylesheet" href="assets/tailwind.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="dns-prefetch" href="https://fonts.googleapis.com">
@@ -36,11 +37,6 @@
         body {
             font-family: 'Inter', sans-serif;
             overflow-x: hidden;
-            opacity: 0;
-            transition: opacity 0.15s ease-out;
-        }
-        html.tw-ready body {
-            opacity: 1;
         }
         /* Focus states for accessibility */
         a:focus-visible,
@@ -367,7 +363,6 @@
                 <a href="#home" class="text-[#001F3F] transition-colors hover:text-[#FF6600]">Home</a>
                 <a href="#about" class="text-[#001F3F] transition-colors hover:text-[#FF6600]">About</a>
                 <a href="#portfolio" class="text-[#001F3F] transition-colors hover:text-[#FF6600]">Portfolio</a>
-                <a href="#investors" class="text-[#001F3F] transition-colors hover:text-[#FF6600]">Investors</a>
                 <a href="#contact" class="inline-flex items-center rounded-full bg-[#D4AF37] px-4 py-2 text-[#001F3F] shadow-sm transition-colors hover:bg-[#b89027]">Contact</a>
             </div>
             <div class="flex items-center md:hidden">
@@ -383,7 +378,6 @@
                     <a href="#home" class="block rounded-md px-4 py-2 text-base font-medium text-[#001F3F] transition-colors hover:bg-[#001F3F]/10">Home</a>
                     <a href="#about" class="block rounded-md px-4 py-2 text-base font-medium text-[#001F3F] transition-colors hover:bg-[#001F3F]/10">About</a>
                     <a href="#portfolio" class="block rounded-md px-4 py-2 text-base font-medium text-[#001F3F] transition-colors hover:bg-[#001F3F]/10">Portfolio</a>
-                    <a href="#investors" class="block rounded-md px-4 py-2 text-base font-medium text-[#001F3F] transition-colors hover:bg-[#001F3F]/10">Investors</a>
                     <a href="#contact" class="block rounded-md bg-[#D4AF37] px-4 py-2 text-base font-semibold text-[#001F3F] transition-colors hover:bg-[#b89027]">Contact</a>
                 </div>
             </div>
@@ -391,8 +385,20 @@
     </header>
 
     <main id="main-content">
-        <section id="home" class="h-screen bg-cover bg-center flex items-center justify-center text-white" data-cms-bg-image="hero.backgroundImage" style="background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('vegas2.webp');">
-            <div class="text-center px-4 fade-in-section">
+        <section id="home" class="relative h-screen overflow-hidden flex items-center justify-center text-white">
+            <img
+                src="vegas2.webp"
+                alt="Las Vegas skyline at dusk"
+                width="2560"
+                height="1681"
+                fetchpriority="high"
+                loading="eager"
+                decoding="async"
+                class="absolute inset-0 h-full w-full object-cover"
+                data-cms-image="hero.backgroundImage"
+                data-image-priority="high">
+            <div class="absolute inset-0" style="background: rgba(0,0,0,0.5);"></div>
+            <div class="relative text-center px-4 fade-in-section">
                 <h1 class="text-4xl md:text-6xl font-bold leading-tight mb-4 text-white" data-cms-text="hero.headline">Redefining the Las Vegas Landscape.</h1>
                 <p class="text-lg md:text-xl text-gray-200 mb-8 max-w-3xl mx-auto" data-cms-text="hero.subheadline">Developing premier retail, multifamily, and single-family properties with excellence and integrity.</p>
                 <div class="flex flex-col items-center gap-4 sm:flex-row sm:justify-center">
@@ -414,11 +420,11 @@
                             <p class="text-[#333333]">We are Platinum Development, a premier developer and operator of high-quality retail, multifamily, and single-family projects. Through our robust services and commitment to excellence, we ensure the creation of the best properties for our local communities.</p>
                             <p class="text-[#333333]">Our expertise in the Las Vegas market allows us to identify unique opportunities and deliver exceptional returns for our partners and investors.</p>
                         </div>
-                        <div class="mt-10 grid sm:grid-cols-2 gap-6 hidden fade-in-section" data-cms-collection="about.highlights">
+                        <div class="mt-10 gap-6 hidden fade-in-section" data-cms-collection="about.highlights">
                         </div>
                     </div>
                 </div>
-                <dl class="mt-16 grid gap-6 fade-in-section sm:grid-cols-4 hidden" data-cms-collection="about.stats">
+                <dl class="mt-16 gap-6 fade-in-section hidden" data-cms-collection="about.stats">
                 </dl>
             </div>
         </section>
@@ -444,16 +450,6 @@
             </div>
         </section>
 
-        <section id="investors" class="py-20 bg-[#F5F5F5]">
-            <div class="container mx-auto px-6 text-center fade-in-section">
-                <h2 class="text-3xl font-bold text-[#001F3F]" data-cms-text="investor.heading">Invest with Confidence</h2>
-                <div class="mt-4 mx-auto max-w-2xl space-y-4 text-[#333333]" data-cms-paragraphs="investor.body" data-cms-paragraph-class="text-[#333333]">
-                    <p>Join us in developing and managing premier real estate deals in Las Vegas that offer excellent returns. We provide stable and lucrative investment opportunities.</p>
-                </div>
-                <a href="#contact" class="mt-8 inline-block rounded-full bg-[#D4AF37] px-8 py-3 text-lg font-semibold text-[#001F3F] transition-transform transform hover:scale-105 hover:bg-[#b89027]" data-cms-text="investor.ctaLabel" data-cms-attr-href="investor.ctaHref">Become an Investor</a>
-            </div>
-        </section>
-
         <section id="contact" class="py-20 bg-white">
             <div class="container mx-auto px-6">
                 <div class="text-center mb-12 fade-in-section">
@@ -461,7 +457,7 @@
                     <p class="mt-2 text-[#333333]" data-cms-text="contact.subheading">Let's build something great together. Reach out to discuss your next project.</p>
                 </div>
                 <div class="grid md:grid-cols-2 gap-12 items-start fade-in-section">
-                    <form name="contact" method="POST" data-netlify="true" data-netlify-recaptcha="true" netlify-honeypot="bot-field" action="/thank-you.html" class="space-y-6">
+                    <form name="contact" method="POST" data-netlify="true" netlify-honeypot="bot-field" action="/thank-you.html" class="space-y-6">
                         <input type="hidden" name="form-name" value="contact">
                         <p class="hidden">
                             <label>Don't fill this out if you're human: <input name="bot-field"></label>
@@ -484,7 +480,6 @@
                             <label for="message" class="block text-sm font-medium text-[#001F3F]">Message</label>
                             <textarea id="message" name="message" rows="4" class="mt-1 block w-full rounded-md border border-[#C7CDD3] bg-white px-3 py-2 shadow-sm focus:border-[#D4AF37] focus:outline-none focus:ring-2 focus:ring-[#D4AF37]/40" required></textarea>
                         </div>
-                        <div data-netlify-recaptcha="true" class="mb-2" aria-label="reCAPTCHA verification"></div>
                         <div>
                             <button type="submit" class="w-full rounded-full bg-[#D4AF37] px-6 py-3 font-semibold text-[#001F3F] transition-colors hover:bg-[#b89027]">Send Message</button>
                         </div>
@@ -492,21 +487,10 @@
                     <div class="space-y-6">
                         <div class="space-y-3 rounded-lg bg-[#F5F5F5] p-6">
                             <h3 class="text-xl font-semibold text-[#001F3F]" data-cms-text="contact.infoHeading">Our Information</h3>
-                            <p class="text-[#333333]" data-cms-text="contact.email"><strong>Email:</strong><br> info@prdevelopmentgroup.com</p>
                             <p class="text-[#333333]" data-cms-text="contact.address"><strong>Address:</strong><br> 6870 S. Rainbow, Las Vegas, NV, 89118</p>
                             <p class="text-[#333333]" data-cms-text="contact.hours"><strong>Hours:</strong><br> Monday – Friday: 9:00 am – 5:00 pm</p>
                         </div>
-                        <div class="h-64 overflow-hidden rounded-lg shadow-lg" data-cms-map="contact.mapEmbed">
-                            <iframe
-                                title="Platinum Development Location"
-                                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3356.2804815565876!2d-115.20880982373752!3d36.066100808790935!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x80c8c7ad99bd7455%3A0xf0ae9ed474468e84!2s6870%20S%20Rainbow%20Blvd%2C%20Las%20Vegas%2C%20NV%2089118!5e0!3m2!1sen!2sus!4v1712782820000!5m2!1sen!2sus"
-                                width="100%"
-                                height="100%"
-                                style="border:0"
-                                allowfullscreen=""
-                                loading="lazy"
-                                referrerpolicy="no-referrer-when-downgrade"></iframe>
-                        </div>
+                        <div class="h-64 overflow-hidden rounded-lg shadow-lg bg-white" data-cms-map="contact.mapEmbed" data-map-lazy aria-label="Map loading placeholder"></div>
                     </div>
                 </div>
             </div>
@@ -518,7 +502,7 @@
             <div class="grid gap-12 md:grid-cols-[auto_1fr_1fr] items-start">
                 <div class="flex flex-col items-center md:items-start">
                     <img src="nick-removebg-preview.png" alt="Platinum Development logo" class="h-12 w-auto" loading="lazy" decoding="async">
-                    <span class="mt-2 text-lg font-semibold" data-cms-text="footer.companyName">Platinum Development</span>
+                    <span class="sr-only" data-cms-text="footer.companyName">Platinum Development</span>
                 </div>
                 <div class="space-y-2 text-center md:text-left">
                     <h4 class="text-lg font-semibold tracking-wide uppercase">Hours</h4>
@@ -663,7 +647,13 @@
             }
             document.querySelectorAll(`[data-cms-image="${key}"]`).forEach((el) => {
                 el.src = resolveAssetPath(url);
-                el.loading = 'lazy';
+                const priority = el.getAttribute('data-image-priority');
+                if (priority === 'high') {
+                    el.loading = 'eager';
+                    el.setAttribute('fetchpriority', 'high');
+                } else {
+                    el.loading = 'lazy';
+                }
                 el.decoding = 'async';
                 if (altText) {
                     el.alt = altText;
@@ -874,6 +864,7 @@
             container.innerHTML = '';
             if (!template || !Array.isArray(highlights) || !highlights.length) {
                 container.classList.add('hidden');
+                container.classList.remove('grid', 'sm:grid-cols-2');
                 return;
             }
             highlights.forEach((item) => {
@@ -897,8 +888,10 @@
             });
             if (!container.childElementCount) {
                 container.classList.add('hidden');
+                container.classList.remove('grid', 'sm:grid-cols-2');
             } else {
                 container.classList.remove('hidden');
+                container.classList.add('grid', 'sm:grid-cols-2');
             }
         }
 
@@ -911,6 +904,7 @@
             container.innerHTML = '';
             if (!template || !Array.isArray(stats) || !stats.length) {
                 container.classList.add('hidden');
+                container.classList.remove('grid', 'sm:grid-cols-4');
                 return;
             }
             stats.forEach((stat) => {
@@ -930,8 +924,10 @@
             });
             if (!container.childElementCount) {
                 container.classList.add('hidden');
+                container.classList.remove('grid', 'sm:grid-cols-4');
             } else {
                 container.classList.remove('hidden');
+                container.classList.add('grid', 'sm:grid-cols-4');
             }
         }
 
@@ -1030,42 +1026,76 @@
                 return;
             }
             setText('contact.infoHeading', contact.infoHeading || 'Our Information');
-            if (contact.email) {
-                const emailEl = document.querySelector('[data-cms-text="contact.email"]');
-                if (emailEl) {
-                    emailEl.innerHTML = `<strong>Email:</strong><br>${contact.email}`;
-                }
+            const email = typeof contact.email === 'string' ? contact.email.trim() : '';
+            if (email) {
                 const footerEmailEl = document.querySelector('[data-footer-email]');
                 if (footerEmailEl) {
-                    footerEmailEl.textContent = contact.email;
-                    footerEmailEl.setAttribute('href', `mailto:${contact.email}`);
+                    footerEmailEl.textContent = email;
+                    footerEmailEl.setAttribute('href', `mailto:${email}`);
                 }
             }
-            if (contact.address) {
+            const address = typeof contact.address === 'string' ? contact.address.trim() : '';
+            if (address) {
                 const addressEl = document.querySelector('[data-cms-text="contact.address"]');
                 if (addressEl) {
-                    addressEl.innerHTML = `<strong>Address:</strong><br>${contact.address}`;
+                    addressEl.innerHTML = `<strong>Address:</strong><br>${address}`;
                 }
                 const footerAddressEl = document.querySelector('[data-footer-address]');
                 if (footerAddressEl) {
-                    footerAddressEl.textContent = contact.address;
+                    footerAddressEl.textContent = address;
                 }
             }
-            if (contact.hours) {
+            const hours = typeof contact.hours === 'string' ? contact.hours.trim() : '';
+            if (hours) {
                 const hoursEl = document.querySelector('[data-cms-text="contact.hours"]');
                 if (hoursEl) {
-                    hoursEl.innerHTML = `<strong>Hours:</strong><br>${contact.hours}`;
+                    hoursEl.innerHTML = `<strong>Hours:</strong><br>${hours}`;
                 }
                 const footerHoursEl = document.querySelector('[data-footer-hours]');
                 if (footerHoursEl) {
-                    footerHoursEl.textContent = contact.hours;
+                    footerHoursEl.textContent = hours;
                 }
             }
             if (contact.mapEmbed) {
                 document.querySelectorAll('[data-cms-map="contact.mapEmbed"]').forEach((container) => {
-                    container.innerHTML = contact.mapEmbed;
+                    container.dataset.mapEmbed = contact.mapEmbed;
                 });
             }
+        }
+
+        function initLazyMaps() {
+            const mapContainers = Array.from(document.querySelectorAll('[data-map-lazy][data-cms-map="contact.mapEmbed"]'));
+            if (!mapContainers.length) {
+                return;
+            }
+
+            const loadMap = (container) => {
+                if (!container || container.dataset.mapLoaded === 'true') {
+                    return;
+                }
+                const embed = container.dataset.mapEmbed;
+                if (!embed) {
+                    return;
+                }
+                container.innerHTML = embed;
+                container.dataset.mapLoaded = 'true';
+            };
+
+            if (!('IntersectionObserver' in window)) {
+                mapContainers.forEach(loadMap);
+                return;
+            }
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach((entry) => {
+                    if (entry.isIntersecting) {
+                        loadMap(entry.target);
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, { rootMargin: '250px 0px' });
+
+            mapContainers.forEach((container) => observer.observe(container));
         }
 
         function parsePostalAddress(address) {
@@ -1213,7 +1243,7 @@
                 canonicalEl.setAttribute('href', seo.canonicalUrl || pageUrl);
             }
 
-            setBackgroundImage('hero.backgroundImage', hero.backgroundImage, hero.backgroundAlt);
+            setImage('hero.backgroundImage', hero.backgroundImage, hero.backgroundAlt || 'Las Vegas skyline at dusk');
             setText('hero.headline', hero.headline);
             setText('hero.subheadline', hero.subheadline);
             setText('hero.ctaLabel', hero.ctaLabel);
@@ -1235,12 +1265,6 @@
             setText('partners.subheading', partners.subheading);
             renderPartners(partners.items);
 
-            const investor = site.investor || {};
-            setText('investor.heading', investor.heading);
-            setParagraphs('investor.body', investor.body, 'text-[#333333]');
-            setText('investor.ctaLabel', investor.ctaLabel);
-            setAttr('investor.ctaHref', 'href', investor.ctaHref);
-
             const contact = site.contact || {};
             setText('contact.heading', contact.heading);
             setText('contact.subheading', contact.subheading);
@@ -1253,6 +1277,7 @@
 
             renderPortfolioSections(site.portfolioSections);
             updateStructuredData(site);
+            initLazyMaps();
         }
 
         async function loadSiteContent() {

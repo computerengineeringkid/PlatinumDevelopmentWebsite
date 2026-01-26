@@ -105,20 +105,6 @@ collections:
                 fields:
                   - { label: "Name", name: "name", widget: "string" }
                   - { label: "Logo", name: "logo", widget: "image", required: false }
-          - label: "Investor Section"
-            name: "investor"
-            widget: "object"
-            fields:
-              - { label: "Heading", name: "heading", widget: "string" }
-              - label: "Body"
-                name: "body"
-                widget: "list"
-                field:
-                  label: "Paragraph"
-                  name: "paragraph"
-                  widget: "text"
-              - { label: "Button Label", name: "ctaLabel", widget: "string", required: false }
-              - { label: "Button Link", name: "ctaHref", widget: "string", required: false }
           - label: "Contact"
             name: "contact"
             widget: "object"
